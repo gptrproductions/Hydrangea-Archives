@@ -118,6 +118,7 @@ func player_switch(number : int, refresh: bool = false):
 		player_health.value = player_stats[active_character]["current_health"]
 		player_flinch.value = player_stats[active_character]["current_flinch"]
 		player_health.targetified = active_character
+		player_flinch.is_flinch = true if player_stats[active_character]["flinched"] and player_stats[active_character]["already_flinched"] else false
 		if player_stats[active_character]["dead"]: player_health.dead = true
 		else: player_health.dead = false
 		player_bar.switch(player_stats[active_character]["profile"], player_stats[active_character]["type"])
@@ -145,7 +146,8 @@ func enemy_switch(number : int, refresh: bool = false):
 		enemy_flinch.max_value = enemy_stats[active_enemy]["max_flinch"]
 		enemy_health.value = enemy_stats[active_enemy]["current_health"]
 		enemy_flinch.value = enemy_stats[active_enemy]["current_flinch"]
-		player_health.targetified = active_enemy
+		enemy_health.targetified = active_enemy
+		enemy_flinch.is_flinch = true if enemy_stats[active_enemy]["flinched"] and enemy_stats[active_enemy]["already_flinched"] else false
 		if enemy_stats[active_enemy]["dead"]: enemy_health.dead = true
 		else: enemy_health.dead = false
 		enemy_bar.switch(enemy_stats[active_enemy]["profile"], enemy_stats[active_enemy]["type"])

@@ -138,6 +138,7 @@ enum encounter_type {
 }
 
 enum functions {
+	NONE,
 	MOVES,
 	SWITCH,
 	STATS,

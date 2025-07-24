@@ -39,11 +39,13 @@ var stats : Dictionary = {
 	"skill3_cost" : 3,
 	"skill4_cost" : 100,
 	
+	# NOTE: Invisible stats. These stats are unused outside a level.
 	# max_flinch is the current flinch count. If flinch is at maximum, the player is stunned. 
-	# last flinch type is automatically recorded by change_stat
+	# last flinch type is automatically recorded by change_stat.
 	"last_flinch_type" : Hud.mindset.NONE,
 	"flinched" : false,
 	"dead" : false,
+	"already_flinched" : false, # If already flinched and their flinch bar is still full, and they switch in skip the flinch effects. 
 
 	# Other main attribute stats
 	"iq" : 10, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.

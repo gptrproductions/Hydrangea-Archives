@@ -56,6 +56,13 @@ func _on_enemy_value_changed(current_value: float) -> void:
 		is_flinch = true
 		await full()
 		gameplay.enemy_stats[target_atm]["flinched"] = false
+		gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = false
+		
+		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
+		for key in gameplay.enemy_stats.keys():
+			gameplay.enemy_stats[key]["current_flinch"] = 0
+			gameplay.enemy_stats[key]["flinched"] = false
+			gameplay.enemy_stats[key]["already_flinched"] = false
 	
 func _on_player_value_changed(current_value : float) -> void:
 	if health.dead == true: return
@@ -64,19 +71,29 @@ func _on_player_value_changed(current_value : float) -> void:
 	if current_value >= max_value:
 		# Just in case the active character had changed mid-flinch (which usually doesnt), keep the current active character in memory by converting it to the cahracter position instead.
 		var target_atm = Character.targetify(Hud.target.ACTIVE, role)
+		print(target_atm)
 		gameplay.player_stats[target_atm]["flinched"] = true
 		Signals.ON_FLINCH.emit(Hud.role.PLAYER)
 		is_flinch = true
 		await full()
-		gameplay.player_stats[target_atm]["flinched"] = false
+	
+		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
+		for key in gameplay.player_stats.keys():
+			gameplay.player_stats[key]["current_flinch"] = 0
+			gameplay.player_stats[key]["flinched"] = false
+			gameplay.player_stats[key]["already_flinched"] = false
 	
 func full(_dummy = null, _dummy2 = null):
-	if role == Hud.role.PLAYER and gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["flinched"]: 
+	if role == Hud.role.PLAYER and gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"]: 
 			await Signals.ON_QUESTION_START
 			return # Ignore if the character is currently flinched
-	elif role == Hud.role.ENEMY and gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["flinched"]: 
+	elif role == Hud.role.ENEMY and gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"]: 
 			await Signals.ON_QUESTION_START
 			return # Ignore if the character is currently flinched
+			
+	if role == Hud.role.PLAYER: gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = true
+	elif role == Hud.role.ENEMY: gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = true
+
 	System.disabled(true)
 	effect.play("flinch_player") # THATS JUST THE NAME, IT'S ACTUALLY THE FLINCH FOR EVEN
 	Effect.shake(parent, false, 7, 3, 3)

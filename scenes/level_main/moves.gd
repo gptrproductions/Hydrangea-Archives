@@ -63,7 +63,7 @@ func start(caller : Hud.role):
 	
 func end(type): # End sends how the exit animation should work depending on how it's called.
 	System.disabled(true)
-	gameplay.disable_functions(-1, true)
+	gameplay.disable_functions(Hud.functions.NONE, true)
 	moves_button.button_pressed = false
 	toggled = false
 	await modulator(type)

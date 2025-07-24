@@ -53,7 +53,7 @@ func start(toggled_on : bool):
 	await get_tree().create_timer(0.2).timeout
 
 func end():
-	gameplay.disable_functions(-1, true)
+	gameplay.disable_functions(Hud.functions.NONE, true)
 	System.disabled(true)
 	camera.position = Vector2.ZERO
 	button.button_pressed = false
