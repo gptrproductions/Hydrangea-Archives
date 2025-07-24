@@ -1,0 +1,229 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6qijovktdu3j"]
+
+[ext_resource type="Shader" uid="uid://cpfer25emqqe0" path="res://scripts/shaders/hover.gdshader" id="1_lku83"]
+[ext_resource type="Texture2D" uid="uid://c6xce7ltlqmxn" path="res://assets/vector/flashcard_choice.webp" id="2_q4ud6"]
+[ext_resource type="Script" uid="uid://dodyfb8oi6050" path="res://scenes/level_flashcards/flashcards_hover.gd" id="3_lku83"]
+[ext_resource type="Texture2D" uid="uid://duxok6w7sy5p2" path="res://assets/vector/face_correct_1.webp" id="5_lku83"]
+[ext_resource type="Theme" uid="uid://dte6udo4lrgby" path="res://themes/fonts/label_generic.tres" id="5_q4ud6"]
+[ext_resource type="Texture2D" uid="uid://bk02dmpp21tfx" path="res://assets/vector/face_wrong_1.webp" id="6_oacm6"]
+[ext_resource type="Script" uid="uid://cppg4s3gbl527" path="res://scenes/level_flashcards/flashcards_face.gd" id="7_q4ud6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vsf7p"]
+shader = ExtResource("1_lku83")
+shader_parameter/_tilt_Scale = 0.02
+shader_parameter/_mainTint = Color(1, 1, 1, 1)
+shader_parameter/_texPos = Vector4(0, 0, 1, 1)
+shader_parameter/_zDist = 0.0
+shader_parameter/_isSecondTex = false
+shader_parameter/_secondTint = Color(1, 1, 1, 1)
+shader_parameter/_texPos2 = Vector4(0, 0, 1, 1)
+shader_parameter/_zDist2 = 0.0
+shader_parameter/_isShadows = false
+shader_parameter/_shadowOffset = Vector2(0, 0)
+shader_parameter/_shadowOffset2 = Vector2(0, 0)
+shader_parameter/_shadowCol = Color(0, 0, 0, 0.5)
+shader_parameter/_isSpecularLight = true
+shader_parameter/_speularLightIntensity = 0.05
+shader_parameter/_speularLightPower = 1.0
+shader_parameter/_mousePos = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_sa87d"]
+resource_name = "flip"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.5),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_q4ud6"]
+resource_name = "flip"
+length = 2.0
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(0.24, 0.24), Vector2(0, 0.24), Vector2(0.264, 0.24), Vector2(0.24, 0.24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("raster:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.725, 2),
+"transitions": PackedFloat32Array(0, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("raster:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.72623, 2),
+"transitions": PackedFloat32Array(0, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("face:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.35, 0.45, 1.725, 2),
+"transitions": PackedFloat32Array(1, 1, -2, 0.5, 1, -2, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(2.4, 2), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("face:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.725, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvqoo"]
+_data = {
+&"entrance": SubResource("Animation_sa87d"),
+&"flip": SubResource("Animation_q4ud6")
+}
+
+[node name="reference" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 31.5
+offset_right = 2.0
+offset_bottom = 31.5
+pivot_offset = Vector2(766.5, 450.5)
+mouse_force_pass_scroll_events = false
+
+[node name="button" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_vsf7p")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 529.5
+offset_top = 319.5
+offset_right = 1166.5
+offset_bottom = 653.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.24, 0.24)
+pivot_offset = Vector2(306.875, 167.375)
+disabled = true
+texture_normal = ExtResource("2_q4ud6")
+stretch_mode = 0
+script = ExtResource("3_lku83")
+correct_face = ExtResource("6_oacm6")
+wrong_face = ExtResource("5_lku83")
+
+[node name="animation" type="AnimationPlayer" parent="button"]
+libraries = {
+&"": SubResource("AnimationLibrary_mvqoo")
+}
+
+[node name="raster" type="Label" parent="button"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0208
+offset_top = 45.0
+offset_right = -46.9792
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(274.813, 124.979)
+mouse_filter = 1
+theme = ExtResource("5_q4ud6")
+theme_override_constants/line_spacing = -4
+text = "So what, we commit stack overflow?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="face" type="TextureRect" parent="button"]
+visible = false
+layout_mode = 0
+offset_left = 175.625
+offset_top = 63.2084
+offset_right = 441.625
+offset_bottom = 263.208
+pivot_offset = Vector2(134.625, 102.708)
+texture = ExtResource("6_oacm6")
+script = ExtResource("7_q4ud6")
+
+[connection signal="button_down" from="button" to="button" method="_on_button_down"]
+[connection signal="button_up" from="button" to="button" method="_on_button_up"]
+[connection signal="gui_input" from="button" to="button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="button" to="button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="button" to="button" method="_on_mouse_exited"]
+[connection signal="pressed" from="button" to="button" method="_on_pressed"]

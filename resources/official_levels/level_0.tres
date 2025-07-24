@@ -1,0 +1,471 @@
+[gd_resource type="Resource" script_class="Questionnaire" load_steps=52 format=3 uid="uid://72fa1b3x0gbo"]
+
+[ext_resource type="Script" uid="uid://batkcp7bg4ak0" path="res://scripts/resources/dialogue_manager.gd" id="1_0oajh"]
+[ext_resource type="Script" uid="uid://mw1km5qs1l7o" path="res://scripts/resources/level_dialogue.gd" id="1_82oqa"]
+[ext_resource type="Script" uid="uid://sinjx4sk61oq" path="res://scripts/resources/level_properties.gd" id="1_h2u6i"]
+[ext_resource type="Script" uid="uid://dd4xluldcxqxo" path="res://scripts/resources/question_manager.gd" id="1_k6hln"]
+[ext_resource type="Script" uid="uid://b4brsw3v3g6ew" path="res://scripts/resources/level_questions.gd" id="2_lumh0"]
+
+[sub_resource type="Resource" id="Resource_gp53b"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 9
+text = "... I can't do anything... §0.5I feel so sick..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_f6hva"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 6
+text = "Well...§0.5 That's what you get for abandoning your people!§0.5 Did the mushroom stimulate your serotonin?"
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_dbmq3"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 3
+text = "SHE'S NOT MY GIRLFRIEND!§0.4 Or...§0.3 I don't... §0.3think she is..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_nrpi1"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 0
+text = "Guess I'm not welcome here then. §0.4Let's just go, Shrimpy--"
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_nffiy"]
+script = ExtResource("1_0oajh")
+character = 0
+role = 3
+mood = 0
+text = "A violent squad of Shrimpion surrounds Clod..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_pxbu5"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 0
+text = "Or... nevermind."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_x1skw"]
+script = ExtResource("1_0oajh")
+character = 0
+role = 3
+mood = 0
+text = "The squad of shrimpions are getting closer..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_3atwx"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 5
+text = "Don't worry. §0.1You have my back. §0.2Switch to me if you need my stinger!"
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_xmjef"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 1
+text = "Thanks, dude. §0.2I might just date you tomorrow if we survive this predicament..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_82oqa"]
+script = ExtResource("1_82oqa")
+triggered = 0
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_gp53b"), SubResource("Resource_f6hva"), SubResource("Resource_dbmq3"), SubResource("Resource_nrpi1"), SubResource("Resource_nffiy"), SubResource("Resource_pxbu5"), SubResource("Resource_x1skw"), SubResource("Resource_3atwx"), SubResource("Resource_xmjef")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_npwtn"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 0
+text = "Hah! §0.2You can't even answer a simple question!"
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_hboua"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 3
+text = "...IT WAS A ROOKIE MISTAKE, OKAY?"
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_xiped"]
+script = ExtResource("1_82oqa")
+triggered = 4
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_npwtn"), SubResource("Resource_hboua")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_bf6nr"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 0
+text = "It's time...§1TO USE THE POWER OF FRIENDSHIP!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_gscke"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 10
+text = "WAIT, THE WAVES! I'M NOT READY YET--"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_lyw7i"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 8
+text = "POSEIDON...§0.3 THOU SHALT SEND THINE WAVES UPON THEE!!! "
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_a1jca"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 10
+text = "...§0.5 ..."
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_l2b83"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 10
+text = "Crap."
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_0lkvs"]
+script = ExtResource("1_82oqa")
+triggered = 5
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_bf6nr"), SubResource("Resource_gscke"), SubResource("Resource_lyw7i"), SubResource("Resource_a1jca"), SubResource("Resource_l2b83")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_gbaam"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 5
+text = "Hahaha... §0.5WE HAVE THE UPPER HAND NOW!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_a4rlf"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 10
+text = "CLOD! §0.1DUCK!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_yro0c"]
+script = ExtResource("1_82oqa")
+triggered = 6
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_gbaam"), SubResource("Resource_a4rlf")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_cywer"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 1
+text = "Phew, almost didn't clutch that."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_w1rrw"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 1
+text = "That question's kinda easy though..."
+duration = 5
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_mgawf"]
+script = ExtResource("1_82oqa")
+triggered = 3
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_cywer"), SubResource("Resource_w1rrw")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_1q6wt"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 1
+text = "Great! You killed an opponent!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_lnpte"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 5
+text = "That's just one of them, Clod. Let's beat them all up!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_bhy8b"]
+script = ExtResource("1_82oqa")
+triggered = 8
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_1q6wt"), SubResource("Resource_lnpte")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_x36no"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 10
+text = "Oh no! Shrimpion!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_w06vs"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 11
+text = "I can't...§0.3 fight anymore..."
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_bp2i6"]
+script = ExtResource("1_82oqa")
+triggered = 7
+value = 0
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_x36no"), SubResource("Resource_w06vs")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_pemya"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 0
+mood = 8
+text = "Okay. NOW I'm ready. §0.1Let's do this!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_vdmjn"]
+script = ExtResource("1_82oqa")
+triggered = 5
+value = 1
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_pemya")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_0txu1"]
+script = ExtResource("1_0oajh")
+character = 4
+role = 0
+mood = 0
+text = "What happened to the trivia there?"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_fabqm"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 5
+text = "Let's just say you don't wanna know."
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_u160e"]
+script = ExtResource("1_0oajh")
+character = 1
+role = 1
+mood = 10
+text = "The developer of this game managed to find himself in Pia's hitlist..."
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
+[sub_resource type="Resource" id="Resource_vjk4m"]
+script = ExtResource("1_82oqa")
+triggered = 1
+value = 5
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_0txu1"), SubResource("Resource_fabqm"), SubResource("Resource_u160e")])
+metadata/_custom_type_script = "uid://mw1km5qs1l7o"
+
+[sub_resource type="Resource" id="Resource_dc320"]
+script = ExtResource("1_h2u6i")
+icon = 1
+level_number = "Exercise 0-1"
+level_name = "In The Beginning..."
+level_description_text = "This is a test level. What the heck are you doing here!?"
+encounter_type = 2
+version = 1
+game_mode = 0
+quiz_mode = false
+enable_hints = true
+enable_dialogues = false
+loop_questions = false
+shuffle_questions = true
+enemy_difficulty = 0
+stat_difficulty = 0
+enemy1 = 1
+enemy2 = 0
+enemy3 = 0
+enemy_levels = Array[int]([5, 5, 5])
+metadata/_custom_type_script = "uid://sinjx4sk61oq"
+
+[sub_resource type="Resource" id="Resource_hq14u"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 0
+question_title = "First Question!"
+question_text = "This is a test question. What are you doing here!?"
+choices = Array[Array]([["Interesting 1", true], ["Interesting 2", false], ["Interesting 3", false], ["Interesting 4", false], ["Interesting 5", false]])
+timer = 30
+chances = 1
+required_answers = 1
+hint_text = "All these answers are actually correct."
+trivia_text = "You probably need more than this to get through me!"
+wrong_text = "You only had a 25% chance to do this right, but you fumbled it anyway."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_mxjfn"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 0
+question_title = "If the world was ending, WHAT NOW!?"
+question_text = "I don't know either, but Lady Gaga and Bruno Mars preferred that they be..."
+choices = Array[Array]([["Embalmed by aliens", false], ["Next to each other", true], ["Spontaneously detonated", false], ["With their families", false], ["Talking about their memories", false]])
+timer = 30
+chances = 2
+required_answers = 2
+hint_text = "All these answers are actually correct."
+trivia_text = "This question is a reference to the Chorus of Die With A Smile, a Duet between Lady Gaga and Bruno Mars."
+wrong_text = "You realize three of the five questions are utterly ridiculous, right? Bruno and Gaga may have crazy lines, but they're not THAT crazy. "
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_squa6"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 5
+question_title = "FULL, THROTTLE, FULL THRUST (O.O)"
+question_text = "In Phineas and Ferb 5x02B, Candace obtained a license. What license is it?"
+choices = Array[Array]([["A License to Bust", false], ["A Driver's License", true], ["A Teacher's License", false]])
+timer = 30
+chances = 1
+required_answers = 1
+hint_text = "It's not title of the episode... or another valid answer."
+trivia_text = "It's her Driver's License. She already had the 'license' to bust a long time ago-- just metaphorically acknowledged it now. "
+wrong_text = "I'm pretty sure she had the license to bust ever since Jeremy happened."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_dw470"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 2
+question_title = "This is question for scentific purposes"
+question_text = "What EMC does NOT make sense?"
+choices = Array[Array]([["Entertainment and Multimedia Computing", false], ["Einstein's Theory of Relativity", false], ["The BukSU-EMC Food Court (Why is even called that))", false], ["Pia's Illogically Pressurized Wisdom Tooth", true], ["Electromagnetic Compatibility", false]])
+timer = 30
+chances = 2
+required_answers = 2
+hint_text = "IT DOESN'T EVEN HAVE EMC ON IT, HOW TF DO YOU NEED A HINT FOR IT?"
+trivia_text = "Just as wisdom teeth don't make sense for half the population..."
+wrong_text = "If the Theory of Relativity somehow missed your pop brain, it's E=MC^2."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_mlwhy"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 3
+question_title = "You're gonna have a bad time lmao"
+question_text = "He's the game developer that created the Story of Undertale and made songs like Bonetrussy and Minilovania"
+choices = Array[Array]([["Toby Fox", false], ["Toby Fox", false], ["Toby Fox", false], ["No", true]])
+timer = 20
+chances = 1
+required_answers = 1
+hint_text = "All these answers are actually correct."
+trivia_text = "You probably need more than this to get through me!"
+wrong_text = "You only had a 25% chance to do this right, but you fumbled it anyway."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_d0fh7"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 4
+question_title = "Oxygen Supply"
+question_text = "All of these are Air Supply songs except for one..."
+choices = Array[Array]([["Making Love Out of Nothing At All", false], ["All Out of Love", false], ["Here I Am", false], ["Having You Near Me", false], ["Make A Man Out of Me", true], ["Even The Nights are Better", false]])
+timer = 0
+chances = 2
+required_answers = 1
+hint_text = "Who tf makes a man out you other than that guy from Mulan!?"
+trivia_text = "\"Make A Man Out of Me\" is actually a song written by Catnip for Louie's---*dies, stabbed, strangled, killed by pia*"
+wrong_text = "Uh oh... You're not listening enough to them!"
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_5hs2b"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 1
+question_title = "Only a 10% Chance to Fail This Question!"
+question_text = "Which of the numbers in the flashcards are inside the numbers 1 to 10?"
+choices = Array[Array]([["1", true], ["2", true], ["3", true], ["4", true], ["5", true], ["6", true], ["7", true], ["8", true], ["9", true], ["10", true], ["11", false]])
+timer = 60
+chances = 1
+required_answers = 1
+hint_text = "It's 11. Why do you need a hint for it, anyway?"
+trivia_text = "Are the walls of a house inside a house? Yes, yes it is. 2 and 10 are essentially inside 2 and 10. 11 is the foreigner here."
+wrong_text = "Losing this is like winning an S-Rank in a gacha game. Congratulations!"
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[sub_resource type="Resource" id="Resource_563kq"]
+script = ExtResource("2_lumh0")
+question_type = 0
+subject = 6
+question_title = "Interesting Question!"
+question_text = "This is a test question. What are you doing here!?"
+choices = Array[Array]([["Interesting 1", true], ["Interesting 2", true], ["Interesting 3", true]])
+timer = 0
+chances = 1
+required_answers = 1
+hint_text = "All these answers are actually correct."
+trivia_text = "You probably need more than this to get through me!"
+wrong_text = "You literally had a 100% chance of getting it right, but you fumbled it anyway."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
+
+[resource]
+script = ExtResource("1_k6hln")
+properties = SubResource("Resource_dc320")
+question_data = Array[ExtResource("2_lumh0")]([SubResource("Resource_hq14u"), SubResource("Resource_mxjfn"), SubResource("Resource_squa6"), SubResource("Resource_dw470"), SubResource("Resource_mlwhy"), SubResource("Resource_d0fh7"), SubResource("Resource_5hs2b"), SubResource("Resource_563kq")])
+dialog_data = Array[ExtResource("1_82oqa")]([SubResource("Resource_82oqa"), SubResource("Resource_xiped"), SubResource("Resource_0lkvs"), SubResource("Resource_yro0c"), SubResource("Resource_mgawf"), SubResource("Resource_bhy8b"), SubResource("Resource_bp2i6"), SubResource("Resource_vdmjn"), SubResource("Resource_vjk4m")])
+metadata/_custom_type_script = "uid://dd4xluldcxqxo"

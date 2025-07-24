@@ -1,0 +1,161 @@
+[gd_scene load_steps=20 format=3 uid="uid://bgrkoen38cly1"]
+
+[ext_resource type="Texture2D" uid="uid://ch2j2cb60pjp8" path="res://assets/vector/dropdown_normal.png" id="1_yb5qs"]
+[ext_resource type="Texture2D" uid="uid://dgu1asqqqx0f8" path="res://assets/vector/dropdown_pressed.png" id="2_ao8fs"]
+[ext_resource type="Texture2D" uid="uid://cxjavwu5wfs83" path="res://assets/vector/dropdown_hover.png" id="3_7b3s6"]
+[ext_resource type="Texture2D" uid="uid://dkcyuhbbvps5b" path="res://assets/vector/dropdown_disabled.png" id="4_a7q82"]
+[ext_resource type="Texture2D" uid="uid://x300d8g47r70" path="res://assets/vector/nonatlas/tooltip.webp" id="5_66td4"]
+[ext_resource type="Script" uid="uid://deu6yjkpuf6vn" path="res://scenes/settings_dropdown/settings_dropdown.gd" id="5_ao8fs"]
+[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="6_wocot"]
+[ext_resource type="Texture2D" uid="uid://buflody7m40r" path="res://assets/vector/checkmark_colored.png" id="7_epc5p"]
+[ext_resource type="FontFile" uid="uid://bhjdrak2hfkqg" path="res://assets/atlas/fonts/Billy_Black.fnt" id="8_wow0p"]
+
+[sub_resource type="FontVariation" id="FontVariation_6lcmn"]
+base_font = ExtResource("8_wow0p")
+spacing_top = 7
+
+[sub_resource type="FontVariation" id="FontVariation_ao8fs"]
+base_font = ExtResource("6_wocot")
+spacing_glyph = -1
+spacing_bottom = -14
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f5bsw"]
+
+[sub_resource type="Gradient" id="Gradient_3bg57"]
+colors = PackedColorArray(1, 1, 0.752941, 0.513726, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bwr15"]
+gradient = SubResource("Gradient_3bg57")
+fill = 1
+fill_from = Vector2(0.474359, 0.478632)
+fill_to = Vector2(1, 0.551282)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2yij"]
+texture = SubResource("GradientTexture2D_bwr15")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="Gradient" id="Gradient_bm17j"]
+offsets = PackedFloat32Array(0.004329, 1)
+colors = PackedColorArray(0, 0, 0, 0.584314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xdu3y"]
+gradient = SubResource("Gradient_bm17j")
+fill = 1
+fill_from = Vector2(0.474359, 0.478632)
+fill_to = Vector2(1, 0.551282)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rphhf"]
+texture = SubResource("GradientTexture2D_xdu3y")
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwifs"]
+
+[node name="dropdown" type="TextureButton"]
+custom_minimum_size = Vector2(97, 100)
+offset_left = -47.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(47.1099, 50)
+toggle_mode = true
+texture_normal = ExtResource("1_yb5qs")
+texture_pressed = ExtResource("2_ao8fs")
+texture_hover = ExtResource("3_7b3s6")
+texture_disabled = ExtResource("4_a7q82")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_ao8fs")
+choices = Array[String](["Option 1", "gfdhfghj"])
+
+[node name="string" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 0
+offset_left = -798.0
+offset_top = -15.0
+offset_right = -604.0
+offset_bottom = 21.0
+scale = Vector2(4, 4)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = SubResource("FontVariation_6lcmn")
+theme_override_font_sizes/font_size = 24
+text = "Option 1"
+horizontal_alignment = 2
+text_overrun_behavior = 3
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
+
+[node name="reference" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 77)
+layout_mode = 2
+offset_left = -603.0
+offset_top = 143.0
+offset_right = -48.0
+offset_bottom = 219.0
+theme_override_fonts/font = SubResource("FontVariation_ao8fs")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f5bsw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f5bsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n2yij")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rphhf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jwifs")
+text = " Option 1"
+icon = ExtResource("7_epc5p")
+alignment = 0
+expand_icon = true
+
+[node name="popup" type="CanvasLayer" parent="."]
+layer = 101
+visible = false
+
+[node name="catcher" type="Button" parent="popup"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="box" type="NinePatchRect" parent="popup"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1325.16
+offset_top = -320.865
+offset_right = -606.162
+offset_bottom = -288.865
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(719, -0.385)
+mouse_filter = 0
+texture = ExtResource("5_66td4")
+region_rect = Rect2(0, 0, 200, 200)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="options" type="VBoxContainer" parent="popup/box"]
+layout_mode = 0
+offset_left = 137.479
+offset_top = 28.0
+offset_right = 692.479
+offset_bottom = 105.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(555, 0)
+theme_override_constants/separation = 24

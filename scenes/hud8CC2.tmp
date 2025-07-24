@@ -1,0 +1,779 @@
+[gd_scene load_steps=42 format=3 uid="uid://cojqa07ypmw73"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_2xuip"]
+[ext_resource type="Texture2D" uid="uid://cqfm630y6ix63" path="res://assets/temp/THIS PHOTO IS AD.png" id="1_gg8av"]
+[ext_resource type="Texture2D" uid="uid://daoqhkhkcy73f" path="res://assets/level/aspect_right.webp" id="2_b8rhh"]
+[ext_resource type="Texture2D" uid="uid://dr2pjlucwbh3x" path="res://assets/level/ultimate_frame_front_blue.webp" id="5_00rwh"]
+[ext_resource type="Shader" path="res://themes/hard_light.gdshader" id="6_4tk1v"]
+[ext_resource type="Texture2D" uid="uid://kfdpov381lfs" path="res://assets/level/ultimate_frame_glass.webp" id="7_bd4c8"]
+[ext_resource type="Texture2D" uid="uid://cgk0svr6mtsca" path="res://assets/level/ultimate_mask.bmp" id="7_l08jd"]
+[ext_resource type="Texture2D" uid="uid://7cmcevpy5lyp" path="res://assets/vector/aspect_left.webp" id="9_1cxa7"]
+[ext_resource type="Texture2D" uid="uid://gaoy4fty83qu" path="res://assets/vector/ultimate_glass_edge_blue.webp" id="10_gcto6"]
+[ext_resource type="Texture2D" uid="uid://duxvs5d6ogisj" path="res://assets/level/ultimate_frame_back_red.webp" id="10_sgwmm"]
+[ext_resource type="Texture2D" uid="uid://6amoix85as6l" path="res://assets/level/ultimate_frame_red.webp" id="11_i5t5d"]
+[ext_resource type="Texture2D" uid="uid://ja1s3l80dwi2" path="res://assets/vector/ultimate_mask.webp" id="11_lgas0"]
+[ext_resource type="Texture2D" uid="uid://cxwho2a7o5cm0" path="res://assets/level/ultimate_frame_front_red.webp" id="12_dhxd7"]
+[ext_resource type="Texture2D" uid="uid://cx001i8mtrrgy" path="res://assets/vector/ultimate_glass.webp" id="15_2oj8y"]
+[ext_resource type="Texture2D" uid="uid://bi7tqdi1mxdck" path="res://assets/level/chalk_blue.webp" id="17_qd76j"]
+[ext_resource type="Texture2D" uid="uid://cseslwhsmqt3d" path="res://assets/level/chalk_blue_back.webp" id="17_wch2n"]
+[ext_resource type="Texture2D" uid="uid://doem8yrsnrqfb" path="res://assets/level/chalk_blue_tip.webp" id="18_0ervs"]
+[ext_resource type="Texture2D" uid="uid://cpfq04y2rm2uw" path="res://assets/level/plate_player.webp" id="19_yxnkb"]
+[ext_resource type="FontFile" uid="uid://db422xofjcnwq" path="res://assets/fonts/billy.ttf" id="20_dsk4c"]
+[ext_resource type="FontFile" uid="uid://d25h6lr07b4v8" path="res://assets/fonts/SpaceMono-Regular.ttf" id="21_atya3"]
+[ext_resource type="Script" path="res://scripts/ui/hud_tweens.gd" id="23_5pcvs"]
+[ext_resource type="Script" path="res://addons/RadialMenu/radial_menu_class.gd" id="26_d2w80"]
+[ext_resource type="PackedScene" uid="uid://b4el8gt3daoci" path="res://level/multipleChoice.tscn" id="26_mxyi1"]
+
+[sub_resource type="Gradient" id="Gradient_6xjqi"]
+offsets = PackedFloat32Array(0, 0.422222)
+colors = PackedColorArray(0.00283329, 0, 0.17, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n5fx2"]
+gradient = SubResource("Gradient_6xjqi")
+
+[sub_resource type="FontVariation" id="FontVariation_0ur5k"]
+base_font = ExtResource("21_atya3")
+spacing_glyph = -1
+
+[sub_resource type="Shader" id="Shader_ispt6"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 background_color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
+uniform sampler2D color_gradient : source_color;
+uniform sampler2D mask_texture : hint_default_white;
+
+// Wave effect parameters
+uniform float wave_amplitude : hint_range(0.0, 0.1) = 0.02;
+uniform float wave_frequency : hint_range(0.0, 10.0) = 3.0;
+uniform float wave_speed : hint_range(0.0, 5.0) = 1.5;
+
+// Particle effect parameters
+uniform float particle_speed : hint_range(0.01, 0.5) = 0.05;
+uniform float particle_lifetime : hint_range(1.0, 10.0) = 3.0;
+uniform float particle_softness : hint_range(0.001, 1.0) = 0.01;
+uniform float particle_spacing : hint_range(0.01, 1.0) = 0.1;
+uniform vec2 particle_offset = vec2(0.0, 0.0);
+uniform vec2 particle_start_scale = vec2(0.02, 0.02);
+uniform vec2 particle_end_scale = vec2(0.01, 0.01);
+uniform float particle_scale_randomness : hint_range(0.0, 1.0) = 0.5;
+uniform sampler2D particle_alpha_gradient : source_color;
+uniform int particle_amount : hint_range(0, 50) = 20;
+
+// Pseudo-random function
+float rand(vec2 co) {
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+// Function to generate a single particle
+float particle(vec2 uv, float particle_id, float time, float mask_value) {
+    float random_offset = rand(vec2(particle_id, 0.0));
+    float spawn_time = particle_id * particle_spacing;
+    float life = mod(time - spawn_time, particle_lifetime) / particle_lifetime;
+
+    if (life < 0.0 || life >= 1.0) return 0.0;
+
+    float vertical_pos = rand(vec2(particle_id, 1.0));
+    float horizontal_pos = progress + life * particle_speed;
+
+    vec2 particle_pos = vec2(horizontal_pos, vertical_pos) + particle_offset;
+
+    // Calculate scale with randomness
+    float scale_random = rand(vec2(particle_id, 2.0)) * particle_scale_randomness;
+    vec2 start_scale = particle_start_scale * (1.0 - scale_random);
+    vec2 end_scale = particle_end_scale * (1.0 - scale_random);
+    vec2 current_scale = mix(start_scale, end_scale, life);
+
+    vec2 scaled_uv = (uv - particle_pos) / current_scale;
+    float dist = length(scaled_uv);
+
+    float alpha = texture(particle_alpha_gradient, vec2(life, 0.5)).a;
+
+    return smoothstep(1.0 + particle_softness, 1.0, dist) * alpha * mask_value;
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Sample the mask texture or use default (fully visible) if not provided
+    float mask = texture(mask_texture, uv).r;
+
+    // Calculate wave offset
+    float wave_offset = wave_amplitude * sin(wave_frequency * uv.y + TIME * wave_speed);
+
+    // Apply wave offset to progress
+    float wave_progress = progress + wave_offset;
+
+    // Sample the color from the gradient texture based on progress
+    vec4 gradient_color = texture(color_gradient, vec2(progress, 0.5));
+
+    // Start with the background color
+    vec4 final_color = background_color;
+
+    // Apply the progress bar with mask
+    if (uv.x < wave_progress) {
+        final_color = mix(background_color, gradient_color, mask);
+    }
+
+    // Generate particles
+    float particles = 0.0;
+    for (float i = 0.0; i < float(particle_amount); i++) {
+        particles += particle(uv, i, TIME, mask);
+    }
+    particles = clamp(particles, 0.0, 1.0);
+
+    // Add particles to the final color
+    final_color = mix(final_color, gradient_color, particles * step(uv.x, 1.0));
+
+    COLOR = final_color;
+}"
+
+[sub_resource type="Gradient" id="Gradient_50cj0"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.3077, 0.1105, 0.85, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sonb8"]
+gradient = SubResource("Gradient_50cj0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmcxi"]
+shader = SubResource("Shader_ispt6")
+shader_parameter/progress = 0.483
+shader_parameter/background_color = Color(0.09528, 0.0792, 0.24, 0)
+shader_parameter/wave_amplitude = 0.044
+shader_parameter/wave_frequency = 5.121
+shader_parameter/wave_speed = 2.13
+shader_parameter/particle_speed = 0.173
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.001
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0)
+shader_parameter/particle_start_scale = Vector2(0.04, 0.04)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.505
+shader_parameter/particle_amount = 20
+shader_parameter/color_gradient = SubResource("GradientTexture1D_sonb8")
+shader_parameter/mask_texture = ExtResource("11_lgas0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ongcc"]
+shader = ExtResource("6_4tk1v")
+
+[sub_resource type="FontVariation" id="FontVariation_50jp6"]
+base_font = ExtResource("21_atya3")
+spacing_glyph = -1
+spacing_space = -3
+spacing_top = -4
+spacing_bottom = -4
+
+[sub_resource type="Shader" id="Shader_2g3n5"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 background_color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
+uniform sampler2D color_gradient : source_color;
+uniform sampler2D mask_texture : hint_default_white;
+
+// Wave effect parameters
+uniform float wave_amplitude : hint_range(0.0, 0.1) = 0.02;
+uniform float wave_frequency : hint_range(0.0, 10.0) = 3.0;
+uniform float wave_speed : hint_range(0.0, 5.0) = 1.5;
+
+// Particle effect parameters
+uniform float particle_speed : hint_range(0.01, 0.5) = 0.05;
+uniform float particle_lifetime : hint_range(1.0, 10.0) = 3.0;
+uniform float particle_softness : hint_range(0.001, 1.0) = 0.01;
+uniform float particle_spacing : hint_range(0.01, 1.0) = 0.1;
+uniform vec2 particle_offset = vec2(0.0, 0.0);
+uniform vec2 particle_start_scale = vec2(0.02, 0.02);
+uniform vec2 particle_end_scale = vec2(0.01, 0.01);
+uniform float particle_scale_randomness : hint_range(0.0, 1.0) = 0.5;
+uniform sampler2D particle_alpha_gradient : source_color;
+uniform int particle_amount : hint_range(0, 50) = 20;
+
+// Pseudo-random function
+float rand(vec2 co) {
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+// Function to generate a single particle
+float particle(vec2 uv, float particle_id, float time, float mask_value) {
+    float random_offset = rand(vec2(particle_id, 0.0));
+    float spawn_time = particle_id * particle_spacing;
+    float life = mod(time - spawn_time, particle_lifetime) / particle_lifetime;
+    
+    if (life < 0.0 || life >= 1.0) return 0.0;
+    
+    float vertical_pos = rand(vec2(particle_id, 1.0));
+    float horizontal_pos = progress + life * particle_speed;
+    
+    vec2 particle_pos = vec2(horizontal_pos, vertical_pos) + particle_offset;
+    
+    // Calculate scale with randomness
+    float scale_random = rand(vec2(particle_id, 2.0)) * particle_scale_randomness;
+    vec2 start_scale = particle_start_scale * (1.0 - scale_random);
+    vec2 end_scale = particle_end_scale * (1.0 - scale_random);
+    vec2 current_scale = mix(start_scale, end_scale, life);
+    
+    vec2 scaled_uv = (uv - particle_pos) / current_scale;
+    float dist = length(scaled_uv);
+    
+    float alpha = texture(particle_alpha_gradient, vec2(life, 0.5)).a;
+    
+    return smoothstep(1.0 + particle_softness, 1.0, dist) * alpha * mask_value;
+}
+
+void fragment() {
+    vec2 uv = UV;
+    
+    // Sample the mask texture or use default (fully visible) if not provided
+    float mask = texture(mask_texture, uv).r;
+    
+    // Calculate wave offset
+    float wave_offset = wave_amplitude * sin(wave_frequency * uv.y + TIME * wave_speed);
+    
+    // Apply wave offset to progress
+    float wave_progress = progress + wave_offset;
+    
+    // Sample the color from the gradient texture based on progress
+    vec4 gradient_color = texture(color_gradient, vec2(progress, 0.5));
+    
+    // Start with the background color
+    vec4 final_color = background_color;
+    
+    // Apply the progress bar with mask
+    if (uv.x < wave_progress) {
+        final_color = mix(background_color, gradient_color, mask);
+    }
+    
+    // Generate particles
+    float particles = 0.0;
+    for (float i = 0.0; i < float(particle_amount); i++) {
+        particles += particle(uv, i, TIME, mask);
+    }
+    particles = clamp(particles, 0.0, 1.0);
+    
+    // Add particles to the final color
+    final_color = mix(final_color, gradient_color, particles * step(uv.x, 1.0));
+    
+    COLOR = final_color;
+}"
+
+[sub_resource type="Gradient" id="Gradient_e6hrf"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.88, 0, 0.308, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8am0g"]
+gradient = SubResource("Gradient_e6hrf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ysau"]
+shader = SubResource("Shader_2g3n5")
+shader_parameter/progress = 0.518
+shader_parameter/background_color = Color(0.09528, 0.0792, 0.24, 0)
+shader_parameter/wave_amplitude = 0.044
+shader_parameter/wave_frequency = 5.121
+shader_parameter/wave_speed = 2.13
+shader_parameter/particle_speed = 0.173
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.001
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0)
+shader_parameter/particle_start_scale = Vector2(0.04, 0.04)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.505
+shader_parameter/particle_amount = 20
+shader_parameter/color_gradient = SubResource("GradientTexture1D_8am0g")
+shader_parameter/mask_texture = ExtResource("7_l08jd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8nb5"]
+shader = ExtResource("6_4tk1v")
+
+[sub_resource type="FontVariation" id="FontVariation_vll4i"]
+base_font = ExtResource("20_dsk4c")
+spacing_glyph = -1
+spacing_top = 2
+spacing_bottom = 2
+
+[sub_resource type="Animation" id="Animation_vlbj4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../player/attacks:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.58665]
+}
+
+[sub_resource type="Animation" id="Animation_vl85u"]
+resource_name = "entrance"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../player/attacks:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [3.58665, 0.174533, -0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../player/attacks:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03x5d"]
+_data = {
+"RESET": SubResource("Animation_vlbj4"),
+"entrance": SubResource("Animation_vl85u")
+}
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xuip")
+
+[node name="background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(644.5, 362)
+scale = Vector2(0.567187, 0.567187)
+texture = ExtResource("1_gg8av")
+
+[node name="gradient" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_right = -384.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_n5fx2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="health" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.122
+anchor_top = 0.061
+anchor_right = 0.122
+anchor_bottom = 0.061
+offset_left = 62.84
+offset_top = 0.079998
+offset_right = 362.84
+offset_bottom = 40.08
+page = 0.01
+value = 69.0
+texture_under = ExtResource("17_wch2n")
+texture_progress = ExtResource("17_qd76j")
+
+[node name="name" type="Label" parent="health"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = -27.0
+offset_right = 299.0
+offset_bottom = -2.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("20_dsk4c")
+theme_override_font_sizes/font_size = 28
+text = "Catnip"
+
+[node name="level" type="Label" parent="health"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = -32.0
+offset_right = 300.0
+offset_bottom = -1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_0ur5k")
+theme_override_font_sizes/font_size = 20
+text = "LV.100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="value" type="Label" parent="health"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 3.0
+offset_right = 120.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_0ur5k")
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tip" type="TextureRect" parent="health"]
+layout_mode = 0
+offset_left = 196.0
+offset_right = 220.0
+offset_bottom = 40.0
+pivot_offset = Vector2(12, 20)
+texture = ExtResource("18_0ervs")
+
+[node name="avatar" type="TextureRect" parent="health"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 60.0
+texture = ExtResource("19_yxnkb")
+
+[node name="player" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="player" type="TextureRect" parent="player"]
+layout_mode = 1
+offset_top = -1500.0
+offset_right = 746.0
+offset_bottom = 11083.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_1cxa7")
+
+[node name="ultimate" type="TextureProgressBar" parent="player"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 48.0
+offset_top = -120.0
+offset_right = 548.0
+offset_bottom = 401.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(64, 64)
+step = 0.01
+value = 44.42
+fill_mode = 3
+texture_over = ExtResource("10_gcto6")
+
+[node name="ink" type="TextureRect" parent="player/ultimate"]
+material = SubResource("ShaderMaterial_pmcxi")
+layout_mode = 0
+offset_left = -4.0
+offset_top = 520.0
+offset_right = 124.0
+offset_bottom = 648.0
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("5_00rwh")
+
+[node name="glass" type="TextureButton" parent="player/ultimate"]
+material = SubResource("ShaderMaterial_ongcc")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.737
+anchor_top = 0.5
+anchor_right = -0.737
+anchor_bottom = 0.5
+offset_left = 392.5
+offset_top = -240.5
+offset_right = 839.5
+offset_bottom = 225.5
+grow_vertical = 2
+pivot_offset = Vector2(0, 64)
+texture_normal = ExtResource("15_2oj8y")
+
+[node name="value" type="Label" parent="player/ultimate"]
+layout_mode = 0
+offset_top = 388.0
+offset_right = 124.0
+offset_bottom = 431.0
+scale = Vector2(4, 4)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_50jp6")
+theme_override_font_sizes/font_size = 28
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attacks" type="Control" parent="player"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 287.997
+offset_bottom = 287.997
+rotation = 3.58665
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(144, 144)
+script = ExtResource("26_d2w80")
+action_released = true
+first_in_center = true
+color = Color(0.00366666, 0, 0.11, 0.301961)
+arc_color = Color(0.53, 0.53, 0.53, 0)
+arc_inner_radius = 72.0
+arc_detail = 64
+arc_line_width = 1
+line_rotation_offset_default = 1
+line_color = Color(1, 1, 1, 0)
+hover_color = Color(1, 0.55, 0, 0.129412)
+stroke_width = 3
+animated_pulse_enabled = true
+animated_pulse_intensity = 3
+animated_pulse_color = Color(0, 0, 0, 0.176471)
+
+[node name="ultimate" type="TextureButton" parent="player/attacks"]
+material = SubResource("ShaderMaterial_ongcc")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.737
+anchor_top = 0.5
+anchor_right = -0.737
+anchor_bottom = 0.5
+offset_left = 132.752
+offset_top = -233.0
+offset_right = 579.752
+offset_bottom = 233.0
+grow_vertical = 2
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(223.5, 233)
+texture_normal = ExtResource("15_2oj8y")
+
+[node name="skill1" type="TextureButton" parent="player/attacks"]
+material = SubResource("ShaderMaterial_ongcc")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.737
+anchor_top = 0.5
+anchor_right = -0.737
+anchor_bottom = 0.5
+offset_left = 130.876
+offset_top = -125.516
+offset_right = 577.876
+offset_bottom = 340.484
+grow_vertical = 2
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(223.5, 233)
+texture_normal = ExtResource("15_2oj8y")
+
+[node name="skill2" type="TextureButton" parent="player/attacks"]
+material = SubResource("ShaderMaterial_ongcc")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.737
+anchor_top = 0.5
+anchor_right = -0.737
+anchor_bottom = 0.5
+offset_left = 226.774
+offset_top = -285.117
+offset_right = 673.774
+offset_bottom = 180.883
+grow_vertical = 2
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(223.5, 233)
+texture_normal = ExtResource("15_2oj8y")
+
+[node name="skill3" type="TextureButton" parent="player/attacks"]
+material = SubResource("ShaderMaterial_ongcc")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.737
+anchor_top = 0.5
+anchor_right = -0.737
+anchor_bottom = 0.5
+offset_left = 40.607
+offset_top = -288.367
+offset_right = 487.607
+offset_bottom = 177.633
+grow_vertical = 2
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(223.5, 233)
+texture_normal = ExtResource("15_2oj8y")
+
+[node name="enemy" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(180, 540)
+texture = ExtResource("2_b8rhh")
+stretch_mode = 1
+
+[node name="enemy_ultimate" type="TextureProgressBar" parent="enemy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.482
+anchor_right = 1.0
+anchor_bottom = 0.482
+offset_left = -225.0
+offset_top = -57.56
+offset_right = -97.0
+offset_bottom = 70.44
+pivot_offset = Vector2(64, 64)
+step = 0.01
+value = 44.42
+fill_mode = 3
+texture_under = ExtResource("10_sgwmm")
+texture_over = ExtResource("11_i5t5d")
+
+[node name="ink" type="TextureRect" parent="enemy/enemy_ultimate"]
+material = SubResource("ShaderMaterial_3ysau")
+layout_mode = 0
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 129.0
+offset_bottom = 255.0
+rotation = -1.5708
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("12_dhxd7")
+
+[node name="glass" type="TextureRect" parent="enemy/enemy_ultimate"]
+material = SubResource("ShaderMaterial_v8nb5")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.754
+anchor_top = 0.5
+anchor_right = 1.754
+anchor_bottom = 0.5
+offset_left = -224.512
+offset_top = -64.0
+offset_right = -96.512
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(128, 64)
+texture = ExtResource("7_bd4c8")
+
+[node name="questions" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MultipleChoice" parent="questions" instance=ExtResource("26_mxyi1")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.712
+anchor_top = 1.0
+anchor_right = 0.712
+offset_left = -636.0
+offset_top = -700.0
+offset_right = -636.0
+offset_bottom = -700.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(920, 552)
+
+[node name="question" type="CenterContainer" parent="questions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.377
+anchor_top = 1.0
+anchor_right = 0.377
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -239.0
+offset_right = 92.0
+offset_bottom = -50.0
+pivot_offset = Vector2(238, 48)
+
+[node name="board" type="VBoxContainer" parent="questions/question"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="splash" type="Label" parent="questions/question/board"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_50jp6")
+theme_override_font_sizes/font_size = 20
+text = "What am i supposed to do, die???"
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="label" type="Label" parent="questions/question/board"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_vll4i")
+theme_override_font_sizes/font_size = 36
+text = "How can the skibidi sigmas help me?"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="animations" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_5pcvs")
+
+[node name="radial_menu" type="AnimationPlayer" parent="animations"]
+libraries = {
+"": SubResource("AnimationLibrary_03x5d")
+}
+
+[connection signal="slot_selected" from="player/attacks" to="." method="on_attack_chose"]
+[connection signal="animation_started" from="animations/radial_menu" to="animations" method="_on_radial_menu_animation_started"]

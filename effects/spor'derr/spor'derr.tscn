@@ -1,0 +1,268 @@
+[gd_scene load_steps=21 format=3 uid="uid://c4lkrgypiarpb"]
+
+[ext_resource type="Texture2D" uid="uid://bfqce4xvx303e" path="res://assets/icons/effects/icon_duration_under.webp" id="1_dsqst"]
+[ext_resource type="Texture2D" uid="uid://c86utvn3xtlxg" path="res://assets/icons/effects/icon_duration_progress.webp" id="2_sp5mr"]
+[ext_resource type="Script" uid="uid://bpa463d0736m3" path="res://effects/spor'derr/spor'derr.gd" id="3_esc27"]
+[ext_resource type="Texture2D" uid="uid://brraq4rclckua" path="res://assets/icons/effects/icon_under_blue.webp" id="4_pi2bs"]
+[ext_resource type="Texture2D" uid="uid://ktokdas22sg0" path="res://assets/icons/effects/icon_sporderr.webp" id="5_sp5mr"]
+[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="6_rb1d7"]
+[ext_resource type="Texture2D" uid="uid://dcgh7hpy16ka" path="res://assets/icons/effects/icon_up.webp" id="6_sp5mr"]
+[ext_resource type="Script" uid="uid://bc0nxlp25bbob" path="res://addons/richtext2/text_effects/anims/rte_growin.gd" id="7_njmfj"]
+[ext_resource type="Texture2D" uid="uid://x300d8g47r70" path="res://assets/vector/nonatlas/tooltip.webp" id="8_ql0jj"]
+[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="9_lbcys"]
+
+[sub_resource type="FontVariation" id="FontVariation_eoaln"]
+base_font = ExtResource("6_rb1d7")
+spacing_glyph = -1
+
+[sub_resource type="FontVariation" id="FontVariation_pvg60"]
+base_font = ExtResource("6_rb1d7")
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_ka7rr"]
+base_font = ExtResource("6_rb1d7")
+variation_embolden = 1.5
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_x7grh"]
+base_font = ExtResource("6_rb1d7")
+variation_embolden = 1.5
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3u568"]
+resource_name = "growin"
+script = ExtResource("7_njmfj")
+metadata/rt = 2291163808699
+
+[sub_resource type="FontVariation" id="FontVariation_1xx5q"]
+base_font = ExtResource("9_lbcys")
+spacing_space = 3
+spacing_top = -9
+
+[sub_resource type="Theme" id="Theme_ivm3y"]
+default_font = SubResource("FontVariation_1xx5q")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_wayjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon/texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon/texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("icon/texture:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_yrmaa"]
+resource_name = "idle"
+length = 10.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon/texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.03333, 3, 4.03333, 5, 6.03333, 7.03333, 8.06667, 9, 9.96667, 10.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 6.45772, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon/texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.03333, 3, 4.03333, 5, 6.03333, 7.03333, 8.06667, 9, 9.96667, 10.5),
+"transitions": PackedFloat32Array(-2, 1, -2, 1, -2, 1, -2, 1, -2, 1, -2, -2),
+"update": 0,
+"values": [Vector2(3, 0), Vector2(3, 3), Vector2(3, 0), Vector2(3, 3), Vector2(3, 0), Vector2(3, 3), Vector2(3, 0), Vector2(3, 3), Vector2(3, 0), Vector2(3, 3), Vector2(3, 0), Vector2(3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("icon/texture:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8, 9),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(60, 18), Vector2(30, 28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ja0fq"]
+_data = {
+&"RESET": SubResource("Animation_wayjb"),
+&"idle": SubResource("Animation_yrmaa")
+}
+
+[node name="effect" type="TextureProgressBar"]
+offset_right = 84.0
+offset_bottom = 84.0
+pivot_offset = Vector2(41, 44)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+mouse_filter = 0
+max_value = 3.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = ExtResource("1_dsqst")
+texture_progress = ExtResource("2_sp5mr")
+script = ExtResource("3_esc27")
+
+[node name="icon" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 73.0
+offset_bottom = 72.0
+mouse_filter = 1
+texture_normal = ExtResource("4_pi2bs")
+stretch_mode = 0
+
+[node name="texture" type="TextureRect" parent="icon"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 61.0
+offset_bottom = 61.0
+pivot_offset = Vector2(60, 18)
+mouse_filter = 2
+texture = ExtResource("5_sp5mr")
+
+[node name="type" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -2.0
+offset_right = 118.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("6_sp5mr")
+
+[node name="stack" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 0
+offset_left = 3.0
+offset_top = -21.0
+offset_right = 48.0
+offset_bottom = 7.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_eoaln")
+theme_override_fonts/italics_font = SubResource("FontVariation_pvg60")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_ka7rr")
+theme_override_fonts/bold_font = SubResource("FontVariation_x7grh")
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 14
+bbcode_enabled = true
+text = "0"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+custom_effects = [SubResource("RichTextEffect_3u568")]
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
+
+[node name="description" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -266.0
+offset_top = 91.0
+offset_right = 360.0
+offset_bottom = 801.0
+texture = ExtResource("8_ql0jj")
+region_rect = Rect2(0, 0, 200, 200)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="label" type="RichTextLabel" parent="description"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 221.0
+offset_bottom = 50.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+theme = SubResource("Theme_ivm3y")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[img=16]res://assets/icons/effects/icon_sporderr.webp[/img]SPOR'DERR"
+vertical_alignment = 1
+
+[node name="stack" type="RichTextLabel" parent="description"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 110.0
+offset_right = 177.0
+offset_bottom = 226.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_eoaln")
+theme_override_fonts/italics_font = SubResource("FontVariation_pvg60")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_ka7rr")
+theme_override_fonts/bold_font = SubResource("FontVariation_x7grh")
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "[color=AAAAAA]If any allied character is attacked, gain [color=5f5bf8]1[/color] stack, up to a maximum of [color=5f5bf8]20[/color]. If Clod attacks and deals damage, gain [color=5f5bf8]2[/color] stacks.
+Each spore stack buffs the [img=16]res://assets/icons/stats/det_player.webp[/img] Determination of all allied characters including Clod by [color=5f5bf8]1%[/color] ."
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_3u568")]
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ja0fq")
+}

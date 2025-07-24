@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dr0mmq242h3ay"]
+
+[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="1_bbmer"]
+
+[sub_resource type="FontVariation" id="FontVariation_pwj6y"]
+base_font = ExtResource("1_bbmer")
+
+[resource]
+default_font = SubResource("FontVariation_pwj6y")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)

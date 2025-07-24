@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bhjdrak2hfkqg"
+path="res://.godot/imported/Billy_Black.fnt-d3a8b4a5ac0397b5b32ec0d8c2a28bde.fontdata"
+
+[deps]
+
+source_file="res://assets/atlas/fonts/Billy_Black.fnt"
+dest_files=["res://.godot/imported/Billy_Black.fnt-d3a8b4a5ac0397b5b32ec0d8c2a28bde.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

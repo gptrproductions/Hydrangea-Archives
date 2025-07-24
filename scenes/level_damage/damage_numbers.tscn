@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg54ho5duthd1"]
+
+[ext_resource type="Theme" uid="uid://dte6udo4lrgby" path="res://themes/fonts/label_generic.tres" id="1_evaxg"]
+[ext_resource type="Script" uid="uid://bc0nxlp25bbob" path="res://addons/richtext2/text_effects/anims/rte_growin.gd" id="2_67th1"]
+[ext_resource type="Script" uid="uid://bxrxuwlhiihkw" path="res://addons/richtext2/rich_text_animation.gd" id="3_cy81a"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_exkuf"]
+resource_name = "growin"
+script = ExtResource("2_67th1")
+metadata/rt = 2411892655440
+
+[node name="damage_numbers" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -367.0
+offset_top = -51.0
+offset_right = 367.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(367.362, 50.5497)
+theme = ExtResource("1_evaxg")
+
+[node name="value" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -18.5
+offset_right = 212.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(212.985, 21.0095)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_exkuf")]
+script = ExtResource("3_cy81a")
+animation = "growin"
+_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0)])
+_char_size = Array[Vector2]([Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)])
+_alpha = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+_alpha_goal = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+_forced_finish_delay = -0.0413918
+animation = "growin"
+default_wait_time = 1.0
+play_on_bbcode = true
+play_speed = 30.0
+fade_out = false
+fade_in_speed = 10.0
+fade_out_speed = 120.0
+ctc_offset = Vector2(1, -0.5)
+ctc_on_finished = false
+ctc_on_wait = false
+shortcut_expression = true
+shortcut_bookmark = true
+signal_quotes = true
+signal_stars = true
+bbcode = "00000000007"
+effects = 2
+alignment = 1
+color = Color(1, 1, 1, 1)
+emoji_scale = 1.0
+font = "SpaceMono"
+font_auto_setup = true
+font_size = 48
+font_bold_weight = 1.5
+font_italics_slant = 0.25
+font_italics_weight = -0.25
+shadow_enabled = false
+shadow_offset = 0.095
+shadow_alpha = 0.145
+shadow_outline_size = 0.1
+outline_size = 0
+outline_mode = 1
+outline_adjust = 0.8
+outline_hue_adjust = 0.0125
+nicer_quotes_enabled = true
+nicer_quotes_format = "“%s”"
+markdown_enabled = true
+markdown_format_bold = "[b]%s[]"
+markdown_format_italics = "[i]%s[]"
+markdown_format_bold_italics = "[bi]%s[]"
+markdown_format_highlight = "[green;sin]%s[]"
+markdown_format_bold2 = "[b]*%s*[]"
+markdown_format_italics2 = "[i;gray]*%s*[]"
+markdown_format_bold_italics2 = "%s"
+context_enabled = true
+context_path = NodePath("/root/State")
+context_state = {}
+context_rich_objects = true
+context_rich_ints = true
+context_rich_array = true
+autostyle_numbers = false
+autostyle_numbers_tag = "[salmon]%s[]"
+autostyle_numbers_pad_decimals = false
+autostyle_numbers_decimals = 10
+autostyle_emojis = false
+effect_weight = 0.0
+image_path = "res://"
+image_resize_to_font_size = true
+image_scale = 1.0
+meta_auto_https = true
+meta_cursor = 2
+override_bbcodeEnabled = true
+override_clipContents = false
+override_fitContent = true
+metadata/rand = Array[int]([2983091464, 3145949123, 2079163030, 2579230135, 634121388, 3073955134, 995971486, 140437547, 2575775960])
+metadata/mouse_position = Vector2(832.892, 37.2921)
+metadata/frame = 725120

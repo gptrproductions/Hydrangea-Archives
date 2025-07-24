@@ -1,0 +1,177 @@
+[gd_scene load_steps=8 format=3 uid="uid://61qhkuibaauy"]
+
+[ext_resource type="Texture2D" uid="uid://bw3lpktl0o834" path="res://scenes/menu_loading/assets/splash.webp" id="1_loe1k"]
+[ext_resource type="Texture2D" uid="uid://csyg0ghymhvmj" path="res://scenes/menu_loading/assets/logo.webp" id="2_4uqde"]
+[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="3_0d4vw"]
+[ext_resource type="Texture2D" uid="uid://7sw28oofx1ua" path="res://scenes/menu_loading/assets/progress_back.webp" id="4_gyifx"]
+[ext_resource type="Texture2D" uid="uid://er1u74dpw8af" path="res://scenes/menu_loading/assets/progress_front.webp" id="5_sopvd"]
+[ext_resource type="Texture2D" uid="uid://culcihxuh8a4d" path="res://scenes/menu_loading/assets/progress_glow.webp" id="6_4w8rv"]
+
+[sub_resource type="FontVariation" id="FontVariation_2asxc"]
+base_font = ExtResource("3_0d4vw")
+spacing_glyph = -1
+spacing_top = 2
+spacing_bottom = 2
+
+[node name="Loading" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -758.0
+offset_top = -399.0
+offset_right = 2450.0
+offset_bottom = 1473.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.476, 0.476)
+texture = ExtResource("1_loe1k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="logo" type="TextureRect" parent="CanvasLayer"]
+offset_left = 45.0
+offset_top = 38.0
+offset_right = 716.0
+offset_bottom = 284.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4uqde")
+
+[node name="credit" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_top = 22.0
+offset_right = 57.0
+offset_bottom = 62.0
+grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_2asxc")
+theme_override_font_sizes/font_size = 36
+text = "Art by BouncyApples"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="tips" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -454.0
+offset_top = -60.0
+offset_right = 680.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_2asxc")
+theme_override_font_sizes/font_size = 36
+text = "It sometimes hurts being the academically gifted in the family..."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="load_text" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -149.0
+offset_right = -220.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_2asxc")
+theme_override_font_sizes/font_size = 36
+text = "Art Appreciating..."
+autowrap_mode = 3
+
+[node name="progress2" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 484.0
+offset_top = -116.0
+offset_right = 616.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_2asxc")
+theme_override_font_sizes/font_size = 44
+text = "70%"
+autowrap_mode = 3
+
+[node name="progress" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -565.0
+offset_top = -107.0
+offset_right = 2895.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+value = 23.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_gyifx")
+texture_progress = ExtResource("5_sopvd")
+
+[node name="glow" type="TextureRect" parent="CanvasLayer/progress"]
+z_index = -1
+layout_mode = 0
+offset_left = -125.0
+offset_top = -159.0
+offset_right = 3582.0
+offset_bottom = 223.0
+texture = ExtResource("6_4w8rv")

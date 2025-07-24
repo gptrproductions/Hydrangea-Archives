@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bt81xwfyp7mbu"
+path="res://.godot/imported/SpaceMonoB.fnt-d2ed824589fc591feba578986b2010e6.fontdata"
+
+[deps]
+
+source_file="res://assets/atlas/fonts/SpaceMonoB.fnt"
+dest_files=["res://.godot/imported/SpaceMonoB.fnt-d2ed824589fc591feba578986b2010e6.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

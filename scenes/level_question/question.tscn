@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://digplw4jdofex"]
+
+[ext_resource type="Theme" uid="uid://nm0o14o4tpd6" path="res://themes/fonts/label_monospaced.tres" id="1_r7jg7"]
+[ext_resource type="Theme" uid="uid://dte6udo4lrgby" path="res://themes/fonts/label_generic.tres" id="2_r7jg7"]
+[ext_resource type="PackedScene" uid="uid://b4el8gt3daoci" path="res://scenes/level_flashcards/flashcards.tscn" id="5_nbmg8"]
+
+[node name="question" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="questions" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -634.0
+offset_top = -15.0
+offset_right = -634.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(640, 0)
+
+[node name="question" type="CenterContainer" parent="questions"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = -251.0
+offset_right = 730.0
+offset_bottom = -36.0
+pivot_offset = Vector2(238, 48)
+
+[node name="board" type="VBoxContainer" parent="questions/question"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="splash" type="Label" parent="questions/question/board"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_r7jg7")
+theme_override_font_sizes/font_size = 22
+text = "MODULO!"
+autowrap_mode = 2
+
+[node name="label" type="Label" parent="questions/question/board"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_filter = 1
+theme = ExtResource("2_r7jg7")
+theme_override_font_sizes/font_size = 36
+text = "What's wrong with a little bit of poison, tell me? I would rather feel everything than nothing every time. Feel me, stranger, a little of of sugar and danger."
+autowrap_mode = 3
+
+[node name="multiple_choice" parent="questions" instance=ExtResource("5_nbmg8")]
+layout_mode = 1
+offset_left = -8.0
+offset_top = -679.0
+offset_right = -8.0
+offset_bottom = -679.0

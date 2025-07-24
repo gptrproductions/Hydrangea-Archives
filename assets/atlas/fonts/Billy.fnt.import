@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://hxv65m44o0om"
+path="res://.godot/imported/Billy.fnt-c8ea0afe66292070cd0762fd1156b97e.fontdata"
+
+[deps]
+
+source_file="res://assets/atlas/fonts/Billy.fnt"
+dest_files=["res://.godot/imported/Billy.fnt-c8ea0afe66292070cd0762fd1156b97e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

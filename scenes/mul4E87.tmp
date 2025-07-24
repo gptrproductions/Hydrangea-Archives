@@ -1,0 +1,543 @@
+[gd_scene load_steps=18 format=3 uid="uid://b4el8gt3daoci"]
+
+[ext_resource type="Script" path="res://scripts/level/multipleChoice.gd" id="1_7otaf"]
+[ext_resource type="Shader" path="res://level/hover.gdshader" id="1_gr7fk"]
+[ext_resource type="Texture2D" uid="uid://cn8bo6bnerr7h" path="res://assets/level/flashcard.webp" id="2_2uhxn"]
+[ext_resource type="Script" path="res://scripts/ui/hover.gd" id="3_uhh7j"]
+[ext_resource type="Texture2D" uid="uid://ce3kgrlkd4vyd" path="res://assets/level/flashcard_correct_face.webp" id="4_xq2be"]
+[ext_resource type="FontFile" uid="uid://db422xofjcnwq" path="res://assets/fonts/billy.ttf" id="5_btdo1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dwmh"]
+shader = ExtResource("1_gr7fk")
+shader_parameter/_tilt_Scale = 0.2
+shader_parameter/_isSpecularLight = true
+shader_parameter/_speularLightIntensity = 0.1
+shader_parameter/_speularLightPower = 3.0
+shader_parameter/_mousePos = null
+
+[sub_resource type="Animation" id="Animation_nqofm"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_sa87d"]
+resource_name = "flip"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(1.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("raster:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("face:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("face:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, -2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(2.4, 2), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvqoo"]
+_data = {
+"RESET": SubResource("Animation_nqofm"),
+"flip": SubResource("Animation_sa87d")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3438r"]
+viewport_path = NodePath("4/button/viewport")
+
+[sub_resource type="FontVariation" id="FontVariation_ype3x"]
+base_font = ExtResource("5_btdo1")
+spacing_glyph = -1
+spacing_top = 2
+spacing_bottom = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvf"]
+shader = ExtResource("1_gr7fk")
+shader_parameter/_tilt_Scale = 0.2
+shader_parameter/_isSpecularLight = true
+shader_parameter/_speularLightIntensity = 0.5
+shader_parameter/_speularLightPower = 3.0
+shader_parameter/_mousePos = null
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eiroe"]
+viewport_path = NodePath("3/button/viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_al5qm"]
+viewport_path = NodePath("2/button/viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ang11"]
+shader = ExtResource("1_gr7fk")
+shader_parameter/_tilt_Scale = 0.2
+shader_parameter/_isSpecularLight = true
+shader_parameter/_speularLightIntensity = 0.1
+shader_parameter/_speularLightPower = 3.0
+shader_parameter/_mousePos = null
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hurq8"]
+viewport_path = NodePath("1/button/viewport")
+
+[node name="MultipleChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(911, 555)
+script = ExtResource("1_7otaf")
+
+[node name="4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = -1.0
+offset_bottom = 8.0
+pivot_offset = Vector2(777, 480)
+
+[node name="button" type="TextureButton" parent="4"]
+material = SubResource("ShaderMaterial_8dwmh")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = 471.0
+offset_right = 1080.0
+offset_bottom = 631.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(159, 80)
+disabled = true
+texture_normal = ExtResource("2_2uhxn")
+script = ExtResource("3_uhh7j")
+
+[node name="animation" type="AnimationPlayer" parent="4/button"]
+libraries = {
+"": SubResource("AnimationLibrary_mvqoo")
+}
+
+[node name="raster" type="TextureRect" parent="4/button"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 295.0
+offset_bottom = 140.0
+texture = SubResource("ViewportTexture_3438r")
+
+[node name="face" type="TextureRect" parent="4/button"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 28.0
+offset_right = 227.0
+offset_bottom = 128.0
+pivot_offset = Vector2(72, 53)
+texture = ExtResource("4_xq2be")
+
+[node name="viewport" type="SubViewport" parent="4/button"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+sdf_oversize = 0
+sdf_scale = 0
+size = Vector2i(270, 120)
+
+[node name="label" type="Label" parent="4/button/viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ype3x")
+theme_override_font_sizes/font_size = 28
+text = "The fourth choice is never a good choice sometimes."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="stack" type="Control" parent="."]
+material = SubResource("ShaderMaterial_35kvf")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(916, 558)
+
+[node name="0" type="TextureButton" parent="stack"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 739.0
+offset_top = 473.0
+offset_right = 1059.0
+offset_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.104162
+pivot_offset = Vector2(159, 80)
+texture_normal = ExtResource("2_2uhxn")
+
+[node name="1" type="TextureButton" parent="stack"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 739.0
+offset_top = 467.0
+offset_right = 1059.0
+offset_bottom = 627.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0706959
+pivot_offset = Vector2(159, 80)
+texture_normal = ExtResource("2_2uhxn")
+
+[node name="2" type="TextureButton" parent="stack"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 739.0
+offset_top = 464.0
+offset_right = 1059.0
+offset_bottom = 624.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0237919
+pivot_offset = Vector2(159, 80)
+texture_normal = ExtResource("2_2uhxn")
+
+[node name="3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = -1.0
+offset_bottom = 8.0
+pivot_offset = Vector2(777, 480)
+
+[node name="button" type="TextureButton" parent="3"]
+material = SubResource("ShaderMaterial_8dwmh")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = 471.0
+offset_right = 1080.0
+offset_bottom = 631.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(159, 80)
+disabled = true
+texture_normal = ExtResource("2_2uhxn")
+script = ExtResource("3_uhh7j")
+
+[node name="animation" type="AnimationPlayer" parent="3/button"]
+libraries = {
+"": SubResource("AnimationLibrary_mvqoo")
+}
+
+[node name="raster" type="TextureRect" parent="3/button"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 295.0
+offset_bottom = 140.0
+texture = SubResource("ViewportTexture_eiroe")
+
+[node name="face" type="TextureRect" parent="3/button"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 28.0
+offset_right = 227.0
+offset_bottom = 128.0
+pivot_offset = Vector2(72, 53)
+texture = ExtResource("4_xq2be")
+
+[node name="viewport" type="SubViewport" parent="3/button"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+sdf_oversize = 0
+sdf_scale = 0
+size = Vector2i(270, 120)
+
+[node name="label" type="Label" parent="3/button/viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ype3x")
+theme_override_font_sizes/font_size = 28
+text = "Just tell me if you need me, and I'll be on my way!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = -1.0
+offset_bottom = 8.0
+pivot_offset = Vector2(777, 480)
+
+[node name="button" type="TextureButton" parent="2"]
+material = SubResource("ShaderMaterial_8dwmh")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = 471.0
+offset_right = 1080.0
+offset_bottom = 631.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(159, 80)
+disabled = true
+texture_normal = ExtResource("2_2uhxn")
+script = ExtResource("3_uhh7j")
+
+[node name="animation" type="AnimationPlayer" parent="2/button"]
+libraries = {
+"": SubResource("AnimationLibrary_mvqoo")
+}
+
+[node name="raster" type="TextureRect" parent="2/button"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 295.0
+offset_bottom = 140.0
+texture = SubResource("ViewportTexture_al5qm")
+
+[node name="face" type="TextureRect" parent="2/button"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 28.0
+offset_right = 227.0
+offset_bottom = 128.0
+pivot_offset = Vector2(72, 53)
+texture = ExtResource("4_xq2be")
+
+[node name="viewport" type="SubViewport" parent="2/button"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+sdf_oversize = 0
+sdf_scale = 0
+size = Vector2i(270, 120)
+
+[node name="label" type="Label" parent="2/button/viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ype3x")
+theme_override_font_sizes/font_size = 28
+text = "Are you even listening?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = -1.0
+offset_bottom = 8.0
+pivot_offset = Vector2(779, 481)
+
+[node name="button" type="TextureButton" parent="1"]
+material = SubResource("ShaderMaterial_ang11")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = 471.0
+offset_right = 1080.0
+offset_bottom = 631.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(159, 80)
+disabled = true
+texture_normal = ExtResource("2_2uhxn")
+script = ExtResource("3_uhh7j")
+
+[node name="animation" type="AnimationPlayer" parent="1/button"]
+libraries = {
+"": SubResource("AnimationLibrary_mvqoo")
+}
+
+[node name="raster" type="TextureRect" parent="1/button"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 295.0
+offset_bottom = 140.0
+texture = SubResource("ViewportTexture_hurq8")
+
+[node name="face" type="TextureRect" parent="1/button"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 28.0
+offset_right = 227.0
+offset_bottom = 128.0
+pivot_offset = Vector2(72, 53)
+texture = ExtResource("4_xq2be")
+
+[node name="viewport" type="SubViewport" parent="1/button"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+sdf_oversize = 0
+sdf_scale = 0
+size = Vector2i(270, 120)
+
+[node name="label" type="Label" parent="1/button/viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ype3x")
+theme_override_font_sizes/font_size = 28
+text = "Do not even try to avenge me, human."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="button_down" from="4/button" to="4/button" method="_on_button_down"]
+[connection signal="button_up" from="4/button" to="4/button" method="_on_button_up"]
+[connection signal="gui_input" from="4/button" to="4/button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="4/button" to="4/button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="4/button" to="4/button" method="_on_mouse_exited"]
+[connection signal="pressed" from="4/button" to="4/button" method="_on_pressed"]
+[connection signal="mouse_entered" from="stack" to="4/button" method="_on_mouse_entered"]
+[connection signal="button_down" from="3/button" to="3/button" method="_on_button_down"]
+[connection signal="button_up" from="3/button" to="3/button" method="_on_button_up"]
+[connection signal="gui_input" from="3/button" to="3/button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="3/button" to="3/button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="3/button" to="3/button" method="_on_mouse_exited"]
+[connection signal="pressed" from="3/button" to="3/button" method="_on_pressed"]
+[connection signal="button_down" from="2/button" to="2/button" method="_on_button_down"]
+[connection signal="button_up" from="2/button" to="2/button" method="_on_button_up"]
+[connection signal="gui_input" from="2/button" to="2/button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="2/button" to="2/button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="2/button" to="2/button" method="_on_mouse_exited"]
+[connection signal="pressed" from="2/button" to="2/button" method="_on_pressed"]
+[connection signal="button_down" from="1/button" to="1/button" method="_on_button_down"]
+[connection signal="button_up" from="1/button" to="1/button" method="_on_button_up"]
+[connection signal="gui_input" from="1/button" to="1/button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="1/button" to="1/button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="1/button" to="1/button" method="_on_mouse_exited"]
+[connection signal="pressed" from="1/button" to="1/button" method="_on_pressed"]

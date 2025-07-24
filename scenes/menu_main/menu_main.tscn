@@ -1,0 +1,904 @@
+[gd_scene load_steps=63 format=3 uid="uid://cha7pl80c514n"]
+
+[ext_resource type="Texture2D" uid="uid://bquq3sixitkte" path="res://scenes/menu_main/assets/bg.webp" id="1_a130h"]
+[ext_resource type="Script" uid="uid://cbcurop7go7jf" path="res://scenes/menu_main/menu_main.gd" id="1_jctr2"]
+[ext_resource type="Texture2D" uid="uid://biahxwgcbp3i1" path="res://scenes/menu_main/assets/hub.webp" id="2_cw063"]
+[ext_resource type="Shader" uid="uid://de6vh6kna4my6" path="res://scripts/shaders/stars.gdshader" id="3_jctr2"]
+[ext_resource type="Texture2D" uid="uid://diyhs4nfiff2g" path="res://scenes/menu_main/assets/character.webp" id="5_d8xm0"]
+[ext_resource type="Texture2D" uid="uid://btdc62j8ai30x" path="res://scenes/menu_main/assets/shadow.webp" id="6_oe02c"]
+[ext_resource type="Shader" uid="uid://b1v74stslu6qh" path="res://scripts/shaders/button_bounce.gdshader" id="7_md45v"]
+[ext_resource type="Texture2D" uid="uid://pqltn8torft5" path="res://scenes/menu_main/assets/button_book.webp" id="8_3e35b"]
+[ext_resource type="Texture2D" uid="uid://f2wswx4waxmb" path="res://scenes/menu_main/assets/button_bag.webp" id="8_f05gb"]
+[ext_resource type="Texture2D" uid="uid://cwdklq3bn4pln" path="res://scenes/menu_main/assets/button_tv.webp" id="8_h6olf"]
+[ext_resource type="Texture2D" uid="uid://cs2v6whhmxy1w" path="res://scenes/menu_main/assets/button_globe.webp" id="9_3e35b"]
+[ext_resource type="Script" uid="uid://chfg636fben5l" path="res://scripts/ui/squishy_button.gd" id="9_md45v"]
+[ext_resource type="Texture2D" uid="uid://defockahl8lw5" path="res://scenes/menu_main/assets/button_settings.webp" id="10_3e35b"]
+[ext_resource type="Texture2D" uid="uid://ca5mc4ii8qic" path="res://scenes/menu_main/assets/button_card.webp" id="10_v1yjy"]
+[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="15_v1yjy"]
+[ext_resource type="Texture2D" uid="uid://deheegnuq3wf3" path="res://scenes/menu_main/assets/rename_normal.webp" id="16_ux1mv"]
+[ext_resource type="Texture2D" uid="uid://4td6ksgjjvfi" path="res://scenes/menu_main/assets/rename_pressed.webp" id="17_kkppv"]
+[ext_resource type="Texture2D" uid="uid://xycgao1aqqye" path="res://scenes/menu_main/assets/rename_hover.webp" id="18_pfk60"]
+[ext_resource type="Texture2D" uid="uid://b5pucgvf6l1vn" path="res://scenes/menu_main/assets/rename_disabled.webp" id="19_qns4x"]
+[ext_resource type="PackedScene" uid="uid://yg2jf3iccbml" path="res://scenes/settings_main/settings_main.tscn" id="20_kkppv"]
+[ext_resource type="PackedScene" uid="uid://by51v5ts66jb" path="res://scenes/menu_editor/menu_editor.tscn" id="20_pfk60"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v1yjy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4mqws"]
+seamless = true
+noise = SubResource("FastNoiseLite_v1yjy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcfye"]
+shader = ExtResource("3_jctr2")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_4mqws")
+shader_parameter/root_color = Color(0.213347, 0.0656278, 0.47771, 1)
+shader_parameter/tip_color = Color(0, 0, 0, 0)
+shader_parameter/poster_color = 4.0
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0, 0.03)
+shader_parameter/fire_aperture = 1.02
+shader_parameter/vignette_radius = 0.665
+shader_parameter/vignette_falloff = 0.194
+shader_parameter/noise_influence = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jctr2"]
+size = Vector2(1280, 720)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f05gb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oe02c"]
+shader = ExtResource("3_jctr2")
+shader_parameter/noise_tex = SubResource("PlaceholderTexture2D_f05gb")
+shader_parameter/root_color = Color(0.0527262, 0.0179776, 0.277207, 1)
+shader_parameter/tip_color = Color(0.216375, 0, 0.062344, 1)
+shader_parameter/poster_color = 7.595
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.1, 0.1)
+shader_parameter/fire_aperture = 0.0
+shader_parameter/vignette_radius = 0.58
+shader_parameter/vignette_falloff = 0.194
+shader_parameter/noise_influence = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f05gb"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_v1yjy"]
+interpolation_mode = 2
+colors = PackedColorArray(0.129558, 0.129558, 0.129558, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4mqws"]
+gradient = SubResource("Gradient_v1yjy")
+width = 1
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkppv"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_md45v"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_pfk60"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.0901576, 0.000783809, 0.230503, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qns4x"]
+gradient = SubResource("Gradient_pfk60")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mqws"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="Gradient" id="Gradient_tcfye"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.105207, 0.222742, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a6g0"]
+gradient = SubResource("Gradient_tcfye")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux1mv"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="Gradient" id="Gradient_kkppv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.363094, 0, 0.169634, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfk60"]
+gradient = SubResource("Gradient_kkppv")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2v25"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="Gradient" id="Gradient_ik88n"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.153243, 0.193111, 0.224849, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h6olf"]
+gradient = SubResource("Gradient_ik88n")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ik88n"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="Gradient" id="Gradient_h6olf"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.0652987, 1.92523e-07, 0.495164, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t2v25"]
+gradient = SubResource("Gradient_h6olf")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6olf"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="Gradient" id="Gradient_3e35b"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.703963)
+colors = PackedColorArray(0.25, 0.105, 0.105, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ik88n"]
+gradient = SubResource("Gradient_3e35b")
+fill = 1
+fill_from = Vector2(0.495726, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e35b"]
+shader = ExtResource("7_md45v")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="FontVariation" id="FontVariation_pfk60"]
+base_font = ExtResource("15_v1yjy")
+spacing_glyph = -1
+spacing_top = -13
+
+[sub_resource type="Theme" id="Theme_qns4x"]
+default_font = SubResource("FontVariation_pfk60")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mqws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcfye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1yjy"]
+
+[sub_resource type="FontVariation" id="FontVariation_kkppv"]
+base_font = ExtResource("15_v1yjy")
+spacing_glyph = -1
+spacing_top = -14
+
+[sub_resource type="Theme" id="Theme_pfk60"]
+default_font = SubResource("FontVariation_kkppv")
+default_font_size = 33
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kkppv"]
+
+[sub_resource type="Animation" id="Animation_v1yjy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ui/disabler:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ui/disabler:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f05gb"]
+resource_name = "start_open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(640, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.9),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("canvas/room:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.43333, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(653, 500), Vector2(653, 280), Vector2(653, 306)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("canvas/room:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.45), Vector2(0.6, 0.6)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ui/disabler:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ui/disabler:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_pfk60"]
+resource_name = "start_return"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(640, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.9),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("canvas/room:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.43333, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(653, 500), Vector2(653, 280), Vector2(653, 306)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("canvas/room:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.45), Vector2(0.6, 0.6)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ui/disabler:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ui/disabler:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mqws"]
+_data = {
+&"RESET": SubResource("Animation_v1yjy"),
+&"start_open": SubResource("Animation_f05gb"),
+&"start_return": SubResource("Animation_pfk60")
+}
+
+[node name="menu_main" type="Node"]
+script = ExtResource("1_jctr2")
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(640, 0)
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_vertical_enabled = true
+
+[node name="canvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="canvas"]
+scroll_offset = Vector2(501, 405)
+
+[node name="background" type="TextureRect" parent="canvas/Parallax2D2"]
+modulate = Color(0.31802, 0.31802, 0.31802, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -974.0
+offset_top = -1261.0
+offset_right = 116.0
+offset_bottom = -356.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_a130h")
+expand_mode = 1
+
+[node name="Parallax2D3" type="Parallax2D" parent="canvas"]
+scroll_offset = Vector2(501, 405)
+
+[node name="noise" type="TextureRect" parent="canvas/Parallax2D3"]
+material = SubResource("ShaderMaterial_tcfye")
+offset_left = -682.0
+offset_top = -1058.0
+offset_right = 943.0
+offset_bottom = 379.0
+texture = SubResource("PlaceholderTexture2D_jctr2")
+
+[node name="Parallax2D" type="Parallax2D" parent="canvas"]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(501, 405)
+
+[node name="noise" type="TextureRect" parent="canvas/Parallax2D"]
+material = SubResource("ShaderMaterial_oe02c")
+offset_left = -976.0
+offset_top = -1261.0
+offset_right = 1202.0
+offset_bottom = 547.0
+texture = SubResource("PlaceholderTexture2D_jctr2")
+
+[node name="TextureRect" type="TextureRect" parent="canvas/Parallax2D"]
+material = SubResource("CanvasItemMaterial_f05gb")
+offset_left = -970.0
+offset_top = -1261.0
+offset_right = 1210.0
+offset_bottom = -153.0
+texture = SubResource("GradientTexture2D_4mqws")
+
+[node name="room" type="Sprite2D" parent="canvas"]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+position = Vector2(653, 500)
+scale = Vector2(0.5, 0.45)
+texture = ExtResource("2_cw063")
+
+[node name="character" type="Sprite2D" parent="canvas/room"]
+position = Vector2(-1.4286, 91.4286)
+scale = Vector2(0.985772, 0.985772)
+texture = ExtResource("5_d8xm0")
+
+[node name="shadow" type="Sprite2D" parent="canvas/room/character"]
+modulate = Color(1, 1, 1, 0.596078)
+show_behind_parent = true
+position = Vector2(0, 86.9514)
+scale = Vector2(1, 0.384065)
+texture = ExtResource("6_oe02c")
+
+[node name="curtain" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_kkppv")
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.82
+anchor_right = 0.15
+anchor_bottom = 0.82
+offset_left = -349.95
+offset_top = -1241.6
+offset_right = -141.95
+offset_bottom = -983.6
+focus_mode = 0
+toggle_mode = true
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="offset" type="Control" parent="canvas/room/curtain"]
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 104.889
+offset_right = 104.0
+offset_bottom = 104.889
+
+[node name="glow" type="TextureRect" parent="canvas/room/curtain"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -68.5555
+offset_right = 42.0
+offset_bottom = 48.4445
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_qns4x")
+expand_mode = 1
+
+[node name="bag" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_4mqws")
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.82
+anchor_right = 0.15
+anchor_bottom = 0.82
+offset_left = -70.95
+offset_top = -1158.6
+offset_right = 117.05
+offset_bottom = -1028.6
+pivot_offset = Vector2(81, 68.5556)
+focus_mode = 0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("8_f05gb")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="offset" type="Control" parent="canvas/room/bag"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 75.0
+offset_top = 70.7779
+offset_right = 75.0
+offset_bottom = 70.7779
+
+[node name="glow" type="TextureRect" parent="canvas/room/bag"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.57137
+offset_top = 2.28577
+offset_right = 56.5714
+offset_bottom = 56.2858
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_8a6g0")
+expand_mode = 1
+
+[node name="shop" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_ux1mv")
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.82
+anchor_right = 0.15
+anchor_bottom = 0.82
+offset_left = 69.1929
+offset_top = -1128.46
+offset_right = 285.193
+offset_bottom = -944.457
+pivot_offset = Vector2(84.8572, 93.9683)
+focus_mode = 0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("10_v1yjy")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="offset" type="Control" parent="canvas/room/shop"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 92.8572
+offset_top = 96.1905
+offset_right = 92.8572
+offset_bottom = 96.1905
+
+[node name="glow" type="TextureRect" parent="canvas/room/shop"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.5
+anchor_right = 0.435
+anchor_bottom = 0.5
+offset_left = -6.81713
+offset_top = -7.7143
+offset_right = 51.1829
+offset_bottom = 60.2857
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_pfk60")
+expand_mode = 1
+
+[node name="tv" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_t2v25")
+anchors_preset = -1
+anchor_left = 0.331
+anchor_top = 0.277
+anchor_right = 0.331
+anchor_bottom = 0.277
+offset_left = -930.0
+offset_top = -670.589
+offset_right = -722.0
+offset_bottom = -409.589
+pivot_offset = Vector2(112.857, 120)
+focus_mode = 0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("8_h6olf")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="offset" type="Control" parent="canvas/room/tv"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 104.857
+offset_top = 82.5397
+offset_right = 104.857
+offset_bottom = 82.5397
+
+[node name="glow" type="TextureRect" parent="canvas/room/tv"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.5
+anchor_right = 0.435
+anchor_bottom = 0.5
+offset_left = -84.7658
+offset_top = -79.0714
+offset_right = 33.2342
+offset_bottom = 40.9286
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_h6olf")
+expand_mode = 1
+
+[node name="community" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_ik88n")
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.482
+anchor_right = 0.064
+anchor_bottom = 0.482
+offset_left = -907.221
+offset_top = -639.131
+offset_right = -745.221
+offset_bottom = -440.131
+pivot_offset = Vector2(89.4285, 89.6825)
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("9_3e35b")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="glow" type="TextureRect" parent="canvas/room/community"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.5
+anchor_right = 0.435
+anchor_bottom = 0.5
+offset_left = 10.9585
+offset_top = -28.0714
+offset_right = 71.9585
+offset_bottom = 44.9286
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_t2v25")
+expand_mode = 1
+
+[node name="editor" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_h6olf")
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.667
+anchor_right = 0.085
+anchor_bottom = 0.667
+offset_left = -939.076
+offset_top = -670.36
+offset_right = -713.076
+offset_bottom = -409.36
+pivot_offset = Vector2(108.571, 127.778)
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("8_3e35b")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="offset" type="Control" parent="canvas/room/editor"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 96.9047
+offset_top = 193.333
+offset_right = 96.9047
+offset_bottom = 193.333
+
+[node name="glow" type="TextureRect" parent="canvas/room/editor"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.5
+anchor_right = 0.435
+anchor_bottom = 0.5
+offset_left = -35.4528
+offset_top = -53.3572
+offset_right = 43.5472
+offset_bottom = 38.6428
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ik88n")
+expand_mode = 1
+
+[node name="settings" type="TextureButton" parent="canvas/room" node_paths=PackedStringArray("glow")]
+material = SubResource("ShaderMaterial_3e35b")
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.82
+anchor_right = 0.15
+anchor_bottom = 0.82
+offset_left = -909.379
+offset_top = -618.457
+offset_right = -743.379
+offset_bottom = -462.457
+pivot_offset = Vector2(79.4286, 68.4127)
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("10_3e35b")
+script = ExtResource("9_md45v")
+glow = NodePath("glow")
+
+[node name="glow" type="TextureRect" parent="canvas/room/settings"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_md45v")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.5
+anchor_right = 0.435
+anchor_bottom = 0.5
+offset_left = 10.6471
+offset_top = -16.5714
+offset_right = 68.6471
+offset_bottom = 51.4286
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.3586, 2.78129)
+pivot_offset = Vector2(41.94, 47.4771)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_h6olf")
+expand_mode = 1
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="name_button" type="TextureButton" parent="ui"]
+offset_left = 26.0
+offset_top = 28.0
+offset_right = 61.0
+offset_bottom = 62.0
+texture_normal = ExtResource("16_ux1mv")
+texture_pressed = ExtResource("17_kkppv")
+texture_hover = ExtResource("18_pfk60")
+texture_disabled = ExtResource("19_qns4x")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="input" type="LineEdit" parent="ui/name_button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 25.5
+offset_top = -3.0
+offset_right = 240.5
+offset_bottom = 38.0
+grow_horizontal = 2
+theme = SubResource("Theme_qns4x")
+theme_override_colors/selection_color = Color(0.421333, 0.38, 1, 0.501961)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4mqws")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_tcfye")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v1yjy")
+text = "Bartolomhew"
+placeholder_text = "Your name is?"
+max_length = 12
+
+[node name="credits" type="RichTextLabel" parent="ui"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 440.0
+offset_top = 23.0
+offset_right = 609.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme = SubResource("Theme_pfk60")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4mqws")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v1yjy")
+bbcode_enabled = true
+text = "[img=44]res://assets/icons/stats/credits.webp[/img]1000"
+horizontal_alignment = 2
+
+[node name="disabler" type="ColorRect" parent="ui"]
+visible = false
+material = SubResource("CanvasItemMaterial_kkppv")
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="editor_panel" parent="ui" node_paths=PackedStringArray("main_menu") instance=ExtResource("20_pfk60")]
+visible = false
+main_menu = NodePath("../..")
+
+[node name="menu" parent="." instance=ExtResource("20_kkppv")]
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4mqws")
+}
+
+[connection signal="pressed" from="canvas/room/curtain" to="." method="_on_curtain_pressed"]
+[connection signal="pressed" from="canvas/room/bag" to="." method="_on_bag_pressed"]
+[connection signal="pressed" from="canvas/room/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="canvas/room/tv" to="." method="_on_tv_pressed"]
+[connection signal="pressed" from="canvas/room/community" to="." method="_on_community_pressed"]
+[connection signal="pressed" from="canvas/room/editor" to="." method="_on_editor_pressed"]
+[connection signal="pressed" from="canvas/room/settings" to="." method="_on_settings_pressed"]

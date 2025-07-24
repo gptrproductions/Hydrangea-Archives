@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://djx4p436h3tjf"
+path="res://.godot/imported/SpaceMono.fnt-98e194c1285d77dacc4813604039317e.fontdata"
+
+[deps]
+
+source_file="res://assets/atlas/fonts/SpaceMono.fnt"
+dest_files=["res://.godot/imported/SpaceMono.fnt-98e194c1285d77dacc4813604039317e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

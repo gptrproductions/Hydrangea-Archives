@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dge14ij4cmm2x"]
+
+[ext_resource type="Texture2D" uid="uid://hfqh40atxltk" path="res://backgrounds/the_centerpiece/assets/1.webp" id="1_sunn3"]
+[ext_resource type="Texture2D" uid="uid://v8squfk1sunn" path="res://backgrounds/the_centerpiece/assets/4.webp" id="2_sunn3"]
+[ext_resource type="Texture2D" uid="uid://1rkko78qxwx8" path="res://backgrounds/the_centerpiece/assets/3.webp" id="3_0mlgp"]
+
+[node name="the_centerpiece" type="Control"]
+modulate = Color(0.69, 0.69, 0.69, 1)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="0" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(11, -26)
+
+[node name="image2" type="Sprite2D" parent="0"]
+position = Vector2(-22, 52)
+texture = ExtResource("1_sunn3")
+
+[node name="1" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(11, -26)
+
+[node name="image" type="Sprite2D" parent="1"]
+position = Vector2(-22, 52)
+texture = ExtResource("2_sunn3")
+
+[node name="2" type="Parallax2D" parent="."]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(11, -26)
+
+[node name="image" type="Sprite2D" parent="2"]
+position = Vector2(-22, 52)
+texture = ExtResource("3_0mlgp")

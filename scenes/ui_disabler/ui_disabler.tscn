@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://118i6pu4b5y2"]
+
+[node name="disabler" type="CanvasLayer"]
+layer = 99
+
+[node name="barrier" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccc55g46fwb7w"]
+
+[ext_resource type="Script" uid="uid://kqq4wtbir62c" path="res://scenes/level_dialogue/level_dialogue_router.gd" id="1_bb7cw"]
+
+[node name="level_dialogue_router" type="Node"]
+script = ExtResource("1_bb7cw")
