@@ -16,6 +16,8 @@ var original_position : Vector2
 var effect_stack : int = -1
 var effect_target : Hud.target
 
+@onready var skill3_particle: GPUParticles2D = $"../skill3"
+
 # Some characters have an ultimate canvas. This is where cutscenes or full screen ultimate effects are displayed independent of shit.
 # NOTE: Only some characters may have this. DO NOT REFERENCE THIS OUTSIDE THIS SCRIPT OR THE DATA SCRIPT OF A CHARACTER.
 @export var ultimate_canvas: Node
@@ -83,3 +85,28 @@ func skill2():
 	await get_tree().create_timer(1).timeout
 	idle()
 	return
+
+func skill3():
+	self.play("skill_3")
+	if role == Hud.role.ENEMY: 
+		skill3_particle.process_material.set("gravity", Vector3(-800, 0, 0))
+		skill3_particle.position.x = 300
+	else:
+		skill3_particle.process_material.set("gravity", Vector3(800, 0, 0))
+		skill3_particle.position.x = 300
+		
+	camera.pan(role)
+	Effect.shake(camera, false, 12, 12, 45, 2)
+	await camera.focus(Vector2(1.8, 1.8), 1, Tween.EASE_IN, Tween.TRANS_SINE)
+	camera.focus(Vector2(1.2, 1.2), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
+	await get_tree().create_timer(0.1).timeout
+	Effect.flash(Background.get_background(), Color("96E9B8") * 4, 0.2, 0.0, 0.1)
+	await get_tree().create_timer(0.5).timeout
+	camera.pan(opp)
+	
+	await get_tree().create_timer(2).timeout
+	camera.pan()
+	camera.focus(Vector2(1, 1), 0.6, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
+	await self.animation_finished
+	Effects.start(Effects.SPORDERR, role)
+	idle()

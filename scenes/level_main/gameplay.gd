@@ -114,11 +114,10 @@ func player_switch(number : int, refresh: bool = false):
 		dad.loaded_characters[active_character].visible = true
 		# Reloads the hud with the new active character's live stats.
 		player_health.max_value = player_stats[active_character]["max_health"]
-		player_flinch.max_value = player_stats[active_character]["max_flinch"]
 		player_health.value = player_stats[active_character]["current_health"]
-		player_flinch.value = player_stats[active_character]["current_flinch"]
 		player_health.targetified = active_character
-		player_flinch.is_flinch = true if player_stats[active_character]["flinched"] and player_stats[active_character]["already_flinched"] else false
+		player_flinch.switch(active_character, Hud.role.PLAYER)
+		
 		if player_stats[active_character]["dead"]: player_health.dead = true
 		else: player_health.dead = false
 		player_bar.switch(player_stats[active_character]["profile"], player_stats[active_character]["type"])
@@ -143,11 +142,10 @@ func enemy_switch(number : int, refresh: bool = false):
 		dad.loaded_enemies[active_enemy].visible = true
 		# Reloads the hud with the new active character's live stats.
 		enemy_health.max_value = enemy_stats[active_enemy]["max_health"]
-		enemy_flinch.max_value = enemy_stats[active_enemy]["max_flinch"]
 		enemy_health.value = enemy_stats[active_enemy]["current_health"]
-		enemy_flinch.value = enemy_stats[active_enemy]["current_flinch"]
 		enemy_health.targetified = active_enemy
-		enemy_flinch.is_flinch = true if enemy_stats[active_enemy]["flinched"] and enemy_stats[active_enemy]["already_flinched"] else false
+		enemy_flinch.switch(active_enemy, Hud.role.ENEMY)
+		
 		if enemy_stats[active_enemy]["dead"]: enemy_health.dead = true
 		else: enemy_health.dead = false
 		enemy_bar.switch(enemy_stats[active_enemy]["profile"], enemy_stats[active_enemy]["type"])
@@ -204,7 +202,7 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	
 	await text_effect.animation_finished
 	await dialog_canvas.play_dialog(false)
-	await use_skill(randi_range(1 ,4), Hud.role.ENEMY, true)
+	await use_skill(randi_range(1 ,1), Hud.role.ENEMY, true)
 
 	question_splash.text = "FOR YOUR INFORMATION..."
 	if result == Hud.result.PASSED: 

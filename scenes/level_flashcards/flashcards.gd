@@ -73,6 +73,8 @@ func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], [
 		choice.position.y = choice.position.y - 3
 		choice.get_child(0).scale = Vector2(0.24, 0.24)
 		
+		if n != 0: choice.visible = false # Invisible if not top node.
+		
 	emit_signal("scroll_value", -(choices.size() + 1))
 	self.move_child(self.get_child(1), 0)
 	

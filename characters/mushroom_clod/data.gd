@@ -144,6 +144,7 @@ func skill2():
 	return
 	
 func skill3():
+	await self.get_node("animation").skill3()
 	return
 
 func skill4():

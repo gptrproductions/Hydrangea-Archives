@@ -1,9 +1,44 @@
-[gd_scene load_steps=18 format=3 uid="uid://cye36yal0v2uk"]
+[gd_scene load_steps=22 format=3 uid="uid://cye36yal0v2uk"]
 
 [ext_resource type="Script" uid="uid://dnn5wxwduijjd" path="res://characters/mushroom_clod/data.gd" id="1_ieoiy"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="2_ddiq6"]
 [ext_resource type="Texture2D" uid="uid://ct45enop7wtq4" path="res://characters/mushroom_clod/assets/mushroom_clod.webp" id="2_q4mp4"]
 [ext_resource type="Script" uid="uid://njlac67lwpff" path="res://characters/mushroom_clod/animation.gd" id="3_ieoiy"]
+
+[sub_resource type="Curve" id="Curve_q4mp4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.27551, 1), 0.0, 0.0, 0, 0, Vector2(0.704082, 0.843373), -1.77648, -1.77648, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ddiq6"]
+curve = SubResource("Curve_q4mp4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4l5oo"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 16, 0)
+emission_shape = 1
+emission_sphere_radius = 1000.0
+angle_min = -720.0
+angle_max = 338.5
+direction = Vector3(0, 0, 0)
+spread = 61.364
+flatness = 0.148
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(-800, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+scale_min = 0.5
+scale_max = 10.0
+color = Color(0.177877, 1, 0.88816, 1)
+alpha_curve = SubResource("CurveTexture_ddiq6")
+hue_variation_min = -1.0
+hue_variation_max = -0.82
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+turbulence_noise_strength = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4l5oo"]
 shader = ExtResource("2_ddiq6")
@@ -130,6 +165,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("skill3:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("parts/MushroomClod:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q4mp4"]
@@ -349,6 +408,95 @@ tracks/3/keys = {
 "values": [ExtResource("2_q4mp4"), ExtResource("2_q4mp4")]
 }
 
+[sub_resource type="Animation" id="Animation_kxt7n"]
+resource_name = "skill_3"
+length = 4.0
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/MushroomClod:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.975, 1.175, 1.25, 2.375, 2.9),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(2, -2), Vector2(2, -2), Vector2(4, -4), Vector2(3, -3), Vector2(3, -3), Vector2(2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parts:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.075, 0.341578, 0.575, 0.752888, 0.9, 1.025, 1.125, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.825, 2.9, 2.93906, 3.0414, 3.22334, 3.45, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319, 9.42478, 12.5664, 15.708, 18.8496, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 21.9911, 25.1327, 15.708, 12.5664, 3.14159, 9.42478, 6.28319, 3.14159, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parts:material:shader_parameter/hit_effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35, 1.03532, 1.275, 2.75, 2.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parts/MushroomClod/vignette:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.975, 3.025, 4),
+"transitions": PackedFloat32Array(1, 2, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.392157), Color(9.77, 0.575, 0, 1), Color(9.77, 0.575, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("parts/MushroomClod/vignette/GPUParticles2D:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.125, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1.03526, 1.03526, 1.03526),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25), Color(2, 2, 2, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("skill3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 3.525),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("parts/MushroomClod:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.025, 0.975, 1.025, 1.25, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(2, 2, 2, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p2y5"]
 _data = {
 &"RESET": SubResource("Animation_qk8yp"),
@@ -356,12 +504,25 @@ _data = {
 &"flinch": SubResource("Animation_ddiq6"),
 &"idle": SubResource("Animation_qbg0e"),
 &"skill_1": SubResource("Animation_w0hsr"),
-&"skill_2": SubResource("Animation_5p2y5")
+&"skill_2": SubResource("Animation_5p2y5"),
+&"skill_3": SubResource("Animation_kxt7n")
 }
 
 [node name="mushroom_clod" type="Node2D"]
+position = Vector2(0, -2)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1_ieoiy")
+
+[node name="skill3" type="GPUParticles2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+emitting = false
+amount = 200
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4l5oo")
 
 [node name="parts" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_4l5oo")

@@ -1413,13 +1413,13 @@ blend_mode = 1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.266094, 0.842697), -1.77648, -1.77648, 0, 0, Vector2(0.540773, 0.011236), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_0pamo"]
+[sub_resource type="CurveTexture" id="CurveTexture_7nnql"]
 curve = SubResource("Curve_15paj")
 
 [sub_resource type="Gradient" id="Gradient_r05os"]
 colors = PackedColorArray(1, 1, 1, 1, 0.05, 0.05, 0.05, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_iifxp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6roxu"]
 gradient = SubResource("Gradient_r05os")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2kea"]
@@ -1439,8 +1439,8 @@ linear_accel_min = 100.0
 linear_accel_max = 100.0
 scale_max = 20.0
 color = Color(0.617394, 0, 0.0619873, 1)
-color_ramp = SubResource("GradientTexture1D_iifxp")
-alpha_curve = SubResource("CurveTexture_0pamo")
+color_ramp = SubResource("GradientTexture1D_6roxu")
+alpha_curve = SubResource("CurveTexture_7nnql")
 hue_variation_min = -1.0
 hue_variation_max = -0.82
 anim_speed_min = 5.0

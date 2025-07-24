@@ -34,6 +34,7 @@ func _process(delta):
 	if start:
 		var new_pos : Vector2 = gameplay.position.lerp(position, EASE_SPEED * delta)
 		gameplay.position = new_pos
+		#gameplay.scale = Vector2(1.0 / zoom.x, 1.0 / zoom.y)
 		effects.position = new_pos
 		ultimate_canvas.position = new_pos
 		dialog_vignette.position = new_pos

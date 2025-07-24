@@ -1,8 +1,11 @@
 extends TextureProgressBar
 class_name Flinch
 
+# References to the flinch active nodes.
+@export var progress : Control
 @export var glow : ColorRect
 @export var particle : GPUParticles2D
+
 @export var flinch_material : ShaderMaterial
 @export var role : Hud.role
 @export var effect : AnimationPlayer
@@ -15,6 +18,7 @@ const glow_color : Color = Color(0.5, 0.2, 0.32, 1)
 var flinch_type : Hud.mindset # Records the newest flinch instance's type.
 var is_flinch := false
 var flinched_after_question := false # Becomes true if the flinch occurs after it.
+var first_switch : bool = true # Only true during first switch. Forces visual nodes to be visible upon first switch.
 
 # Other flinch types don't have stacks since they're one-off effects.
 var kinetic_stack = -1
@@ -28,6 +32,24 @@ func _ready():
 		value_changed.connect(_on_enemy_value_changed)
 	Signals.ON_QUESTION_START.connect(flinch_effect)
 	
+func switch(active_character : int, current_role : Hud.role):
+	match current_role:
+		Hud.role.PLAYER:
+			value = gameplay.player_stats[active_character]["current_flinch"]
+			max_value = gameplay.player_stats[active_character]["max_flinch"]
+			is_flinch = gameplay.player_stats[active_character]["flinched"]
+			#progress.visible = gameplay.player_stats[active_character]["flinched"] or first_switch
+			glow.visible = gameplay.player_stats[active_character]["flinched"] or first_switch
+			particle.visible = gameplay.player_stats[active_character]["flinched"]
+		Hud.role.ENEMY:
+			value = gameplay.enemy_stats[active_character]["current_flinch"]
+			max_value = gameplay.enemy_stats[active_character]["max_flinch"]
+			is_flinch = gameplay.enemy_stats[active_character]["flinched"]
+			#progress.visible = gameplay.enemy_stats[active_character]["flinched"] or first_switch
+			glow.visible = gameplay.enemy_stats[active_character]["flinched"] or first_switch
+			particle.visible = gameplay.enemy_stats[active_character]["flinched"]
+	first_switch = false # Becomes false for the rest of the level.
+			
 func change(target_value, _target_character : Hud.target, mindset : Hud.mindset):
 
 	# Don't allow flinch value to change. This is if certain conditions require flinch to change value in the middle of the flinch.
@@ -60,9 +82,10 @@ func _on_enemy_value_changed(current_value: float) -> void:
 		
 		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
 		for key in gameplay.enemy_stats.keys():
-			gameplay.enemy_stats[key]["current_flinch"] = 0
-			gameplay.enemy_stats[key]["flinched"] = false
-			gameplay.enemy_stats[key]["already_flinched"] = false
+			if gameplay.enemy_stats[key]["flinched"]:
+				gameplay.enemy_stats[key]["current_flinch"] = 0
+				gameplay.enemy_stats[key]["flinched"] = false
+				gameplay.enemy_stats[key]["already_flinched"] = false
 	
 func _on_player_value_changed(current_value : float) -> void:
 	if health.dead == true: return
@@ -71,7 +94,6 @@ func _on_player_value_changed(current_value : float) -> void:
 	if current_value >= max_value:
 		# Just in case the active character had changed mid-flinch (which usually doesnt), keep the current active character in memory by converting it to the cahracter position instead.
 		var target_atm = Character.targetify(Hud.target.ACTIVE, role)
-		print(target_atm)
 		gameplay.player_stats[target_atm]["flinched"] = true
 		Signals.ON_FLINCH.emit(Hud.role.PLAYER)
 		is_flinch = true
@@ -79,9 +101,10 @@ func _on_player_value_changed(current_value : float) -> void:
 	
 		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
 		for key in gameplay.player_stats.keys():
-			gameplay.player_stats[key]["current_flinch"] = 0
-			gameplay.player_stats[key]["flinched"] = false
-			gameplay.player_stats[key]["already_flinched"] = false
+			if gameplay.player_stats[key]["flinched"]:
+				gameplay.player_stats[key]["current_flinch"] = 0
+				gameplay.player_stats[key]["flinched"] = false
+				gameplay.player_stats[key]["already_flinched"] = false
 	
 func full(_dummy = null, _dummy2 = null):
 	if role == Hud.role.PLAYER and gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"]: 
@@ -117,11 +140,12 @@ func empty_player():
 	await tween.finished
 	glow.visible = false
 	is_flinch = false
-	tween = create_tween()
-	gameplay.change_stat(Hud.stat_type.CURRENT_FLINCH, -max_value, Hud.role.PLAYER, Hud.target.ACTIVE, Hud.mindset.KINETIC)
-	tween.tween_property(glow, "modulate", glow_color, 0.2)
-	particle.visible = false
-	flinch_material.set("speed", 0.2)
+	if gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, Hud.role.PLAYER)]["flinched"]:
+		gameplay.change_stat(Hud.stat_type.CURRENT_FLINCH, -max_value, Hud.role.PLAYER, Hud.target.ACTIVE, Hud.mindset.KINETIC)
+		tween = create_tween()
+		tween.tween_property(glow, "modulate", glow_color, 0.2)
+		particle.visible = false
+		flinch_material.set("speed", 0.2)
 	
 func empty_enemy():
 	var tween = create_tween()
@@ -129,11 +153,12 @@ func empty_enemy():
 	await tween.finished
 	glow.visible = false
 	is_flinch = false
-	tween = create_tween()
-	gameplay.change_stat(Hud.stat_type.CURRENT_FLINCH, -max_value, Hud.role.ENEMY, Hud.target.ACTIVE, Hud.mindset.KINETIC)
-	tween.tween_property(glow, "modulate", glow_color, 0.2)
-	particle.visible = false
-	flinch_material.set("speed", 0.2)
+	if gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, Hud.role.ENEMY)]["flinched"]:
+		tween = create_tween()
+		gameplay.change_stat(Hud.stat_type.CURRENT_FLINCH, -max_value, Hud.role.ENEMY, Hud.target.ACTIVE, Hud.mindset.KINETIC)
+		tween.tween_property(glow, "modulate", glow_color, 0.2)
+		particle.visible = false
+		flinch_material.set("speed", 0.2)
 	
 func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 	
