@@ -101,12 +101,18 @@ func skill3():
 	camera.focus(Vector2(1.2, 1.2), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(0.1).timeout
 	Effect.flash(Background.get_background(), Color("96E9B8") * 4, 0.2, 0.0, 0.1)
-	await get_tree().create_timer(0.5).timeout
+	Effect.shake(Character.get_node_role(opp), false, 12, 12, 60)
+	await get_tree().create_timer(0.25).timeout
 	camera.pan(opp)
+	await get_tree().create_timer(1).timeout
+	var gameplay = Character.get_gameplay()
+	if opp == Hud.role.PLAYER: gameplay.player_switch(1)
+	elif opp == Hud.role.ENEMY: gameplay.enemy_switch(1)
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	camera.pan()
 	camera.focus(Vector2(1, 1), 0.6, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await self.animation_finished
-	Effects.start(Effects.SPORDERR, role)
+	await get_tree().process_frame
+	Effects.start(Effects.AAAAAA, opp)
 	idle()

@@ -172,16 +172,21 @@ func _ready():
 	_call([Character.name.MUSHROOM_CLOD, Character.name.SHRIMPION], load("res://resources/official_levels/level_0.tres"))
 
 func _call(character : Array, data : Questionnaire): # Called to start a level.
-	var enemy = [data.properties.enemy1, data.properties.enemy2, data.properties.enemy2]
+	var enemy = [data.properties.enemy1, data.properties.enemy2, data.properties.enemy3]
 	
 	# Only enable when dialogues are enabled.
 	if data.properties.enable_dialogues: $gameplay/dialogue_canvas.start(data.dialog_data)
 
+	# Trim the Hud.role.NONE
+	for n in character.size():
+		if character[n] == Character.name.NONE: character.remove_at(n)
+	for n in enemy.size():
+		if enemy[n] == Character.name.NONE: enemy.remove_at(n)
+		
 	# Load character 1 and their stats.
 	for n in character.size():
 		
 		var asset = Character.get_character(character[n])
-		if asset == null: continue
 		asset = asset.instantiate()
 		
 		asset.role = role.PLAYER # Assign the role before putting it on the scene tree!
@@ -193,14 +198,13 @@ func _call(character : Array, data : Questionnaire): # Called to start a level.
 	for n in enemy.size():
 		# Load enemy 1 and their stats. Do this for the next enemy,
 		var asset = Character.get_character(enemy[n])
-		if asset == null: continue
 		asset = asset.instantiate()
 		asset.role = role.ENEMY # Assign the role before putting it on the scene tree!
 		enemies.add_child(asset)
 		loaded_enemies.append(asset)
 		asset.visible = false
 		asset.get_node("animation").play("idle")
-
+	
 	# Tell gameplay to retrieve the loaded stats.
 	Signals.LEVEL_CAMERA_READY.emit()
 	await $gameplay.start()

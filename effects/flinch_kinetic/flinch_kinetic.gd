@@ -18,6 +18,7 @@ var targets : Array[Hud.target] = [Hud.target.CHARACTER_1, Hud.target.CHARACTER_
 var role : Hud.role
 var stack : int = 0
 var finished : bool = false
+var active : bool = false #Stop from retriggering the plus effects
 
 # Effect target and stats. This is retrieved by a stats canvas.
 # Usually, effect_target is compared with a target variable. If positive, they retrieve the stats.
@@ -54,11 +55,13 @@ func start(_sent_role: Hud.role):
 	self.value = 1
 	self.stack = self.stack
 	
-	# The effect's stat change logic. Change Stats here.
-	var gameplay = Character.get_gameplay()
-	gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_1)
-	gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_2)
-	gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_3)
+	if !active:
+		active = true
+		# The effect's stat change logic. Change Stats here.
+		var gameplay = Character.get_gameplay()
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_1)
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_2)
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, -50, role, Hud.target.CHARACTER_3)
 
 func _change():
 	if finished:
@@ -71,10 +74,9 @@ func _change():
 		# This is where you apply the stat reversal logic.
 		var gameplay = Character.get_gameplay()
 		
-		gameplay.change_stat(Hud.stat_type.RESISTANCE, 0, role, Hud.target.CHARACTER_1)
-		gameplay.change_stat(Hud.stat_type.RESISTANCE, 0, role, Hud.target.CHARACTER_2)
-		gameplay.change_stat(Hud.stat_type.RESISTANCE, 0, role, Hud.target.CHARACTER_3)
-		
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, 50, role, Hud.target.CHARACTER_1)
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, 50, role, Hud.target.CHARACTER_2)
+		gameplay.change_stat(Hud.stat_type.RESISTANCE, 50, role, Hud.target.CHARACTER_3)
 		queue_free()
 		return
 	

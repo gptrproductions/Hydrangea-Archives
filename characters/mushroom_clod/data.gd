@@ -101,12 +101,10 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 		var self_reference = data.get("self_reference", {})
 		
 		# Basic addition subtraction logic for all
-		var atk
-		atk = (self_reference["iq"]) if type == Hud.stat_type.IQ else (self_reference["eq"]) 
-
+		var atk = (self_reference["iq"]) if type == Hud.stat_type.IQ else (self_reference["eq"]) 
 		var res = max((100.0 - (opponent_reference.get("resistance", 0))) / 100.0, 0.1)
 		var det = max((1.0 + (self_reference.get("determination", 0)) / 100.0), 0.1)
-		
+
 		var damage # Undeclared data type since it becomes an array at the end.
 		var flinch: int
 		
@@ -116,6 +114,7 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 				damage = 0
 				flinch = 0
 			Hud.skills.SKILL_2:
+				print(res)
 				damage = max(((atk * 2.88) * res) * det, 1)
 				flinch = max(((self_reference["flinch"]) * 0.213), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_3:

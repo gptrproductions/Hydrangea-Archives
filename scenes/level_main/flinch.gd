@@ -80,13 +80,6 @@ func _on_enemy_value_changed(current_value: float) -> void:
 		gameplay.enemy_stats[target_atm]["flinched"] = false
 		gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = false
 		
-		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
-		for key in gameplay.enemy_stats.keys():
-			if gameplay.enemy_stats[key]["flinched"]:
-				gameplay.enemy_stats[key]["current_flinch"] = 0
-				gameplay.enemy_stats[key]["flinched"] = false
-				gameplay.enemy_stats[key]["already_flinched"] = false
-	
 func _on_player_value_changed(current_value : float) -> void:
 	if health.dead == true: return
 	gameplay.player_stats[gameplay.active_character]["current_flinch"] = current_value
@@ -98,13 +91,7 @@ func _on_player_value_changed(current_value : float) -> void:
 		Signals.ON_FLINCH.emit(Hud.role.PLAYER)
 		is_flinch = true
 		await full()
-	
-		# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
-		for key in gameplay.player_stats.keys():
-			if gameplay.player_stats[key]["flinched"]:
-				gameplay.player_stats[key]["current_flinch"] = 0
-				gameplay.player_stats[key]["flinched"] = false
-				gameplay.player_stats[key]["already_flinched"] = false
+		await get_tree().process_frame
 	
 func full(_dummy = null, _dummy2 = null):
 	if role == Hud.role.PLAYER and gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"]: 
@@ -146,6 +133,14 @@ func empty_player():
 		tween.tween_property(glow, "modulate", glow_color, 0.2)
 		particle.visible = false
 		flinch_material.set("speed", 0.2)
+		await tween.finished
+		
+	for key in gameplay.player_stats.keys():
+		if gameplay.player_stats[key]["flinched"]:
+			gameplay.player_stats[key]["current_flinch"] = 0
+			gameplay.player_stats[key]["flinched"] = false
+			gameplay.player_stats[key]["already_flinched"] = false
+	return
 	
 func empty_enemy():
 	var tween = create_tween()
@@ -159,6 +154,15 @@ func empty_enemy():
 		tween.tween_property(glow, "modulate", glow_color, 0.2)
 		particle.visible = false
 		flinch_material.set("speed", 0.2)
+		await tween.finished
+	# Set everyone's flinch to false. This is non-discriminating as all flinches will end after a question anyway.
+	for key in gameplay.enemy_stats.keys():
+		if gameplay.enemy_stats[key]["flinched"]:
+			gameplay.enemy_stats[key]["current_flinch"] = 0
+			gameplay.enemy_stats[key]["flinched"] = false
+			gameplay.enemy_stats[key]["already_flinched"] = false
+
+	return
 	
 func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 	

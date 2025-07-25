@@ -337,10 +337,10 @@ loop_questions = false
 shuffle_questions = true
 enemy_difficulty = 0
 stat_difficulty = 0
-enemy1 = 4
-enemy2 = 0
+enemy1 = 1
+enemy2 = 4
 enemy3 = 0
-enemy_levels = Array[int]([5, 5, 5])
+enemy_levels = Array[int]([1, 1, 1])
 metadata/_custom_type_script = "uid://sinjx4sk61oq"
 
 [sub_resource type="Resource" id="Resource_hq14u"]

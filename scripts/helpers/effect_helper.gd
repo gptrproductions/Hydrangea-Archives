@@ -1,13 +1,14 @@
 extends Node
 class_name Effects
 
-enum {SHINGLES, SPORDERR, NEGATION, FLINCH_KINETIC}
+enum {SHINGLES, SPORDERR, NEGATION, FLINCH_KINETIC, AAAAAA}
 
 static func get_effect(effect_name : int):
 	match effect_name:
 		SHINGLES: return load("res://effects/shingles/shingles.tscn")
 		FLINCH_KINETIC: return load("res://effects/flinch_kinetic/flinch_kinetic.tscn")
 		SPORDERR: return load("res://effects/spor'derr/spor'derr.tscn")
+		AAAAAA: return load("res://effects/aaaaaa/aaaaaa.tscn")
 
 # Func always starts with the role it has.
 static func start(effect_name: int, role: Hud.role):
@@ -106,7 +107,6 @@ static func get_data(target: Hud.target, role: Hud.role):
 				dict[key] += dupe[key]
 			else:
 				dict[key] = dupe[key]
-			
 	return dict
 
 static func sort(stack_node : Level_Effects_List, target: Hud.target):

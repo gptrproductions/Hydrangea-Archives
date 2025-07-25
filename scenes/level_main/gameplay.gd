@@ -75,6 +75,8 @@ var effects : Dictionary[String, Dictionary] = {}
 
 # Monitors which phase the question cycle is currently in.
 var question_finished : bool = false
+var previous_character : int = -1
+var previous_enemy : int = -1
 
 func _init():
 	add_to_group("battle")
@@ -94,9 +96,14 @@ func start():
 	for n in dad.loaded_enemies.size():
 		enemy_stats[n] = Character.get_stats(dad.loaded_enemies[n], true, true)
 	
+	previous_character = player_stats.size() - 1 if player_stats.size() < 1 else -1
+	previous_enemy = enemy_stats.size() - 1 if enemy_stats.size() < 1 else -1
+	
 	# Starts the stats up.
 	player_switch(0, true)
 	enemy_switch(0, true)
+	
+	print(enemy_stats.size())
 	
 	await get_tree().create_timer(1).timeout
 	await dialog_canvas.play_dialog()
@@ -104,13 +111,14 @@ func start():
 # This is to switch active characters.
 func player_switch(number : int, refresh: bool = false):
 	if (number >= 0 and (active_character + number) < player_stats.size()): 
+		previous_character = player_stats.size() - 2 if active_character != 0 else player_stats.size() - 1
 		if !refresh: # Refresh refers to just merely reloading the active character with updated stats.
+			if number != 0 or active_character == player_stats.size() - 2: text_effect.play("switch_player")
 			for n in player_stats.size(): dad.loaded_characters[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.PLAYER, Hud.target.ACTIVE)
-			text_effect.play("switch_player")
 			active_character = active_character + number if active_character < player_stats.size() else 0 
-			await get_tree().process_frame
 			System.nerd(CLASS_NAME, "Switching to character #" + str(active_character) + "...")
+
 		dad.loaded_characters[active_character].visible = true
 		# Reloads the hud with the new active character's live stats.
 		player_health.max_value = player_stats[active_character]["max_health"]
@@ -126,18 +134,18 @@ func player_switch(number : int, refresh: bool = false):
 		if !refresh: Signals.ON_SWITCH.emit(Hud.role.PLAYER)
 	else:
 		active_character = 0
+		previous_character = player_stats.size() - 2 if player_stats.size() < 1 else -1
 		player_switch(0) # fall back to 0
 		
 # This is to switch enemy characters.
 func enemy_switch(number : int, refresh: bool = false):
-	
 	if (number >= 0 and (active_enemy + number) < enemy_stats.size()): 
+		previous_enemy = enemy_stats.size() - 2 if active_enemy!= 0 else enemy_stats.size() - 1
 		if !refresh:
+			if number != 0 or active_enemy == enemy_stats.size() - 2: text_effect.play("switch_enemy")
 			for n in enemy_stats.size(): dad.loaded_enemies[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.ENEMY, Hud.target.ACTIVE)
-			text_effect.play("switch_enemy")
 			active_enemy = active_enemy + number if active_enemy < enemy_stats.size() else 0 
-			await get_tree().process_frame
 			System.nerd(CLASS_NAME, "Switching to enemy #" + str(active_enemy) + "...")
 		dad.loaded_enemies[active_enemy].visible = true
 		# Reloads the hud with the new active character's live stats.
@@ -154,6 +162,7 @@ func enemy_switch(number : int, refresh: bool = false):
 		if !refresh: Signals.ON_SWITCH.emit(Hud.role.ENEMY)
 	else:
 		active_enemy = 0
+		previous_enemy = enemy_stats.size() - 2 if enemy_stats.size() < 1 else -1
 		enemy_switch(0) # fall back to 0
 	
 # Gameplay processes the questions send by the hud.

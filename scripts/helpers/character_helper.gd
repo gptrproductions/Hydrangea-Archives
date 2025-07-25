@@ -9,7 +9,7 @@ enum mood{NORMAL, HAPPY, SAD, ANGRY, HIT, SMUG, GRIN, CONFUSED, EXCITED, DYING, 
 
 static func get_character(character_name : int):
 	match character_name:
-		name.NONE : return null # Return null. In a level that means to ignore a character slot since it's empty.
+		name.NONE : return Hud.role.NONE # Return null. In a level that means to ignore a character slot since it's empty.
 		name.SHRIMPION: return load("uid://cye36yal0v2uj")
 		name.MUSHROOM_CLOD: return load("res://characters/mushroom_clod/mushroom_clod.tscn")
 
@@ -21,7 +21,7 @@ static func get_data(target : Hud.target, role : Hud.role, _skill : Hud.skills, 
 			
 		# Get a reference of a gameplay node.
 		var gameplay = root.get_node("hud").get_node("gameplay")
-		var target_id = Character.targetify(target, role) # Convert to an actual target.
+		var target_id = Character.targetify(target, get_opponent(role)) # Convert to an actual target.
 		var opponent_role : Hud.role # This role is intended for the opponent.
 		var opponent_reference
 		var self_reference
@@ -261,7 +261,14 @@ static func get_mood(character_name: Character.name, character_mood : Character.
 		System.oops("Character Help -> Get Mood", "We can't retrieve even the backup files. We can't return anything!", System.oops_type.OOF)
 		return null
 	return load(dir)
-	
+
+## Return the character control node where the characters are stored in.
+static func get_node_role(role : Hud.role):
+	var gameplay = get_gameplay()
+	if !is_instance_valid(gameplay): return
+	if role == Hud.role.PLAYER: return gameplay.get_parent().get_node("characters").get_node("players")
+	else: return gameplay.get_parent().get_node("characters").get_node("enemies")
+
 static func _root():
 	return Engine.get_main_loop().get_root()
 	
