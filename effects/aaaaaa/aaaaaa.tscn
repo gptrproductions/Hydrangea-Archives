@@ -209,10 +209,10 @@ metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651
 
 [node name="description" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = -350.0
+offset_left = -324.0
 offset_top = 91.0
-offset_right = 474.0
-offset_bottom = 488.0
+offset_right = 433.0
+offset_bottom = 490.0
 texture = ExtResource("9_f537s")
 region_rect = Rect2(0, 0, 200, 200)
 patch_margin_left = 16
@@ -240,7 +240,7 @@ custom_minimum_size = Vector2(0, 28)
 layout_mode = 0
 offset_left = 35.0
 offset_top = 110.0
-offset_right = 226.0
+offset_right = 208.0
 offset_bottom = 174.0
 scale = Vector2(4, 4)
 mouse_filter = 2
@@ -255,7 +255,7 @@ theme_override_font_sizes/mono_font_size = 14
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
-text = "[color=AAAAAA]This character's [img=16]res://assets/icons/stats/res_neutral.webp[/img]Resistance is reduced by [color=c90032]20[/color] for this question only. Only one character is affected at once."
+text = "[color=AAAAAA]This character's [img=16]res://assets/icons/stats/res_neutral.webp[/img]Resistance is reduced by [color=c90032]20[/color] for this question only. Only one character can be affected at a time."
 fit_content = true
 custom_effects = [SubResource("RichTextEffect_3u568")]
 metadata/mouse_position = Vector2(409.205, 61.6025)

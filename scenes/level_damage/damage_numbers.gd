@@ -41,7 +41,7 @@ func start(stat = Hud.stat_type, value : int = 0, role : Hud.role = Hud.role.PLA
 		self.get_parent().get_node("enemies").add_child(instance)
 		print(instance.get_parent())
 		instance.scale.x = -2
-	instance.position = instance.position - Vector2(randi_range(-20, 20), instance.position.y + 100)
+	instance.position = instance.position - Vector2(randi_range(-50, 50), randi_range(-50, 150))
 	
 	instance.get_node("value").advance()
 	remove(instance)

@@ -15,8 +15,10 @@ static func get_viewport_canvas():
 	return null
 	
 func _texture(viewport : SubViewport, duration : float):
+	viewport.render_target_update_mode = SubViewport.UpdateMode.UPDATE_WHEN_VISIBLE
 	texture = viewport.get_texture()
 	visible = true
 	await get_tree().create_timer(duration).timeout
 	visible = false
 	texture = ImageTexture.new()
+	viewport.render_target_update_mode= SubViewport.UpdateMode.UPDATE_DISABLED

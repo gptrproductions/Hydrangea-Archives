@@ -12,6 +12,7 @@ static func get_character(character_name : int):
 		name.NONE : return Hud.role.NONE # Return null. In a level that means to ignore a character slot since it's empty.
 		name.SHRIMPION: return load("uid://cye36yal0v2uj")
 		name.MUSHROOM_CLOD: return load("res://characters/mushroom_clod/mushroom_clod.tscn")
+		name.ALLIGATOR: return load("res://characters/alligator/alligator.tscn")
 
 # NOTE: Source is ALWAYS self.
 static func get_data(target : Hud.target, role : Hud.role, _skill : Hud.skills, source: Node = null):

@@ -169,7 +169,7 @@ func _ready():
 	Signals.ON_ATTACKED.connect(damage.start)
 	characters = self.get_node("characters").get_node("players")
 	enemies = self.get_node("characters").get_node("enemies")
-	_call([Character.name.MUSHROOM_CLOD, Character.name.SHRIMPION], load("res://resources/official_levels/level_0.tres"))
+	_call([Character.name.MUSHROOM_CLOD, Character.name.SHRIMPION, Character.name.ALLIGATOR], load("res://resources/official_levels/level_0.tres"))
 
 func _call(character : Array, data : Questionnaire): # Called to start a level.
 	var enemy = [data.properties.enemy1, data.properties.enemy2, data.properties.enemy3]

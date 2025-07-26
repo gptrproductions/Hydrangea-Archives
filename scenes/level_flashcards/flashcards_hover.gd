@@ -164,7 +164,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if signal_pressed == false and is_scrolling == false and self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_child(0).texture_normal != preload("res://assets/vector/flashcard_wrong.webp"):
 			self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_child(0).disabled = false
 		
-func visibler(on_start, event_type, wait : float = 0):
+func visibler(on_start, _event_type, wait : float = 0):
 	if on_start:
 		for n in self.get_parent().get_parent().get_child_count():
 			self.get_parent().get_parent().get_child(n).visible = true

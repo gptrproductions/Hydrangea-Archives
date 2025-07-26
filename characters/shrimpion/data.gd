@@ -29,8 +29,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/shrimpion/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 99,
-	"current_health" : 99,
+	"max_health" : 450,
+	"current_health" : 450,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -48,10 +48,10 @@ var stats : Dictionary = {
 	"already_flinched" : false, # If already flinched and their flinch bar is still full, and they switch in skip the flinch effects. 
 
 	# Other main attribute stats
-	"iq" : 10, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
-	"eq" : 10,
+	"iq" : 44, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
+	"eq" : 20,
 	"refill" : 100,
-	"flinch" : 122, # og 28
+	"flinch" : 128, # og 28
 	"snap" : 0,
 	
 	# Affects damage output

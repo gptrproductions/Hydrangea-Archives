@@ -108,8 +108,13 @@ func skill3():
 	var gameplay = Character.get_gameplay()
 	if opp == Hud.role.PLAYER: gameplay.player_switch(1)
 	elif opp == Hud.role.ENEMY: gameplay.enemy_switch(1)
+	var values : Dictionary = self.get_parent().math(Hud.target.ACTIVE, role, Hud.skills.SKILL_3)
 	
-	await get_tree().create_timer(1).timeout
+	for n in 10:
+		Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_HEALTH, values.get("damage", -1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.PHRENIC, values.get("is_snap", false), false, Character.get_target(self.get_parent()), role)
+		Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_FLINCH, values.get("flinch", 1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.PHRENIC, false, false, Character.get_target(self.get_parent()), role)
+		await get_tree().create_timer(0.1).timeout
+	
 	camera.pan()
 	camera.focus(Vector2(1, 1), 0.6, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await self.animation_finished

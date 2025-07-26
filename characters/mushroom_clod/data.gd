@@ -29,8 +29,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/mushroom_clod/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 88,
-	"current_health" : 99,
+	"max_health" : 440,
+	"current_health" : 440,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -47,8 +47,8 @@ var stats : Dictionary = {
 	"already_flinched" : false, # If already flinched and their flinch bar is still full, and they switch in skip the flinch effects. 
 
 	# Other main attribute stats
-	"iq" : 10, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
-	"eq" : 10,
+	"iq" : 48, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
+	"eq" : 24,
 	"refill" : 100,
 	"flinch" : 16, # og 28
 	"snap" : 0,
@@ -115,11 +115,11 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 				flinch = 0
 			Hud.skills.SKILL_2:
 				print(res)
-				damage = max(((atk * 2.88) * res) * det, 1)
-				flinch = max(((self_reference["flinch"]) * 0.213), int(opponent_reference["max_flinch"] * 0.01))
+				damage = max(((atk * 2.33) * res) * det, 1)
+				flinch = max(((self_reference["flinch"]) * 0.313), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_3:
-				damage = 0
-				flinch = 0
+				damage = max(((atk * 0.08) * res) * det, 1)
+				flinch = max(((self_reference["flinch"]) * 0.03), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_4:
 				damage = max(((atk * 9.12) * res) * det, 1)
 				flinch = max(((self_reference["flinch"]) * 1.4), int(opponent_reference["max_flinch"] * 0.01))

@@ -60,7 +60,9 @@ func change(target_value, _target_character : Hud.target, mindset : Hud.mindset)
 		var target_atm : int
 		target_atm = Character.targetify(Hud.target.ACTIVE, role)
 		if role == Hud.role.PLAYER: gameplay.player_stats[target_atm]["flinched"] = true 
-		else: gameplay.enemy_stats[target_atm]["flinched"] = true 
+		else: 
+			print("sd")
+			gameplay.enemy_stats[target_atm]["flinched"] = true 
 	
 	flinch_type = mindset
 	var tween = create_tween()
@@ -77,8 +79,6 @@ func _on_enemy_value_changed(current_value: float) -> void:
 		Signals.ON_FLINCH.emit(Hud.role.ENEMY)
 		is_flinch = true
 		await full()
-		gameplay.enemy_stats[target_atm]["flinched"] = false
-		gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = false
 		
 func _on_player_value_changed(current_value : float) -> void:
 	if health.dead == true: return
@@ -105,7 +105,10 @@ func full(_dummy = null, _dummy2 = null):
 	elif role == Hud.role.ENEMY: gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["already_flinched"] = true
 
 	System.disabled(true)
-	effect.play("flinch_player") # THATS JUST THE NAME, IT'S ACTUALLY THE FLINCH FOR EVEN
+	if effect.is_playing():
+		effect.stop()
+		effect.play("RESET")
+	effect.play("flinch_player") # THATS JUST THE NAME, IT'S ACTUALLY THE FLINCH FOR ALL ROLES
 	Effect.shake(parent, false, 7, 3, 3)
 	flinch_effect(flinch_type) # Trigger the flinch effect.
 	glow.modulate = Color.WHITE
@@ -140,7 +143,7 @@ func empty_player():
 			gameplay.player_stats[key]["current_flinch"] = 0
 			gameplay.player_stats[key]["flinched"] = false
 			gameplay.player_stats[key]["already_flinched"] = false
-	return
+	return 
 	
 func empty_enemy():
 	var tween = create_tween()

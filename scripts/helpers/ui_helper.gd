@@ -7,7 +7,7 @@ const ONEIRIC_BLUE : Color = Color("5f5bf8")
 const NIGHTMARE_RED : Color = Color("c90032")
 const ALETHIC_ORANGE : Color = Color("ff6b28")
 const KINETIC_YELLOW : Color = Color("ddad00")
-const PHRENIC_GREEN : Color = Color("0fc95a")
+const PHRENIC_GREEN : Color = Color("0FCB96")
 
 # Get the roman numeral.
 static func get_volume(num: int):
