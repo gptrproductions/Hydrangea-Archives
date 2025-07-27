@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://nm0o14o4tpd6"]
 
-[ext_resource type="FontFile" uid="uid://djx4p436h3tjf" path="res://assets/atlas/fonts/SpaceMono.fnt" id="1_jpfj7"]
+[ext_resource type="FontFile" uid="uid://crtdw5xpj5ox6" path="res://assets/atlas/fonts/SpaceMono.fnt" id="1_jpfj7"]
 
 [sub_resource type="FontVariation" id="FontVariation_47ml2"]
 base_font = ExtResource("1_jpfj7")

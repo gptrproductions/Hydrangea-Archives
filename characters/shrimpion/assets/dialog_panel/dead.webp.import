@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cak1xj6qmm6hn"
-path="res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.ctex"
+uid="uid://ydev4ml448ia"
+path.s3tc="res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.s3tc.ctex"
+path.etc2="res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/shrimpion/assets/dialog_panel/dead.webp"
-dest_files=["res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.ctex"]
+dest_files=["res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.s3tc.ctex", "res://.godot/imported/dead.webp-c6acfb78708dfac75dfb800877b807ae.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

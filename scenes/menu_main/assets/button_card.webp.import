@@ -2,25 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca5mc4ii8qic"
-path="res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.ctex"
+uid="uid://dn76q6xpya3qx"
+path.s3tc="res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.s3tc.ctex"
+path.etc2="res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/menu_main/assets/button_card.webp"
-dest_files=["res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.ctex"]
+dest_files=["res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.s3tc.ctex", "res://.godot/imported/button_card.webp-52b7cc02747a42ee70d3f261f0d7d909.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8w8w8bxook5h"
+uid="uid://dco8c31fwdaqv"
 path.s3tc="res://.godot/imported/panel_enemy.webp-f609e14f5a724a41d550e1b108dd8fc6.s3tc.ctex"
 path.etc2="res://.godot/imported/panel_enemy.webp-f609e14f5a724a41d550e1b108dd8fc6.etc2.ctex"
 metadata={
@@ -28,7 +28,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

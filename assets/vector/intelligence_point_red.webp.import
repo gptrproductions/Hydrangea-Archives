@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyn02lljuf5ae"
+uid="uid://ddguems8hx5t3"
 path.s3tc="res://.godot/imported/intelligence_point_red.webp-034bc54e9b2c0eedf40f79d22cf03451.s3tc.ctex"
 path.etc2="res://.godot/imported/intelligence_point_red.webp-034bc54e9b2c0eedf40f79d22cf03451.etc2.ctex"
 metadata={
@@ -28,7 +28,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

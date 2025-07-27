@@ -2,25 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btdc62j8ai30x"
-path="res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.ctex"
+uid="uid://dr3w8xk1r5kv1"
+path.s3tc="res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.s3tc.ctex"
+path.etc2="res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/menu_main/assets/shadow.webp"
-dest_files=["res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.ctex"]
+dest_files=["res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.s3tc.ctex", "res://.godot/imported/shadow.webp-4824b1cb0911f1a57014b9208460142e.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

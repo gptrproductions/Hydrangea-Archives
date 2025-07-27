@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dge14ij4cmm2x"]
 
-[ext_resource type="Texture2D" uid="uid://hfqh40atxltk" path="res://backgrounds/the_centerpiece/assets/1.webp" id="1_sunn3"]
-[ext_resource type="Texture2D" uid="uid://v8squfk1sunn" path="res://backgrounds/the_centerpiece/assets/4.webp" id="2_sunn3"]
-[ext_resource type="Texture2D" uid="uid://1rkko78qxwx8" path="res://backgrounds/the_centerpiece/assets/3.webp" id="3_0mlgp"]
+[ext_resource type="Texture2D" uid="uid://dg7qwwdu4458f" path="res://backgrounds/the_centerpiece/assets/1.webp" id="1_sunn3"]
+[ext_resource type="Texture2D" uid="uid://cpaju8h0d1ic8" path="res://backgrounds/the_centerpiece/assets/4.webp" id="2_sunn3"]
+[ext_resource type="Texture2D" uid="uid://dikuwlt4ynvse" path="res://backgrounds/the_centerpiece/assets/3.webp" id="3_0mlgp"]
 
 [node name="the_centerpiece" type="Control"]
 modulate = Color(0.69, 0.69, 0.69, 1)

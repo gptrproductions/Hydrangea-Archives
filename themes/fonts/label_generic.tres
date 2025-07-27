@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dte6udo4lrgby"]
 
-[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="1_54bwr"]
+[ext_resource type="FontFile" uid="uid://dy2excvlwpldk" path="res://assets/atlas/fonts/Billy.fnt" id="1_54bwr"]
 
 [sub_resource type="FontVariation" id="FontVariation_lgjbl"]
 base_font = ExtResource("1_54bwr")

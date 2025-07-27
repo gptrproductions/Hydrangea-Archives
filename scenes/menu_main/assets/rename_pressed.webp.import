@@ -2,25 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4td6ksgjjvfi"
-path="res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.ctex"
+uid="uid://cj0suvcte7up8"
+path.s3tc="res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.s3tc.ctex"
+path.etc2="res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/menu_main/assets/rename_pressed.webp"
-dest_files=["res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.ctex"]
+dest_files=["res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.s3tc.ctex", "res://.godot/imported/rename_pressed.webp-05e3b6cfda5e9fa5ea0f85dda1a89dda.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

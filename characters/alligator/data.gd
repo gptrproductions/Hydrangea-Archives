@@ -6,7 +6,7 @@ static var scene : PackedScene = preload("res://characters/alligator/alligator.t
 var role : Hud.role = Hud.role.ENEMY
 
 var lore : Dictionary = {
-	"skill1" : {"name" : "Harden", "description" : "DON'T even ask what he's hardening.", "button" : load("res://characters/alligator/assets/button_skill1.webp")},
+	"skill1" : {"name" : "Harden", "description" : "Alligator hardens it shell, up to only a maximum of 5 times.", "button" : load("res://characters/alligator/assets/button_skill1.webp")},
 	"skill2" : {"name" : "Saloon Bash", "description" : "Bashes itself against the enemy, dealing damage. Damage increases for every point of resistance above or below 0%.", "button" : load("res://characters/alligator/assets/button_skill2.webp")},
 	"skill3" : {"name" : "The Point of Damascus", "description" : "Masks itself around its allies creating a shield.", "button" : load("res://characters/alligator/assets/button_skill3.webp")},
 	"skill4" : {"name" : "That's an (actual) Alligator!", "description" : "Alligator transforms into an alligator, dealing massive damage. Every point of health lost by the opponent is converted into a shield.", "button" : load("res://characters/alligator/assets/button_ultimate.webp")},
@@ -43,6 +43,7 @@ var stats : Dictionary = {
 	# last flinch type is automatically recorded by change_stat
 	"last_flinch_type" : Hud.mindset.NONE,
 	"flinched" : false,
+	"already_flinched" : false,
 	"dead" : false,
 
 	# Other main attribute stats
@@ -115,8 +116,8 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 				damage = 0
 				flinch = 0
 			Hud.skills.SKILL_2:
-				damage = max((((atk * 1.98) * res) * det) * abs(self_reference["res"]), 1)
-				flinch = max(((self_reference["flinch"]) * 0.322), int(opponent_reference["max_flinch"] * 0.01))
+				damage = max((((atk * 1.13) * res) * det) * (1.0 + abs(self_reference.get("resistance", 0)) / 100.0), 1)
+				flinch = max(((self_reference["flinch"]) * 0.41), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_3:
 				damage = 0
 				flinch = 0
@@ -139,6 +140,7 @@ func skill1():
 	return
 
 func skill2():
+	await self.get_node("animation").skill2()
 	return
 	
 func skill3():

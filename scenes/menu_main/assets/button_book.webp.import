@@ -2,25 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pqltn8torft5"
-path="res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.ctex"
+uid="uid://cqcw3kdymj3f2"
+path.s3tc="res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.s3tc.ctex"
+path.etc2="res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/menu_main/assets/button_book.webp"
-dest_files=["res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.ctex"]
+dest_files=["res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.s3tc.ctex", "res://.godot/imported/button_book.webp-28a722b98c0b9459ba6369e875986944.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

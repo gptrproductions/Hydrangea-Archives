@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csjbd1r5qrewi"
-path="res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.ctex"
+uid="uid://c4xd8nw2rvn7b"
+path.s3tc="res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.s3tc.ctex"
+path.etc2="res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/vector/sidebar.webp"
-dest_files=["res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.ctex"]
+dest_files=["res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.s3tc.ctex", "res://.godot/imported/sidebar.webp-51d67efad905f3ec35344b11b81acd10.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -26,7 +28,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

@@ -1,24 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://fokej00qhkfe"]
 
 [ext_resource type="Script" uid="uid://dfe02scehdhud" path="res://scenes/menu_boot/menu_boot.gd" id="1_bebuv"]
-[ext_resource type="Texture2D" uid="uid://bf16r0gxvnjdd" path="res://scenes/menu_boot/assets/love.webp" id="1_fj2bj"]
-[ext_resource type="Texture2D" uid="uid://crwlb5whwuoxx" path="res://scenes/menu_boot/assets/love_label.webp" id="2_bebuv"]
-
-[sub_resource type="Animation" id="Animation_bebuv"]
-resource_name = "start"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("boot:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
+[ext_resource type="Texture2D" uid="uid://c82j0grk36tuk" path="res://scenes/menu_boot/assets/love.webp" id="1_fj2bj"]
+[ext_resource type="Texture2D" uid="uid://ieijsaxbglvu" path="res://scenes/menu_boot/assets/love_label.webp" id="2_bebuv"]
 
 [sub_resource type="Animation" id="Animation_1cf68"]
 length = 0.001
@@ -73,6 +57,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bebuv"]
+resource_name = "start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ch4g2"]

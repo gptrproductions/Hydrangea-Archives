@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://61qhkuibaauy"]
 
-[ext_resource type="Texture2D" uid="uid://bw3lpktl0o834" path="res://scenes/menu_loading/assets/splash.webp" id="1_loe1k"]
-[ext_resource type="Texture2D" uid="uid://csyg0ghymhvmj" path="res://scenes/menu_loading/assets/logo.webp" id="2_4uqde"]
-[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="3_0d4vw"]
-[ext_resource type="Texture2D" uid="uid://7sw28oofx1ua" path="res://scenes/menu_loading/assets/progress_back.webp" id="4_gyifx"]
-[ext_resource type="Texture2D" uid="uid://er1u74dpw8af" path="res://scenes/menu_loading/assets/progress_front.webp" id="5_sopvd"]
-[ext_resource type="Texture2D" uid="uid://culcihxuh8a4d" path="res://scenes/menu_loading/assets/progress_glow.webp" id="6_4w8rv"]
+[ext_resource type="Texture2D" uid="uid://xcuk61kwuvyr" path="res://scenes/menu_loading/assets/splash.webp" id="1_loe1k"]
+[ext_resource type="Texture2D" uid="uid://bavohe22k6tbi" path="res://scenes/menu_loading/assets/logo.webp" id="2_4uqde"]
+[ext_resource type="FontFile" uid="uid://dy2excvlwpldk" path="res://assets/atlas/fonts/Billy.fnt" id="3_0d4vw"]
+[ext_resource type="Texture2D" uid="uid://ch23jkxf1cbeb" path="res://scenes/menu_loading/assets/progress_back.webp" id="4_gyifx"]
+[ext_resource type="Texture2D" uid="uid://dnktd4xerjvek" path="res://scenes/menu_loading/assets/progress_front.webp" id="5_sopvd"]
+[ext_resource type="Texture2D" uid="uid://bftvyvdid1rs8" path="res://scenes/menu_loading/assets/progress_glow.webp" id="6_4w8rv"]
 
 [sub_resource type="FontVariation" id="FontVariation_2asxc"]
 base_font = ExtResource("3_0d4vw")

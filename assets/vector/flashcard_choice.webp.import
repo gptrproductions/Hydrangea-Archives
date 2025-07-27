@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6xce7ltlqmxn"
-path="res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.ctex"
+uid="uid://bm35mhy7l86g0"
+path.s3tc="res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.s3tc.ctex"
+path.etc2="res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/vector/flashcard_choice.webp"
-dest_files=["res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.ctex"]
+dest_files=["res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.s3tc.ctex", "res://.godot/imported/flashcard_choice.webp-07e6cb6295a6fd3cfc08059f974d8a43.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
-compress/lossy_quality=0.41
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://but15qbe88udj"
-path="res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.ctex"
+uid="uid://b4bvv8ijepswu"
+path.s3tc="res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.s3tc.ctex"
+path.etc2="res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/vector/flashcard_multiple.webp"
-dest_files=["res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.ctex"]
+dest_files=["res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.s3tc.ctex", "res://.godot/imported/flashcard_multiple.webp-cea4033a02102c8312272159994227cb.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5a46coo8dmdy"
-path="res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.ctex"
+uid="uid://dox6ffmw7eh4d"
+path.s3tc="res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.s3tc.ctex"
+path.etc2="res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://particles/attack_tackled/assets/animation.webp"
-dest_files=["res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.ctex"]
+dest_files=["res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.s3tc.ctex", "res://.godot/imported/animation.webp-cc9bcf8ccd5d82bf789559a63a7f849f.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

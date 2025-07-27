@@ -23,7 +23,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="uid://bbh4d0g223hej"
+config/icon="uid://b42qogskcvcm8"
 
 [autoload]
 

@@ -1,83 +1,82 @@
-[gd_scene load_steps=230 format=4 uid="uid://cojqa07ypmw73"]
+[gd_scene load_steps=229 format=4 uid="uid://cojqa07ypmw73"]
 
 [ext_resource type="Script" uid="uid://dpjqlxb7fjn7o" path="res://scenes/level_main/hud.gd" id="1_7pw0p"]
 [ext_resource type="PackedScene" uid="uid://dge14ij4cmm2x" path="res://backgrounds/the_centerpiece/the_centerpiece.tscn" id="2_rt0kr"]
 [ext_resource type="Script" uid="uid://1ik10srsydp6" path="res://scenes/level_main/gameplay.gd" id="3_j5ix0"]
 [ext_resource type="PackedScene" uid="uid://digplw4jdofex" path="res://scenes/level_question/question.tscn" id="4_1sy1q"]
-[ext_resource type="Texture2D" uid="uid://c1mmmtul6l6oa" path="res://icon.svg" id="4_wlqnt"]
 [ext_resource type="Script" uid="uid://50cinnkq6bow" path="res://scenes/level_damage/damage_numbers.gd" id="5_1y41g"]
-[ext_resource type="Texture2D" uid="uid://cbsmplmpja0he" path="res://assets/icons/stats/flinch_neutral.webp" id="5_2ld57"]
+[ext_resource type="Texture2D" uid="uid://isirpihxh4im" path="res://assets/icons/stats/flinch_neutral.webp" id="5_2ld57"]
 [ext_resource type="Script" uid="uid://dcw5kyyuo2238" path="res://scenes/level_main/level_camera.gd" id="6_2ld57"]
 [ext_resource type="Script" uid="uid://d3yyqdv4hel7f" path="res://scenes/level_main/intelligence.gd" id="7_w4dai"]
 [ext_resource type="Script" uid="uid://cauc2arnu4acx" path="res://scenes/level_main/ultimate.gd" id="8_s53ub"]
-[ext_resource type="Texture2D" uid="uid://blatbfc8e37if" path="res://assets/vector/intelligence_point_fill.webp" id="8_uyi6t"]
-[ext_resource type="Texture2D" uid="uid://cyn02lljuf5ae" path="res://assets/vector/intelligence_point_red.webp" id="11_rt0kr"]
+[ext_resource type="Texture2D" uid="uid://btwcqh6hlx1b" path="res://assets/vector/intelligence_point_fill.webp" id="8_uyi6t"]
+[ext_resource type="Texture2D" uid="uid://ddguems8hx5t3" path="res://assets/vector/intelligence_point_red.webp" id="11_rt0kr"]
 [ext_resource type="Script" uid="uid://bx1kkpwty0oqg" path="res://scenes/level_main/chances.gd" id="12_5xmtx"]
 [ext_resource type="Shader" uid="uid://4wkgy0to1xxs" path="res://scripts/shaders/particle_glow.gdshader" id="13_c5xlv"]
 [ext_resource type="Theme" uid="uid://nm0o14o4tpd6" path="res://themes/fonts/label_monospaced.tres" id="13_kveae"]
-[ext_resource type="Texture2D" uid="uid://c117agij0scr" path="res://assets/vector/icon_infinite.webp" id="14_5jqip"]
-[ext_resource type="Texture2D" uid="uid://q5ypt3y5n0qw" path="res://assets/vector/icon_dice.webp" id="15_l12la"]
+[ext_resource type="Texture2D" uid="uid://bivlg4jmdye7s" path="res://assets/vector/icon_infinite.webp" id="14_5jqip"]
+[ext_resource type="Texture2D" uid="uid://bymj204te7wtc" path="res://assets/vector/icon_dice.webp" id="15_l12la"]
 [ext_resource type="Script" uid="uid://bnq8sggowewrw" path="res://scenes/level_main/timer.gd" id="17_4uee3"]
-[ext_resource type="Texture2D" uid="uid://bjqrjc3aq8bml" path="res://assets/vector/intelligence_point.webp" id="19_ngjsi"]
+[ext_resource type="Texture2D" uid="uid://b4yrt5jsi1wno" path="res://assets/vector/intelligence_point.webp" id="19_ngjsi"]
 [ext_resource type="Script" uid="uid://dbi7o3ylmfjq1" path="res://scenes/level_main/moves.gd" id="21_jjjhu"]
 [ext_resource type="Script" uid="uid://ben4nijxfpebw" path="res://scenes/level_main/animations.gd" id="23_jftwg"]
-[ext_resource type="Texture2D" uid="uid://cr651bxmwfy8v" path="res://assets/masks/ultimate_mask.webp" id="25_1y41g"]
-[ext_resource type="Texture2D" uid="uid://frkwprmh2amj" path="res://assets/vector/glow.webp" id="26_uuxt8"]
-[ext_resource type="Texture2D" uid="uid://08u5ox8gxd5a" path="res://assets/ui/twinkle.webp" id="30_x828i"]
-[ext_resource type="Texture2D" uid="uid://cwc5tseqr7uyc" path="res://assets/vector/icon_clock.webp" id="31_jjjhu"]
+[ext_resource type="Texture2D" uid="uid://bu2wo65haeonx" path="res://assets/masks/ultimate_mask.webp" id="25_1y41g"]
+[ext_resource type="Texture2D" uid="uid://dtoxsnf6ejhc8" path="res://assets/vector/glow.webp" id="26_uuxt8"]
+[ext_resource type="Texture2D" uid="uid://dxb5d3ekr6ycm" path="res://assets/ui/twinkle.webp" id="30_x828i"]
+[ext_resource type="Texture2D" uid="uid://bmcxeaehmexv8" path="res://assets/vector/icon_clock.webp" id="31_jjjhu"]
 [ext_resource type="Theme" uid="uid://dte6udo4lrgby" path="res://themes/fonts/label_generic.tres" id="33_1y41g"]
 [ext_resource type="Script" uid="uid://1n3ptmge2yjp" path="res://scenes/level_main/flinch.gd" id="34_kveae"]
 [ext_resource type="Script" uid="uid://0s8tuvowu4fm" path="res://scenes/level_main/switch.gd" id="38_u4x6e"]
-[ext_resource type="Texture2D" uid="uid://bhbmirjcifqav" path="res://assets/vector/nonatlas/switch_button.webp" id="38_uuxt8"]
-[ext_resource type="Texture2D" uid="uid://cdeyq5l0vdjg8" path="res://assets/vector/nonatlas/switch_button_pressed.webp" id="39_u4x6e"]
-[ext_resource type="Texture2D" uid="uid://b0u1ypdtcnud7" path="res://assets/vector/nonatlas/switch_button_hover.webp" id="40_5map4"]
-[ext_resource type="Texture2D" uid="uid://bbnkox8mj6dcx" path="res://assets/vector/ultimate_glass_back.webp" id="40_5qdna"]
-[ext_resource type="Texture2D" uid="uid://csjbd1r5qrewi" path="res://assets/vector/sidebar.webp" id="40_65bhu"]
-[ext_resource type="Texture2D" uid="uid://d2sxrvwkg4lrk" path="res://assets/vector/nonatlas/menu_button.webp" id="40_si7jt"]
-[ext_resource type="Texture2D" uid="uid://bjcepigaf3g2j" path="res://assets/vector/nonatlas/switch_button_disabled.webp" id="41_gjci4"]
-[ext_resource type="Texture2D" uid="uid://d1ckjdblihc0w" path="res://assets/vector/nonatlas/menu_button_pressed.webp" id="41_wlqnt"]
-[ext_resource type="Texture2D" uid="uid://dy0sopyjbttq1" path="res://assets/vector/nonatlas/menu_button_hover.webp" id="42_ewnsm"]
-[ext_resource type="Texture2D" uid="uid://bvu5nh3d2r536" path="res://assets/vector/nonatlas/stats_button.webp" id="43_5xmtx"]
-[ext_resource type="Texture2D" uid="uid://dldnbueso81ht" path="res://assets/vector/nonatlas/menu_button_disabled.webp" id="43_pon7p"]
-[ext_resource type="Texture2D" uid="uid://bphkncr8bkduj" path="res://assets/vector/nonatlas/stats_button_pressed.webp" id="44_1k40i"]
-[ext_resource type="Texture2D" uid="uid://b73ciaffnioe0" path="res://assets/vector/menu_engraving.png" id="44_pon7p"]
+[ext_resource type="Texture2D" uid="uid://bbhnc5xiwe307" path="res://assets/vector/nonatlas/switch_button.webp" id="38_uuxt8"]
+[ext_resource type="Texture2D" uid="uid://bnow82of7lrj3" path="res://assets/vector/nonatlas/switch_button_pressed.webp" id="39_u4x6e"]
+[ext_resource type="Texture2D" uid="uid://pgjwxblet3uq" path="res://assets/vector/nonatlas/switch_button_hover.webp" id="40_5map4"]
+[ext_resource type="Texture2D" uid="uid://cme8n317iajqo" path="res://assets/vector/ultimate_glass_back.webp" id="40_5qdna"]
+[ext_resource type="Texture2D" uid="uid://c4xd8nw2rvn7b" path="res://assets/vector/sidebar.webp" id="40_65bhu"]
+[ext_resource type="Texture2D" uid="uid://cjifud5yh452y" path="res://assets/vector/nonatlas/switch_button_disabled.webp" id="41_gjci4"]
+[ext_resource type="Texture2D" uid="uid://bqiaj636lll2o" path="res://assets/vector/nonatlas/stats_button.webp" id="43_5xmtx"]
+[ext_resource type="Texture2D" uid="uid://c7vye7s06omqf" path="res://assets/vector/nonatlas/stats_button_pressed.webp" id="44_1k40i"]
+[ext_resource type="Texture2D" uid="uid://csrn6skcwxhaw" path="res://assets/vector/menu_engraving.png" id="44_pon7p"]
 [ext_resource type="Shader" uid="uid://b1v74stslu6qh" path="res://scripts/shaders/button_bounce.gdshader" id="44_wlqnt"]
-[ext_resource type="Texture2D" uid="uid://dhbnjl8q4ymyn" path="res://assets/icons/stats/flinch_enemy.webp" id="45_2ld57"]
-[ext_resource type="Texture2D" uid="uid://cpnbdvyjpqlu1" path="res://assets/vector/nonatlas/stats_button_hover.webp" id="45_5xmtx"]
+[ext_resource type="Texture2D" uid="uid://ds75xdjsn2k5g" path="res://assets/icons/stats/flinch_enemy.webp" id="45_2ld57"]
+[ext_resource type="Texture2D" uid="uid://c281o5rc18fde" path="res://assets/vector/nonatlas/stats_button_hover.webp" id="45_5xmtx"]
 [ext_resource type="Script" uid="uid://chfg636fben5l" path="res://scripts/ui/squishy_button.gd" id="45_ewnsm"]
 [ext_resource type="Script" uid="uid://7ypyctxsilui" path="res://scenes/level_main/avatar.gd" id="45_pon7p"]
-[ext_resource type="Texture2D" uid="uid://b6qupv188rvua" path="res://assets/vector/nonatlas/stats_button_disabled.webp" id="46_cjs6t"]
-[ext_resource type="Texture2D" uid="uid://cbuh6cthd4ptb" path="res://assets/icons/stats/dead_enemy.webp" id="46_x828i"]
-[ext_resource type="Texture2D" uid="uid://b3wp32vn7ks8g" path="res://assets/vector/nonatlas/sudo_button.webp" id="47_1y41g"]
+[ext_resource type="Texture2D" uid="uid://h2cs1g32gve1" path="res://assets/vector/nonatlas/stats_button_disabled.webp" id="46_cjs6t"]
+[ext_resource type="Texture2D" uid="uid://cienf20bhh3xc" path="res://assets/icons/stats/dead_enemy.webp" id="46_x828i"]
+[ext_resource type="Texture2D" uid="uid://0icnigi7saq5" path="res://assets/vector/nonatlas/sudo_button.webp" id="47_1y41g"]
 [ext_resource type="Script" uid="uid://cub57yma2sk6e" path="res://scenes/level_main/character_bar.gd" id="47_x7umk"]
-[ext_resource type="Texture2D" uid="uid://bsbpajmbkskb4" path="res://assets/vector/nonatlas/sudo_button_hover.webp" id="48_kveae"]
-[ext_resource type="Texture2D" uid="uid://cudls7x4qti6v" path="res://assets/vector/ribbon_kinetic.webp" id="48_shrs3"]
-[ext_resource type="Texture2D" uid="uid://bsvqq6xb7eh46" path="res://assets/vector/nonatlas/sudo_button_pressed.webp" id="49_47ml2"]
-[ext_resource type="Texture2D" uid="uid://c6rpabewmy5c7" path="res://assets/vector/nonatlas/sudo_disabled.webp" id="50_hqoej"]
-[ext_resource type="Texture2D" uid="uid://bnft1smy3u4pb" path="res://assets/vector/nonatlas/flinch_mask.webp" id="51_hjth1"]
+[ext_resource type="Texture2D" uid="uid://bg7iaw7pyfkm2" path="res://assets/vector/nonatlas/sudo_button_hover.webp" id="48_kveae"]
+[ext_resource type="Texture2D" uid="uid://j5kyrc1bwal2" path="res://assets/vector/ribbon_kinetic.webp" id="48_shrs3"]
+[ext_resource type="Texture2D" uid="uid://cbuaskdb007jh" path="res://assets/vector/nonatlas/sudo_button_pressed.webp" id="49_47ml2"]
+[ext_resource type="Texture2D" uid="uid://droir1iqf4uus" path="res://assets/vector/nonatlas/sudo_disabled.webp" id="50_hqoej"]
+[ext_resource type="Texture2D" uid="uid://beiqxby5726uw" path="res://assets/vector/nonatlas/flinch_mask.webp" id="51_hjth1"]
+[ext_resource type="Texture2D" uid="uid://c07bwx4l6id5f" path="res://assets/vector/nonatlas/moves_button.webp" id="51_xner8"]
+[ext_resource type="Texture2D" uid="uid://cfmp2c60kh057" path="res://assets/vector/nonatlas/moves_button_pressed.webp" id="52_eipgq"]
 [ext_resource type="Script" uid="uid://cuq2t8ps03iun" path="res://scenes/level_main/effects.gd" id="52_vjv51"]
-[ext_resource type="Texture2D" uid="uid://vhxu5ipt4nrc" path="res://assets/vector/panel_dead.webp" id="53_cjs6t"]
+[ext_resource type="Texture2D" uid="uid://b5ngu1sr0uxs1" path="res://assets/vector/panel_dead.webp" id="53_cjs6t"]
+[ext_resource type="Texture2D" uid="uid://dqmk2p1d0u74i" path="res://assets/vector/nonatlas/moves_button_hover.webp" id="53_st4n1"]
 [ext_resource type="Theme" uid="uid://dr0mmq242h3ay" path="res://themes/fonts/label_damage.tres" id="54_e24ns"]
 [ext_resource type="PackedScene" uid="uid://yg2jf3iccbml" path="res://scenes/settings_main/settings_main.tscn" id="54_fglnd"]
-[ext_resource type="Texture2D" uid="uid://duq0y35mupjjy" path="res://assets/vector/stat_list.webp" id="55_1y41g"]
+[ext_resource type="Texture2D" uid="uid://b18djbmu8p6se" path="res://assets/vector/nonatlas/moves_button_disabled.webp" id="54_oolel"]
+[ext_resource type="Texture2D" uid="uid://c7i02ml1ruftj" path="res://assets/vector/stat_list.webp" id="55_1y41g"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="55_shrs3"]
-[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="56_kveae"]
-[ext_resource type="Texture2D" uid="uid://begixgu5o8a1o" path="res://assets/vector/profile_dead.webp" id="56_l12la"]
+[ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="56_kveae"]
+[ext_resource type="Texture2D" uid="uid://kbxatbnc54j5" path="res://assets/vector/profile_dead.webp" id="56_l12la"]
 [ext_resource type="Script" uid="uid://dltj3hcu7dana" path="res://scenes/level_main/health.gd" id="58_uuxt8"]
-[ext_resource type="FontFile" uid="uid://djx4p436h3tjf" path="res://assets/atlas/fonts/SpaceMono.fnt" id="59_ewnsm"]
-[ext_resource type="Texture2D" uid="uid://wjpwarrm1fd6" path="res://characters/shrimpion/assets/avatar.webp" id="60_eipgq"]
+[ext_resource type="FontFile" uid="uid://crtdw5xpj5ox6" path="res://assets/atlas/fonts/SpaceMono.fnt" id="59_ewnsm"]
+[ext_resource type="Texture2D" uid="uid://dur36dcet503p" path="res://characters/shrimpion/assets/avatar.webp" id="60_eipgq"]
 [ext_resource type="Script" uid="uid://bdrn2lhar3lmw" path="res://scenes/level_main/selector.gd" id="62_2ld57"]
-[ext_resource type="Texture2D" uid="uid://c552ltglhhhwf" path="res://assets/icons/stats/flinch_player.webp" id="62_vjv51"]
+[ext_resource type="Texture2D" uid="uid://dn4twc3seku1u" path="res://assets/icons/stats/flinch_player.webp" id="62_vjv51"]
 [ext_resource type="Script" uid="uid://cf51crs283rwq" path="res://scenes/level_main/stats_canvas.gd" id="63_ewnsm"]
-[ext_resource type="Texture2D" uid="uid://ddwc0un2wejwd" path="res://assets/icons/stats/dead_player.webp" id="63_fglnd"]
-[ext_resource type="Texture2D" uid="uid://j1tuu6l16ib4" path="res://assets/icons/stats/kinetic.webp" id="64_ewnsm"]
-[ext_resource type="Texture2D" uid="uid://bydltxgfhyo27" path="res://characters/shrimpion/assets/button_ultimate.webp" id="72_2ld57"]
-[ext_resource type="Texture2D" uid="uid://c0otegfeqsbh" path="res://assets/vector/button_empty.webp" id="72_pon7p"]
+[ext_resource type="Texture2D" uid="uid://tcku51j06ng1" path="res://assets/icons/stats/dead_player.webp" id="63_fglnd"]
+[ext_resource type="Texture2D" uid="uid://1w1ax5hxumxl" path="res://assets/icons/stats/kinetic.webp" id="64_ewnsm"]
+[ext_resource type="Texture2D" uid="uid://cunkwckgfcp0c" path="res://characters/shrimpion/assets/button_ultimate.webp" id="72_2ld57"]
+[ext_resource type="Texture2D" uid="uid://iywkd2roassp" path="res://assets/vector/button_empty.webp" id="72_pon7p"]
 [ext_resource type="Script" uid="uid://cvcuwr1hacchf" path="res://scenes/level_ultimate/ultimate_manager.gd" id="73_vjv51"]
 [ext_resource type="Script" uid="uid://b1y6j8r5l7jp4" path="res://scenes/level_dialogue/level_dialogue.gd" id="73_x7umk"]
-[ext_resource type="Texture2D" uid="uid://ckn20bmwlrt6y" path="res://assets/vector/dialogue_box.webp" id="74_shrs3"]
-[ext_resource type="Texture2D" uid="uid://dqyxo70b1fopx" path="res://characters/none/assets/dialog_panel/normal.webp" id="75_shrs3"]
-[ext_resource type="Texture2D" uid="uid://c1l1v4v0ginfw" path="res://assets/ui/selector_right.webp" id="76_shrs3"]
+[ext_resource type="Texture2D" uid="uid://bwul8titp6mwr" path="res://assets/vector/dialogue_box.webp" id="74_shrs3"]
+[ext_resource type="Texture2D" uid="uid://bwgnqkp888e80" path="res://characters/none/assets/dialog_panel/normal.webp" id="75_shrs3"]
+[ext_resource type="Texture2D" uid="uid://b1eonhapese7i" path="res://assets/ui/selector_right.webp" id="76_shrs3"]
 [ext_resource type="Script" uid="uid://cevibmlx8nwnt" path="res://scenes/level_main/move_button.gd" id="78_x7umk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x828i"]
@@ -3185,14 +3184,14 @@ color = Color(0.497474, 0.497474, 0.497474, 1)
 color_ramp = SubResource("GradientTexture1D_e3sks")
 alpha_curve = SubResource("CurveTexture_3a6yc")
 
-[sub_resource type="FontVariation" id="FontVariation_vjv51"]
+[sub_resource type="FontVariation" id="FontVariation_xner8"]
 base_font = ExtResource("56_kveae")
 spacing_glyph = -1
 spacing_space = 3
 spacing_top = -10
 
 [sub_resource type="Theme" id="Theme_shrs3"]
-default_font = SubResource("FontVariation_vjv51")
+default_font = SubResource("FontVariation_xner8")
 default_font_size = 57
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -3622,7 +3621,7 @@ shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
 shader_parameter/particle_scale_randomness = 0.505
 shader_parameter/particle_amount = 20
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ld57"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l12la"]
 shader = ExtResource("44_wlqnt")
 shader_parameter/up_left = Vector2(0, 0)
 shader_parameter/up_right = Vector2(1, 0)
@@ -3630,7 +3629,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.02
+shader_parameter/hover_strength = 0.025
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x828i"]
 shader = ExtResource("44_wlqnt")
@@ -3642,7 +3641,7 @@ shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
 shader_parameter/hover_strength = 0.025
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l12la"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ld57"]
 shader = ExtResource("44_wlqnt")
 shader_parameter/up_left = Vector2(0, 0)
 shader_parameter/up_right = Vector2(1, 0)
@@ -3650,7 +3649,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
+shader_parameter/hover_strength = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pon7p"]
 shader = ExtResource("44_wlqnt")
@@ -4522,7 +4521,7 @@ grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 pivot_offset = Vector2(640, 360)
 size_flags_horizontal = 4
-theme_override_colors/font_shadow_color = Color(0.394065, 0, 0.0707314, 1)
+theme_override_colors/font_shadow_color = Color(0.338623, 0.154588, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -210
 theme_override_constants/shadow_offset_y = 15
@@ -5650,7 +5649,6 @@ offset_right = 212.429
 offset_bottom = 160.731
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_wlqnt")
 
 [node name="icon" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile/dead"]
 material = SubResource("CanvasItemMaterial_6ks02")
@@ -6088,7 +6086,7 @@ libraries = {
 }
 speed_scale = 1.3
 
-[node name="moves" type="TextureRect" parent="gameplay/player_canvas"]
+[node name="stats" type="TextureRect" parent="gameplay/player_canvas"]
 z_index = 5
 layout_mode = 1
 anchors_preset = 4
@@ -6097,31 +6095,32 @@ anchor_bottom = 0.5
 offset_left = 112.0
 offset_top = -252.0
 offset_right = 592.0
-offset_bottom = 234.0
+offset_bottom = 235.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 0
 texture = ExtResource("44_pon7p")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/moves" node_paths=PackedStringArray("selector")]
-material = SubResource("ShaderMaterial_2ld57")
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/stats" node_paths=PackedStringArray("selector")]
+material = SubResource("ShaderMaterial_l12la")
 layout_mode = 0
-offset_left = 113.333
-offset_top = 106.667
-offset_right = 383.333
-offset_bottom = 380.667
+offset_left = 107.0
+offset_top = 103.0
+offset_right = 384.0
+offset_bottom = 387.0
 scale = Vector2(1.66, 1.66)
-pivot_offset = Vector2(132.53, 140.562)
+pivot_offset = Vector2(132.53, 136.546)
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../../../move_canvas/skill1")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../switch/button")
 mouse_default_cursor_shape = 2
 toggle_mode = true
-texture_normal = ExtResource("40_si7jt")
-texture_pressed = ExtResource("41_wlqnt")
-texture_hover = ExtResource("42_ewnsm")
-texture_disabled = ExtResource("43_pon7p")
+texture_normal = ExtResource("43_5xmtx")
+texture_pressed = ExtResource("44_1k40i")
+texture_hover = ExtResource("45_5xmtx")
+texture_disabled = ExtResource("46_cjs6t")
+ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
 selector = NodePath("../../../selector")
@@ -6154,9 +6153,9 @@ offset_bottom = 380.667
 scale = Vector2(1.66, 1.66)
 pivot_offset = Vector2(132.53, 136.546)
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../moves/button")
+focus_neighbor_top = NodePath("../../stats/button")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../stats/button")
+focus_neighbor_bottom = NodePath("../../moves/button")
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("38_uuxt8")
 texture_pressed = ExtResource("39_u4x6e")
@@ -6166,7 +6165,7 @@ stretch_mode = 0
 script = ExtResource("45_ewnsm")
 selector = NodePath("../../../selector")
 
-[node name="stats" type="TextureRect" parent="gameplay/player_canvas"]
+[node name="moves" type="TextureRect" parent="gameplay/player_canvas"]
 z_index = 5
 layout_mode = 1
 anchors_preset = 4
@@ -6175,32 +6174,31 @@ anchor_bottom = 0.5
 offset_left = 112.0
 offset_top = 105.0
 offset_right = 592.0
-offset_bottom = 592.0
+offset_bottom = 591.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 0
 texture = ExtResource("44_pon7p")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/stats" node_paths=PackedStringArray("selector")]
-material = SubResource("ShaderMaterial_l12la")
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/moves" node_paths=PackedStringArray("selector")]
+material = SubResource("ShaderMaterial_2ld57")
 layout_mode = 0
-offset_left = 107.0
-offset_top = 103.0
-offset_right = 388.0
-offset_bottom = 387.0
+offset_left = 113.333
+offset_top = 106.667
+offset_right = 383.333
+offset_bottom = 380.667
 scale = Vector2(1.66, 1.66)
-pivot_offset = Vector2(132.53, 136.546)
+pivot_offset = Vector2(132.53, 140.562)
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../switch/button")
-focus_neighbor_right = NodePath(".")
+focus_neighbor_right = NodePath("../../../move_canvas/skill1")
 focus_neighbor_bottom = NodePath("../../sudo/button")
 mouse_default_cursor_shape = 2
 toggle_mode = true
-texture_normal = ExtResource("43_5xmtx")
-texture_pressed = ExtResource("44_1k40i")
-texture_hover = ExtResource("45_5xmtx")
-texture_disabled = ExtResource("46_cjs6t")
-ignore_texture_size = true
+texture_normal = ExtResource("51_xner8")
+texture_pressed = ExtResource("52_eipgq")
+texture_hover = ExtResource("53_st4n1")
+texture_disabled = ExtResource("54_oolel")
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
 selector = NodePath("../../../selector")
@@ -6230,7 +6228,7 @@ offset_bottom = 388.0
 scale = Vector2(1.66, 1.66)
 pivot_offset = Vector2(132.53, 140.562)
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../stats/button")
+focus_neighbor_top = NodePath("../../moves/button")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 mouse_default_cursor_shape = 2
@@ -6427,7 +6425,6 @@ offset_right = 212.429
 offset_bottom = 160.731
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_wlqnt")
 
 [node name="icon" type="TextureRect" parent="gameplay/player_bar/character_panel/profile/dead"]
 material = SubResource("CanvasItemMaterial_6ks02")
@@ -6897,7 +6894,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="move_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("move_panel", "hud", "skill1", "skill2", "skill3", "skill4", "selected_effect", "move_name", "move_description", "moves_button")]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -7075,13 +7071,13 @@ layout_mode = 0
 offset_left = -302.0
 offset_top = 180.0
 offset_right = 338.0
-offset_bottom = 358.0
+offset_bottom = 464.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(306, 103)
 
 [node name="board" type="VBoxContainer" parent="gameplay/dialogue_canvas/dialog_frame"]
 custom_minimum_size = Vector2(640, 0)
-layout_direction = 3
+layout_direction = 2
 layout_mode = 2
 alignment = 1
 
@@ -7185,7 +7181,7 @@ pivot_offset = Vector2(17, 18)
 texture = ExtResource("76_shrs3")
 expand_mode = 1
 script = ExtResource("62_2ld57")
-targets = [NodePath("../player_canvas/moves/button"), NodePath("../player_canvas/switch/button"), NodePath("../player_canvas/stats/button"), NodePath("../player_canvas/sudo/button"), NodePath("../move_canvas/skill1"), NodePath("../move_canvas/skill2"), NodePath("../move_canvas/skill3"), NodePath("../move_canvas/skill4")]
+targets = [NodePath("../player_canvas/stats/button"), NodePath("../player_canvas/switch/button"), NodePath("../player_canvas/moves/button"), NodePath("../player_canvas/sudo/button"), NodePath("../move_canvas/skill1"), NodePath("../move_canvas/skill2"), NodePath("../move_canvas/skill3"), NodePath("../move_canvas/skill4")]
 pause_menu = NodePath("../../menu")
 
 [node name="ultimate_canvas" type="TextureRect" parent="."]
@@ -7208,6 +7204,6 @@ is_level = true
 [connection signal="value_changed" from="gameplay/enemy_canvas/ultimate" to="gameplay/enemy_canvas/ultimate" method="_on_value_changed" binds= [1]]
 [connection signal="pressed" from="gameplay/enemy_canvas/ultimate/button" to="gameplay/move_canvas" method="_toggled" binds= [false, 1]]
 [connection signal="value_changed" from="gameplay/player_canvas/ultimate" to="gameplay/player_canvas/ultimate" method="_on_value_changed" binds= [0]]
-[connection signal="pressed" from="gameplay/player_canvas/moves/button" to="gameplay/move_canvas" method="_toggled" binds= [false]]
-[connection signal="pressed" from="gameplay/player_canvas/switch/button" to="gameplay/player_canvas/switch" method="_on_pressed_player"]
 [connection signal="toggled" from="gameplay/player_canvas/stats/button" to="gameplay/stats_canvas" method="start"]
+[connection signal="pressed" from="gameplay/player_canvas/switch/button" to="gameplay/player_canvas/switch" method="_on_pressed_player"]
+[connection signal="pressed" from="gameplay/player_canvas/moves/button" to="gameplay/move_canvas" method="_toggled" binds= [false]]

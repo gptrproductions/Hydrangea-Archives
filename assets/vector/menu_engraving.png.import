@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b73ciaffnioe0"
+uid="uid://csrn6skcwxhaw"
 path="res://.godot/imported/menu_engraving.png-3821085e4ea5f00530d0821dc0da8b39.ctex"
 metadata={
 "vram_texture": false
@@ -15,12 +15,12 @@ dest_files=["res://.godot/imported/menu_engraving.png-3821085e4ea5f00530d0821dc0
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

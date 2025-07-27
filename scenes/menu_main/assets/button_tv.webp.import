@@ -2,25 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwdklq3bn4pln"
-path="res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.ctex"
+uid="uid://bx4nyf56gnx0n"
+path.s3tc="res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.s3tc.ctex"
+path.etc2="res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/menu_main/assets/button_tv.webp"
-dest_files=["res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.ctex"]
+dest_files=["res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.s3tc.ctex", "res://.godot/imported/button_tv.webp-a48e112832b8cc224275546e02bd057f.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

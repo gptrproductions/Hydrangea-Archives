@@ -17,6 +17,8 @@ static var is_visibling = false
 @export var correct_face : Texture2D
 @export var wrong_face : Texture2D
 
+signal top_node_changed
+
 func start():
 	await get_tree().create_timer(0.1).timeout
 	gameplay = self.get_parent().get_parent().gameplay
@@ -102,10 +104,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and is_scrolling == false and signal_pressed == false and is_held_down == false:
 			visibler(true, MOUSE_BUTTON_WHEEL_UP)
 			self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_node("stack"), 0)
-			if !self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 2).name == "stack":
-				self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_child(0)
-			else:
-				self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 2).get_child(0)
+			top_node_changed.emit()
 			
 			self.disabled = true
 			is_scrolling = true

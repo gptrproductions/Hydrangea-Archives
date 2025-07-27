@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh53t47y1vi6i"
-path.s3tc="res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.s3tc.ctex"
-path.etc2="res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.etc2.ctex"
+uid="uid://d3t3vwfyb5c2s"
+path="res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://characters/shrimpion/assets/bg.png"
-dest_files=["res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.s3tc.ctex", "res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.etc2.ctex"]
+dest_files=["res://.godot/imported/bg.png-b4b3cd0024d6ca514945ad04c7cc14c4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cye36yal0v2uk"]
+[gd_scene load_steps=23 format=3 uid="uid://cye36yal0v2uk"]
 
 [ext_resource type="Script" uid="uid://bwrnxgwhwotpd" path="res://characters/alligator/data.gd" id="1_82rt1"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="2_ddiq6"]
 [ext_resource type="Shader" uid="uid://dnpqcc0s8o4lv" path="res://scripts/shaders/glint.gdshader" id="3_82rt1"]
-[ext_resource type="Texture2D" uid="uid://bfcuuvfjt1rt3" path="res://characters/alligator/assets/normal.webp" id="4_x08j6"]
-[ext_resource type="Texture2D" uid="uid://bppw5uuv5rmlr" path="res://characters/alligator/assets/damaged.webp" id="5_uaq2u"]
+[ext_resource type="Texture2D" uid="uid://drc3mudnscg1i" path="res://characters/alligator/assets/normal.webp" id="4_x08j6"]
+[ext_resource type="Texture2D" uid="uid://v0ow7i0u22ck" path="res://characters/alligator/assets/damaged.webp" id="5_uaq2u"]
+[ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="5_x08j6"]
 [ext_resource type="Script" uid="uid://cqvliki1ooe8a" path="res://characters/alligator/animation.gd" id="6_82rt1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4l5oo"]
@@ -40,6 +41,19 @@ colors = PackedColorArray(1, 1, 1, 0.396, 1, 1, 1, 0)
 gradient = SubResource("Gradient_o3gut")
 fill = 1
 fill_from = Vector2(0.517094, 0.491453)
+
+[sub_resource type="FontVariation" id="FontVariation_vjv51"]
+base_font = ExtResource("5_x08j6")
+spacing_glyph = -1
+spacing_space = 3
+spacing_top = -10
+
+[sub_resource type="Theme" id="Theme_uaq2u"]
+default_font = SubResource("FontVariation_vjv51")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_qk8yp"]
 length = 0.001
@@ -77,12 +91,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.25, 0.25)]
+"values": [Vector2(0.25, 0.25)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("parts/image:scale")
+tracks/3/path = NodePath("parts/Character:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -106,7 +120,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("parts/image:texture")
+tracks/5/path = NodePath("parts/Character:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -118,7 +132,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("parts/image:material:shader_parameter/Position")
+tracks/6/path = NodePath("parts/Character:material:shader_parameter/Position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -139,6 +153,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("label:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87, -199)]
+}
 
 [sub_resource type="Animation" id="Animation_q4mp4"]
 resource_name = "idle_transition"
@@ -147,11 +185,64 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parts/image:texture")
+tracks/0/path = NodePath("parts/Character:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_uaq2u"), ExtResource("4_x08j6")]
+}
+
+[sub_resource type="Animation" id="Animation_x08j6"]
+resource_name = "flinch"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5, 4),
+"transitions": PackedFloat32Array(-2, 1, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 96), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parts/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.93333, 3, 4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [3.14159, 3.18474, 3.10669, 3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parts/Character:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5, 2.01699, 2.51699, 2.99665, 3.49665, 4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(2, -2), Vector2(-2, -2), Vector2(2, -2), Vector2(-2, -2), Vector2(2, -2), Vector2(-2, -2), Vector2(2, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parts/Character:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("5_uaq2u"), ExtResource("4_x08j6")]
@@ -189,7 +280,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("parts/image:position")
+tracks/2/path = NodePath("parts/Character:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -205,7 +296,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parts/image:scale")
+tracks/0/path = NodePath("parts/Character:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -241,7 +332,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("parts/image:material:shader_parameter/Position")
+tracks/3/path = NodePath("parts/Character:material:shader_parameter/Position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -263,77 +354,203 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0), Color(4.02353, 0.588235, 0, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_5p2y5"]
-resource_name = "skill_2"
-length = 4.5
-step = 0.0
+[sub_resource type="Animation" id="Animation_82rt1"]
+resource_name = "skill_3"
+length = 2.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("parts:position")
+tracks/0/path = NodePath("parts/Character:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1.45, 1.7, 2.3, 2.6, 3.4805, 4.3305, 4.4751),
-"transitions": PackedFloat32Array(2, 2, 2, 2, 0.5, -2, 1, 1),
+"times": PackedFloat32Array(0.25, 0.5, 0.85, 1, 1.7, 1.95, 2.2, 2.35, 2.45),
+"transitions": PackedFloat32Array(-2, 1, 1, 0.5, 0.5, 2, 1, 0.5, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -2000), Vector2(0, -2000), Vector2(0, 0), Vector2(0, -750), Vector2(0, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(1072, 0), Vector2(1072, 0), Vector2(0, 0), Vector2(-108, -328), Vector2(0, -2000), Vector2(0, 200), Vector2(0, -50), Vector2(1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("parts:rotation")
+tracks/1/path = NodePath("parts/Character:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.7, 2.6, 3.48114, 4.3305, 4.4805),
-"transitions": PackedFloat32Array(1, 0, 0, 1, -2, 1, 1),
+"times": PackedFloat32Array(0.2, 0.5, 0.85, 1.7, 2, 2.45, 2.5),
+"transitions": PackedFloat32Array(0, 1, 2, 1, 1, 0, 0),
 "update": 0,
-"values": [0.0, 0.0, 9.42478, 9.42478, 6.98132, 0.0, 0.0]
+"values": [3.14159, 3.14159, 3.14159, 2.90706, -3.14159, -3.14159, 3.14159]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("parts:scale")
+tracks/2/path = NodePath("parts/Character:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.65, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 2.3, 2.55, 2.65, 4.4805),
-"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1),
+"times": PackedFloat32Array(0.1, 0.25, 0.35, 0.7, 0.9, 0.95, 1.05, 1.25, 1.7),
+"transitions": PackedFloat32Array(0, -2, 0.5, 1, 1, 1, 0.5, 1, 0),
 "update": 0,
-"values": [Vector2(-0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.25), Vector2(0.25, 0.25), Vector2(0, 0.5), Vector2(0.25, 0.5), Vector2(-0.25, 0.5), Vector2(-0.25, 0.5), Vector2(-0.25, 0.1), Vector2(-0.25, 0.25)]
+"values": [Vector2(2, -2), Vector2(2, -2), Vector2(4, -1.75), Vector2(2, -2), Vector2(2, -2), Vector2(2, -2), Vector2(1.7, -2), Vector2(2, -2), Vector2(2, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_75eph"]
+resource_name = "skill_1_fail"
+length = 2.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/Character:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.925),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(2, -2), Vector2(2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parts:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.525, 0.775, 0.82752),
+"transitions": PackedFloat32Array(-2, -2, 0.5, -0.5, -0.5),
+"update": 0,
+"values": [Vector2(-0.25, 0.25), Vector2(0.25, 0.25), Vector2(-0.31, 0.41), Vector2(-0.25, 0.23), Vector2(-0.25, 0.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parts:material:shader_parameter/hit_effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23532, 0.525, 0.775, 0.82752),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("parts:modulate")
+tracks/3/path = NodePath("parts/Character:material:shader_parameter/Position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.175, 0.775),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": []
+"values": [1.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("glow:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.625, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(12.069, 0, 0, 1), Color(12.069, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.01, 1.175, 2.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.17, 1.275, 1.32757),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(78, -240), Vector2(76, -190), Vector2(76, -200)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("label:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.17),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.073204]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("label:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.175, 1.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 5), Vector2(4, 4)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("label:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.225, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("parts/Character:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.471172, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.383333, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p2y5"]
 _data = {
 &"RESET": SubResource("Animation_qk8yp"),
 &"damaged": SubResource("Animation_q4mp4"),
+&"flinch": SubResource("Animation_x08j6"),
 &"idle": SubResource("Animation_qbg0e"),
 &"skill_1": SubResource("Animation_w0hsr"),
-&"skill_2": SubResource("Animation_5p2y5")
+&"skill_1_fail": SubResource("Animation_75eph"),
+&"skill_2": SubResource("Animation_82rt1")
 }
 
 [node name="alligator" type="Node2D"]
-scale = Vector2(1.1, 1.1)
 script = ExtResource("1_82rt1")
 
 [node name="parts" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_4l5oo")
-scale = Vector2(-0.25, 0.25)
+scale = Vector2(0.25, 0.25)
 
-[node name="image" type="Sprite2D" parent="parts"]
+[node name="Character" type="Sprite2D" parent="parts"]
 clip_children = 2
 material = SubResource("ShaderMaterial_75eph")
 rotation = 3.14159
@@ -349,9 +566,24 @@ offset_right = 462.545
 offset_bottom = 411.364
 texture = SubResource("GradientTexture2D_ed2ya")
 
+[node name="label" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 78.0
+offset_top = -240.0
+offset_right = 118.0
+offset_bottom = -216.0
+rotation = 0.073204
+scale = Vector2(4, 5)
+theme = SubResource("Theme_uaq2u")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[img=22]res://assets/icons/stats/res_neutral.webp[/img]?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="animation" type="AnimationPlayer" parent="." node_paths=PackedStringArray("idle_fixer")]
 libraries = {
 &"": SubResource("AnimationLibrary_5p2y5")
 }
 script = ExtResource("6_82rt1")
-idle_fixer = NodePath("../parts/image")
+idle_fixer = NodePath("../parts/Character")

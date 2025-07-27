@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk02dmpp21tfx"
+uid="uid://c2an8udlpjnff"
 path.s3tc="res://.godot/imported/face_wrong_1.webp-42ec4948f6d732659d6859f9d98934e8.s3tc.ctex"
 path.etc2="res://.godot/imported/face_wrong_1.webp-42ec4948f6d732659d6859f9d98934e8.etc2.ctex"
 metadata={
@@ -28,7 +28,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

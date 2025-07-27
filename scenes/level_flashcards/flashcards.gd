@@ -60,6 +60,7 @@ func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], [
 		var choice = scene.instantiate()
 		add_child(choice)
 		choice.get_child(0).get_child(1).text = choices[n][0]
+		choice.get_child(0).top_node_changed.connect(on_top_node_changed)
 		
 		if choices[n][1] == true:
 			choice.get_child(0).get_child(2).texture = choice.get_child(0).correct_face
@@ -74,19 +75,18 @@ func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], [
 		choice.get_child(0).scale = Vector2(0.24, 0.24)
 		
 		if n != 0: choice.visible = false # Invisible if not top node.
-		
+	
 	emit_signal("scroll_value", -(choices.size() + 1))
 	self.move_child(self.get_child(1), 0)
+	on_top_node_changed()
 	
 func end(caller, _result : Hud.result):
 	gameplay.change_stat(hud.stat_type.INTELLIGENCE, 2, Hud.role.ENEMY, Hud.target.ACTIVE)
 	gameplay.change_stat(hud.stat_type.INK, 10, Hud.role.ENEMY, Hud.target.ACTIVE)
-	
-	# Default fallback if the top node is unchanged
-	if !is_instance_valid(top_node): top_node = self.get_child(self.get_child_count() - 1).get_child(0)
-	
+
 	System.disabled(true)
 	
+	on_top_node_changed()
 	# Plays the flip animation of the node in the highest layer. Flipping on the main script will mean all choices will flip-- we only need the current active one.
 	top_node._on_button_down()
 	top_node.get_child(0).play("flip")
@@ -101,6 +101,10 @@ func end(caller, _result : Hud.result):
 	# Add more here if more mechanics are used.
 	top_node._on_button_up()
 	return
+
+func on_top_node_changed():
+	var node = self.get_child(self.get_child_count() - 1).get_child(0)
+	top_node = node if node.name != "stack" else self.get_child(self.get_child_count() - 2).get_child(0)
 
 func animate():
 	await get_tree().create_timer(0.5).timeout

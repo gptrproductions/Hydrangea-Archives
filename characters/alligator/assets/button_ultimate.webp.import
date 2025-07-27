@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu5vhk46sgotc"
-path="res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.ctex"
+uid="uid://bjijnk1vctj4v"
+path.s3tc="res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.s3tc.ctex"
+path.etc2="res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/alligator/assets/button_ultimate.webp"
-dest_files=["res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.ctex"]
+dest_files=["res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.s3tc.ctex", "res://.godot/imported/button_ultimate.webp-4fcd5c3f5f45007ba5358e36b8aaaf2a.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

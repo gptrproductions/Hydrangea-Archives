@@ -115,14 +115,14 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 				flinch = 0
 			Hud.skills.SKILL_2:
 				print(res)
-				damage = max(((atk * 2.33) * res) * det, 1)
-				flinch = max(((self_reference["flinch"]) * 0.313), int(opponent_reference["max_flinch"] * 0.01))
+				damage = max(((atk * 1.6) * res) * det, 1)
+				flinch = max(((self_reference["flinch"]) * 0.343), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_3:
 				damage = max(((atk * 0.08) * res) * det, 1)
 				flinch = max(((self_reference["flinch"]) * 0.03), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_4:
-				damage = max(((atk * 9.12) * res) * det, 1)
-				flinch = max(((self_reference["flinch"]) * 1.4), int(opponent_reference["max_flinch"] * 0.01))
+				damage = max(((atk * 4.12) * res) * det, 1)
+				flinch = max(((self_reference["flinch"]) * 1.46), int(opponent_reference["max_flinch"] * 0.01))
 				
 		# If some skills make non-critting compulsory, you can change self_reference to become blank safely since it wouldd've already been used.
 		# damage = Character.get_matchup(damage, stats["type"], opponent_reference["type"])

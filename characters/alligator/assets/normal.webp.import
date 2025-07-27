@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfcuuvfjt1rt3"
-path="res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.ctex"
+uid="uid://drc3mudnscg1i"
+path.s3tc="res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.s3tc.ctex"
+path.etc2="res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/alligator/assets/normal.webp"
-dest_files=["res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.ctex"]
+dest_files=["res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.s3tc.ctex", "res://.godot/imported/normal.webp-fe38122262a8f970d15ec957172ea980.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

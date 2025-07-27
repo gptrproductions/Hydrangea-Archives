@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dr0mmq242h3ay"]
 
-[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="1_bbmer"]
+[ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="1_bbmer"]
 
 [sub_resource type="FontVariation" id="FontVariation_pwj6y"]
 base_font = ExtResource("1_bbmer")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by51v5ts66jb"]
 
-[ext_resource type="Texture2D" uid="uid://dq8sncs75id52" path="res://assets/temp/level_editor.webp" id="1_33hl2"]
+[ext_resource type="Texture2D" uid="uid://cw8pjwpo7pwx3" path="res://assets/temp/level_editor.webp" id="1_33hl2"]
 [ext_resource type="Script" uid="uid://drkxfmkh0ugn7" path="res://scenes/menu_editor/menu_editor.gd" id="2_mk8b0"]
 
 [node name="editor_panel" type="TextureRect" node_paths=PackedStringArray("back_button")]

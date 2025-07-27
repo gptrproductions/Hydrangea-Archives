@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c037j6axtsgut"]
 
 [ext_resource type="Script" uid="uid://b3uyxh8oy8iw5" path="res://particles/attack_tackled/attack_tackled.gd" id="1_xtn3n"]
-[ext_resource type="Texture2D" uid="uid://c5a46coo8dmdy" path="res://particles/attack_tackled/assets/animation.webp" id="2_qxn6q"]
-[ext_resource type="Texture2D" uid="uid://brocfoqvpwcd2" path="res://particles/attack_tackled/assets/particle.png" id="3_qxn6q"]
+[ext_resource type="Texture2D" uid="uid://dox6ffmw7eh4d" path="res://particles/attack_tackled/assets/animation.webp" id="2_qxn6q"]
+[ext_resource type="Texture2D" uid="uid://6t6kl8ibam21" path="res://particles/attack_tackled/assets/particle.png" id="3_qxn6q"]
 
 [sub_resource type="Curve" id="Curve_qxn6q"]
 _data = [Vector2(0.00227273, 1), 0.0, 0.0, 0, 0, Vector2(0.778261, 0.891566), -0.729233, -0.729233, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

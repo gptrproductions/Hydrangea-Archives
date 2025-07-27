@@ -1,15 +1,15 @@
 [gd_scene load_steps=21 format=3 uid="uid://c4lkrgypiarpb"]
 
-[ext_resource type="Texture2D" uid="uid://bfqce4xvx303e" path="res://assets/icons/effects/icon_duration_under.webp" id="1_dsqst"]
-[ext_resource type="Texture2D" uid="uid://c86utvn3xtlxg" path="res://assets/icons/effects/icon_duration_progress.webp" id="2_sp5mr"]
+[ext_resource type="Texture2D" uid="uid://jpd38252a2m7" path="res://assets/icons/effects/icon_duration_under.webp" id="1_dsqst"]
+[ext_resource type="Texture2D" uid="uid://btmdjqk0tojl2" path="res://assets/icons/effects/icon_duration_progress.webp" id="2_sp5mr"]
 [ext_resource type="Script" uid="uid://bpa463d0736m3" path="res://effects/spor'derr/spor'derr.gd" id="3_esc27"]
-[ext_resource type="Texture2D" uid="uid://brraq4rclckua" path="res://assets/icons/effects/icon_under_blue.webp" id="4_pi2bs"]
-[ext_resource type="Texture2D" uid="uid://ktokdas22sg0" path="res://assets/icons/effects/icon_sporderr.webp" id="5_sp5mr"]
-[ext_resource type="FontFile" uid="uid://hxv65m44o0om" path="res://assets/atlas/fonts/Billy.fnt" id="6_rb1d7"]
-[ext_resource type="Texture2D" uid="uid://dcgh7hpy16ka" path="res://assets/icons/effects/icon_up.webp" id="6_sp5mr"]
+[ext_resource type="Texture2D" uid="uid://dhf454rjfrsmx" path="res://assets/icons/effects/icon_under_blue.webp" id="4_pi2bs"]
+[ext_resource type="Texture2D" uid="uid://d0yfplhhb3wok" path="res://assets/icons/effects/icon_sporderr.webp" id="5_sp5mr"]
+[ext_resource type="FontFile" uid="uid://dy2excvlwpldk" path="res://assets/atlas/fonts/Billy.fnt" id="6_rb1d7"]
+[ext_resource type="Texture2D" uid="uid://wc130xdrim0l" path="res://assets/icons/effects/icon_up.webp" id="6_sp5mr"]
 [ext_resource type="Script" uid="uid://bc0nxlp25bbob" path="res://addons/richtext2/text_effects/anims/rte_growin.gd" id="7_njmfj"]
-[ext_resource type="Texture2D" uid="uid://x300d8g47r70" path="res://assets/vector/nonatlas/tooltip.webp" id="8_ql0jj"]
-[ext_resource type="FontFile" uid="uid://bt81xwfyp7mbu" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="9_lbcys"]
+[ext_resource type="Texture2D" uid="uid://b8pf6rw5wg85u" path="res://assets/vector/nonatlas/tooltip.webp" id="8_ql0jj"]
+[ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="9_lbcys"]
 
 [sub_resource type="FontVariation" id="FontVariation_eoaln"]
 base_font = ExtResource("6_rb1d7")

@@ -10,7 +10,7 @@ enum mood{NORMAL, HAPPY, SAD, ANGRY, HIT, SMUG, GRIN, CONFUSED, EXCITED, DYING, 
 static func get_character(character_name : int):
 	match character_name:
 		name.NONE : return Hud.role.NONE # Return null. In a level that means to ignore a character slot since it's empty.
-		name.SHRIMPION: return load("uid://cye36yal0v2uj")
+		name.SHRIMPION: return load("res://characters/shrimpion/shrimpion.tscn")
 		name.MUSHROOM_CLOD: return load("res://characters/mushroom_clod/mushroom_clod.tscn")
 		name.ALLIGATOR: return load("res://characters/alligator/alligator.tscn")
 
@@ -180,9 +180,9 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 	var stats = data["stats"]
 	
 	if heavy: 
-		Effect.shake(node, false, 40, 20, 3)
+		Effect.shake(node, false, 50, 20, 4)
 	else:
-		Effect.shake(node, false, 20, 10, 3)
+		Effect.shake(node, false, 50, 20, 4)
 	
 	if stats["dead"] == true:
 		if animation.current_animation == "death": return

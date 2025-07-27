@@ -103,8 +103,6 @@ func start():
 	player_switch(0, true)
 	enemy_switch(0, true)
 	
-	print(enemy_stats.size())
-	
 	await get_tree().create_timer(1).timeout
 	await dialog_canvas.play_dialog()
 	
@@ -113,7 +111,8 @@ func player_switch(number : int, refresh: bool = false):
 	if (number >= 0 and (active_character + number) < player_stats.size()): 
 		previous_character = player_stats.size() - 2 if active_character != 0 else player_stats.size() - 1
 		if !refresh: # Refresh refers to just merely reloading the active character with updated stats.
-			if number != 0 or active_character == player_stats.size() - 2: text_effect.play("switch_player")
+			if text_effect.is_playing(): text_effect.stop()
+			text_effect.play("switch_player")
 			for n in player_stats.size(): dad.loaded_characters[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.PLAYER, Hud.target.ACTIVE)
 			active_character = active_character + number if active_character < player_stats.size() else 0 
@@ -142,7 +141,8 @@ func enemy_switch(number : int, refresh: bool = false):
 	if (number >= 0 and (active_enemy + number) < enemy_stats.size()): 
 		previous_enemy = enemy_stats.size() - 2 if active_enemy!= 0 else enemy_stats.size() - 1
 		if !refresh:
-			if number != 0 or active_enemy == enemy_stats.size() - 2: text_effect.play("switch_enemy")
+			text_effect.stop()
+			text_effect.play("switch_enemy")
 			for n in enemy_stats.size(): dad.loaded_enemies[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.ENEMY, Hud.target.ACTIVE)
 			active_enemy = active_enemy + number if active_enemy < enemy_stats.size() else 0 

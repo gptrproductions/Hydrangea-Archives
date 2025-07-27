@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlddt7a7dpira"
-path="res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.ctex"
+uid="uid://bgs2xtil55t4t"
+path.s3tc="res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.s3tc.ctex"
+path.etc2="res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/shrimpion/assets/dialog_panel/angry.webp"
-dest_files=["res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.ctex"]
+dest_files=["res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.s3tc.ctex", "res://.godot/imported/angry.webp-d3db37e171d16649709bb4be60a66291.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

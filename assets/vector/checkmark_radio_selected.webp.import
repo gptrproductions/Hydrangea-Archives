@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2xjli0qvt6xi"
+uid="uid://r5lqlj6nbk87"
 path.s3tc="res://.godot/imported/checkmark_radio_selected.webp-08610a4f4a54d96632ee823843d382fc.s3tc.ctex"
 path.etc2="res://.godot/imported/checkmark_radio_selected.webp-08610a4f4a54d96632ee823843d382fc.etc2.ctex"
 metadata={
@@ -28,7 +28,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

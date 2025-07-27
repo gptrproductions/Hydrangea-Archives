@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqyxo70b1fopx"
-path="res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.ctex"
+uid="uid://bwgnqkp888e80"
+path.s3tc="res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.s3tc.ctex"
+path.etc2="res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/none/assets/dialog_panel/normal.webp"
-dest_files=["res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.ctex"]
+dest_files=["res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.s3tc.ctex", "res://.godot/imported/normal.webp-7c5c2ad2e7493dd938a70e8c12ea0cef.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

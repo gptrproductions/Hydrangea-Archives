@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cye36yal0v2uk"]
+[gd_scene load_steps=23 format=3 uid="uid://cye36yal0v2uk"]
 
 [ext_resource type="Script" uid="uid://dnn5wxwduijjd" path="res://characters/mushroom_clod/data.gd" id="1_ieoiy"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="2_ddiq6"]
-[ext_resource type="Texture2D" uid="uid://ct45enop7wtq4" path="res://characters/mushroom_clod/assets/mushroom_clod.webp" id="2_q4mp4"]
+[ext_resource type="Texture2D" uid="uid://bnnc6ja5eg880" path="res://characters/mushroom_clod/assets/mushroom_clod.webp" id="2_q4mp4"]
 [ext_resource type="Script" uid="uid://njlac67lwpff" path="res://characters/mushroom_clod/animation.gd" id="3_ieoiy"]
+[ext_resource type="Texture2D" uid="uid://cq5xbn0463qak" path="res://characters/mushroom_clod/assets/damaged.webp" id="4_ddiq6"]
 
 [sub_resource type="Curve" id="Curve_q4mp4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.27551, 1), 0.0, 0.0, 0, 0, Vector2(0.704082, 0.843373), -1.77648, -1.77648, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -190,10 +191,35 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("parts/MushroomClod:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_q4mp4")]
+}
 
 [sub_resource type="Animation" id="Animation_q4mp4"]
 resource_name = "idle_transition"
+length = 0.7
 step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/MushroomClod:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_ddiq6"), ExtResource("2_q4mp4")]
+}
 
 [sub_resource type="Animation" id="Animation_ddiq6"]
 resource_name = "flinch"
@@ -245,7 +271,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_q4mp4"), ExtResource("2_q4mp4")]
+"values": [ExtResource("4_ddiq6"), ExtResource("2_q4mp4")]
 }
 
 [sub_resource type="Animation" id="Animation_qbg0e"]
@@ -530,7 +556,6 @@ scale = Vector2(-0.25, 0.25)
 
 [node name="MushroomClod" type="Sprite2D" parent="parts"]
 use_parent_material = true
-position = Vector2(0, -39.5259)
 rotation = 3.14159
 scale = Vector2(2, -2)
 texture = ExtResource("2_q4mp4")

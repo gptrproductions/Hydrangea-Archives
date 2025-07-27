@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy16w7bkdk5jt"
-path="res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.ctex"
+uid="uid://bcau6k7c7aekv"
+path.s3tc="res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.s3tc.ctex"
+path.etc2="res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/shrimpion/assets/dialog_panel/excited.webp"
-dest_files=["res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.ctex"]
+dest_files=["res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.s3tc.ctex", "res://.godot/imported/excited.webp-89fd361f36c55fbfcf76b1f0239639f2.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

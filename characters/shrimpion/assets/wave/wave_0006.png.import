@@ -2,33 +2,31 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwbtnwrcdgiau"
-path.s3tc="res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.s3tc.ctex"
-path.etc2="res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.etc2.ctex"
+uid="uid://blj53f7t26xd5"
+path="res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://characters/shrimpion/assets/wave/wave_0006.png"
-dest_files=["res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.s3tc.ctex", "res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.etc2.ctex"]
+dest_files=["res://.godot/imported/wave_0006.png-e41b38f3bb712b2979166525b2bd005a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

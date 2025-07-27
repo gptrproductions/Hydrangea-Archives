@@ -32,9 +32,9 @@ func _ready(): # This is good as is for all characters. Don't change.
 	
 	character_control = self.get_parent().get_parent() # Get the node itself.
 	role = self.get_parent().role # Get the node's current role.
-	opp_control = character_control.get_parent().get_node("enemies") if role == Hud.role.PLAYER else character_control.get_parent().get_node("players") 
 	camera = get_viewport().get_camera_2d() # Get the level's camera.
 	opp = Character.get_opponent(role) # Get the opponent.
+	opp_control = Character.get_node_role(opp)
 	target_position = camera.get_pos(opp)
 	original_position = camera.get_pos(role)
 	
@@ -87,7 +87,7 @@ func skill2():
 		tween.set_parallel().tween_property(character_control, "position", target_position - Vector2(-70, 0), 0.2)
 
 	camera.focus(Vector2(2, 2), 0.25, Tween.EASE_IN_OUT, Tween.TRANS_CUBIC)
-
+	await get_tree().create_timer(0.2).timeout
 	# Emit this function a few times to time damage takes with animations.
 	for n in 4:
 		var values : Dictionary = self.get_parent().math(Hud.target.ACTIVE, role, Hud.skills.SKILL_2)
