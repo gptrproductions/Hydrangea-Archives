@@ -24,6 +24,7 @@ var stats : Dictionary = {
 	"volume" : 1,
 	"type" : Hud.mindset.PHRENIC,
 	"rarity" : 0,
+	"death_type" : Character.death_type.CUTSCENE,
 	
 	# Active character hud avatar
 	"profile" : preload("res://characters/mushroom_clod/assets/avatar.webp"),

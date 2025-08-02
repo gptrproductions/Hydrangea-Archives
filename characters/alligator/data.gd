@@ -24,6 +24,7 @@ var stats : Dictionary = {
 	"volume" : 1,
 	"type" : Hud.mindset.KINETIC,
 	"rarity" : 0,
+	"death_type" : Character.death_type.INSTANT,
 	
 	# Active character hud avatar
 	"profile" : preload("res://characters/alligator/assets/avatar.webp"),

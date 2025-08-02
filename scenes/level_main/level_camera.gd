@@ -10,6 +10,8 @@ var active_zoom : Tween
 var ui_canvas : Control
 var dialog_vignette : Control
 
+var is_dying : bool = false
+
 const EASE_SPEED := 5
 
 @export var player_pos := Vector2(-284, 44)
@@ -39,7 +41,8 @@ func _process(delta):
 		ultimate_canvas.position = new_pos
 		dialog_vignette.position = new_pos
 		
-func pan(target: Hud.role = Hud.role.NONE, duration : float = 0.25, hard : Tween.EaseType = Tween.EASE_IN_OUT, trans : Tween.TransitionType = Tween.TRANS_SINE):
+func pan(target: Hud.role = Hud.role.NONE, duration : float = 0.25, hard : Tween.EaseType = Tween.EASE_IN_OUT, trans : Tween.TransitionType = Tween.TRANS_SINE, death_override : bool = false):
+	if is_dying and !death_override: return
 	if active_tween is Tween: active_tween.kill()
 
 	var pos : Vector2
@@ -53,7 +56,8 @@ func pan(target: Hud.role = Hud.role.NONE, duration : float = 0.25, hard : Tween
 	await tween.finished
 	return
 
-func focus(pos : Vector2 = zoom, duration : float = 0.25, hard : Tween.EaseType = Tween.EASE_IN_OUT, trans : Tween.TransitionType = Tween.TRANS_SINE):
+func focus(pos : Vector2 = zoom, duration : float = 0.25, hard : Tween.EaseType = Tween.EASE_IN_OUT, trans : Tween.TransitionType = Tween.TRANS_SINE, death_override : bool = false):
+	if is_dying and !death_override: return
 	if active_zoom is Tween: active_zoom.kill()
 	var tween = create_tween()
 	active_zoom = tween
@@ -62,6 +66,7 @@ func focus(pos : Vector2 = zoom, duration : float = 0.25, hard : Tween.EaseType 
 	return
 	
 func get_pos(role : Hud.role = Hud.role.NONE):
+	if is_dying: return
 	if role == Hud.role.PLAYER: return player_pos
 	elif role == Hud.role.ENEMY: return enemy_pos
 	return Vector2.ZERO

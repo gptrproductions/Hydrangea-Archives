@@ -38,14 +38,14 @@ func switch(active_character : int, current_role : Hud.role):
 			value = gameplay.player_stats[active_character]["current_flinch"]
 			max_value = gameplay.player_stats[active_character]["max_flinch"]
 			is_flinch = gameplay.player_stats[active_character]["flinched"]
-			#progress.visible = gameplay.player_stats[active_character]["flinched"] or first_switch
+			progress.get_parent().visible = true
 			glow.visible = gameplay.player_stats[active_character]["flinched"] or first_switch
 			particle.visible = gameplay.player_stats[active_character]["flinched"]
 		Hud.role.ENEMY:
 			value = gameplay.enemy_stats[active_character]["current_flinch"]
 			max_value = gameplay.enemy_stats[active_character]["max_flinch"]
 			is_flinch = gameplay.enemy_stats[active_character]["flinched"]
-			#progress.visible = gameplay.enemy_stats[active_character]["flinched"] or first_switch
+			progress.get_parent().visible = true
 			glow.visible = gameplay.enemy_stats[active_character]["flinched"] or first_switch
 			particle.visible = gameplay.enemy_stats[active_character]["flinched"]
 	first_switch = false # Becomes false for the rest of the level.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=229 format=4 uid="uid://cojqa07ypmw73"]
+[gd_scene load_steps=237 format=4 uid="uid://cojqa07ypmw73"]
 
 [ext_resource type="Script" uid="uid://dpjqlxb7fjn7o" path="res://scenes/level_main/hud.gd" id="1_7pw0p"]
 [ext_resource type="PackedScene" uid="uid://dge14ij4cmm2x" path="res://backgrounds/the_centerpiece/the_centerpiece.tscn" id="2_rt0kr"]
@@ -65,12 +65,12 @@
 [ext_resource type="Script" uid="uid://dltj3hcu7dana" path="res://scenes/level_main/health.gd" id="58_uuxt8"]
 [ext_resource type="FontFile" uid="uid://crtdw5xpj5ox6" path="res://assets/atlas/fonts/SpaceMono.fnt" id="59_ewnsm"]
 [ext_resource type="Texture2D" uid="uid://dur36dcet503p" path="res://characters/shrimpion/assets/avatar.webp" id="60_eipgq"]
+[ext_resource type="Texture2D" uid="uid://ciwtnvh1vfnk4" path="res://characters/alligator/assets/avatar.webp" id="60_xner8"]
 [ext_resource type="Script" uid="uid://bdrn2lhar3lmw" path="res://scenes/level_main/selector.gd" id="62_2ld57"]
 [ext_resource type="Texture2D" uid="uid://dn4twc3seku1u" path="res://assets/icons/stats/flinch_player.webp" id="62_vjv51"]
 [ext_resource type="Script" uid="uid://cf51crs283rwq" path="res://scenes/level_main/stats_canvas.gd" id="63_ewnsm"]
 [ext_resource type="Texture2D" uid="uid://tcku51j06ng1" path="res://assets/icons/stats/dead_player.webp" id="63_fglnd"]
 [ext_resource type="Texture2D" uid="uid://1w1ax5hxumxl" path="res://assets/icons/stats/kinetic.webp" id="64_ewnsm"]
-[ext_resource type="Texture2D" uid="uid://cunkwckgfcp0c" path="res://characters/shrimpion/assets/button_ultimate.webp" id="72_2ld57"]
 [ext_resource type="Texture2D" uid="uid://iywkd2roassp" path="res://assets/vector/button_empty.webp" id="72_pon7p"]
 [ext_resource type="Script" uid="uid://cvcuwr1hacchf" path="res://scenes/level_ultimate/ultimate_manager.gd" id="73_vjv51"]
 [ext_resource type="Script" uid="uid://b1y6j8r5l7jp4" path="res://scenes/level_dialogue/level_dialogue.gd" id="73_x7umk"]
@@ -3596,6 +3596,65 @@ _data = {
 &"idle": SubResource("Animation_b368a")
 }
 
+[sub_resource type="Gradient" id="Gradient_xner8"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eipgq"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_st4n1"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oolel"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_flcfb"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ag3w6"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shro8"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwync"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
 [sub_resource type="Gradient" id="Gradient_hqoej"]
 colors = PackedColorArray(0.353241, 0.275703, 0.937171, 1, 0.217478, 0.182848, 0.735362, 1)
 
@@ -3770,7 +3829,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
+shader_parameter/hover_strength = 0.015
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fglnd"]
 shader = ExtResource("44_wlqnt")
@@ -3780,7 +3839,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
+shader_parameter/hover_strength = 0.015
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shrs3"]
 shader = ExtResource("44_wlqnt")
@@ -3790,7 +3849,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
+shader_parameter/hover_strength = 0.015
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjth1"]
 shader = ExtResource("44_wlqnt")
@@ -3800,7 +3859,7 @@ shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
+shader_parameter/hover_strength = 0.015
 
 [sub_resource type="Gradient" id="Gradient_8rkm8"]
 offsets = PackedFloat32Array(0.79, 1)
@@ -5605,6 +5664,7 @@ offset_top = -141.0
 offset_right = 136.575
 offset_bottom = 132.0
 pivot_offset = Vector2(135.429, 142)
+texture = ExtResource("60_eipgq")
 
 [node name="flinch" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile"]
 visible = false
@@ -5746,7 +5806,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_eipgq")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/1"]
@@ -5783,7 +5843,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_st4n1")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/2"]
@@ -5820,7 +5880,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_oolel")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/3"]
@@ -5857,7 +5917,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_flcfb")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/4"]
@@ -5894,7 +5954,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_ag3w6")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/5"]
@@ -5931,7 +5991,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_shro8")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/6"]
@@ -5968,7 +6028,7 @@ offset_right = 167.341
 offset_bottom = 160.741
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
-texture = ExtResource("30_x828i")
+texture = SubResource("GradientTexture2D_mwync")
 expand_mode = 1
 
 [node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/intelligence/7"]
@@ -6380,7 +6440,7 @@ offset_left = -44.0
 offset_top = -42.0
 offset_right = 216.0
 offset_bottom = 218.0
-texture = ExtResource("60_eipgq")
+texture = ExtResource("60_xner8")
 
 [node name="flinch" type="TextureRect" parent="gameplay/player_bar/character_panel/profile"]
 visible = false
@@ -6938,7 +6998,7 @@ focus_neighbor_left = NodePath("../../player_canvas/moves/button")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../skill2")
 focus_neighbor_bottom = NodePath(".")
-texture_normal = ExtResource("72_2ld57")
+texture_normal = ExtResource("72_pon7p")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")

@@ -24,6 +24,7 @@ var stats : Dictionary = {
 	"volume" : 1,
 	"type" : Hud.mindset.ALETHIC,
 	"rarity" : 0,
+	"death_type" : Character.death_type.INSTANT,
 	
 	# Active character hud avatar
 	"profile" : preload("res://characters/shrimpion/assets/avatar.webp"),
@@ -48,7 +49,7 @@ var stats : Dictionary = {
 	"already_flinched" : false, # If already flinched and their flinch bar is still full, and they switch in skip the flinch effects. 
 
 	# Other main attribute stats
-	"iq" : 44, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
+	"iq" : 144, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
 	"eq" : 20,
 	"refill" : 100,
 	"flinch" : 128, # og 28

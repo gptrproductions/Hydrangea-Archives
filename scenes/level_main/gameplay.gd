@@ -78,6 +78,9 @@ var question_finished : bool = false
 var previous_character : int = -1
 var previous_enemy : int = -1
 
+var player_last_stand : bool = false
+var enemy_last_stand : bool = false
+
 func _init():
 	add_to_group("battle")
 
@@ -107,12 +110,14 @@ func start():
 	await dialog_canvas.play_dialog()
 	
 # This is to switch active characters.
-func player_switch(number : int, refresh: bool = false):
-	if (number >= 0 and (active_character + number) < player_stats.size()): 
+func player_switch(number : int, refresh: bool = false, animated : bool = true):
+	if player_last_stand: return
+	if (number >= 0 and (active_character + number) < player_stats.size()) and !(player_stats[clamp(active_character + number, 0, player_stats.size())]["dead"]): 
 		previous_character = player_stats.size() - 2 if active_character != 0 else player_stats.size() - 1
 		if !refresh: # Refresh refers to just merely reloading the active character with updated stats.
-			if text_effect.is_playing(): text_effect.stop()
-			text_effect.play("switch_player")
+			if animated: 
+				text_effect.stop()
+				text_effect.play("switch_player")
 			for n in player_stats.size(): dad.loaded_characters[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.PLAYER, Hud.target.ACTIVE)
 			active_character = active_character + number if active_character < player_stats.size() else 0 
@@ -123,26 +128,32 @@ func player_switch(number : int, refresh: bool = false):
 		player_health.max_value = player_stats[active_character]["max_health"]
 		player_health.value = player_stats[active_character]["current_health"]
 		player_health.targetified = active_character
-		player_flinch.switch(active_character, Hud.role.PLAYER)
-		
+
 		if player_stats[active_character]["dead"]: player_health.dead = true
 		else: player_health.dead = false
 		player_bar.switch(player_stats[active_character]["profile"], player_stats[active_character]["type"])
 		Effects.sort(player_effects_list, Character.get_target(dad.loaded_characters[active_character]))
 		player_effects_list.arrange(null, false)
 		if !refresh: Signals.ON_SWITCH.emit(Hud.role.PLAYER)
+		player_flinch.switch(active_character, Hud.role.PLAYER)
+	elif (number >= 0 and (active_character + number) < player_stats.size()) and player_stats[clamp(active_character + number, 0, player_stats.size())]["dead"]: 
+		active_character += 1
+		previous_character = player_stats.size() - 2 if player_stats.size() < 1 else -1
+		player_switch(1)
 	else:
 		active_character = 0
 		previous_character = player_stats.size() - 2 if player_stats.size() < 1 else -1
 		player_switch(0) # fall back to 0
 		
 # This is to switch enemy characters.
-func enemy_switch(number : int, refresh: bool = false):
-	if (number >= 0 and (active_enemy + number) < enemy_stats.size()): 
+func enemy_switch(number : int, refresh: bool = false, animated: bool = true):
+	if enemy_last_stand: return
+	if (number >= 0 and (active_enemy + number) < enemy_stats.size()) and !(enemy_stats[clamp(active_enemy + number, 0, enemy_stats.size())]["dead"]): 
 		previous_enemy = enemy_stats.size() - 2 if active_enemy!= 0 else enemy_stats.size() - 1
 		if !refresh:
-			text_effect.stop()
-			text_effect.play("switch_enemy")
+			if animated: 
+				text_effect.stop()
+				text_effect.play("switch_enemy")
 			for n in enemy_stats.size(): dad.loaded_enemies[n].visible = false
 			change_stat(dad.stat_type.INTELLIGENCE, 0, Hud.role.ENEMY, Hud.target.ACTIVE)
 			active_enemy = active_enemy + number if active_enemy < enemy_stats.size() else 0 
@@ -160,6 +171,10 @@ func enemy_switch(number : int, refresh: bool = false):
 		Effects.sort(enemy_effects_list, Character.get_target(dad.loaded_enemies[active_enemy]))
 		enemy_effects_list.arrange(null, false)
 		if !refresh: Signals.ON_SWITCH.emit(Hud.role.ENEMY)
+	elif (number >= 0 and (active_enemy + number) < enemy_stats.size()) and enemy_stats[clamp(active_enemy + number, 0, enemy_stats.size())]["dead"]: 
+		active_enemy += 1
+		previous_enemy = enemy_stats.size() - 2 if enemy_stats.size() < 1 else -1
+		enemy_switch(0)
 	else:
 		active_enemy = 0
 		previous_enemy = enemy_stats.size() - 2 if enemy_stats.size() < 1 else -1
@@ -353,11 +368,32 @@ func check_death():
 		for n in enemy_stats.size():
 			if enemy_stats[n].get("dead", false): dead += 1
 		dialog_canvas.enemy_killed.emit(dead)
+		if enemy_stats[active_enemy]["death_type"] == Character.death_type.CUTSCENE: await get_tree().create_timer(2.5).timeout
+		enemy_switch(1, false, false)
+			
 	if player_stats[active_character]["dead"] == true:
 		var dead = 0
 		for n in player_stats.size():
 			if player_stats[n].get("dead", false): dead += 1
 		dialog_canvas.player_killed.emit(dead)
+		if player_stats[active_character]["death_type"] == Character.death_type.CUTSCENE: await get_tree().create_timer(2.5).timeout
+		player_switch(1, false, false)
+		
+	if dead_count(Hud.role.PLAYER) == player_stats.size() - 1: player_last_stand = true
+	if dead_count(Hud.role.ENEMY) == enemy_stats.size() - 1: enemy_last_stand = true
+		
+func dead_count(role: Hud.role):
+	var death_count : int = 0
+	if role == Hud.role.PLAYER:
+		for n in player_stats.size():
+			if player_stats[n]["dead"]:
+				death_count += 1
+	else:
+		for n in enemy_stats.size():
+			if enemy_stats[n]["dead"]:
+				death_count += 1
+	return death_count
+
 
 func disable_functions(type: Hud.functions, override : bool = false): # Disables the buttons. Used by the buttons themselves to ensure only one is active at a time
 	if override:

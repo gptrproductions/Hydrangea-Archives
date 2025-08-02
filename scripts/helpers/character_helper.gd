@@ -1,11 +1,15 @@
 extends Resource
 class_name Character
-# The character class is a node is a helper class that is called when a character's data needs to be received.
-
+## The character class is a node is a helper class that is called when a character's data needs to be received.
 enum name{NONE, SHRIMPION, ALLIGATOR, BEETLEROOT, MUSHROOM_CLOD, TAYLOR, AEYU, LOGIC, CATNIP}
 
-# Used in dialogue systems.
+## Used in dialogue systems.
 enum mood{NORMAL, HAPPY, SAD, ANGRY, HIT, SMUG, GRIN, CONFUSED, EXCITED, DYING, SHOCKED, DEAD}
+
+## Assigned to characters so that the system knows how their death animations should be processed.
+enum death_type{INSTANT, ##The character dies the moment they are hit. The death animation will play only once even if a move hits the character multiple times.
+				CUTSCENE, ##The character finishes up the move first before showing their death animation.
+				}
 
 static func get_character(character_name : int):
 	match character_name:
@@ -185,19 +189,41 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 		Effect.shake(node, false, 50, 20, 4)
 	
 	if stats["dead"] == true:
-		if animation.current_animation == "death": return
-		animation.play("death")
-		return
+		if stats["death_type"] == death_type.INSTANT:
+			if animation.current_animation == "death": return
+			animation.play("death")
+			await System.tree().create_timer(0.2).timeout
+			return
+		else: 
+			if animation.is_playing(): animation.stop()
+			var camera : Level_Camera = get_gameplay().get_viewport().get_camera_2d()
+			animation.play("damaged")
+			camera.is_dying = true
+			await animation.animation_finished
+			await System.tree().create_timer(0.2).timeout
+			camera.pan(get_opponent(role), 0.5, Tween.EaseType.EASE_OUT, Tween.TRANS_EXPO, true)
+			camera.focus(Vector2(1.2, 1.2), 0.5, Tween.EaseType.EASE_OUT, Tween.TRANS_EXPO, true)
+			var asset = get_gameplay().player_asset if role == Hud.role.PLAYER else get_gameplay().enemy_asset
+			var tween = get_gameplay().create_tween()
+			tween.tween_property(asset, "modulate", Color.TRANSPARENT, 0.15)
+			animation.play("death")
+			await animation.animation_finished
+			await System.tree().create_timer(0.3).timeout
+			camera.is_dying = false
+			await System.tree().process_frame
+			camera.focus(Vector2.ONE)
+			camera.pan()
+			get_gameplay().animation.cinematic(false)
+			tween = get_gameplay().create_tween()
+			tween.tween_property(asset, "modulate", Color.WHITE, 0.15)
+		
 	elif stats["flinched"] == true:
 		if animation.is_playing(): animation.stop()
 		animation.play("flinch")
 	else:
 		if animation.is_playing(): animation.stop()
 		animation.play("damaged")
-		await animation.animation_finished
-		if stats["dead"] == true: return
-		animation.play("idle")
-
+		
 # Converts the Hud.target enum to a number.
 static func targetify(type: Hud.target, role: Hud.role):
 	

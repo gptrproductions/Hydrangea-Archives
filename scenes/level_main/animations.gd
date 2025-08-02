@@ -42,6 +42,7 @@ func load_question():
 func cinematic(request : bool):
 	
 	if request == is_cinematic: return # Function does nothing if the cinematic request is to be true, but the cinematic is already true.
+	if camera.is_dying: return # Disable all cinematics.
 	
 	if !is_cinematic:
 		# Scale the canvas out logic
