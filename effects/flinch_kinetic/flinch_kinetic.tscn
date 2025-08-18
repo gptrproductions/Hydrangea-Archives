@@ -34,13 +34,13 @@ resource_name = "growin"
 script = ExtResource("8_smcpf")
 metadata/rt = 2291163808699
 
-[sub_resource type="FontVariation" id="FontVariation_qu7rq"]
+[sub_resource type="FontVariation" id="FontVariation_677d2"]
 base_font = ExtResource("10_sjlwb")
 spacing_space = 3
 spacing_top = -9
 
 [sub_resource type="Theme" id="Theme_ivm3y"]
-default_font = SubResource("FontVariation_qu7rq")
+default_font = SubResource("FontVariation_677d2")
 default_font_size = 57
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -206,11 +206,12 @@ metadata/mouse_position = Vector2(409.205, 61.6025)
 metadata/frame = 61866
 metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
 
-[node name="description" type="NinePatchRect" parent="."]
+[node name="description_normal" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 0
-offset_left = -352.0
+offset_left = -332.0
 offset_top = 91.0
-offset_right = 456.0
+offset_right = 442.0
 offset_bottom = 611.0
 texture = ExtResource("9_knw6i")
 region_rect = Rect2(0, 0, 200, 200)
@@ -219,7 +220,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="label" type="RichTextLabel" parent="description"]
+[node name="label" type="RichTextLabel" parent="description_normal"]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 34.0
@@ -233,13 +234,69 @@ bbcode_enabled = true
 text = "[img=16]res://assets/icons/stats/flinch_neutral.webp[/img]FLINCHED"
 vertical_alignment = 1
 
-[node name="stack" type="RichTextLabel" parent="description"]
+[node name="stack" type="RichTextLabel" parent="description_normal"]
 clip_contents = false
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 0
 offset_left = 35.0
 offset_top = 110.0
-offset_right = 229.0
+offset_right = 216.0
+offset_bottom = 206.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_eoaln")
+theme_override_fonts/italics_font = SubResource("FontVariation_pvg60")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_ka7rr")
+theme_override_fonts/bold_font = SubResource("FontVariation_x7grh")
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "[color=AAAAAA]This character's [img=16]res://assets/icons/stats/res_neutral.webp[/img]Resistance is reduced by [color=c90032]50%[/color] for the [color=ffaa00]current[/color] question. Flinching after passing or failing a question transfers this effect over to the [color=ffaa00]next question cycle.
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_4d3ys")]
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
+
+[node name="description_dumb" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -362.0
+offset_top = 91.0
+offset_right = 469.0
+offset_bottom = 358.0
+texture = ExtResource("9_knw6i")
+region_rect = Rect2(0, 0, 200, 200)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="label" type="RichTextLabel" parent="description_dumb"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 221.0
+offset_bottom = 50.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+theme = SubResource("Theme_ivm3y")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[img=16]res://assets/icons/stats/flinch_enemy.webp[/img]FLINCHED"
+vertical_alignment = 1
+
+[node name="stack" type="RichTextLabel" parent="description_dumb"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 110.0
+offset_right = 226.0
 offset_bottom = 158.0
 scale = Vector2(4, 4)
 mouse_filter = 2
@@ -254,8 +311,7 @@ theme_override_font_sizes/mono_font_size = 14
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
-text = "[color=AAAAAA]This character's [img=16]res://assets/icons/stats/res_neutral.webp[/img]Resistance is reduced by [color=C30058]50%[/color] for the current question. [color=bb5500] If the character flinched after a question is passed or failed, the effect will transfer over to the next question cycle.
-"
+text = "[color=AAAAAA]The entire team's [img=16]res://assets/icons/stats/res_enemy.webp[/img][/color]Resistance[color=aaaaaa] is cut by [color=c90032]half[/color] for the [color=ffaa00]current[/color] question. "
 fit_content = true
 custom_effects = [SubResource("RichTextEffect_4d3ys")]
 metadata/mouse_position = Vector2(409.205, 61.6025)

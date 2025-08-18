@@ -27,7 +27,7 @@ enum role {
 # Enums for all question types. These are the in-game names.
 enum question_type {
 	FLASHCARDS, # Multiple choice
-	TWINSIES, # True or false 
+	COINFLIP, # True or false 
 	ET_AL, # Enumeration
 	HMM, # Identification
 }
@@ -155,6 +155,7 @@ var loaded_characters : Array = []
 var loaded_enemies : Array = []
 var loaded_mode : game_mode
 
+var input : Inputs
 @export var debug_fps : Label
 @export var damage : Damage
 
@@ -163,6 +164,8 @@ func _process(_delta):
 
 func _ready():
 	System.disabled(true)
+	input = Inputs.new()
+	add_child(input)
 	$characters/camera.make_current()
 	Signals.LEVEL_CAMERA_READY.emit()
 	await get_tree().process_frame

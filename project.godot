@@ -16,9 +16,10 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="Hydrangea Archives"
-run/main_scene="uid://fokej00qhkfe"
+run/main_scene="uid://cojqa07ypmw73"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "Mobile")
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -61,6 +62,14 @@ folder_colors={
 
 common/snap_controls_to_pixels=false
 fonts/dynamic_fonts/use_oversampling=false
+
+[input]
+
+ui_left_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, null]
+}
 
 [physics]
 

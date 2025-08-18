@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ikm06vxyo25i"
-path.s3tc="res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.s3tc.ctex"
-path.etc2="res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.etc2.ctex"
+path="res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/icons/stats/res_player.webp"
-dest_files=["res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.s3tc.ctex", "res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.etc2.ctex"]
+dest_files=["res://.godot/imported/res_player.webp-0103a84eed23d4ec08a4b1ae5f9103bd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

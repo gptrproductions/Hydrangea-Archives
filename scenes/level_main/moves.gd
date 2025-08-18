@@ -9,13 +9,14 @@ extends Control
 @export var skill4: TextureButton
 @export var selected_effect : ColorRect
 
-@export var move_name : Label
-@export var move_description : Label
+@export var move_name : RichTextLabel
+@export var move_description : RichTextLabel
 
 @export var moves_button : TextureButton ## Assign the source button that triggers the move canvas.
 
 var gameplay : Gameplay
 var lore : Dictionary
+var data: Dictionary
 var confirm : int = 0
 var n_confirm : int = 0
 
@@ -31,6 +32,7 @@ func _ready():
 	gameplay = Character.get_gameplay()
 	self.visible = false
 	hud.QUESTION_END.connect(end)
+	await get_tree().process_frame
 
 func start(caller : Hud.role):
 	System.disabled(true)
@@ -39,7 +41,6 @@ func start(caller : Hud.role):
 	Move_Button.reset(skill2, selected_effect)
 	Move_Button.reset(skill3, selected_effect)
 	Move_Button.reset(skill4, selected_effect)
-
 	_refresh(caller)
 	
 	toggled = true
@@ -48,6 +49,12 @@ func start(caller : Hud.role):
 	
 	gameplay.stats_canvas.end()
 	gameplay.disable_functions(Hud.functions.MOVES)
+	
+	var str : String = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]"
+	skill1.get_child(0).text = str + str(data["skill1_cost"])
+	skill2.get_child(0).text = str + str(data["skill2_cost"])
+	skill3.get_child(0).text = str + str(data["skill3_cost"])
+	skill1.pressed.emit()
 	
 	self.visible = true
 	move_panel.modulate = Color(1, 1, 1, 0)
@@ -81,13 +88,23 @@ func modulator(entrance):
 		tween.tween_property(gameplay.question_canvas.get_node("questions"), "modulate", Color (1, 1, 1, 1), 0.15)
 	
 func load_info(n: int = 1, role : Hud.role = Hud.role.PLAYER):
+	var insufficient : bool = false
 	if role == Hud.role.PLAYER:
-			move_name.text = lore["skill" + str(n)]["name"]
-			move_description.text = lore["skill" + str(n)]["description"]
+		if gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["skill" + str(n) + "_cost"] > gameplay.player_intel: insufficient = true
+		if n_confirm == n and confirm >= 1 and n != 4: gameplay.player_intelligence.snap(gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]["skill" + str(n) + "_cost"])
+		move_name.text = lore["skill" + str(n)]["name"]
+		move_description.text = UI.stylize(lore["skill" + str(n)]["description"])
 	else:
-			move_name.text = lore["skill" + str(n)]["name"]
-			move_description.text = lore["skill" + str(n)]["description"]
+		if gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["skill" + str(n) + "_cost"] > gameplay.enemy_intel: insufficient = true
+		if n_confirm == n and confirm >= 1 and n != 4: gameplay.enemy_intelligence.snap(gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]["skill" + str(n) + "_cost"])
+		move_name.text = lore["skill" + str(n)]["name"]
+		move_description.text = lore["skill" + str(n)]["description"]
+			
+	await get_tree().process_frame
+	await get_tree().process_frame
+	repos()
 	if n_confirm == n and confirm >= 1: 
+		if insufficient and n != 4: return
 		gameplay.use_skill(n, role)
 	else: 
 		n_confirm = n
@@ -113,6 +130,10 @@ func _exited() -> void: # When exited through pressing anywhere else
 # Refreshes skill connectionns and rearms the splashes.
 func _refresh(role : Hud.role):
 	lore = Character.get_lore(Hud.target.ACTIVE, role)
+	if role == Hud.role.PLAYER:
+		data = gameplay.player_stats[Character.targetify(Hud.target.ACTIVE, role)]
+	else:
+		data = gameplay.enemy_stats[Character.targetify(Hud.target.ACTIVE, role)]
 	#var array = lore.get("move_splash", [["", ""]])
 	#var select : int = randi_range(0, array.size() - 1)
 	#move_name.text = array[select][0]
@@ -138,3 +159,7 @@ func _refresh(role : Hud.role):
 	skill2.connect("pressed", Callable(self, "load_info").bind(2, role))
 	skill3.connect("pressed", Callable(self, "load_info").bind(3, role))
 	skill4.connect("pressed", Callable(self, "load_info").bind(4, role))
+
+func repos():
+	$padding.global_position.y = $center/container.global_position.y - 16
+	$padding.size.y = (($center/container.size.y * ($center.scale.y / $padding.scale.y))) + 52

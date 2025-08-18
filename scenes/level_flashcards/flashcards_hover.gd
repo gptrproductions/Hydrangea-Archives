@@ -86,7 +86,8 @@ func _on_pressed() -> void:
 			gameplay.change_stat(hud.stat_type.INTELLIGENCE, 1, Hud.role.ENEMY, Hud.target.ACTIVE)
 			await get_tree().create_timer(2).timeout
 		else: 
-			self.get_child(2).texture = preload("res://assets/vector/face_chances.webp")
+			self.get_parent().get_parent().started = false
+			self.get_child(2).texture = preload("res://assets/icons/faces/face_chances.webp")
 		
 		if gameplay.answer_chances.value > 0 or gameplay.answer_chances.max_value == 0 :
 			signal_pressed = false
@@ -102,62 +103,10 @@ func _on_gui_input(event: InputEvent) -> void:
 	if System.input_disabled: return 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and is_scrolling == false and signal_pressed == false and is_held_down == false:
-			visibler(true, MOUSE_BUTTON_WHEEL_UP)
-			self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_node("stack"), 0)
-			top_node_changed.emit()
-			
-			self.disabled = true
-			is_scrolling = true
-			self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_child(0), self.get_parent().get_parent().get_child(1).get_index() + scroll_value)
-			
-			# Set the new top node-- but it references the button inside the control, not the control itself.
-			# The reason why this is always 0 is because 0 will always be the next top node.
-			var tween = create_tween()
-			var tween3 = create_tween()
-			tween.set_speed_scale(1.25)
-			tween3.set_speed_scale(1.25)
-			tween.tween_property(self.get_parent(), "rotation", 2, 0.15).set_trans(Tween.TRANS_SINE)
-			tween3.tween_property(self.get_parent().get_parent(), "rotation", 0.1, 0.15).set_trans(Tween.TRANS_SINE)
-			await get_tree().create_timer(0.1).timeout
-			self.get_parent().get_parent().move_child(self.get_parent(), 0) # Bring the front node to the back.
-			var tween2 = create_tween()
-			var tween4 = create_tween()
-			tween2.set_speed_scale(1.25)
-			tween4.set_speed_scale(1.25)
-			tween2.tween_property(self.get_parent(), "rotation", 0, 0.40).set_trans(Tween.TRANS_BACK)
-			tween2.tween_property(self.get_parent(), "scale", Vector2(2,2), 0.25).set_trans(Tween.TRANS_BACK)
-			tween4.tween_property(self.get_parent().get_parent(), "rotation", 0.0, 0.15).set_trans(Tween.TRANS_SINE)
-			await tween4.finished
-			await visibler(false, null, 0.07)
+			scroll_up()
 		
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and is_scrolling == false and signal_pressed == false and is_held_down == false:
-			visibler(true, MOUSE_BUTTON_WHEEL_DOWN)
-			self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_node("stack"), 0)
-			if !self.get_parent().get_parent().get_child(0).name == "stack":
-				self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(0).get_child(0)
-			else:
-				self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(1).get_child(0)
-			self.disabled = true
-			is_scrolling = true
-			# Set the new top node-- but it references the button inside the control, not the control itself.
-			# The reason why this is always 0 is because 0 will always be the next top node.
-			var tween = create_tween()
-			var tween3 = create_tween()
-			tween.set_speed_scale(1.25)
-			tween3.set_speed_scale(1.25)
-			tween.tween_property(self.get_parent().get_parent().top_node.get_parent(), "rotation", -2, 0.15).set_trans(Tween.TRANS_SINE)
-			tween3.tween_property(self.get_parent().get_parent() , "rotation", -0.1, 0.15).set_trans(Tween.TRANS_SINE)
-			await get_tree().create_timer(0.1).timeout
-			self.get_parent().get_parent().move_child(self.get_parent().get_parent().top_node.get_parent(), self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_index() + scroll_value) # Bring the front node to the second highest
-			var tween2 = create_tween()
-			var tween4 = create_tween()
-			tween2.set_speed_scale(1.25)
-			tween4.set_speed_scale(1.25)
-			tween2.tween_property(self.get_parent().get_parent().top_node.get_parent(), "rotation", 0, 0.40).set_trans(Tween.TRANS_BACK)
-			tween2.tween_property(self.get_parent().get_parent().top_node.get_parent(), "scale", Vector2(2,2), 0.25).set_trans(Tween.TRANS_BACK)
-			tween4.tween_property(self.get_parent().get_parent(), "rotation", 0.0, 0.15).set_trans(Tween.TRANS_SINE)
-			await tween4.finished
-			await visibler(false, null, 0.07)
+			scroll_down()
 			
 		# Checks the current active node's texture, too. If it's the 'incorrect' flashcard, it doesn't enable the button so the player can't click the wrong choice they already clicked.
 		if signal_pressed == false and is_scrolling == false and self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_child(0).texture_normal != preload("res://assets/vector/flashcard_wrong.webp"):
@@ -182,6 +131,63 @@ func visibler(on_start, _event_type, wait : float = 0):
 				child.visible = false
 		is_scrolling = false
 
-
 func _on_scroll_set(value : int) -> void:
 	scroll_value = value
+
+func scroll_up():
+	visibler(true, MOUSE_BUTTON_WHEEL_UP)
+	self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_node("stack"), 0)
+	top_node_changed.emit()
+			
+	self.disabled = true
+	is_scrolling = true
+	self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_child(0), self.get_parent().get_parent().get_child(1).get_index() + scroll_value)
+			
+	# Set the new top node-- but it references the button inside the control, not the control itself.
+	# The reason why this is always 0 is because 0 will always be the next top node.
+	var tween = create_tween()
+	var tween3 = create_tween()
+	tween.set_speed_scale(1.25)
+	tween3.set_speed_scale(1.25)
+	tween.tween_property(self.get_parent(), "rotation", 2, 0.15).set_trans(Tween.TRANS_SINE)
+	tween3.tween_property(self.get_parent().get_parent(), "rotation", 0.1, 0.15).set_trans(Tween.TRANS_SINE)
+	await get_tree().create_timer(0.1).timeout
+	self.get_parent().get_parent().move_child(self.get_parent(), 0) # Bring the front node to the back.
+	var tween2 = create_tween()
+	var tween4 = create_tween()
+	tween2.set_speed_scale(1.25)
+	tween4.set_speed_scale(1.25)
+	tween2.tween_property(self.get_parent(), "rotation", 0, 0.40).set_trans(Tween.TRANS_BACK)
+	tween2.tween_property(self.get_parent(), "scale", Vector2(2,2), 0.25).set_trans(Tween.TRANS_BACK)
+	tween4.tween_property(self.get_parent().get_parent(), "rotation", 0.0, 0.15).set_trans(Tween.TRANS_SINE)
+	await tween4.finished
+	await visibler(false, null, 0.07)
+	
+func scroll_down():
+	visibler(true, MOUSE_BUTTON_WHEEL_DOWN)
+	self.get_parent().get_parent().move_child(self.get_parent().get_parent().get_node("stack"), 0)
+	if !self.get_parent().get_parent().get_child(0).name == "stack":
+		self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(0).get_child(0)
+	else:
+		self.get_parent().get_parent().top_node = self.get_parent().get_parent().get_child(1).get_child(0)
+	self.disabled = true
+	is_scrolling = true
+	# Set the new top node-- but it references the button inside the control, not the control itself.
+	# The reason why this is always 0 is because 0 will always be the next top node.
+	var tween = create_tween()
+	var tween3 = create_tween()
+	tween.set_speed_scale(1.25)
+	tween3.set_speed_scale(1.25)
+	tween.tween_property(self.get_parent().get_parent().top_node.get_parent(), "rotation", -2, 0.15).set_trans(Tween.TRANS_SINE)
+	tween3.tween_property(self.get_parent().get_parent() , "rotation", -0.1, 0.15).set_trans(Tween.TRANS_SINE)
+	await get_tree().create_timer(0.1).timeout
+	self.get_parent().get_parent().move_child(self.get_parent().get_parent().top_node.get_parent(), self.get_parent().get_parent().get_child(self.get_parent().get_parent().get_child_count() - 1).get_index() + scroll_value) # Bring the front node to the second highest
+	var tween2 = create_tween()
+	var tween4 = create_tween()
+	tween2.set_speed_scale(1.25)
+	tween4.set_speed_scale(1.25)
+	tween2.tween_property(self.get_parent().get_parent().top_node.get_parent(), "rotation", 0, 0.40).set_trans(Tween.TRANS_BACK)
+	tween2.tween_property(self.get_parent().get_parent().top_node.get_parent(), "scale", Vector2(2,2), 0.25).set_trans(Tween.TRANS_BACK)
+	tween4.tween_property(self.get_parent().get_parent(), "rotation", 0.0, 0.15).set_trans(Tween.TRANS_SINE)
+	await tween4.finished
+	await visibler(false, null, 0.07)

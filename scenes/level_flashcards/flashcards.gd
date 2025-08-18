@@ -7,22 +7,24 @@ class_name Flashcards
 @export var wrong_face : CompressedTexture2D
 
 @onready var resources : Dictionary[Hud.subject_type, Array] = {
-	Hud.subject_type.LANGUAGE : [preload("res://assets/vector/flashcard_blue.webp"), preload("res://assets/vector/face_language.webp")],
-	Hud.subject_type.MATH : [preload("res://assets/vector/flashcard_red.webp"), preload("res://assets/vector/face_math.webp")],
-	Hud.subject_type.SCIENCE : [preload("res://assets/vector/flashcard_green.webp"), preload("res://assets/vector/face_science.webp")],
-	Hud.subject_type.HISTORY : [preload("res://assets/vector/flashcard_purple.webp"), preload("res://assets/vector/face_history.webp")],
-	Hud.subject_type.ART : [preload("res://assets/vector/flashcard_orange.webp"), preload("res://assets/vector/face_art.webp")],
-	Hud.subject_type.PHILOSOPHY : [preload("res://assets/vector/flashcard_teal.webp"), preload("res://assets/vector/face_philosophy.webp")],
-	Hud.subject_type.WILDCARD : [preload("res://assets/vector/flashcard_gold.webp"), preload("res://assets/vector/face_wildcard.webp")],
+	Hud.subject_type.LANGUAGE : [load("res://assets/vector/flashcard_blue.webp"), load("res://assets/icons/faces/face_language.webp")],
+	Hud.subject_type.MATH : [load("res://assets/vector/flashcard_red.webp"), load("res://assets/icons/faces/face_math.webp")],
+	Hud.subject_type.SCIENCE : [load("res://assets/vector/flashcard_green.webp"), load("res://assets/icons/faces/face_science.webp")],
+	Hud.subject_type.HISTORY : [load("res://assets/vector/flashcard_purple.webp"), load("res://assets/icons/faces/face_history.webp")],
+	Hud.subject_type.ART : [load("res://assets/vector/flashcard_orange.webp"), load("res://assets/icons/faces/face_art.webp")],
+	Hud.subject_type.PHILOSOPHY : [load("res://assets/vector/flashcard_teal.webp"), load("res://assets/icons/faces/face_philosophy.webp")],
+	Hud.subject_type.WILDCARD : [load("res://assets/vector/flashcard_gold.webp"), load("res://assets/icons/faces/face_wildcard.webp")],
 }
 
 var scene = preload("res://scenes/level_flashcards/flashcards_button.tscn")
 var flashcard_wrong = preload("res://assets/vector/flashcard_wrong.webp")
-var face_timer = preload("res://assets/vector/face_timer.webp")
+var face_timer = preload("res://assets/icons/faces/face_timer.webp")
 
 var top_node : Control # Get a reference to the current top node.
 var gameplay : Gameplay # Used by children as a reference to gameplay to change things.
 var hud : Hud
+var swiping : bool = false
+var started : bool = false
 
 signal scroll_value(value : int)
 
@@ -33,6 +35,9 @@ func _ready():
 	# Connect the timer end and chances end signals-- telling to force end the question.
 	gameplay.answer_chances.connect("CHANCES_ZERO", end)
 	gameplay.question_timer.connect("TIMER_ZERO", end)
+	
+	await get_tree().process_frame
+	hud.input.swipe.connect(swiped)
 
 func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], ["Choice 2", true], ["Choice 3", true], ["Choice 4", true],["Choice 5", true]]):
 	# Load the subject card design.
@@ -80,7 +85,13 @@ func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], [
 	self.move_child(self.get_child(1), 0)
 	on_top_node_changed()
 	
+	await animation.animation_finished
+	started = true
+	
+	
 func end(caller, _result : Hud.result):
+	if gameplay.answer_node is not Flashcards: return
+	started = false
 	gameplay.change_stat(hud.stat_type.INTELLIGENCE, 2, Hud.role.ENEMY, Hud.target.ACTIVE)
 	gameplay.change_stat(hud.stat_type.INK, 10, Hud.role.ENEMY, Hud.target.ACTIVE)
 
@@ -112,3 +123,17 @@ func animate():
 	self.position = Vector2(self.position.x + 200, self.position.y + 200)
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(self.position.x - 200, self.position.y - 200), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+
+func swiped(value: Inputs.direction):
+	if gameplay.answer_node is not Flashcards: return
+	if System.input_disabled: return
+	if !start: return
+	if swiping: return
+	swiping = true
+	var node = self.get_child(self.get_child_count() - 1).get_child(0)
+	var top_node_current = node if node.name != "stack" else self.get_child(self.get_child_count() - 2).get_child(0)
+	if value == Inputs.direction.UP:
+		await top_node_current.scroll_down()
+	else:
+		await top_node_current.scroll_up()
+	swiping = false

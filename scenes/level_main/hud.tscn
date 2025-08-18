@@ -1,4 +1,4 @@
-[gd_scene load_steps=237 format=4 uid="uid://cojqa07ypmw73"]
+[gd_scene load_steps=250 format=4 uid="uid://cojqa07ypmw73"]
 
 [ext_resource type="Script" uid="uid://dpjqlxb7fjn7o" path="res://scenes/level_main/hud.gd" id="1_7pw0p"]
 [ext_resource type="PackedScene" uid="uid://dge14ij4cmm2x" path="res://backgrounds/the_centerpiece/the_centerpiece.tscn" id="2_rt0kr"]
@@ -71,6 +71,11 @@
 [ext_resource type="Script" uid="uid://cf51crs283rwq" path="res://scenes/level_main/stats_canvas.gd" id="63_ewnsm"]
 [ext_resource type="Texture2D" uid="uid://tcku51j06ng1" path="res://assets/icons/stats/dead_player.webp" id="63_fglnd"]
 [ext_resource type="Texture2D" uid="uid://1w1ax5hxumxl" path="res://assets/icons/stats/kinetic.webp" id="64_ewnsm"]
+[ext_resource type="Texture2D" uid="uid://b8pf6rw5wg85u" path="res://assets/vector/nonatlas/tooltip.webp" id="69_flcfb"]
+[ext_resource type="FontFile" uid="uid://dy2excvlwpldk" path="res://assets/atlas/fonts/Billy.fnt" id="70_ag3w6"]
+[ext_resource type="FontFile" uid="uid://dm8r11ltqdu7o" path="res://assets/atlas/fonts/Billy_Black.fnt" id="71_eipgq"]
+[ext_resource type="Script" uid="uid://bc0nxlp25bbob" path="res://addons/richtext2/text_effects/anims/rte_growin.gd" id="71_shro8"]
+[ext_resource type="Texture2D" uid="uid://pxoqgw3plnq6" path="res://characters/alligator/assets/button_skill1.webp" id="72_ag3w6"]
 [ext_resource type="Texture2D" uid="uid://iywkd2roassp" path="res://assets/vector/button_empty.webp" id="72_pon7p"]
 [ext_resource type="Script" uid="uid://cvcuwr1hacchf" path="res://scenes/level_ultimate/ultimate_manager.gd" id="73_vjv51"]
 [ext_resource type="Script" uid="uid://b1y6j8r5l7jp4" path="res://scenes/level_dialogue/level_dialogue.gd" id="73_x7umk"]
@@ -2450,7 +2455,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_n1hk8"]
 resource_name = "blink"
-length = 0.5
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2459,10 +2464,10 @@ tracks/0/path = NodePath("glow:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.285634, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.270593, 0, 0.0623272, 1), Color(0.270593, 0, 0.0623272, 1), Color(0, 0, 0, 0)]
+"values": [Color(0.794193, 0, 0.191677, 1), Color(0.760238, 0, 0.00766424, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2495,10 +2500,10 @@ tracks/3/path = NodePath("point:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.247631, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2507,7 +2512,7 @@ tracks/4/path = NodePath(".:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.35, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.600392, 0.212699, 0.291738, 1), Color(0.600392, 0.212699, 0.291738, 1), Color(1, 1, 1, 1)]
@@ -3054,7 +3059,131 @@ shader_parameter/particle_amount = 20
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1vsu1"]
 blend_mode = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjs6t"]
+[sub_resource type="Gradient" id="Gradient_xner8"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eipgq"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_st4n1"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oolel"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_flcfb"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ag3w6"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shro8"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwync"]
+gradient = SubResource("Gradient_xner8")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.923077, 0.918803)
+
+[sub_resource type="Gradient" id="Gradient_hqoej"]
+colors = PackedColorArray(0.353241, 0.275703, 0.937171, 1, 0.217478, 0.182848, 0.735362, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_orote"]
+gradient = SubResource("Gradient_hqoej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuxt8"]
+shader = SubResource("Shader_jqi4e")
+shader_parameter/progress = 0.0
+shader_parameter/background_color = Color(0.09528, 0.0792, 0.24, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_orote")
+shader_parameter/mask_texture = ExtResource("25_1y41g")
+shader_parameter/wave_amplitude = 0.044
+shader_parameter/wave_frequency = 5.121
+shader_parameter/wave_speed = 2.13
+shader_parameter/particle_speed = 0.173
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.001
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0)
+shader_parameter/particle_start_scale = Vector2(0.04, 0.04)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.505
+shader_parameter/particle_amount = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l12la"]
+shader = ExtResource("44_wlqnt")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.025
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x828i"]
+shader = ExtResource("44_wlqnt")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.025
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ld57"]
+shader = ExtResource("44_wlqnt")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pon7p"]
+shader = ExtResource("44_wlqnt")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/mouse_position = Vector2(0, 0)
+shader_parameter/hover_strength = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xmtx"]
 shader = ExtResource("55_shrs3")
 shader_parameter/hit_effect = 0.0
 shader_parameter/shake_intensity = 10.0
@@ -3110,32 +3239,32 @@ void fragment() {
 }
 "
 
-[sub_resource type="Gradient" id="Gradient_vjv51"]
+[sub_resource type="Gradient" id="Gradient_cjs6t"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.967742)
 colors = PackedColorArray(0, 0, 0, 0, 0.27451, 0.27451, 0.27451, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fglnd"]
-gradient = SubResource("Gradient_vjv51")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1yxtl"]
+gradient = SubResource("Gradient_cjs6t")
 width = 1
 height = 32
 fill_from = Vector2(0.820513, 1)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_k4mcf"]
+[sub_resource type="Gradient" id="Gradient_l12la"]
 offsets = PackedFloat32Array(0, 0.175325, 0.50974, 0.795455, 1)
 colors = PackedColorArray(0.864316, 0.35971, 0.0469657, 1, 1, 0.24, 0.252666, 1, 0.0462979, 0.598503, 0.827569, 1, 1, 0.239216, 0.25098, 1, 0.862745, 0.360784, 0.0470588, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_khgdi"]
-gradient = SubResource("Gradient_k4mcf")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uhlvr"]
+gradient = SubResource("Gradient_l12la")
 width = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4ihx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uee3"]
 shader = SubResource("Shader_b368a")
 shader_parameter/progress = 0.0
 shader_parameter/background_color = Color(0, 0, 0, 0)
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_khgdi")
-shader_parameter/bevel_texture = SubResource("GradientTexture2D_fglnd")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_uhlvr")
+shader_parameter/bevel_texture = SubResource("GradientTexture2D_1yxtl")
 shader_parameter/speed = 0.25
 shader_parameter/scale = 0.5
 shader_parameter/wave_amplitude = 0.013
@@ -3596,163 +3725,39 @@ _data = {
 &"idle": SubResource("Animation_b368a")
 }
 
-[sub_resource type="Gradient" id="Gradient_xner8"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eipgq"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_st4n1"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oolel"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_flcfb"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ag3w6"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_shro8"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwync"]
-gradient = SubResource("Gradient_xner8")
-width = 15
-height = 15
-fill = 1
-fill_from = Vector2(0.491453, 0.5)
-fill_to = Vector2(0.923077, 0.918803)
-
-[sub_resource type="Gradient" id="Gradient_hqoej"]
-colors = PackedColorArray(0.353241, 0.275703, 0.937171, 1, 0.217478, 0.182848, 0.735362, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_orote"]
-gradient = SubResource("Gradient_hqoej")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuxt8"]
-shader = SubResource("Shader_jqi4e")
-shader_parameter/progress = 0.0
-shader_parameter/background_color = Color(0.09528, 0.0792, 0.24, 0)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_orote")
-shader_parameter/mask_texture = ExtResource("25_1y41g")
-shader_parameter/wave_amplitude = 0.044
-shader_parameter/wave_frequency = 5.121
-shader_parameter/wave_speed = 2.13
-shader_parameter/particle_speed = 0.173
-shader_parameter/particle_lifetime = 3.0
-shader_parameter/particle_softness = 0.001
-shader_parameter/particle_spacing = 0.1
-shader_parameter/particle_offset = Vector2(0, 0)
-shader_parameter/particle_start_scale = Vector2(0.04, 0.04)
-shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
-shader_parameter/particle_scale_randomness = 0.505
-shader_parameter/particle_amount = 20
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l12la"]
-shader = ExtResource("44_wlqnt")
-shader_parameter/up_left = Vector2(0, 0)
-shader_parameter/up_right = Vector2(1, 0)
-shader_parameter/down_right = Vector2(1, 1)
-shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = Vector2(0, 0)
-shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x828i"]
-shader = ExtResource("44_wlqnt")
-shader_parameter/up_left = Vector2(0, 0)
-shader_parameter/up_right = Vector2(1, 0)
-shader_parameter/down_right = Vector2(1, 1)
-shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = Vector2(0, 0)
-shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.025
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ld57"]
-shader = ExtResource("44_wlqnt")
-shader_parameter/up_left = Vector2(0, 0)
-shader_parameter/up_right = Vector2(1, 0)
-shader_parameter/down_right = Vector2(1, 1)
-shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = Vector2(0, 0)
-shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.02
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pon7p"]
-shader = ExtResource("44_wlqnt")
-shader_parameter/up_left = Vector2(0, 0)
-shader_parameter/up_right = Vector2(1, 0)
-shader_parameter/down_right = Vector2(1, 1)
-shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = Vector2(0, 0)
-shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/hover_strength = 0.02
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xmtx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjs6t"]
 shader = ExtResource("55_shrs3")
 shader_parameter/hit_effect = 0.0
 shader_parameter/shake_intensity = 10.0
 shader_parameter/flash_speed = 30.0
 shader_parameter/flash_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_cjs6t"]
+[sub_resource type="Gradient" id="Gradient_vjv51"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.967742)
 colors = PackedColorArray(0, 0, 0, 0, 0.27451, 0.27451, 0.27451, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1yxtl"]
-gradient = SubResource("Gradient_cjs6t")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fglnd"]
+gradient = SubResource("Gradient_vjv51")
 width = 1
 height = 32
 fill_from = Vector2(0.820513, 1)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_l12la"]
+[sub_resource type="Gradient" id="Gradient_k4mcf"]
 offsets = PackedFloat32Array(0, 0.175325, 0.50974, 0.795455, 1)
 colors = PackedColorArray(0.864316, 0.35971, 0.0469657, 1, 1, 0.24, 0.252666, 1, 0.0462979, 0.598503, 0.827569, 1, 1, 0.239216, 0.25098, 1, 0.862745, 0.360784, 0.0470588, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uhlvr"]
-gradient = SubResource("Gradient_l12la")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_khgdi"]
+gradient = SubResource("Gradient_k4mcf")
 width = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uee3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4ihx"]
 shader = SubResource("Shader_b368a")
 shader_parameter/progress = 0.0
 shader_parameter/background_color = Color(0, 0, 0, 0)
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_uhlvr")
-shader_parameter/bevel_texture = SubResource("GradientTexture2D_1yxtl")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_khgdi")
+shader_parameter/bevel_texture = SubResource("GradientTexture2D_fglnd")
 shader_parameter/speed = 0.25
 shader_parameter/scale = 0.5
 shader_parameter/wave_amplitude = 0.013
@@ -3812,6 +3817,40 @@ Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 
+[sub_resource type="FontVariation" id="FontVariation_ag3w6"]
+base_font = ExtResource("56_kveae")
+spacing_top = -9
+
+[sub_resource type="Theme" id="Theme_shro8"]
+default_font = SubResource("FontVariation_ag3w6")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_vlyrp"]
+base_font = ExtResource("70_ag3w6")
+spacing_glyph = -1
+
+[sub_resource type="FontVariation" id="FontVariation_yj5it"]
+base_font = ExtResource("70_ag3w6")
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_2gqx0"]
+base_font = ExtResource("70_ag3w6")
+variation_embolden = 1.5
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_k2gu4"]
+base_font = ExtResource("70_ag3w6")
+variation_embolden = 1.5
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4d3ys"]
+resource_name = "growin"
+script = ExtResource("71_shro8")
+metadata/rt = 2291163808699
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1k40i"]
 shader = ExtResource("13_c5xlv")
 shader_parameter/rect_size = Vector2(0.165, 0.135)
@@ -3830,6 +3869,10 @@ shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
 shader_parameter/hover_strength = 0.015
+
+[sub_resource type="FontVariation" id="FontVariation_st4n1"]
+base_font = ExtResource("71_eipgq")
+spacing_top = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fglnd"]
 shader = ExtResource("44_wlqnt")
@@ -4786,18 +4829,18 @@ character_control = NodePath("../characters")
 player_asset = NodePath("../characters/players")
 enemy_asset = NodePath("../characters/enemies")
 text_effect = NodePath("../effects/text_effect")
-player_health = NodePath("player_bar/character_panel/panel/health")
-player_flinch = NodePath("player_bar/character_panel/panel/flinch_mask/flinch")
+player_health = NodePath("CanvasLayer/player_bar/character_panel/panel/health")
+player_flinch = NodePath("CanvasLayer/player_bar/character_panel/panel/flinch_mask/flinch")
 player_ink = NodePath("player_canvas/ultimate")
 player_intelligence = NodePath("player_canvas/intelligence")
-player_bar = NodePath("player_bar")
-player_effects_list = NodePath("player_bar/stacks")
-enemy_health = NodePath("enemy_bar/character_panel/panel/health")
-enemy_flinch = NodePath("enemy_bar/character_panel/panel/flinch_mask/flinch")
+player_bar = NodePath("CanvasLayer/player_bar")
+player_effects_list = NodePath("CanvasLayer/player_bar/stacks")
+enemy_health = NodePath("CanvasLayer/enemy_bar/character_panel/panel/health")
+enemy_flinch = NodePath("CanvasLayer/enemy_bar/character_panel/panel/flinch_mask/flinch")
 enemy_ink = NodePath("enemy_canvas/ultimate")
 enemy_intelligence = NodePath("enemy_canvas/intelligence")
-enemy_bar = NodePath("enemy_bar")
-enemy_effects_list = NodePath("enemy_bar/stacks")
+enemy_bar = NodePath("CanvasLayer/enemy_bar")
+enemy_effects_list = NodePath("CanvasLayer/enemy_bar/stacks")
 question_splash = NodePath("question_canvas/questions/question/board/splash")
 question_label = NodePath("question_canvas/questions/question/board/label")
 question_timer = NodePath("ui_canvas/progress/timer")
@@ -5030,9 +5073,9 @@ script = ExtResource("23_jftwg")
 question_canvas = NodePath("../../question_canvas")
 player_canvas = NodePath("../../player_canvas")
 ui_canvas = NodePath("..")
-player_active = NodePath("../../player_bar")
+player_active = NodePath("../../CanvasLayer/player_bar")
 enemy_canvas = NodePath("../../enemy_canvas")
-enemy_active = NodePath("../../enemy_bar")
+enemy_active = NodePath("../../CanvasLayer/enemy_bar")
 vignette = NodePath("../../dialogue_canvas/vignette")
 camera = NodePath("../../../characters/camera")
 effect = NodePath("../../../effects/text_effect")
@@ -5046,7 +5089,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -240.0
+offset_top = -353.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -5146,10 +5190,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/1"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2588
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.0361
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5159,6 +5203,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="2" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5183,10 +5228,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/2"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2587
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.036
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5196,6 +5241,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="3" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5220,10 +5266,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/3"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2587
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.036
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5233,6 +5279,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="4" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5257,10 +5304,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/4"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2589
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.0362
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5270,6 +5317,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="5" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5294,10 +5342,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/5"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2587
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.036
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5307,6 +5355,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="6" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5331,10 +5380,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/6"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2587
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = 8.0001
+offset_top = 19.685
+offset_right = 208.0
+offset_bottom = 219.685
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5344,6 +5393,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="7" type="TextureRect" parent="gameplay/enemy_canvas/intelligence"]
 layout_mode = 0
@@ -5368,10 +5418,10 @@ texture = ExtResource("8_uyi6t")
 [node name="glow" type="TextureRect" parent="gameplay/enemy_canvas/intelligence/7"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_left = -32.6586
-offset_top = -39.2588
-offset_right = 167.341
-offset_bottom = 160.741
+offset_left = -63.0253
+offset_top = -16.0361
+offset_right = 136.974
+offset_bottom = 183.964
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(97.9484, 101.786)
 texture = ExtResource("30_x828i")
@@ -5381,6 +5431,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="ultimate" type="TextureProgressBar" parent="gameplay/enemy_canvas" node_paths=PackedStringArray("ink", "animation", "text", "glow")]
 self_modulate = Color(0.32, 0.00639999, 0.105707, 1)
@@ -5513,235 +5564,6 @@ offset_top = -128.629
 offset_right = 125.0
 offset_bottom = 128.371
 
-[node name="enemy_bar" type="Control" parent="gameplay" node_paths=PackedStringArray("animation", "character_panel", "health")]
-z_index = 2
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -223.0
-offset_top = 40.0
-offset_right = -223.0
-offset_bottom = 40.0
-grow_horizontal = 0
-scale = Vector2(-0.4, 0.4)
-script = ExtResource("47_x7umk")
-animation = NodePath("animation")
-role = 1
-character_panel = NodePath("character_panel")
-health = NodePath("character_panel/panel/health")
-
-[node name="character_panel" type="Control" parent="gameplay/enemy_bar"]
-material = SubResource("ShaderMaterial_cjs6t")
-layout_mode = 3
-anchors_preset = 0
-
-[node name="ribbon" type="TextureRect" parent="gameplay/enemy_bar/character_panel"]
-use_parent_material = true
-layout_mode = 0
-offset_left = -422.5
-offset_top = -18.7809
-offset_right = -237.5
-offset_bottom = 138.219
-pivot_offset = Vector2(180, 17.1429)
-texture = ExtResource("48_shrs3")
-
-[node name="panel" type="TextureRect" parent="gameplay/enemy_bar/character_panel"]
-use_parent_material = true
-layout_mode = 0
-offset_left = -147.5
-offset_top = -63.0
-offset_right = 252.5
-offset_bottom = 93.0
-rotation = -0.0349066
-pivot_offset = Vector2(0, 74.2857)
-texture = ExtResource("53_cjs6t")
-
-[node name="flinch_mask" type="TextureProgressBar" parent="gameplay/enemy_bar/character_panel/panel"]
-clip_children = 1
-layout_mode = 0
-offset_left = 5.71426
-offset_top = 8.57143
-offset_right = 357.714
-offset_bottom = 143.571
-scale = Vector2(1.09, 1)
-value = 100.0
-texture_progress = ExtResource("51_hjth1")
-
-[node name="flinch" type="TextureProgressBar" parent="gameplay/enemy_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
-visible = false
-clip_children = 1
-layout_mode = 0
-offset_right = 352.0
-offset_bottom = 135.0
-script = ExtResource("34_kveae")
-progress = NodePath("../../../../../player_bar/character_panel/panel/flinch_mask/flinch_progress")
-glow = NodePath("../../glow")
-particle = NodePath("../../particle")
-flinch_material = SubResource("ShaderMaterial_k4ihx")
-role = 1
-effect = NodePath("../../../../../../effects/text_effect")
-parent = NodePath("../../../..")
-health = NodePath("../../health")
-
-[node name="flinch_progress" type="TextureRect" parent="gameplay/enemy_bar/character_panel/panel/flinch_mask"]
-material = SubResource("ShaderMaterial_k4ihx")
-layout_mode = 0
-offset_top = -2.0
-offset_right = 354.0
-offset_bottom = 133.0
-texture = ExtResource("51_hjth1")
-
-[node name="glow" type="ColorRect" parent="gameplay/enemy_bar/character_panel/panel"]
-modulate = Color(0, 0, 0, 1)
-material = SubResource("ShaderMaterial_x7umk")
-layout_mode = 0
-offset_left = -199.429
-offset_top = -22.0
-offset_right = 355.571
-offset_bottom = 169.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(99, 98)
-
-[node name="particle" type="GPUParticles2D" parent="gameplay/enemy_bar/character_panel/panel"]
-visible = false
-material = SubResource("CanvasItemMaterial_k4mcf")
-position = Vector2(111.487, 69.0018)
-scale = Vector2(0.5, 0.5)
-amount = 50
-speed_scale = 1.25
-process_material = SubResource("ParticleProcessMaterial_k4ihx")
-
-[node name="health" type="TextureProgressBar" parent="gameplay/enemy_bar/character_panel/panel" node_paths=PackedStringArray("text", "animation", "effect", "parent", "flinch")]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("58_uuxt8")
-text = NodePath("label")
-role = 1
-animation = NodePath("../../../animation")
-effect = NodePath("../../../../../effects/text_effect")
-parent = NodePath("../../..")
-flinch = NodePath("../flinch_mask/flinch")
-
-[node name="label" type="RichTextLabel" parent="gameplay/enemy_bar/character_panel/panel/health"]
-layout_mode = 0
-offset_left = 379.409
-offset_top = 26.2119
-offset_right = 465.409
-offset_bottom = 50.2119
-rotation = 0.019151
-scale = Vector2(-4, 4)
-theme = SubResource("Theme_shrs3")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "[img=22]res://assets/icons/stats/dead_enemy.webp[/img]999"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="profile" type="TextureRect" parent="gameplay/enemy_bar/character_panel" node_paths=PackedStringArray("health")]
-use_parent_material = true
-layout_mode = 0
-offset_left = -273.929
-offset_top = -77.5
-offset_right = -98.9285
-offset_bottom = 100.5
-pivot_offset = Vector2(120, 85.7143)
-texture = ExtResource("56_l12la")
-script = ExtResource("45_pon7p")
-health = NodePath("../panel/health")
-
-[node name="picture" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.471
-anchor_top = 0.5
-anchor_right = 0.471
-anchor_bottom = 0.5
-offset_left = -136.425
-offset_top = -141.0
-offset_right = 136.575
-offset_bottom = 132.0
-pivot_offset = Vector2(135.429, 142)
-texture = ExtResource("60_eipgq")
-
-[node name="flinch" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile"]
-visible = false
-material = SubResource("CanvasItemMaterial_egn5v")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.571
-offset_top = -163.269
-offset_right = 212.429
-offset_bottom = 160.731
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_2ld57")
-
-[node name="icon" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile/flinch"]
-material = SubResource("CanvasItemMaterial_6ks02")
-layout_mode = 0
-offset_left = 156.981
-offset_top = 105.66
-offset_right = 266.981
-offset_bottom = 215.66
-pivot_offset = Vector2(54.3397, 54.3396)
-texture = ExtResource("45_2ld57")
-
-[node name="dead" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile"]
-visible = false
-self_modulate = Color(0.775301, 0, 0.162937, 1)
-material = SubResource("CanvasItemMaterial_egn5v")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.571
-offset_top = -163.269
-offset_right = 212.429
-offset_bottom = 160.731
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="icon" type="TextureRect" parent="gameplay/enemy_bar/character_panel/profile/dead"]
-material = SubResource("CanvasItemMaterial_6ks02")
-layout_mode = 0
-offset_left = 156.981
-offset_top = 105.66
-offset_right = 266.981
-offset_bottom = 215.66
-pivot_offset = Vector2(54.3397, 54.3396)
-texture = ExtResource("46_x828i")
-
-[node name="animation" type="AnimationPlayer" parent="gameplay/enemy_bar"]
-process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_1yxtl")
-}
-
-[node name="stacks" type="Container" parent="gameplay/enemy_bar"]
-z_index = 5
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 412.5
-offset_top = 90.0
-offset_right = 947.5
-offset_bottom = 154.0
-grow_horizontal = 0
-scale = Vector2(-0.9, 0.9)
-mouse_filter = 2
-script = ExtResource("52_vjv51")
-role = 1
-
 [node name="player_canvas" type="Control" parent="gameplay"]
 layout_mode = 1
 anchors_preset = 4
@@ -5813,6 +5635,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="2" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -5850,6 +5673,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="3" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -5887,6 +5711,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="4" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -5924,6 +5749,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="5" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -5961,6 +5787,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="6" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -5998,6 +5825,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="7" type="TextureRect" parent="gameplay/player_canvas/intelligence"]
 layout_mode = 0
@@ -6035,6 +5863,7 @@ expand_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_xoxod")
 }
+speed_scale = 0.75
 
 [node name="ultimate" type="TextureProgressBar" parent="gameplay/player_canvas" node_paths=PackedStringArray("ink", "animation", "text", "glow")]
 self_modulate = Color(0.153227, 0.0416, 0.52, 1)
@@ -6300,8 +6129,20 @@ stretch_mode = 0
 script = ExtResource("45_ewnsm")
 selector = NodePath("../../../selector")
 
-[node name="player_bar" type="Control" parent="gameplay" node_paths=PackedStringArray("animation", "character_panel", "health")]
+[node name="question_canvas" parent="gameplay" instance=ExtResource("4_1sy1q")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.494
+anchor_right = 0.494
+offset_left = -0.320007
+offset_right = -0.320007
+
+[node name="CanvasLayer" type="CanvasLayer" parent="gameplay"]
+
+[node name="player_bar" type="Control" parent="gameplay/CanvasLayer" node_paths=PackedStringArray("animation", "character_panel", "health")]
 z_index = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 223.0
 offset_top = 40.0
@@ -6313,12 +6154,12 @@ animation = NodePath("animation")
 character_panel = NodePath("character_panel")
 health = NodePath("character_panel/panel/health")
 
-[node name="character_panel" type="Control" parent="gameplay/player_bar"]
+[node name="character_panel" type="Control" parent="gameplay/CanvasLayer/player_bar"]
 material = SubResource("ShaderMaterial_5xmtx")
 layout_mode = 3
 anchors_preset = 0
 
-[node name="ribbon" type="TextureRect" parent="gameplay/player_bar/character_panel"]
+[node name="ribbon" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel"]
 use_parent_material = true
 layout_mode = 0
 offset_left = -422.5
@@ -6328,7 +6169,7 @@ offset_bottom = 138.219
 pivot_offset = Vector2(180, 17.1429)
 texture = ExtResource("48_shrs3")
 
-[node name="panel" type="TextureRect" parent="gameplay/player_bar/character_panel"]
+[node name="panel" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel"]
 use_parent_material = true
 layout_mode = 0
 offset_left = -147.5
@@ -6339,7 +6180,7 @@ rotation = -0.0349066
 pivot_offset = Vector2(0, 74.2857)
 texture = ExtResource("53_cjs6t")
 
-[node name="flinch_mask" type="TextureProgressBar" parent="gameplay/player_bar/character_panel/panel"]
+[node name="flinch_mask" type="TextureProgressBar" parent="gameplay/CanvasLayer/player_bar/character_panel/panel"]
 clip_children = 1
 layout_mode = 0
 offset_left = 5.71426
@@ -6350,7 +6191,7 @@ scale = Vector2(1.09, 1)
 value = 100.0
 texture_progress = ExtResource("51_hjth1")
 
-[node name="flinch" type="TextureProgressBar" parent="gameplay/player_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
+[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
 clip_children = 1
 layout_mode = 0
 offset_right = 352.0
@@ -6360,11 +6201,11 @@ progress = NodePath("../flinch_progress")
 glow = NodePath("../../glow")
 particle = NodePath("../../particle")
 flinch_material = SubResource("ShaderMaterial_4uee3")
-effect = NodePath("../../../../../../effects/text_effect")
+effect = NodePath("../../../../../../../effects/text_effect")
 parent = NodePath("../../../..")
 health = NodePath("../../health")
 
-[node name="flinch_progress" type="TextureRect" parent="gameplay/player_bar/character_panel/panel/flinch_mask"]
+[node name="flinch_progress" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/flinch_mask"]
 material = SubResource("ShaderMaterial_4uee3")
 layout_mode = 0
 offset_top = -2.0
@@ -6374,7 +6215,7 @@ texture = ExtResource("51_hjth1")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="glow" type="ColorRect" parent="gameplay/player_bar/character_panel/panel"]
+[node name="glow" type="ColorRect" parent="gameplay/CanvasLayer/player_bar/character_panel/panel"]
 modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_x7umk")
 layout_mode = 0
@@ -6385,7 +6226,7 @@ offset_bottom = 174.486
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(99, 98)
 
-[node name="particle" type="GPUParticles2D" parent="gameplay/player_bar/character_panel/panel"]
+[node name="particle" type="GPUParticles2D" parent="gameplay/CanvasLayer/player_bar/character_panel/panel"]
 visible = false
 material = SubResource("CanvasItemMaterial_k4mcf")
 position = Vector2(111.487, 69.0018)
@@ -6394,19 +6235,19 @@ amount = 50
 speed_scale = 1.25
 process_material = SubResource("ParticleProcessMaterial_k4ihx")
 
-[node name="health" type="TextureProgressBar" parent="gameplay/player_bar/character_panel/panel" node_paths=PackedStringArray("text", "animation", "effect", "parent", "flinch")]
+[node name="health" type="TextureProgressBar" parent="gameplay/CanvasLayer/player_bar/character_panel/panel" node_paths=PackedStringArray("text", "animation", "effect", "parent", "flinch")]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("58_uuxt8")
 text = NodePath("label")
 animation = NodePath("../../../animation")
-effect = NodePath("../../../../../effects/text_effect")
+effect = NodePath("../../../../../../effects/text_effect")
 parent = NodePath("../../..")
 flinch = NodePath("../flinch_mask/flinch")
 target = 3
 
-[node name="label" type="RichTextLabel" parent="gameplay/player_bar/character_panel/panel/health"]
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/health"]
 layout_mode = 0
 offset_left = 34.9128
 offset_top = 20.4985
@@ -6421,7 +6262,7 @@ text = "[img=22]res://assets/icons/stats/dead_player.webp[/img]100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="profile" type="TextureRect" parent="gameplay/player_bar/character_panel" node_paths=PackedStringArray("health")]
+[node name="profile" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel" node_paths=PackedStringArray("health")]
 use_parent_material = true
 layout_mode = 0
 offset_left = -273.929
@@ -6433,7 +6274,7 @@ texture = ExtResource("56_l12la")
 script = ExtResource("45_pon7p")
 health = NodePath("../panel/health")
 
-[node name="picture" type="TextureRect" parent="gameplay/player_bar/character_panel/profile"]
+[node name="picture" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/profile"]
 use_parent_material = true
 layout_mode = 0
 offset_left = -44.0
@@ -6442,7 +6283,7 @@ offset_right = 216.0
 offset_bottom = 218.0
 texture = ExtResource("60_xner8")
 
-[node name="flinch" type="TextureRect" parent="gameplay/player_bar/character_panel/profile"]
+[node name="flinch" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/profile"]
 visible = false
 material = SubResource("CanvasItemMaterial_egn5v")
 layout_mode = 1
@@ -6459,7 +6300,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_2ld57")
 
-[node name="icon" type="TextureRect" parent="gameplay/player_bar/character_panel/profile/flinch"]
+[node name="icon" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/profile/flinch"]
 material = SubResource("CanvasItemMaterial_6ks02")
 layout_mode = 0
 offset_left = 156.981
@@ -6469,7 +6310,7 @@ offset_bottom = 215.66
 pivot_offset = Vector2(54.3397, 54.3396)
 texture = ExtResource("62_vjv51")
 
-[node name="dead" type="TextureRect" parent="gameplay/player_bar/character_panel/profile"]
+[node name="dead" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/profile"]
 visible = false
 self_modulate = Color(0.775301, 0, 0.162937, 1)
 material = SubResource("CanvasItemMaterial_egn5v")
@@ -6486,7 +6327,7 @@ offset_bottom = 160.731
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="icon" type="TextureRect" parent="gameplay/player_bar/character_panel/profile/dead"]
+[node name="icon" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/profile/dead"]
 material = SubResource("CanvasItemMaterial_6ks02")
 layout_mode = 0
 offset_left = 156.981
@@ -6496,7 +6337,7 @@ offset_bottom = 215.66
 pivot_offset = Vector2(54.3397, 54.3396)
 texture = ExtResource("63_fglnd")
 
-[node name="stacks" type="Container" parent="gameplay/player_bar"]
+[node name="stacks" type="Container" parent="gameplay/CanvasLayer/player_bar"]
 z_index = 5
 layout_mode = 1
 offset_left = -165.0
@@ -6506,20 +6347,240 @@ offset_bottom = 154.0
 scale = Vector2(0.9, 0.9)
 script = ExtResource("52_vjv51")
 
-[node name="animation" type="AnimationPlayer" parent="gameplay/player_bar"]
+[node name="animation" type="AnimationPlayer" parent="gameplay/CanvasLayer/player_bar"]
 process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_1yxtl")
 }
 
-[node name="question_canvas" parent="gameplay" instance=ExtResource("4_1sy1q")]
+[node name="enemy_bar" type="Control" parent="gameplay/CanvasLayer" node_paths=PackedStringArray("animation", "character_panel", "health")]
+z_index = 2
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -223.0
+offset_top = 40.0
+offset_right = -223.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(-0.4, 0.4)
+script = ExtResource("47_x7umk")
+animation = NodePath("animation")
+role = 1
+character_panel = NodePath("character_panel")
+health = NodePath("character_panel/panel/health")
+
+[node name="character_panel" type="Control" parent="gameplay/CanvasLayer/enemy_bar"]
+material = SubResource("ShaderMaterial_cjs6t")
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ribbon" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -422.5
+offset_top = -18.7809
+offset_right = -237.5
+offset_bottom = 138.219
+pivot_offset = Vector2(180, 17.1429)
+texture = ExtResource("48_shrs3")
+
+[node name="panel" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -147.5
+offset_top = -63.0
+offset_right = 252.5
+offset_bottom = 93.0
+rotation = -0.0349066
+pivot_offset = Vector2(0, 74.2857)
+texture = ExtResource("53_cjs6t")
+
+[node name="flinch_mask" type="TextureProgressBar" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel"]
+clip_children = 1
+layout_mode = 0
+offset_left = 5.71426
+offset_top = 8.57143
+offset_right = 357.714
+offset_bottom = 143.571
+scale = Vector2(1.09, 1)
+value = 100.0
+texture_progress = ExtResource("51_hjth1")
+
+[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
 visible = false
+clip_children = 1
+layout_mode = 0
+offset_right = 352.0
+offset_bottom = 135.0
+script = ExtResource("34_kveae")
+progress = NodePath("../flinch_progress")
+glow = NodePath("../../glow")
+particle = NodePath("../../particle")
+flinch_material = SubResource("ShaderMaterial_k4ihx")
+role = 1
+effect = NodePath("../../../../../../../effects/text_effect")
+parent = NodePath("../../../..")
+health = NodePath("../../health")
+
+[node name="flinch_progress" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/flinch_mask"]
+material = SubResource("ShaderMaterial_k4ihx")
+layout_mode = 0
+offset_top = -2.0
+offset_right = 354.0
+offset_bottom = 133.0
+texture = ExtResource("51_hjth1")
+
+[node name="glow" type="ColorRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel"]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_x7umk")
+layout_mode = 0
+offset_left = -199.429
+offset_top = -22.0
+offset_right = 355.571
+offset_bottom = 169.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(99, 98)
+
+[node name="particle" type="GPUParticles2D" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel"]
+visible = false
+material = SubResource("CanvasItemMaterial_k4mcf")
+position = Vector2(111.487, 69.0018)
+scale = Vector2(0.5, 0.5)
+amount = 50
+speed_scale = 1.25
+process_material = SubResource("ParticleProcessMaterial_k4ihx")
+
+[node name="health" type="TextureProgressBar" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel" node_paths=PackedStringArray("text", "animation", "effect", "parent", "flinch")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("58_uuxt8")
+text = NodePath("label")
+role = 1
+animation = NodePath("../../../animation")
+effect = NodePath("../../../../../../effects/text_effect")
+parent = NodePath("../../..")
+flinch = NodePath("../flinch_mask/flinch")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/health"]
+layout_mode = 0
+offset_left = 379.409
+offset_top = 26.2119
+offset_right = 465.409
+offset_bottom = 50.2119
+rotation = 0.019151
+scale = Vector2(-4, 4)
+theme = SubResource("Theme_shrs3")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[img=22]res://assets/icons/stats/dead_enemy.webp[/img]999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="profile" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel" node_paths=PackedStringArray("health")]
+use_parent_material = true
+layout_mode = 0
+offset_left = -273.929
+offset_top = -77.5
+offset_right = -98.9285
+offset_bottom = 100.5
+pivot_offset = Vector2(120, 85.7143)
+texture = ExtResource("56_l12la")
+script = ExtResource("45_pon7p")
+health = NodePath("../panel/health")
+
+[node name="picture" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/profile"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.494
-anchor_right = 0.494
-offset_left = -0.320007
-offset_right = -0.320007
+anchor_left = 0.471
+anchor_top = 0.5
+anchor_right = 0.471
+anchor_bottom = 0.5
+offset_left = -136.425
+offset_top = -141.0
+offset_right = 136.575
+offset_bottom = 132.0
+pivot_offset = Vector2(135.429, 142)
+texture = ExtResource("60_eipgq")
+
+[node name="flinch" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/profile"]
+visible = false
+material = SubResource("CanvasItemMaterial_egn5v")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.571
+offset_top = -163.269
+offset_right = 212.429
+offset_bottom = 160.731
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_2ld57")
+
+[node name="icon" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/profile/flinch"]
+material = SubResource("CanvasItemMaterial_6ks02")
+layout_mode = 0
+offset_left = 156.981
+offset_top = 105.66
+offset_right = 266.981
+offset_bottom = 215.66
+pivot_offset = Vector2(54.3397, 54.3396)
+texture = ExtResource("45_2ld57")
+
+[node name="dead" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/profile"]
+visible = false
+self_modulate = Color(0.775301, 0, 0.162937, 1)
+material = SubResource("CanvasItemMaterial_egn5v")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.571
+offset_top = -163.269
+offset_right = 212.429
+offset_bottom = 160.731
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="icon" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/profile/dead"]
+material = SubResource("CanvasItemMaterial_6ks02")
+layout_mode = 0
+offset_left = 156.981
+offset_top = 105.66
+offset_right = 266.981
+offset_bottom = 215.66
+pivot_offset = Vector2(54.3397, 54.3396)
+texture = ExtResource("46_x828i")
+
+[node name="animation" type="AnimationPlayer" parent="gameplay/CanvasLayer/enemy_bar"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_1yxtl")
+}
+
+[node name="stacks" type="Container" parent="gameplay/CanvasLayer/enemy_bar"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 412.5
+offset_top = 90.0
+offset_right = 947.5
+offset_bottom = 154.0
+grow_horizontal = 0
+scale = Vector2(-0.9, 0.9)
+mouse_filter = 2
+script = ExtResource("52_vjv51")
+role = 1
 
 [node name="stats_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("button", "camera", "player_character", "enemy_character", "type", "health", "eq", "iq", "refill", "flinch", "snap", "resistance", "determination")]
 visible = false
@@ -6954,6 +7015,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="move_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("move_panel", "hud", "skill1", "skill2", "skill3", "skill4", "selected_effect", "move_name", "move_description", "moves_button")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -6972,9 +7034,72 @@ skill2 = NodePath("skill2")
 skill3 = NodePath("skill3")
 skill4 = NodePath("skill4")
 selected_effect = NodePath("selected")
-move_name = NodePath("question/board/splash")
-move_description = NodePath("question/board/label")
+move_name = NodePath("center/container/move_name")
+move_description = NodePath("center/container/move_description")
 moves_button = NodePath("../player_canvas/moves/button")
+
+[node name="padding" type="NinePatchRect" parent="gameplay/move_canvas"]
+layout_mode = 2
+offset_left = 625.0
+offset_top = -185.0
+offset_right = 1516.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("69_flcfb")
+region_rect = Rect2(0, 0, 200, 200)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="center" type="CenterContainer" parent="gameplay/move_canvas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.0
+offset_top = -211.0
+offset_right = 239.0
+offset_bottom = -132.0
+scale = Vector2(1.75, 1.75)
+
+[node name="container" type="VBoxContainer" parent="gameplay/move_canvas/center"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="move_name" type="RichTextLabel" parent="gameplay/move_canvas/center/container"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_shro8")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "SHRIMPION ONCE SAID..."
+vertical_alignment = 1
+
+[node name="move_description" type="RichTextLabel" parent="gameplay/move_canvas/center/container"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vlyrp")
+theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
+theme_override_fonts/bold_font = SubResource("FontVariation_k2gu4")
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[color=AAAAAA]I kinda fricking hate it here."
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_4d3ys")]
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
 
 [node name="selected" type="ColorRect" parent="gameplay/move_canvas"]
 material = SubResource("ShaderMaterial_1k40i")
@@ -6998,11 +7123,23 @@ focus_neighbor_left = NodePath("../../player_canvas/moves/button")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../skill2")
 focus_neighbor_bottom = NodePath(".")
-texture_normal = ExtResource("72_pon7p")
+texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
 selected_effect = NodePath("../selected")
+
+[node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill1"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 111.0
+offset_right = 81.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = SubResource("FontVariation_st4n1")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img][s]7"
 
 [node name="skill2" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
 material = SubResource("ShaderMaterial_fglnd")
@@ -7017,12 +7154,24 @@ focus_neighbor_left = NodePath("../skill1")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../skill3")
 focus_neighbor_bottom = NodePath(".")
-texture_normal = ExtResource("72_pon7p")
+texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
 selected_effect = NodePath("../selected")
 value = 1
+
+[node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill2"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 111.0
+offset_right = 81.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = SubResource("FontVariation_st4n1")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]7"
 
 [node name="skill3" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
 material = SubResource("ShaderMaterial_shrs3")
@@ -7037,12 +7186,24 @@ focus_neighbor_left = NodePath("../skill2")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../skill4")
 focus_neighbor_bottom = NodePath(".")
-texture_normal = ExtResource("72_pon7p")
+texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
 selected_effect = NodePath("../selected")
 value = 2
+
+[node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill3"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 111.0
+offset_right = 81.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = SubResource("FontVariation_st4n1")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]7"
 
 [node name="skill4" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
 material = SubResource("ShaderMaterial_hjth1")
@@ -7064,38 +7225,17 @@ script = ExtResource("78_x7umk")
 selected_effect = NodePath("../selected")
 value = 3
 
-[node name="question" type="CenterContainer" parent="gameplay/move_canvas"]
-layout_mode = 2
-offset_left = 624.0
-offset_top = -247.0
-offset_right = 1084.0
-offset_bottom = -69.0
-pivot_offset = Vector2(238, 48)
-
-[node name="board" type="VBoxContainer" parent="gameplay/move_canvas/question"]
-custom_minimum_size = Vector2(460, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="splash" type="Label" parent="gameplay/move_canvas/question/board"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 6
-theme = ExtResource("13_kveae")
-theme_override_font_sizes/font_size = 22
-text = "MODULO!"
-autowrap_mode = 2
-
-[node name="label" type="Label" parent="gameplay/move_canvas/question/board"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-mouse_filter = 1
-theme = ExtResource("33_1y41g")
-theme_override_font_sizes/font_size = 36
-text = "Sharply increases the active character's ATK. Why not ?Sharply increases the active character's ATK. Sharply increases Guball's lol?"
-autowrap_mode = 3
+[node name="RichTextLabel" type="RichTextLabel" parent="gameplay/move_canvas/skill4"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 63.0
+offset_top = 14.0
+offset_right = 89.0
+offset_bottom = 38.0
+theme_override_fonts/normal_font = SubResource("FontVariation_st4n1")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][img=24]res://assets/icons/stats/ultimate_player.webp[/img]"
 
 [node name="dialogue_canvas" type="Control" parent="gameplay"]
 z_index = 11
@@ -7112,7 +7252,6 @@ grow_vertical = 0
 script = ExtResource("73_x7umk")
 
 [node name="vignette" type="TextureRect" parent="gameplay/dialogue_canvas"]
-visible = false
 modulate = Color(0, 0, 0, 1)
 top_level = true
 custom_minimum_size = Vector2(1280, 720)
@@ -7131,13 +7270,13 @@ layout_mode = 0
 offset_left = -302.0
 offset_top = 180.0
 offset_right = 338.0
-offset_bottom = 464.0
+offset_bottom = 358.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(306, 103)
 
 [node name="board" type="VBoxContainer" parent="gameplay/dialogue_canvas/dialog_frame"]
 custom_minimum_size = Vector2(640, 0)
-layout_direction = 2
+layout_direction = 3
 layout_mode = 2
 alignment = 1
 

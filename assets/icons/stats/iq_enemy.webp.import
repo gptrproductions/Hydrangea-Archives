@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qwbsbgyn3drd"
-path.s3tc="res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.s3tc.ctex"
-path.etc2="res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.etc2.ctex"
+path="res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/icons/stats/iq_enemy.webp"
-dest_files=["res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.s3tc.ctex", "res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.etc2.ctex"]
+dest_files=["res://.godot/imported/iq_enemy.webp-71a7a109bd0d8296d74c8f1cab28cd67.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

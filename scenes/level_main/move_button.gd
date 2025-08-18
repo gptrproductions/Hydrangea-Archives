@@ -13,7 +13,7 @@ var active_tween : Tween
 
 var unpressed_scale : Vector2 = Vector2(0.95, 0.95)
 var unpressed_color : Color = Color(0.75, 0.75, 0.75, 1)
-var pressed_scale : Vector2 =  Vector2(1.05, 1.05)
+var pressed_scale : Vector2 =  Vector2(1.02, 1.02)
 var regular_scale : Vector2 = Vector2(1 ,1)
 var regular_color : Color = Color.WHITE
 

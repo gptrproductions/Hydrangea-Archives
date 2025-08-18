@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4yrt5jsi1wno"
-path.s3tc="res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.s3tc.ctex"
-path.etc2="res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.etc2.ctex"
+path="res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/vector/intelligence_point.webp"
-dest_files=["res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.s3tc.ctex", "res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.etc2.ctex"]
+dest_files=["res://.godot/imported/intelligence_point.webp-1a6519d856df9ffd67782a4cd8178f6b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

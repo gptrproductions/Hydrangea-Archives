@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds75xdjsn2k5g"
-path.s3tc="res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.s3tc.ctex"
-path.etc2="res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.etc2.ctex"
+path="res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/icons/stats/flinch_enemy.webp"
-dest_files=["res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.s3tc.ctex", "res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.etc2.ctex"]
+dest_files=["res://.godot/imported/flinch_enemy.webp-32f5a4e21227df976180456e7d6c361b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

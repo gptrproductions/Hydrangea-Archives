@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cye36yal0v2uk"]
+[gd_scene load_steps=52 format=3 uid="uid://cye36yal0v2uk"]
 
 [ext_resource type="Script" uid="uid://dnn5wxwduijjd" path="res://characters/mushroom_clod/data.gd" id="1_ieoiy"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="2_ddiq6"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cm4od76t58pd2" path="res://characters/mushroom_clod/assets/death/cloddeath_0048.webp" id="27_uc5h2"]
 [ext_resource type="Texture2D" uid="uid://1jvlj58ay5u3" path="res://characters/mushroom_clod/assets/death/cloddeath_0049.webp" id="28_7w7ew"]
 [ext_resource type="Texture2D" uid="uid://c5eoi4yby7ond" path="res://characters/mushroom_clod/assets/death/cloddeath_0050.webp" id="29_qlo83"]
+[ext_resource type="VideoStream" uid="uid://cfj06h6c5p2m1" path="res://characters/mushroom_clod/assets/ultimate/ultimate_cutscene.ogv" id="32_6pty5"]
 
 [sub_resource type="Curve" id="Curve_q4mp4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.27551, 1), 0.0, 0.0, 0, 0, Vector2(0.704082, 0.843373), -1.77648, -1.77648, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -946,9 +947,29 @@ scale = Vector2(0.00520833, -0.00520833)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ieoiy")
 
-[node name="animation" type="AnimationPlayer" parent="." node_paths=PackedStringArray("idle_fixer")]
+[node name="animation" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ultimate_canvas", "ultimate_cutscene", "idle_fixer")]
 libraries = {
 &"": SubResource("AnimationLibrary_5p2y5")
 }
 script = ExtResource("3_ieoiy")
+ultimate_canvas = NodePath("../ultimate_cutscene")
+ultimate_cutscene = NodePath("../ultimate_cutscene/video")
 idle_fixer = NodePath("../parts/MushroomClod")
+
+[node name="ultimate_cutscene" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="video" type="VideoStreamPlayer" parent="ultimate_cutscene"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.667, 0.667)
+stream = ExtResource("32_6pty5")

@@ -18,8 +18,8 @@ signal on_selected(element)
 var animating : bool = false # Fixes potential timing issues.
 var current_size : Vector2 = Vector2.ZERO
 
-const CHECKMARK_COLORED = preload("res://assets/vector/checkmark_radio_selected.webp")
-const CHECKMARK_DISABLED = preload("res://assets/vector/checkmark_radio_unselected.webp")
+const CHECKMARK_COLORED = preload("res://scenes/settings_main/assets/checkmark_radio_selected.webp")
+const CHECKMARK_DISABLED = preload("res://scenes/settings_main/assets/checkmark_radio_unselected.webp")
 
 func _ready():
 	

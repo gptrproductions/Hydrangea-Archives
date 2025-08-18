@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl2b436yhakkg"
-path.s3tc="res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.s3tc.ctex"
-path.etc2="res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.etc2.ctex"
+path="res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/vector/profile_oneiric.webp"
-dest_files=["res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.s3tc.ctex", "res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.etc2.ctex"]
+dest_files=["res://.godot/imported/profile_oneiric.webp-6f57903b11d216bf915e67db6a9f1052.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

@@ -22,7 +22,7 @@ var effect_target : Hud.target
 # NOTE: Only some characters may have this. DO NOT REFERENCE THIS OUTSIDE THIS SCRIPT OR THE DATA SCRIPT OF A CHARACTER.
 @export var ultimate_canvas: Node
 # The animation for the CUTSCENE. Can be disabled in the options,
-@export var ultimate_cutscene : AnimationPlayer # Or AnimatedSprite, depends.
+@export var ultimate_cutscene : VideoStreamPlayer
 
 @export var idle_fixer : Sprite2D # Used sparingly throughout many characters, during times where the transition to idle feels cut off.
 func _ready(): # This is good as is for all characters. Don't change.
@@ -121,3 +121,22 @@ func skill3():
 	await get_tree().process_frame
 	Effects.start(Effects.AAAAAA, opp)
 	idle()
+
+func skill4():
+	ultimate_cutscene.modulate = Color.WHITE
+	Engine.max_fps = 24
+	ultimate_canvas.visible = true
+	ultimate_cutscene.paused = false
+	ultimate_cutscene.play()
+	await get_tree().create_timer(2.95).timeout
+	ultimate_cutscene.paused = true
+	await get_tree().create_timer(0.25).timeout
+	var tween = create_tween()
+	tween.tween_property(ultimate_cutscene, "modulate", Color.TRANSPARENT, 2)
+	await tween.finished
+	var gameplay : Gameplay = Character.get_gameplay()
+	if is_instance_valid(gameplay):
+		gameplay.change_stat(Hud.stat_type.INTELLIGENCE, 5, role, 0, Hud.mindset.PHRENIC)
+	ultimate_canvas.visible = false
+	Engine.max_fps = 0
+	

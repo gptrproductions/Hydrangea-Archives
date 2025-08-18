@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://lt64aigbwf6j" path="res://scenes/level_flashcards/flashcards.gd" id="1_rxuf1"]
 [ext_resource type="Shader" uid="uid://cpfer25emqqe0" path="res://scripts/shaders/hover.gdshader" id="2_lr20f"]
 [ext_resource type="Texture2D" uid="uid://bd01udt4rjrcs" path="res://assets/vector/flashcard_green.webp" id="3_r30cg"]
-[ext_resource type="Texture2D" uid="uid://mf5crg2370o3" path="res://assets/vector/face_correct_1.webp" id="3_rxuf1"]
+[ext_resource type="Texture2D" uid="uid://mf5crg2370o3" path="res://assets/icons/faces/face_correct_1.webp" id="3_rxuf1"]
 [ext_resource type="Script" uid="uid://d0nm8khraxnin" path="res://scenes/level_flashcards/flashcards_entrance.gd" id="4_q5cv1"]
-[ext_resource type="Texture2D" uid="uid://du216tdg10wrh" path="res://assets/vector/face_science.webp" id="5_2brrv"]
+[ext_resource type="Texture2D" uid="uid://du216tdg10wrh" path="res://assets/icons/faces/face_science.webp" id="5_2brrv"]
 [ext_resource type="Texture2D" uid="uid://b4bvv8ijepswu" path="res://assets/vector/flashcard_multiple.webp" id="8_2liam"]
-[ext_resource type="Texture2D" uid="uid://c2an8udlpjnff" path="res://assets/vector/face_wrong_1.webp" id="9_biivu"]
+[ext_resource type="Texture2D" uid="uid://c2an8udlpjnff" path="res://assets/icons/faces/face_wrong_1.webp" id="9_biivu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvf"]
 shader = ExtResource("2_lr20f")

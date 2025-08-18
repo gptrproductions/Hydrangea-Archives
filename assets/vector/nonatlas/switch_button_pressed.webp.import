@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnow82of7lrj3"
-path.s3tc="res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.s3tc.ctex"
-path.etc2="res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.etc2.ctex"
+path="res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/vector/nonatlas/switch_button_pressed.webp"
-dest_files=["res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.s3tc.ctex", "res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.etc2.ctex"]
+dest_files=["res://.godot/imported/switch_button_pressed.webp-c6ce8f3f0762ce4a7caaa9bc76e3cf3b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

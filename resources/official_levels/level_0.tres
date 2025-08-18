@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Questionnaire" load_steps=52 format=3 uid="uid://72fa1b3x0gbo"]
+[gd_resource type="Resource" script_class="Questionnaire" load_steps=53 format=3 uid="uid://72fa1b3x0gbo"]
 
 [ext_resource type="Script" uid="uid://batkcp7bg4ak0" path="res://scripts/resources/dialogue_manager.gd" id="1_0oajh"]
 [ext_resource type="Script" uid="uid://mw1km5qs1l7o" path="res://scripts/resources/level_dialogue.gd" id="1_82oqa"]
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://batkcp7bg4ak0"
 
 [sub_resource type="Resource" id="Resource_f6hva"]
 script = ExtResource("1_0oajh")
-character = 1
+character = 2
 role = 1
 mood = 6
 text = "Well...§0.5 That's what you get for abandoning your people!§0.5 Did the mushroom stimulate your serotonin?"
@@ -87,11 +87,20 @@ text = "Thanks, dude. §0.2I might just date you tomorrow if we survive this pre
 duration = 5
 metadata/_custom_type_script = "uid://batkcp7bg4ak0"
 
+[sub_resource type="Resource" id="Resource_q2fro"]
+script = ExtResource("1_0oajh")
+character = 2
+role = 1
+mood = 1
+text = "Alright! Everyone, attack!"
+duration = 0
+metadata/_custom_type_script = "uid://batkcp7bg4ak0"
+
 [sub_resource type="Resource" id="Resource_82oqa"]
 script = ExtResource("1_82oqa")
 triggered = 0
 value = 0
-dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_gp53b"), SubResource("Resource_f6hva"), SubResource("Resource_dbmq3"), SubResource("Resource_nrpi1"), SubResource("Resource_nffiy"), SubResource("Resource_pxbu5"), SubResource("Resource_x1skw"), SubResource("Resource_3atwx"), SubResource("Resource_xmjef")])
+dialogues = Array[ExtResource("1_0oajh")]([SubResource("Resource_gp53b"), SubResource("Resource_f6hva"), SubResource("Resource_dbmq3"), SubResource("Resource_nrpi1"), SubResource("Resource_nffiy"), SubResource("Resource_pxbu5"), SubResource("Resource_x1skw"), SubResource("Resource_3atwx"), SubResource("Resource_xmjef"), SubResource("Resource_q2fro")])
 metadata/_custom_type_script = "uid://mw1km5qs1l7o"
 
 [sub_resource type="Resource" id="Resource_npwtn"]
@@ -332,7 +341,7 @@ version = 1
 game_mode = 0
 quiz_mode = false
 enable_hints = true
-enable_dialogues = false
+enable_dialogues = true
 loop_questions = false
 shuffle_questions = true
 enemy_difficulty = 0
@@ -345,17 +354,17 @@ metadata/_custom_type_script = "uid://sinjx4sk61oq"
 
 [sub_resource type="Resource" id="Resource_hq14u"]
 script = ExtResource("2_lumh0")
-question_type = 0
-subject = 0
-question_title = "First Question!"
-question_text = "This is a test question. What are you doing here!?"
-choices = Array[Array]([["Interesting 1", true], ["Interesting 2", false], ["Interesting 3", false], ["Interesting 4", false], ["Interesting 5", false]])
+question_type = 1
+subject = 3
+question_title = "True or False!"
+question_text = "True or False: Spaghetti was invented somewhere in China."
+choices = Array[Array]([["lol whatever", false]])
 timer = 30
 chances = 1
 required_answers = 1
-hint_text = "All these answers are actually correct."
-trivia_text = "You probably need more than this to get through me!"
-wrong_text = "You only had a 25% chance to do this right, but you fumbled it anyway."
+hint_text = "I think you have played enough Mario and Spider-Man to see where this is going..."
+trivia_text = "Shockingly, it's from the Ancient Arabians, not Italy."
+wrong_text = "Tsk tsk, dude. Almost got that one."
 metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
 
 [sub_resource type="Resource" id="Resource_mxjfn"]

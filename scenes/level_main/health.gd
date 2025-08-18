@@ -24,7 +24,7 @@ func _ready():
 		value_changed.connect(_on_enemy_value_changed)
 	targetified = Character.targetify(target, role)
 
-func change(target_value, _target_character : Hud.target, duration : float = 0.25):
+func change(target_value, _target_character : Hud.target, duration : float = 0.04):
 	
 	# Foresight if the character dies. It it does,
 	if self.value + target_value <= 0: 

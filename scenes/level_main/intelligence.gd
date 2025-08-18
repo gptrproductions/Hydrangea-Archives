@@ -26,21 +26,22 @@ func change(value : int, _target_character : Hud.target = Hud.target.ACTIVE, rol
 	if current_value > 7:
 		current_value = 7
 	
-	if current_value > past_value: animate()
-	else: animate_backwards()
-	
 	if role == Hud.role.PLAYER: gameplay.player_intel = current_value
 	elif role == Hud.role.ENEMY: gameplay.enemy_intel = current_value
+	
+	if current_value > past_value: animate()
+	else: animate_backwards()
 		
 func animate():
 	for n in 7:
 		if n + 1 <= current_value and visibility[n] == false:
 			self.get_child(n).get_node("animation").play("appear")
 			visibility[n] = true
+			await get_tree().create_timer(0.10).timeout
 		elif n + 1 > current_value and visibility[n] == true:
 			self.get_child(n).get_node("animation").play("disappear")
 			visibility[n] = false
-		await get_tree().create_timer(0.10).timeout
+	return
 
 func animate_backwards():
 	for n in range(6, -1, -1): 
@@ -50,7 +51,8 @@ func animate_backwards():
 		elif n + 1 > current_value and visibility[n] == true:
 			self.get_child(n).get_node("animation").play("disappear")
 			visibility[n] = false
-		await get_tree().create_timer(0.10).timeout
+			await get_tree().create_timer(0.10).timeout
+	return
 
 func snap(value : int): # Animates the intelligence points to tell how much IP is missing to use that move.
 	if value <= current_value:
@@ -58,7 +60,9 @@ func snap(value : int): # Animates the intelligence points to tell how much IP i
 		return
 	
 	for n in range(current_value, value):
+		if self.get_child(n).get_node("animation").is_playing(): self.get_child(n).get_node("animation").stop()
 		self.get_child(n).get_node("animation").play("blink")
+	return
 	
 func force(): # Force change the visuals to reflect
 	for n in range(6, -1, -1): 
@@ -69,3 +73,4 @@ func force(): # Force change the visuals to reflect
 			self.get_child(n).get_node("animation").play_backwards("appear")
 			visibility[n] = false
 		await get_tree().create_timer(0.10).timeout	
+	return

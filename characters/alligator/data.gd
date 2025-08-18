@@ -6,10 +6,10 @@ static var scene : PackedScene = preload("res://characters/alligator/alligator.t
 var role : Hud.role = Hud.role.ENEMY
 
 var lore : Dictionary = {
-	"skill1" : {"name" : "Harden", "description" : "Alligator hardens it shell, up to only a maximum of 5 times.", "button" : load("res://characters/alligator/assets/button_skill1.webp")},
-	"skill2" : {"name" : "Saloon Bash", "description" : "Bashes itself against the enemy, dealing damage. Damage increases for every point of resistance above or below 0%.", "button" : load("res://characters/alligator/assets/button_skill2.webp")},
-	"skill3" : {"name" : "The Point of Damascus", "description" : "Masks itself around its allies creating a shield.", "button" : load("res://characters/alligator/assets/button_skill3.webp")},
-	"skill4" : {"name" : "That's an (actual) Alligator!", "description" : "Alligator transforms into an alligator, dealing massive damage. Every point of health lost by the opponent is converted into a shield.", "button" : load("res://characters/alligator/assets/button_ultimate.webp")},
+	"skill1" : {"name" : "Harden", "description" : "Alligator hardens its shell, %%increasing his RESISTANCE. This move can only be done 5 times.", "button" : load("res://characters/alligator/assets/button_skill1.webp")},
+	"skill2" : {"name" : "Saloon Bash", "description" : "Alligator bashes itself against the enemy, dealing damage. Damage increases for every point of RESISTANCE above or below 0%.", "button" : load("res://characters/alligator/assets/button_skill2.webp")},
+	"skill3" : {"name" : "The Point of Damascus", "description" : "Masks itself around its allies, creating a ##Shield.", "button" : load("res://characters/alligator/assets/button_skill3.webp")},
+	"skill4" : {"name" : "That's an actual Alligator!", "description" : "Alligator transforms into an alligator, dealing massive damage. Every point of HP lost by the opponent is converted into a ##Shield.", "button" : load("res://characters/alligator/assets/button_ultimate.webp")},
 	# Skill properties. Tooltips will need these references.
 	"story": {}
 }
@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/alligator/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 530,
-	"current_health" : 530,
+	"max_health" : 499,
+	"current_health" : 499,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -120,7 +120,7 @@ func math(target : Hud.target, sent_role : Hud.role, skill : Hud.skills, type : 
 				damage = max((((atk * 1.13) * res) * det) * (1.0 + abs(self_reference.get("resistance", 0)) / 100.0), 1)
 				flinch = max(((self_reference["flinch"]) * 0.41), int(opponent_reference["max_flinch"] * 0.01))
 			Hud.skills.SKILL_3:
-				damage = 0
+				damage = (66 * pow(self_reference["volume"], 0.93)) * clamp(abs(self_reference.get("resistance", 0) * 0.01) + 1, 1, 100)
 				flinch = 0
 			Hud.skills.SKILL_4:
 				damage = max(((atk * 7.66) * res) * det, 1)
@@ -145,6 +145,7 @@ func skill2():
 	return
 	
 func skill3():
+	await self.get_node("animation").skill3()
 	return
 
 func skill4():

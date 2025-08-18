@@ -9,7 +9,8 @@ const description : String = "The character's resistance is down by 50% for one 
 # Nodes that benefic from quick access
 @onready var texture: TextureRect = $icon/texture
 @onready var stack_text: RichTextLabel = $stack
-@onready var desc: NinePatchRect = $description
+@onready var desc_norm: NinePatchRect = $description_normal
+@onready var desc_dumb: NinePatchRect = $description_dumb
 
 # NOTE: Any effect library takes from this variables. This allows a script to filter which character has the effect.
 var targets : Array[Hud.target] = [Hud.target.CHARACTER_1, Hud.target.CHARACTER_2, Hud.target.CHARACTER_3]
@@ -47,7 +48,7 @@ func _ready():
 	if gameplay.question_finished: finished = true
 
 # Func always starts with the role it has.
-func start(_sent_role: Hud.role):
+func start(_sent_role: Hud.role, _value):
 	
 	# Set the effect's duration or stack count. Usually the stack is maintained when started prematurely.
 	self.min_value = 0

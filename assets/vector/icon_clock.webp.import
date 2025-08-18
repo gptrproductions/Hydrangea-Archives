@@ -3,26 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmcxeaehmexv8"
-path.s3tc="res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.s3tc.ctex"
-path.etc2="res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.etc2.ctex"
+path="res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/vector/icon_clock.webp"
-dest_files=["res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.s3tc.ctex", "res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.etc2.ctex"]
+dest_files=["res://.godot/imported/icon_clock.webp-15a0283e036d75e1cc69e312e5b2396e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

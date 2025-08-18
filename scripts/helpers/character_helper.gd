@@ -6,6 +6,12 @@ enum name{NONE, SHRIMPION, ALLIGATOR, BEETLEROOT, MUSHROOM_CLOD, TAYLOR, AEYU, L
 ## Used in dialogue systems.
 enum mood{NORMAL, HAPPY, SAD, ANGRY, HIT, SMUG, GRIN, CONFUSED, EXCITED, DYING, SHOCKED, DEAD}
 
+enum move_type{	ATTACK, ## The move's main purpose is to damage or flinch opponents.
+				DEFENSE, ## The move's purpose is to defend from attacks or protect.
+				SUPPORT, ## The move provides assistance to the team through ally buffs, enemy debuffs, or healing.
+				SUDO, ## The move helps the player answer the question more accurately.
+				}
+
 ## Assigned to characters so that the system knows how their death animations should be processed.
 enum death_type{INSTANT, ##The character dies the moment they are hit. The death animation will play only once even if a move hits the character multiple times.
 				CUTSCENE, ##The character finishes up the move first before showing their death animation.
@@ -220,9 +226,13 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 	elif stats["flinched"] == true:
 		if animation.is_playing(): animation.stop()
 		animation.play("flinch")
+		await animation.animation_finished
+		animation.play("idle")
 	else:
 		if animation.is_playing(): animation.stop()
 		animation.play("damaged")
+		await animation.animation_finished
+		animation.play("idle")
 		
 # Converts the Hud.target enum to a number.
 static func targetify(type: Hud.target, role: Hud.role):

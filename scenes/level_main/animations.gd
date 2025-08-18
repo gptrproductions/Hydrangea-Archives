@@ -159,7 +159,9 @@ func healthbar(request: bool):
 
 		await get_tree().create_timer(0.05).timeout
 		is_healthbar = false
-		
+	return 0
+	
+	
 func zoom(_current_animation : String):
 	return ## for now while we figure thigs out
 	#if current_animation != "dead": return

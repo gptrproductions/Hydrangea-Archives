@@ -110,3 +110,11 @@ func skill2():
 	await get_tree().create_timer(1).timeout
 	idle()
 	return
+
+func skill3():
+	var values : Dictionary = self.get_parent().math(Hud.target.ACTIVE, role, Hud.skills.SKILL_3)
+	print(values.get("damage", 1))
+	Effects.start(Effects.DAMASCUS, role, abs(values.get("damage", 1)))
+	await get_tree().create_timer(0.5).timeout
+	idle()
+	return

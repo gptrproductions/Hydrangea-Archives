@@ -9,7 +9,8 @@ const description : String = "The affected character's flinch meter increases by
 # Nodes that benefic from quick access
 @onready var texture: TextureRect = $icon/texture
 @onready var stack_text: RichTextLabel = $stack
-@onready var desc: NinePatchRect = $description
+@onready var desc_norm: NinePatchRect = $description_normal
+@onready var desc_dumb: NinePatchRect = $description_dumb
 
 # Local variables. This is changed in-game by signals.
 var role : Hud.role
@@ -39,7 +40,7 @@ func _ready():
 	Signals.ON_TIMER_START.connect(_change)
 	
 # Func always starts with the role it has. Just in case, the effect helper still sends the role.
-func start(_sent_role: Hud.role):
+func start(_sent_role: Hud.role, _value):
 	
 	# Set the effect's duration or stack count. Usually the stack is maintained when started prematurely.
 	self.min_value = 0
