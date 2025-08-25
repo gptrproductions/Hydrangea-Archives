@@ -17,8 +17,9 @@ enum oops_type{
 var disabler : CanvasLayer
 
 func _ready():
-	disabler = preload("res://scenes/ui_disabler/ui_disabler.tscn").instantiate()
+	disabler = load("res://scenes/ui_disabler/ui_disabler.tscn").instantiate()
 	add_child(disabler)
+	disabler.visible = false ## REMOVE THIS
 	
 # Called by a function if a game logic error occurs.
 func oops(node, message, type : oops_type = oops_type.NOTICE):

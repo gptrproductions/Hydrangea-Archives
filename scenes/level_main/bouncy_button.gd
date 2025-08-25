@@ -1,5 +1,9 @@
 extends TextureButton
 
+@export var initial_scale : Vector2 = Vector2(1, 1)
+@export var grow_scale : Vector2 = Vector2(1.1, 1.1)
+@export var shrink_scale : Vector2 = Vector2(0.9, 0.9)
+
 func _ready():
 	# Autoconnect signals
 	mouse_entered.connect(_on_mouse_entered)
@@ -9,18 +13,18 @@ func _ready():
 
 func _on_mouse_entered() -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.1).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "scale", grow_scale, 0.1).set_trans(Tween.TRANS_ELASTIC)
 
 func _on_mouse_exited() -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "scale", initial_scale, 0.1).set_trans(Tween.TRANS_SINE)
 	
 func _on_button_down() -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.1).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "scale", shrink_scale, 0.1).set_trans(Tween.TRANS_ELASTIC)
 	self.modulate = Color(0.8, 0.7, 0.6, 1)
 	
 func _on_button_up() -> void:
 	var tween : Tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "scale", initial_scale, 0.1).set_trans(Tween.TRANS_SINE)
 	self.modulate = Color.WHITE

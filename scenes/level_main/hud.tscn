@@ -5904,7 +5904,6 @@ offset_bottom = 378.5
 rotation = -1.57224
 
 [node name="glow" type="ColorRect" parent="gameplay/player_canvas/ultimate"]
-visible = false
 modulate = Color(0.520475, 0.000770958, 0.632201, 1)
 material = SubResource("ShaderMaterial_s86pv")
 layout_mode = 1
@@ -7252,6 +7251,7 @@ grow_vertical = 0
 script = ExtResource("73_x7umk")
 
 [node name="vignette" type="TextureRect" parent="gameplay/dialogue_canvas"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 top_level = true
 custom_minimum_size = Vector2(1280, 720)
