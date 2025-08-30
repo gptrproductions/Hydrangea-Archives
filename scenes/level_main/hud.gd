@@ -29,7 +29,7 @@ enum question_type {
 	FLASHCARDS, # Multiple choice
 	COINFLIP, # True or false 
 	ET_AL, # Enumeration
-	HMM, # Identification
+	GUESS, # Identification
 }
 
 enum subject_type {

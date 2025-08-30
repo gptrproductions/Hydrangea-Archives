@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Questionnaire" load_steps=53 format=3 uid="uid://72fa1b3x0gbo"]
+[gd_resource type="Resource" script_class="Questionnaire" load_steps=54 format=3 uid="uid://72fa1b3x0gbo"]
 
 [ext_resource type="Script" uid="uid://batkcp7bg4ak0" path="res://scripts/resources/dialogue_manager.gd" id="1_0oajh"]
 [ext_resource type="Script" uid="uid://mw1km5qs1l7o" path="res://scripts/resources/level_dialogue.gd" id="1_82oqa"]
@@ -341,7 +341,7 @@ version = 1
 game_mode = 0
 quiz_mode = false
 enable_hints = true
-enable_dialogues = true
+enable_dialogues = false
 loop_questions = false
 shuffle_questions = true
 enemy_difficulty = 0
@@ -351,6 +351,21 @@ enemy2 = 2
 enemy3 = 4
 enemy_levels = Array[int]([1, 1, 1])
 metadata/_custom_type_script = "uid://sinjx4sk61oq"
+
+[sub_resource type="Resource" id="Resource_mcsvb"]
+script = ExtResource("2_lumh0")
+question_type = 3
+subject = 3
+question_title = "First Question!"
+question_text = "This is a test question. What are you doing here!?"
+choices = Array[Array]([["World War II", false], ["World War 2", false], ["The Second World War", false], ["Second World War", false]])
+timer = 5
+chances = 4
+required_answers = 1
+hint_text = "All these answers are actually correct."
+trivia_text = "You probably need more than this to get through me!"
+wrong_text = "You only had a 25% chance to do this right, but you fumbled it anyway."
+metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
 
 [sub_resource type="Resource" id="Resource_hq14u"]
 script = ExtResource("2_lumh0")
@@ -475,6 +490,6 @@ metadata/_custom_type_script = "uid://b4brsw3v3g6ew"
 [resource]
 script = ExtResource("1_k6hln")
 properties = SubResource("Resource_dc320")
-question_data = Array[ExtResource("2_lumh0")]([SubResource("Resource_hq14u"), SubResource("Resource_mxjfn"), SubResource("Resource_squa6"), SubResource("Resource_dw470"), SubResource("Resource_mlwhy"), SubResource("Resource_d0fh7"), SubResource("Resource_5hs2b"), SubResource("Resource_563kq")])
+question_data = Array[ExtResource("2_lumh0")]([SubResource("Resource_mcsvb"), SubResource("Resource_hq14u"), SubResource("Resource_mxjfn"), SubResource("Resource_squa6"), SubResource("Resource_dw470"), SubResource("Resource_mlwhy"), SubResource("Resource_d0fh7"), SubResource("Resource_5hs2b"), SubResource("Resource_563kq")])
 dialog_data = Array[ExtResource("1_82oqa")]([SubResource("Resource_82oqa"), SubResource("Resource_xiped"), SubResource("Resource_0lkvs"), SubResource("Resource_yro0c"), SubResource("Resource_mgawf"), SubResource("Resource_bhy8b"), SubResource("Resource_bp2i6"), SubResource("Resource_vdmjn"), SubResource("Resource_vjk4m")])
 metadata/_custom_type_script = "uid://dd4xluldcxqxo"

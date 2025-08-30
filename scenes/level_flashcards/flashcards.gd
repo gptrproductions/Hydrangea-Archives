@@ -39,7 +39,7 @@ func _ready():
 	await get_tree().process_frame
 	hud.input.swipe.connect(swiped)
 
-func start(subject : Hud.subject_type, choices : Array = [["Choice 1", false], ["Choice 2", true], ["Choice 3", true], ["Choice 4", true],["Choice 5", true]]):
+func start(subject : Hud.subject_type, choices : Array = [["Apple", false], ["Ball", false], ["Cat", false], ["Dog", false],["egg", true]]):
 	# Load the subject card design.
 	subject_card.get_child(1).disabled = true
 	subject_card.get_child(1).texture_normal = resources[subject][0]

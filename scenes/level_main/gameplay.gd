@@ -201,6 +201,7 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 
 	question_canvas.get_node("questions").get_child(1).visible = false
 	question_canvas.get_node("questions").get_child(2).visible = false
+	question_canvas.get_node("questions").get_child(3).visible = false
 	
 	# Checks which type of question the current question is.
 	match type:
@@ -208,6 +209,8 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 			answer_node = question_canvas.get_node("questions").get_child(1)
 		dad.question_type.COINFLIP:
 			answer_node = question_canvas.get_node("questions").get_child(2)
+		dad.question_type.GUESS:
+			answer_node = question_canvas.get_node("questions").get_child(3)
 
 	# Loads the question splash text.
 	question_splash.text = splash
