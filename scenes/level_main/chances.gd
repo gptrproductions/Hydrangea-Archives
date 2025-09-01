@@ -15,6 +15,7 @@ const dark_glow : Color = Color(0.51, 0.38, 0.102, 1)
 const glow_red : Color = Color("900010")
 
 var gameplay : Gameplay
+var infinite := false
 
 # Signal emitted that can be received by question type nodes so they can end input.
 signal CHANCES_ZERO
@@ -34,6 +35,7 @@ func start(chances : int = 1):
 	glow.color = dark_glow
 	
 	if chances < 1:
+		infinite = true
 		particle_limited.visible = false
 		particle_infinite.visible = true
 		infinite_icon.visible = true
@@ -41,6 +43,7 @@ func start(chances : int = 1):
 		self.max_value = 0
 		
 	if chances >= 1:
+		infinite = false
 		particle_limited.visible = true
 		particle_infinite.visible = false
 		infinite_icon.visible = false

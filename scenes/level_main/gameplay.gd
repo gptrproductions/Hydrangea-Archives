@@ -81,6 +81,10 @@ var previous_enemy : int = -1
 var player_last_stand : bool = false
 var enemy_last_stand : bool = false
 
+# 0 refers to all moves used when a question is finished.
+# 1 refers to all moves used after a question is finished.
+var stage: int = 0
+
 func _init():
 	add_to_group("battle")
 
@@ -225,11 +229,12 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	question_timer.start(timer_value)
 	answer_chances.start(chances_value)
 	
+	stage = 0
 	System.disabled(true)
 	
 	# Waits for the mechanics to be stopped-- as that means the question has finished executing.
 	var result = await dad.QUESTION_END
-	
+	stage = 1
 	Signals.ON_QUESTION_END.emit()
 	
 	question_finished = true

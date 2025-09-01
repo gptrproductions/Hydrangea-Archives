@@ -21,6 +21,8 @@ var gameplay : Gameplay
 var current_tween : Tween
 var math : float = 0.5
 
+# Current Timer Statistics that are not values.
+
 # Signal emitted that can be received by question type nodes so they can end input.
 signal TIMER_UPDATED(current_value : float)
 signal TIMER_ZERO(result : Hud.result)
@@ -107,6 +109,11 @@ func pause(duration = 0):
 func resume():
 	if !(is_instance_valid(current_tween) and current_tween is Tween): return
 	if current_tween.is_valid(): current_tween.play()
+
+func flinch(role: Hud.role):
+	if role == Hud.role.ENEMY:
+		end(Hud.result.PASSED)
+		start(0)
 
 func end(result):
 	if is_instance_valid(current_tween) and current_tween is Tween:

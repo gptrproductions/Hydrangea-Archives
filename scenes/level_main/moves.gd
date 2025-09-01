@@ -14,6 +14,7 @@ extends Control
 
 @export var moves_button : TextureButton ## Assign the source button that triggers the move canvas.
 
+var free: bool = true
 var gameplay : Gameplay
 var lore : Dictionary
 var data: Dictionary
@@ -26,7 +27,7 @@ enum exit_type {
 	VIA_MOVE
 }
 
-var toggled : bool = false
+var toggled : bool = true
 
 func _ready():
 	gameplay = Character.get_gameplay()
@@ -104,7 +105,7 @@ func load_info(n: int = 1, role : Hud.role = Hud.role.PLAYER):
 	await get_tree().process_frame
 	repos()
 	if n_confirm == n and confirm >= 1: 
-		if insufficient and n != 4: return
+		if insufficient and n != 4 and !free: return
 		gameplay.use_skill(n, role)
 	else: 
 		n_confirm = n

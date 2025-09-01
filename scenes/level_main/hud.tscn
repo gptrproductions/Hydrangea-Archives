@@ -3183,6 +3183,59 @@ shader_parameter/plane_size = Vector2(0, 0)
 shader_parameter/mouse_position = Vector2(0, 0)
 shader_parameter/hover_strength = 0.02
 
+[sub_resource type="FontVariation" id="FontVariation_l12la"]
+base_font = ExtResource("56_kveae")
+spacing_top = -65
+
+[sub_resource type="Theme" id="Theme_4uee3"]
+default_font = SubResource("FontVariation_l12la")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_hyl0g"]
+base_font = ExtResource("59_ewnsm")
+spacing_top = -20
+
+[sub_resource type="Theme" id="Theme_k4mcf"]
+default_font = SubResource("FontVariation_hyl0g")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_47ml2"]
+base_font = ExtResource("56_kveae")
+spacing_top = -21
+
+[sub_resource type="Theme" id="Theme_hqoej"]
+default_font = SubResource("FontVariation_47ml2")
+default_font_size = 48
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_ewnsm"]
+base_font = ExtResource("59_ewnsm")
+
+[sub_resource type="Theme" id="Theme_x828i"]
+default_font = SubResource("FontVariation_ewnsm")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_pon7p"]
+base_font = ExtResource("59_ewnsm")
+
+[sub_resource type="Theme" id="Theme_2ld57"]
+default_font = SubResource("FontVariation_pon7p")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5xmtx"]
 shader = ExtResource("55_shrs3")
 shader_parameter/hit_effect = 0.0
@@ -3764,70 +3817,6 @@ shader_parameter/wave_amplitude = 0.013
 shader_parameter/wave_frequency = 2.685
 shader_parameter/wave_speed = 2.854
 
-[sub_resource type="FontVariation" id="FontVariation_l12la"]
-base_font = ExtResource("56_kveae")
-spacing_top = -65
-
-[sub_resource type="Theme" id="Theme_4uee3"]
-default_font = SubResource("FontVariation_l12la")
-default_font_size = 57
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_hyl0g"]
-base_font = ExtResource("59_ewnsm")
-spacing_top = -20
-
-[sub_resource type="Theme" id="Theme_k4mcf"]
-default_font = SubResource("FontVariation_hyl0g")
-default_font_size = 57
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_47ml2"]
-base_font = ExtResource("56_kveae")
-spacing_top = -21
-
-[sub_resource type="Theme" id="Theme_hqoej"]
-default_font = SubResource("FontVariation_47ml2")
-default_font_size = 48
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_ewnsm"]
-base_font = ExtResource("59_ewnsm")
-
-[sub_resource type="Theme" id="Theme_x828i"]
-default_font = SubResource("FontVariation_ewnsm")
-default_font_size = 57
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_pon7p"]
-base_font = ExtResource("59_ewnsm")
-
-[sub_resource type="Theme" id="Theme_2ld57"]
-default_font = SubResource("FontVariation_pon7p")
-default_font_size = 57
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_ag3w6"]
-base_font = ExtResource("56_kveae")
-spacing_top = -9
-
-[sub_resource type="Theme" id="Theme_shro8"]
-default_font = SubResource("FontVariation_ag3w6")
-default_font_size = 57
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
 [sub_resource type="FontVariation" id="FontVariation_vlyrp"]
 base_font = ExtResource("70_ag3w6")
 spacing_glyph = -1
@@ -3850,6 +3839,17 @@ variation_embolden = 1.5
 resource_name = "growin"
 script = ExtResource("71_shro8")
 metadata/rt = 2291163808699
+
+[sub_resource type="FontVariation" id="FontVariation_ag3w6"]
+base_font = ExtResource("56_kveae")
+spacing_top = -9
+
+[sub_resource type="Theme" id="Theme_shro8"]
+default_font = SubResource("FontVariation_ag3w6")
+default_font_size = 57
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1k40i"]
 shader = ExtResource("13_c5xlv")
@@ -4566,7 +4566,6 @@ mouse_filter = 2
 
 [node name="effects" type="Control" parent="."]
 clip_children = 2
-z_index = -5
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -4577,6 +4576,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="background" type="ColorRect" parent="effects"]
+z_index = -5
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -4820,7 +4820,7 @@ character_canvas = NodePath("../characters")
 player_canvas = NodePath("player_canvas")
 enemy_canvas = NodePath("enemy_canvas")
 question_canvas = NodePath("question_canvas")
-stats_canvas = NodePath("stats_canvas")
+stats_canvas = NodePath("CanvasLayer/stats_canvas")
 moves_canvas = NodePath("move_canvas")
 dialog_canvas = NodePath("dialogue_canvas")
 background = NodePath("../effects/background")
@@ -6139,6 +6139,438 @@ offset_right = -0.320007
 
 [node name="CanvasLayer" type="CanvasLayer" parent="gameplay"]
 
+[node name="stats_canvas" type="Control" parent="gameplay/CanvasLayer" node_paths=PackedStringArray("button", "camera", "player_character", "enemy_character", "type", "health", "eq", "iq", "refill", "flinch", "snap", "resistance", "determination")]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(-74, -187)
+script = ExtResource("63_ewnsm")
+button = NodePath("../../player_canvas/stats/button")
+camera = NodePath("../../../characters/camera")
+player_character = NodePath("../../../characters/players")
+enemy_character = NodePath("../../../characters/enemies")
+type = NodePath("container/type")
+health = NodePath("stats/health/values")
+eq = NodePath("stats/eq/values")
+iq = NodePath("stats/iq/values")
+refill = NodePath("stats/refill/values")
+flinch = NodePath("stats/flinch/values")
+snap = NodePath("stats/snap/values")
+resistance = NodePath("stats/resistance/values")
+determination = NodePath("stats/determination/values")
+
+[node name="container" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas"]
+layout_mode = 0
+offset_left = -434.0
+offset_top = -246.0
+offset_right = 1260.0
+offset_bottom = -114.0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/separation = 26
+
+[node name="type" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/container"]
+layout_mode = 2
+texture = ExtResource("64_ewnsm")
+expand_mode = 3
+
+[node name="name" type="Label" parent="gameplay/CanvasLayer/stats_canvas/container"]
+layout_mode = 2
+theme = SubResource("Theme_4uee3")
+theme_override_font_sizes/font_size = 120
+text = "SANGONOMIYA KOKOMI'S STATS"
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="gameplay/CanvasLayer/stats_canvas/container"]
+layout_mode = 2
+theme = SubResource("Theme_k4mcf")
+theme_override_font_sizes/font_size = 82
+text = "VOL. XIII"
+vertical_alignment = 1
+
+[node name="stats" type="GridContainer" parent="gameplay/CanvasLayer/stats_canvas"]
+layout_mode = 0
+offset_left = -435.0
+offset_top = -210.0
+offset_right = 1130.0
+offset_bottom = 41.0
+scale = Vector2(0.55, 0.55)
+columns = 3
+
+[node name="health" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/health"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/hp_player.webp[/img] MAX HP"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/health"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/health/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/health/values"]
+modulate = Color(0.372549, 0.356863, 0.972549, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "-9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="iq" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/iq"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/iq_player.webp[/img] IQ"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/iq"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/iq/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/iq/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="eq" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/eq"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/eq_player.webp[/img] EQ"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/eq"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/eq/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/eq/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="refill" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/refill"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/refill_player.webp[/img] REF"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/refill"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/refill/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "999%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/refill/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+999%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="flinch" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/flinch"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/flinch_player.webp[/img] FLINCH"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/flinch"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/flinch/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/flinch/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="snap" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/snap"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/snap_player.webp[/img] SNAP"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/snap"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/snap/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "999%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/snap/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+999%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="resistance" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/resistance"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/res_player.webp[/img] RES"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/resistance"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 1.0
+offset_right = 308.175
+offset_bottom = 19.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/resistance/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "99%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/resistance/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+99%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="determination" type="TextureRect" parent="gameplay/CanvasLayer/stats_canvas/stats"]
+custom_minimum_size = Vector2(521, 80)
+layout_mode = 2
+texture = ExtResource("55_1y41g")
+
+[node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/determination"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 548.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme = SubResource("Theme_hqoej")
+bbcode_enabled = true
+text = "[img=56]res://assets/icons/stats/det_player.webp[/img] DET"
+fit_content = true
+vertical_alignment = 1
+
+[node name="values" type="HBoxContainer" parent="gameplay/CanvasLayer/stats_canvas/stats/determination"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 308.175
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="base" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/determination/values"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_x828i")
+theme_override_font_sizes/font_size = 16
+text = "99%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="gameplay/CanvasLayer/stats_canvas/stats/determination/values"]
+modulate = Color(0.371765, 0.355627, 0.971752, 1)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2ld57")
+theme_override_font_sizes/font_size = 16
+text = "+99%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="player_bar" type="Control" parent="gameplay/CanvasLayer" node_paths=PackedStringArray("animation", "character_panel", "health")]
 z_index = 2
 layout_mode = 3
@@ -6190,7 +6622,7 @@ scale = Vector2(1.09, 1)
 value = 100.0
 texture_progress = ExtResource("51_hjth1")
 
-[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
+[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health", "flinch_description")]
 clip_children = 1
 layout_mode = 0
 offset_right = 352.0
@@ -6203,6 +6635,7 @@ flinch_material = SubResource("ShaderMaterial_4uee3")
 effect = NodePath("../../../../../../../effects/text_effect")
 parent = NodePath("../../../..")
 health = NodePath("../../health")
+flinch_description = NodePath("../../../../../description")
 
 [node name="flinch_progress" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel/panel/flinch_mask"]
 material = SubResource("ShaderMaterial_4uee3")
@@ -6407,7 +6840,7 @@ scale = Vector2(1.09, 1)
 value = 100.0
 texture_progress = ExtResource("51_hjth1")
 
-[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health")]
+[node name="flinch" type="TextureProgressBar" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/flinch_mask" node_paths=PackedStringArray("progress", "glow", "particle", "effect", "parent", "health", "flinch_description")]
 visible = false
 clip_children = 1
 layout_mode = 0
@@ -6422,6 +6855,7 @@ role = 1
 effect = NodePath("../../../../../../../effects/text_effect")
 parent = NodePath("../../../..")
 health = NodePath("../../health")
+flinch_description = NodePath("../../../../../description")
 
 [node name="flinch_progress" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel/panel/flinch_mask"]
 material = SubResource("ShaderMaterial_k4ihx")
@@ -6581,437 +7015,37 @@ mouse_filter = 2
 script = ExtResource("52_vjv51")
 role = 1
 
-[node name="stats_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("button", "camera", "player_character", "enemy_character", "type", "health", "eq", "iq", "refill", "flinch", "snap", "resistance", "determination")]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+[node name="description" type="RichTextLabel" parent="gameplay/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 6
+clip_contents = false
+anchors_preset = -1
+anchor_left = 0.497
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 0.497
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(-74, -187)
-script = ExtResource("63_ewnsm")
-button = NodePath("../player_canvas/stats/button")
-camera = NodePath("../../characters/camera")
-player_character = NodePath("../../characters/players")
-enemy_character = NodePath("../../characters/enemies")
-type = NodePath("container/type")
-health = NodePath("stats/health/values")
-eq = NodePath("stats/eq/values")
-iq = NodePath("stats/iq/values")
-refill = NodePath("stats/refill/values")
-flinch = NodePath("stats/flinch/values")
-snap = NodePath("stats/snap/values")
-resistance = NodePath("stats/resistance/values")
-determination = NodePath("stats/determination/values")
-
-[node name="container" type="HBoxContainer" parent="gameplay/stats_canvas"]
-layout_mode = 0
-offset_left = -434.0
-offset_top = -246.0
-offset_right = 1260.0
-offset_bottom = -114.0
-scale = Vector2(0.25, 0.25)
-theme_override_constants/separation = 26
-
-[node name="type" type="TextureRect" parent="gameplay/stats_canvas/container"]
-layout_mode = 2
-texture = ExtResource("64_ewnsm")
-expand_mode = 3
-
-[node name="name" type="Label" parent="gameplay/stats_canvas/container"]
-layout_mode = 2
-theme = SubResource("Theme_4uee3")
-theme_override_font_sizes/font_size = 120
-text = "SANGONOMIYA KOKOMI'S STATS"
-vertical_alignment = 1
-
-[node name="level" type="Label" parent="gameplay/stats_canvas/container"]
-layout_mode = 2
-theme = SubResource("Theme_k4mcf")
-theme_override_font_sizes/font_size = 82
-text = "VOL. XIII"
-vertical_alignment = 1
-
-[node name="stats" type="GridContainer" parent="gameplay/stats_canvas"]
-layout_mode = 0
-offset_left = -435.0
-offset_top = -210.0
-offset_right = 1130.0
-offset_bottom = 41.0
-scale = Vector2(0.55, 0.55)
-columns = 3
-
-[node name="health" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/health"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
+offset_left = -352.16
+offset_top = -104.0
+offset_right = 351.84
+offset_bottom = -68.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vlyrp")
+theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
+theme_override_fonts/bold_font = SubResource("FontVariation_k2gu4")
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/hp_player.webp[/img] MAX HP"
+text = "[center][color=ffffff]Resistance is cut for this current question."
 fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/health"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/health/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/health/values"]
-modulate = Color(0.372549, 0.356863, 0.972549, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "-9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="iq" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/iq"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/iq_player.webp[/img] IQ"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/iq"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/iq/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/iq/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="eq" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/eq"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/eq_player.webp[/img] EQ"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/eq"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/eq/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/eq/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+9999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="refill" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/refill"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/refill_player.webp[/img] REF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/refill"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/refill/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "999%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/refill/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+999%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="flinch" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/flinch"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/flinch_player.webp[/img] FLINCH"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/flinch"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/flinch/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/flinch/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+999"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="snap" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/snap"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/snap_player.webp[/img] SNAP"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/snap"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/snap/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "999%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/snap/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+999%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="resistance" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/resistance"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/res_player.webp[/img] RES"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/resistance"]
-layout_mode = 0
-offset_left = 214.0
-offset_top = 1.0
-offset_right = 308.175
-offset_bottom = 19.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/resistance/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "99%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/resistance/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+99%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="determination" type="TextureRect" parent="gameplay/stats_canvas/stats"]
-custom_minimum_size = Vector2(521, 80)
-layout_mode = 2
-texture = ExtResource("55_1y41g")
-
-[node name="label" type="RichTextLabel" parent="gameplay/stats_canvas/stats/determination"]
-layout_mode = 2
-offset_left = 18.0
-offset_top = 6.0
-offset_right = 548.0
-offset_bottom = 70.0
-mouse_filter = 1
-theme = SubResource("Theme_hqoej")
-bbcode_enabled = true
-text = "[img=56]res://assets/icons/stats/det_player.webp[/img] DET"
-fit_content = true
-vertical_alignment = 1
-
-[node name="values" type="HBoxContainer" parent="gameplay/stats_canvas/stats/determination"]
-layout_mode = 0
-offset_left = 214.0
-offset_right = 308.175
-offset_bottom = 18.0
-scale = Vector2(3, 3)
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="base" type="Label" parent="gameplay/stats_canvas/stats/determination/values"]
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_x828i")
-theme_override_font_sizes/font_size = 16
-text = "99%"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="effect" type="Label" parent="gameplay/stats_canvas/stats/determination/values"]
-modulate = Color(0.371765, 0.355627, 0.971752, 1)
-layout_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2ld57")
-theme_override_font_sizes/font_size = 16
-text = "+99%"
-horizontal_alignment = 2
-vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_4d3ys")]
+metadata/mouse_position = Vector2(409.205, 61.6025)
+metadata/frame = 61866
+metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
 
 [node name="move_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("move_panel", "hud", "skill1", "skill2", "skill3", "skill4", "selected_effect", "move_name", "move_description", "moves_button")]
 visible = false
@@ -7403,6 +7437,6 @@ is_level = true
 [connection signal="value_changed" from="gameplay/enemy_canvas/ultimate" to="gameplay/enemy_canvas/ultimate" method="_on_value_changed" binds= [1]]
 [connection signal="pressed" from="gameplay/enemy_canvas/ultimate/button" to="gameplay/move_canvas" method="_toggled" binds= [false, 1]]
 [connection signal="value_changed" from="gameplay/player_canvas/ultimate" to="gameplay/player_canvas/ultimate" method="_on_value_changed" binds= [0]]
-[connection signal="toggled" from="gameplay/player_canvas/stats/button" to="gameplay/stats_canvas" method="start"]
+[connection signal="toggled" from="gameplay/player_canvas/stats/button" to="gameplay/CanvasLayer/stats_canvas" method="start"]
 [connection signal="pressed" from="gameplay/player_canvas/switch/button" to="gameplay/player_canvas/switch" method="_on_pressed_player"]
 [connection signal="pressed" from="gameplay/player_canvas/moves/button" to="gameplay/move_canvas" method="_toggled" binds= [false]]

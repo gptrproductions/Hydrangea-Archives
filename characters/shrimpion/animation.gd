@@ -116,8 +116,8 @@ func skill3():
 	Particle.start(Particle.name.ATTACK_TACKLED, opp_control, Vector2(2, 2))
 	Effect.shake(camera, false, 10, 10, 5)
 	var values : Dictionary = self.get_parent().math(Hud.target.ACTIVE, role, Hud.skills.SKILL_3)
-	Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_HEALTH, values.get("damage", -1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.ALETHIC, values.get("is_snap", false), false, Character.get_target(self.get_parent()), role)
-	Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_FLINCH, values.get("flinch", 1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.ALETHIC, false, false, Character.get_target(self.get_parent()), role)
+	Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_HEALTH, values.get("damage", -1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.ONEIRIC, values.get("is_snap", false), false, Character.get_target(self.get_parent()), role)
+	Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_FLINCH, values.get("flinch", 1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.ONEIRIC, false, false, Character.get_target(self.get_parent()), role)
 	Character.get_attack(Hud.target.ACTIVE, role) # Manually trigger damage animation for control
 	
 	var tween = create_tween()

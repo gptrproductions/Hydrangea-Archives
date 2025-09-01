@@ -12,6 +12,8 @@ class_name Flinch
 @export var parent : Control
 @export var health : Health
 
+@export var flinch_description : RichTextLabel
+
 var gameplay : Gameplay
 const glow_color : Color = Color(0.5, 0.2, 0.32, 1)
 
@@ -23,6 +25,8 @@ var first_switch : bool = true # Only true during first switch. Forces visual no
 # Other flinch types don't have stacks since they're one-off effects.
 var kinetic_stack = -1
 var nightmare_stack = -1
+
+var first_start := false
 
 func _ready():
 	gameplay = Character.get_gameplay()
@@ -169,8 +173,36 @@ func empty_enemy():
 	
 func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 	
-		match(type):
-			Hud.mindset.KINETIC:
-				Effects.start(Effects.FLINCH_KINETIC, role)
-			Hud.mindset.ALETHIC:
-				gameplay.change_stat(Hud.stat_type.INTELLIGENCE, +2, role)
+	if !first_start: 
+		first_start = true
+		return
+	
+	flinch_description.modulate = Color.TRANSPARENT
+	var tween = create_tween()
+	tween.tween_property(flinch_description, "modulate", Color.WHITE, 0.1)
+	
+	var flinch_string: String
+	var duration_string: String
+	flinch_string = "" if role == Hud.role.PLAYER else "Enemy "
+	duration_string = " [color=ffffff]for this question." if gameplay.stage == 0 else " [color=ffffff]for the next question."
+	
+	match(type):
+		Hud.mindset.KINETIC:
+			flinch_description.text = "[center]" + flinch_string + UI.get_icon(UI.icon.RES, 28) + "Resistance -50%" + duration_string
+			Effects.start(Effects.FLINCH_KINETIC, role)
+		Hud.mindset.ALETHIC:			
+			if role == Hud.role.PLAYER: flinch_description.text = "[center]" + "Enemy" + UI.get_icon(UI.icon.INTELLIGENCE, 28) + "Intelligence +3."
+			else: flinch_description.text = "[center]" + UI.get_icon(UI.icon.INTELLIGENCE, 28) + "Intelligence +3."
+			gameplay.change_stat(Hud.stat_type.INTELLIGENCE, +3, Character.get_opponent(role))
+		Hud.mindset.ONEIRIC:
+			if role == Hud.role.PLAYER: flinch_description.text = "[center]" + "2x timer speed" + duration_string
+			else: flinch_description.text = "[center]" + "0.5x timer speed" + duration_string
+			gameplay.question_timer.flinch(role)
+		Hud.mindset.PHRENIC:
+			if role == Hud.role.PLAYER: "[center]" + "You lost 3 chances" + duration_string
+			else: flinch_description.text = "[center]" + "You gained 3 extra chances" + duration_string
+			## NOTHING YET
+	
+	await get_tree().create_timer(1.5).timeout
+	tween = create_tween()
+	tween.tween_property(flinch_description, "modulate", Color.TRANSPARENT, 0.5)

@@ -44,6 +44,7 @@ func start(subject : Hud.subject_type, choices : Array = [["Apple", false], ["Ba
 	# Load the subject card design.
 	subject_card.texture = resources[subject][0]
 	subject_card.texture = resources[subject][1]
+	current_choice = choices
 	
 	animation.play("start")
 	var queue : Array = []
@@ -69,6 +70,7 @@ func send_answer(timer_out : bool = false):
 		await get_tree().create_timer(0.4).timeout
 		gameplay.change_stat(hud.stat_type.INTELLIGENCE, 3, Hud.role.PLAYER, Hud.target.ACTIVE)
 		gameplay.change_stat(hud.stat_type.INK, 15, Hud.role.PLAYER, Hud.target.ACTIVE)
+		hud.QUESTION_END.emit(Hud.result.PASSED)
 	else:
 		gameplay.question_timer.pause()
 		
@@ -80,7 +82,7 @@ func send_answer(timer_out : bool = false):
 				gameplay.change_stat(hud.stat_type.CHANCES, -1)
 				gameplay.change_stat(hud.stat_type.INK, 3, Hud.role.ENEMY, Hud.target.ACTIVE)
 			
-			await animation.animation_finished
+			await get_tree().create_timer(0.5).timeout
 			gameplay.question_timer.pause(-1)
 			
 		else:
@@ -89,7 +91,7 @@ func send_answer(timer_out : bool = false):
 			gameplay.change_stat(hud.stat_type.CHANCES, -1)
 			gameplay.change_stat(hud.stat_type.INTELLIGENCE, 3, Hud.role.ENEMY, Hud.target.ACTIVE)
 			gameplay.change_stat(hud.stat_type.INK, 15, Hud.role.ENEMY, Hud.target.ACTIVE)
-			await animation.animation_finished
+			await get_tree().create_timer(0.5).timeout
 			gameplay.question_timer.pause(-1)
 			
 func end(caller, _result : Hud.result) -> void:
@@ -100,13 +102,17 @@ func end(caller, _result : Hud.result) -> void:
 	if caller is QuestionTimer:
 		if animation.is_playing():
 			animation.stop()
-		animation.play("answer_failed")
+		animation.speed_scale = 1.25
+		animation.play("answer_timeout")
 		subject_card.texture = load("res://assets/icons/faces/face_timer_colored.webp")
+		await get_tree().create_timer(0.3).timeout
+		gameplay.change_stat(hud.stat_type.INTELLIGENCE, 3, Hud.role.ENEMY, Hud.target.ACTIVE)
+		gameplay.change_stat(hud.stat_type.INK, 15, Hud.role.ENEMY, Hud.target.ACTIVE)
+		await animation.animation_finished
+		animation.speed_scale = 1
 	else:
 		subject_card.texture = load("res://assets/icons/faces/face_chances_colored.webp")
-		
-	gameplay.change_stat(hud.stat_type.INTELLIGENCE, 3, Hud.role.ENEMY, Hud.target.ACTIVE)
-	gameplay.change_stat(hud.stat_type.INK, 15, Hud.role.ENEMY, Hud.target.ACTIVE)
+
 	
 	System.disabled(true)
 	await get_tree().process_frame

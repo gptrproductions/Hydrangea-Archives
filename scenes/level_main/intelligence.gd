@@ -11,6 +11,7 @@ func _ready():
 	gameplay = Character.get_gameplay()
 
 func change(value : int, _target_character : Hud.target = Hud.target.ACTIVE, role : Hud.role = Hud.role.PLAYER): # Target character to change the stat. If nothing is specified it defaults to the active character. Since im afraid to break shit, i added a role variable to check if the player is an enemy or not.
+	
 	# Gets the current active character's value.
 	if role == Hud.role.PLAYER: current_value = gameplay.player_intel
 	elif role == Hud.role.ENEMY: current_value = gameplay.enemy_intel
