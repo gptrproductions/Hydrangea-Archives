@@ -55,14 +55,15 @@ func start(chances : int = 1):
 	text.text = str(int(self.max_value))
 	self.value = self.max_value
 	
-func change(amount : int = -1):
+func change(amount : int = -1, flinch_change : bool = false):
 	
 	# If the value is already zero before any value is changed, assume the lives count is infinite.
 	if self.max_value == 0:
 		System.nerd(CLASS_NAME, "The current question has infinite lives, so deductions will do nothing.")
 		return
 	
-	self.value = self.value + amount
+	if flinch_change: self.value = clamp(self.value + amount, 1, 100)
+	else: self.value = self.value + amount
 	Effect.shake(self)
 	
 	if amount < 0: # Flashes red if lives are reduced
@@ -86,6 +87,12 @@ func change(amount : int = -1):
 func _on_progress_bar_value_changed(current_value: float):
 	text.text = str(int(current_value))
 
+func flinch(role: Hud.role):
+	if role == Hud.role.PLAYER:
+		change(-3, true)
+	else:
+		change(+3, true)
+	
 func end(_source, result):
 	if result == Hud.result.FAILED:
 		particle_limited.visible = false

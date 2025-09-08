@@ -8,6 +8,22 @@ const ALETHIC_ORANGE : Color = Color("ff6b28")
 const KINETIC_YELLOW : Color = Color("ffaa00")
 const PHRENIC_GREEN : Color = Color("0FCB96")
 
+const LANGUAGE_BLUE : Color = Color("0F95C1")
+const MATH_RED : Color = Color("C70009")
+const SCIENCE_GREEN : Color = Color("1B7F00")
+const HISTORY_PURPLE : Color = Color("7900BC")
+const ART_ORANGE : Color = Color("D35700")
+const PHILOSOPHY_TEAL : Color = Color("00876D")
+const WILDCARD_GOLD : Color = Color("F7B100")
+
+const LANGUAGE_BLUE_LIGHT : Color = Color("B8E9F9")
+const MATH_RED_LIGHT : Color = Color("FFB1B4")
+const SCIENCE_GREEN_LIGHT : Color = Color("B3FF9F")
+const HISTORY_PURPLE_LIGHT : Color = Color("E2AEFF")
+const ART_ORANGE_LIGHT : Color = Color("FFD3B4")
+const PHILOSOPHY_TEAL_LIGHT : Color = Color("A1FFEC")
+const WILDCARD_GOLD_LIGHT : Color = Color("FFECBD")
+
 # Alias mapping: alternate names to enum keys
 const keyword_to_enum_key := {
 	"RESISTANCE": "RES",

@@ -27,6 +27,7 @@ signal ON_DEATH(target: Hud.target)
 signal ON_EFFECT_ADDED(effect : Dictionary)
 signal ON_EFFECT_CHANGED(effect : Dictionary)
 signal ON_EFFECT_REMOVED(effect : Dictionary)
+signal STAGE_CHANGED(value : int) # Are we in the answering phase?
 
 # Object versions of signals. This is for instructing functions that need it to connect to the signals.
 enum event {

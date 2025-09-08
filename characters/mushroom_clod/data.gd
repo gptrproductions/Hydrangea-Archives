@@ -6,10 +6,10 @@ static var scene : PackedScene = preload("res://characters/mushroom_clod/mushroo
 var role : Hud.role = Hud.role.ENEMY
 
 var lore : Dictionary = {
-	"skill1" : {"name" : "Spungial Spizzle Shizzle", "description" : "Clod emits spores around her team, granting the ally team a Spor'derr effect for 3 questions.", "button" : load("res://characters/mushroom_clod/assets/button_skill1.webp")},
-	"skill2" : {"name" : "Fungal Frenzy", "description" : "Clod launches herself against the enemy, dealing damage. If there are spore stacks active, this adds 2 stacks.", "button" : load("res://characters/mushroom_clod/assets/button_skill2.webp")},
-	"skill3" : {"name" : "Beedabopboop!", "description" : "Force switches the opponent. The incoming opponent loses 10% RESISTANCE, and the effects of SPOR'DERR are doubled for the current question.", "button" : load("res://characters/mushroom_clod/assets/button_skill3.webp")},
-	"skill4" : {"name" : "Codename Little Girl", "description" : "Clod detonates herself, dealing damage to all opponents. Clod's team gains 5 INTELLIGENCE afterwards.", "button" : load("res://characters/mushroom_clod/assets/button_ultimate.webp")},
+	"skill1" : {"name" : "Spungial Spizzle Shizzle", "description" : "Clod emits spores around her team, granting the ally team a Spor'derr effect for 3 questions.", "button" : load("res://characters/mushroom_clod/assets/button_skill1.webp"), "type": Combat.move_type.SUPPORT},
+	"skill2" : {"name" : "Fungal Frenzy", "description" : "Clod launches herself against the enemy, dealing damage. If there are spore stacks active, this adds 2 stacks.", "button" : load("res://characters/mushroom_clod/assets/button_skill2.webp"), "type": Combat.move_type.ATTACK},
+	"skill3" : {"name" : "Beedabopboop!", "description" : "Force switches the opponent. The incoming opponent loses 10% RESISTANCE, and the effects of SPOR'DERR are doubled for the current question.", "button" : load("res://characters/mushroom_clod/assets/button_skill3.webp"), "type": Combat.move_type.SUPPORT},
+	"skill4" : {"name" : "Codename Little Girl", "description" : "Clod detonates herself, dealing damage to all opponents. Clod's team gains 5 INTELLIGENCE afterwards.", "button" : load("res://characters/mushroom_clod/assets/button_ultimate.webp"), "type": Combat.move_type.SUPPORT},
 	# Skill properties. Tooltips will need these references.
 	"story": {}
 }
@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/mushroom_clod/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 440,
-	"current_health" : 440,
+	"max_health" : 220,
+	"current_health" : 220,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -59,6 +59,7 @@ var stats : Dictionary = {
 	"determination" : 0, # How much in percentage does the character deal more damage.
 	
 	"id" : "0", # UUID V4. Allows a character to find its position in the character order.
+	# id is NOT A STAT.
 }
 
 # Stats that only stay in effect during a level. Numbers here are incremental (it adds n to stats, not set them to n.)

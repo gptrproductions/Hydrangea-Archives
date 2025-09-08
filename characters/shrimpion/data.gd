@@ -6,10 +6,10 @@ var scene : PackedScene = preload("res://characters/shrimpion/shrimpion.tscn")
 var role : Hud.role = Hud.role.ENEMY
 
 var lore : Dictionary = {
-	"skill1" : {"name" : "Stingion Minor", "description" : "Shrimpion stings with its stingers, dealing small damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_skill1.webp")},
-	"skill2" : {"name" : "Stingion Mayor", "description" : "Shrimpion exerts more force with stinging, deadling moderate damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_skill2.webp")},
-	"skill3" : {"name" : "Volatile Venom", "description" : "Deal a massive amount of flinch. The enemy keeps gaining flinch for 3 more questions. ", "button" : load("res://characters/shrimpion/assets/button_skill3.webp")},
-	"skill4" : {"name" : "SKKRRRATTTA DRRRAAA", "description" : "Shrimpion unleashes a barrage of stingers, dealing massive damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_ultimate.webp")},
+	"skill1" : {"name" : "Stingion Minor", "description" : "Shrimpion stings with its stingers, dealing small damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_skill1.webp"), "type" : Combat.move_type.FLINCH},
+	"skill2" : {"name" : "Stingion Mayor", "description" : "Shrimpion exerts more force with stinging, deadling moderate damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_skill2.webp"), "type" : Combat.move_type.FLINCH},
+	"skill3" : {"name" : "Volatile Venom", "description" : "Deal a massive amount of flinch. The enemy keeps gaining flinch for 3 more questions. ", "button" : load("res://characters/shrimpion/assets/button_skill3.webp"), "type" : Combat.move_type.FLINCH},
+	"skill4" : {"name" : "SKKRRRATTTA DRRRAAA", "description" : "Shrimpion unleashes a massive tidal wave, dealing massive damage and flinch.", "button" : load("res://characters/shrimpion/assets/button_ultimate.webp"), "type" : Combat.move_type.FLINCH},
 	# Skill properties. Tooltips will need these references.
 	"story": {}
 }
@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/shrimpion/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 450,
-	"current_health" : 450,
+	"max_health" : 250,
+	"current_health" : 250,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -52,7 +52,7 @@ var stats : Dictionary = {
 	"iq" : 14, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
 	"eq" : 20,
 	"refill" : 100,
-	"flinch" : 128, # og 28
+	"flinch" : 33, # og 28
 	"snap" : 0,
 	
 	# Affects damage output

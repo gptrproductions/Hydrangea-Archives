@@ -110,7 +110,6 @@ func start():
 	player_switch(0, true)
 	enemy_switch(0, true)
 	
-	change_stat(Hud.stat_type.INTELLIGENCE, 7, Hud.role.PLAYER)
 	await get_tree().create_timer(1).timeout
 	await dialog_canvas.play_dialog()
 	
@@ -199,10 +198,15 @@ func enemy_switch(number: int, refresh: bool = false, animated: bool = true):
 # Gameplay processes the questions send by the hud.
 func change_questions(question_number: int = 0, subject = dad.subject_type.LANGUAGE, splash := "MODULO!", type = dad.question_type.FLASHCARDS, question := "So, what about airline food?", choices : Array[Array] = [["Dies in shambles and self-destructs if the number is odd", false],["Returns the quotient", false],["Returns absolutely nothing but pain and suffering that will destroy us all", true],["You haven't done anything about the framerate yet, loser!", false]], timer_value := 5, chances_value := 0, trivia_correct := "Interesting! Good Job!", trivia_wrong := "Bruh, How!?"):
 	
+	enemy_flinch.first_start = false
+	player_flinch.first_start = false
 	question_finished = false
 	dialog_canvas.question_number_id.emit(question_number)
 	Signals.ON_QUESTION_START.emit()
 
+	change_stat(Hud.stat_type.INTELLIGENCE, 1, Hud.role.PLAYER)
+	change_stat(Hud.stat_type.INTELLIGENCE, 1, Hud.role.ENEMY)
+	
 	question_canvas.get_node("questions").get_child(1).visible = false
 	question_canvas.get_node("questions").get_child(2).visible = false
 	question_canvas.get_node("questions").get_child(3).visible = false
@@ -215,7 +219,23 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 			answer_node = question_canvas.get_node("questions").get_child(2)
 		dad.question_type.GUESS:
 			answer_node = question_canvas.get_node("questions").get_child(3)
-
+	
+	match subject:
+		Hud.subject_type.LANGUAGE:
+			question_splash.modulate = UI.LANGUAGE_BLUE_LIGHT
+		Hud.subject_type.MATH:
+			question_splash.modulate = UI.MATH_RED_LIGHT
+		Hud.subject_type.SCIENCE:
+			question_splash.modulate = UI.SCIENCE_GREEN_LIGHT
+		Hud.subject_type.HISTORY:
+			question_splash.modulate = UI.HISTORY_PURPLE_LIGHT
+		Hud.subject_type.ART:
+			question_splash.modulate = UI.ART_ORANGE_LIGHT
+		Hud.subject_type.PHILOSOPHY:
+			question_splash.modulate = UI.PHILOSOPHY_TEAL_LIGHT
+		Hud.subject_type.WILDCARD:
+			question_splash.modulate = UI.WILDCARD_GOLD_LIGHT
+	
 	# Loads the question splash text.
 	question_splash.text = splash
 	question_label.text = question
@@ -230,11 +250,13 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	answer_chances.start(chances_value)
 	
 	stage = 0
+	Signals.STAGE_CHANGED
 	System.disabled(true)
 	
 	# Waits for the mechanics to be stopped-- as that means the question has finished executing.
 	var result = await dad.QUESTION_END
 	stage = 1
+	Signals.STAGE_CHANGED
 	Signals.ON_QUESTION_END.emit()
 	
 	question_finished = true
@@ -249,7 +271,18 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	await text_effect.animation_finished
 	await get_tree().create_timer(1).timeout
 	await dialog_canvas.play_dialog(false)
-	await use_skill(randi_range(1 ,1), Hud.role.ENEMY, true)
+	
+	while true:
+		var decision: int = await  Combat.decision()
+		if decision not in [0, 1, 2, 3, 4]: break
+		if enemy_intel == 0: break
+		if decision == 0: 
+			change_stat(Hud.stat_type.INTELLIGENCE, -1, Hud.role.ENEMY)
+			await enemy_switch(1)
+			await get_tree().create_timer(0.5).timeout
+			continue
+		await use_skill(decision, Hud.role.ENEMY, true)
+		await get_tree().create_timer(0.3).timeout
 
 	question_splash.text = "FOR YOUR INFORMATION..."
 	if result == Hud.result.PASSED: 
@@ -365,6 +398,7 @@ func use_skill(type : int, role : Hud.role = Hud.role.PLAYER, question_ended = f
 					await dad.loaded_characters[active_character].skill3()
 			4:
 				if dad.loaded_characters[active_character].has_method("skill4"):
+					change_stat(Hud.stat_type.INK, -100000, role)
 					dialog_canvas.player_ultimate.emit(player_ultimate_count)
 					await dialog_canvas.play_dialog()
 					await dad.loaded_characters[active_character].skill4()
@@ -390,6 +424,7 @@ func use_skill(type : int, role : Hud.role = Hud.role.PLAYER, question_ended = f
 					await dad.loaded_enemies[active_enemy].skill3()
 			4:
 				if dad.loaded_enemies[active_enemy].has_method("skill4"):
+					change_stat(Hud.stat_type.INK, -100000, role)
 					dialog_canvas.enemy_ultimate.emit(enemy_ultimate_count)
 					await dialog_canvas.play_dialog()
 					await dad.loaded_enemies[active_enemy].skill4()

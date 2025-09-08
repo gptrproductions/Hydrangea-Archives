@@ -111,9 +111,11 @@ func resume():
 	if current_tween.is_valid(): current_tween.play()
 
 func flinch(role: Hud.role):
+	if !(is_instance_valid(current_tween) and current_tween is Tween): return
 	if role == Hud.role.ENEMY:
-		end(Hud.result.PASSED)
-		start(0)
+		current_tween.set_speed_scale(0.5)
+	else:
+		current_tween.set_speed_scale(2)
 
 func end(result):
 	if is_instance_valid(current_tween) and current_tween is Tween:

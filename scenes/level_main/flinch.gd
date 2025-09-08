@@ -14,6 +14,11 @@ class_name Flinch
 
 @export var flinch_description : RichTextLabel
 
+const FLINCH_ALETHIC = preload("res://resources/tres/flinch_alethic.tres")
+const FLINCH_KINETIC = preload("res://resources/tres/flinch_kinetic.tres")
+const FLINCH_ONEIRIC = preload("res://resources/tres/flinch_oneiric.tres")
+const FLINCH_PHRENIC = preload("res://resources/tres/flinch_phrenic.tres")
+
 var gameplay : Gameplay
 const glow_color : Color = Color(0.5, 0.2, 0.32, 1)
 
@@ -64,13 +69,22 @@ func change(target_value, _target_character : Hud.target, mindset : Hud.mindset)
 		var target_atm : int
 		target_atm = Character.targetify(Hud.target.ACTIVE, role)
 		if role == Hud.role.PLAYER: gameplay.player_stats[target_atm]["flinched"] = true 
-		else: 
-			print("sd")
-			gameplay.enemy_stats[target_atm]["flinched"] = true 
+		else: 			gameplay.enemy_stats[target_atm]["flinched"] = true 
 	
 	flinch_type = mindset
 	var tween = create_tween()
 	tween.tween_property(self, "value", self.value + target_value, 0.15).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	match mindset:
+		Hud.mindset.KINETIC:
+			flinch_material.set_shader_parameter("gradient_texture", FLINCH_KINETIC)
+		Hud.mindset.ONEIRIC:
+			flinch_material.set_shader_parameter("gradient_texture", FLINCH_ONEIRIC)
+		Hud.mindset.ALETHIC:
+			flinch_material.set_shader_parameter("gradient_texture", FLINCH_ALETHIC)
+		Hud.mindset.PHRENIC:
+			flinch_material.set_shader_parameter("gradient_texture", FLINCH_PHRENIC)
+	
 	
 func _on_enemy_value_changed(current_value: float) -> void:
 	if health.dead == true: return
@@ -195,13 +209,17 @@ func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 			else: flinch_description.text = "[center]" + UI.get_icon(UI.icon.INTELLIGENCE, 28) + "Intelligence +3."
 			gameplay.change_stat(Hud.stat_type.INTELLIGENCE, +3, Character.get_opponent(role))
 		Hud.mindset.ONEIRIC:
+			if gameplay.stage == 1:
+				await Signals.STAGE_CHANGED
 			if role == Hud.role.PLAYER: flinch_description.text = "[center]" + "2x timer speed" + duration_string
 			else: flinch_description.text = "[center]" + "0.5x timer speed" + duration_string
 			gameplay.question_timer.flinch(role)
 		Hud.mindset.PHRENIC:
-			if role == Hud.role.PLAYER: "[center]" + "You lost 3 chances" + duration_string
+			if gameplay.stage == 1:
+				await Signals.STAGE_CHANGED
+			if role == Hud.role.PLAYER: flinch_description.text = "[center]" + "You lost 3 chances" + duration_string
 			else: flinch_description.text = "[center]" + "You gained 3 extra chances" + duration_string
-			## NOTHING YET
+			gameplay.answer_chances.flinch(role)
 	
 	await get_tree().create_timer(1.5).timeout
 	tween = create_tween()

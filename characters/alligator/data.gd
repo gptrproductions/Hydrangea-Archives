@@ -6,10 +6,10 @@ static var scene : PackedScene = preload("res://characters/alligator/alligator.t
 var role : Hud.role = Hud.role.ENEMY
 
 var lore : Dictionary = {
-	"skill1" : {"name" : "Harden", "description" : "Alligator hardens its shell, %%increasing his RESISTANCE. This move can only be done 5 times.", "button" : load("res://characters/alligator/assets/button_skill1.webp")},
-	"skill2" : {"name" : "Saloon Bash", "description" : "Alligator bashes itself against the enemy, dealing damage. Damage increases for every point of RESISTANCE above or below 0%.", "button" : load("res://characters/alligator/assets/button_skill2.webp")},
-	"skill3" : {"name" : "The Point of Damascus", "description" : "Masks itself around its allies, creating a ##Shield.", "button" : load("res://characters/alligator/assets/button_skill3.webp")},
-	"skill4" : {"name" : "That's an actual Alligator!", "description" : "Alligator transforms into an alligator, dealing massive damage. Every point of HP lost by the opponent is converted into a ##Shield.", "button" : load("res://characters/alligator/assets/button_ultimate.webp")},
+	"skill1" : {"name" : "Harden", "description" : "Alligator hardens its shell, %%increasing his RESISTANCE. This move can only be done 5 times.", "button" : load("res://characters/alligator/assets/button_skill1.webp"), "type": Combat.move_type.DEFENSE},
+	"skill2" : {"name" : "Saloon Bash", "description" : "Alligator bashes itself against the enemy, dealing damage. Damage increases for every point of RESISTANCE above or below 0%.", "button" : load("res://characters/alligator/assets/button_skill2.webp"), "type": Combat.move_type.ATTACK},
+	"skill3" : {"name" : "The Point of Damascus", "description" : "Masks itself around its allies, creating a ##Shield.", "button" : load("res://characters/alligator/assets/button_skill3.webp"), "type": Combat.move_type.DEFENSE},
+	"skill4" : {"name" : "That's an actual Alligator!", "description" : "Alligator transforms into an alligator, dealing massive damage. Every point of HP lost by the opponent is converted into a ##Shield.", "button" : load("res://characters/alligator/assets/button_ultimate.webp"), "type": Combat.move_type.DEFENSE},
 	# Skill properties. Tooltips will need these references.
 	"story": {}
 }
@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/alligator/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 499,
-	"current_health" : 499,
+	"max_health" : 280,
+	"current_health" : 280,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	

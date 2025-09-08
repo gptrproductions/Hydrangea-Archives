@@ -27,7 +27,7 @@ enum exit_type {
 	VIA_MOVE
 }
 
-var toggled : bool = true
+var toggled : bool = false
 
 func _ready():
 	gameplay = Character.get_gameplay()
@@ -164,3 +164,6 @@ func _refresh(role : Hud.role):
 func repos():
 	$padding.global_position.y = $center/container.global_position.y - 16
 	$padding.size.y = (($center/container.size.y * ($center.scale.y / $padding.scale.y))) + 52
+
+func _on_button_pressed(extra_arg_0: bool, extra_arg_1: int) -> void:
+	pass # Replace with function body.

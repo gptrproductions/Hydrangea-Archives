@@ -99,12 +99,12 @@ func end(caller, _result : Hud.result) -> void:
 	if gameplay.answer_node is not Guess:
 		return
 	
+	subject_card.texture = load("res://assets/icons/faces/face_timer_colored.webp")
 	if caller is QuestionTimer:
 		if animation.is_playing():
 			animation.stop()
 		animation.speed_scale = 1.25
 		animation.play("answer_timeout")
-		subject_card.texture = load("res://assets/icons/faces/face_timer_colored.webp")
 		await get_tree().create_timer(0.3).timeout
 		gameplay.change_stat(hud.stat_type.INTELLIGENCE, 3, Hud.role.ENEMY, Hud.target.ACTIVE)
 		gameplay.change_stat(hud.stat_type.INK, 15, Hud.role.ENEMY, Hud.target.ACTIVE)
