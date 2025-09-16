@@ -5,14 +5,20 @@ class_name Switch
 var gameplay : Gameplay
 @export var intelligence : Control
 
-var free: bool = true
+var free: bool = false
 
 func _ready():
 	gameplay = Character.get_gameplay()
 	pass
 
 func _on_pressed_player() -> void:
-
+	if gameplay.get_parent().loaded_characters.size() == 1: return
+	
+	var dead_status: Array[bool] = []
+	for key in gameplay.player_stats.keys():
+		dead_status.append(gameplay.player_stats[key]["dead"])
+	if true in dead_status: return
+	
 	if gameplay.player_intel >= 1 or free:
 		System.disabled(true)
 		await gameplay.change_stat(hud.stat_type.INTELLIGENCE, -1, Hud.role.PLAYER, Hud.target.ACTIVE)
@@ -22,6 +28,7 @@ func _on_pressed_player() -> void:
 		intelligence.snap(1)
 		
 func _on_pressed_enemy() -> void:
+	if gameplay.get_parent().loaded_enemies == 1: return
 	if gameplay.enemy_intel >= 1 or free:
 		System.disabled(true)
 		await gameplay.change_stat(hud.stat_type.INTELLIGENCE, -1, Hud.role.PLAYER, Hud.target.ACTIVE)

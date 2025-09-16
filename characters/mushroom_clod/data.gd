@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/mushroom_clod/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 220,
-	"current_health" : 220,
+	"max_health" : 22,
+	"current_health" : 22,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	
@@ -48,7 +48,7 @@ var stats : Dictionary = {
 	"already_flinched" : false, # If already flinched and their flinch bar is still full, and they switch in skip the flinch effects. 
 
 	# Other main attribute stats
-	"iq" : 48, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
+	"iq" : 128, # Sp. Atk equivalent. Moves that use the IQ stat are moves that take advantage of overflow.
 	"eq" : 24,
 	"refill" : 100,
 	"flinch" : 16, # og 28

@@ -23,10 +23,10 @@ func _input(event: InputEvent) -> void:
 func _calculate_swipe(swipe_end):
 	if swipe_start == null: 
 		return
-	var swipe = swipe_end - swipe_start
+	var input_swipe = swipe_end - swipe_start
 	print(swipe)
-	if abs(swipe.y) > minimum_drag:
-		if swipe.y > 0:
+	if abs(input_swipe.y) > minimum_drag:
+		if input_swipe.y > 0:
 			emit_signal("swipe", direction.DOWN)
 			print("down!")
 		else:

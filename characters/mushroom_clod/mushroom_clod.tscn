@@ -893,8 +893,9 @@ _data = {
 &"skill_3": SubResource("Animation_kxt7n")
 }
 
-[node name="mushroom_clod" type="Node2D"]
+[node name="mushroom_clod" type="CanvasGroup"]
 scale = Vector2(1.55, 1.55)
+fit_margin = 1024.0
 script = ExtResource("1_ieoiy")
 
 [node name="skill3" type="GPUParticles2D" parent="."]

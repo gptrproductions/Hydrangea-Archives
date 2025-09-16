@@ -53,7 +53,7 @@ func start(_sent_role: Hud.role, _value):
 		absolute = Character.targetify(Hud.target.ACTIVE, role)
 		effect_target.append(absolute)
 		gameplay.change_stat(Hud.stat_type.RESISTANCE, -20, role, absolute)
-		var data = Character.get_data(absolute, role, Hud.skills.EFFECT, self)
+		#var data = Character.get_data(absolute, role, Hud.skills.EFFECT, self)
 	
 func _change():
 	await Effects.change(self, -1)

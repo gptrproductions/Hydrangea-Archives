@@ -62,7 +62,7 @@ func on_pressed():
 func animate(sent_value : int):
 	var tween = create_tween()
 	if sent_value == value: 
-		selected_effect.position = self.position - Vector2(20, 20)
+#		selected_effect.position = self.position - Vector2(20, 20)
 		
 		tween.tween_property(self, "modulate", regular_color, 0.05).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self, "scale", pressed_scale, 0.05).set_ease(Tween.EASE_IN_OUT)
@@ -75,7 +75,7 @@ func animate(sent_value : int):
 	tween.tween_property(self, "modulate", unpressed_color, 0.05).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "scale", unpressed_scale, 0.15).set_trans(Tween.TRANS_BACK)
 
-static func reset(node : Control, current_selected : Control):
+static func reset(node : Control, _current_selected : Control):
 	node.modulate = Color(1, 1 ,1, 1)
-	current_selected.visible = false
+	#current_selected.visible = false
 	node.scale = Vector2(1, 1)

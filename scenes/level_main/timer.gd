@@ -127,7 +127,8 @@ func end(result):
 		infinite_effect.visible = false
 		timed_effect.visible = false
 		zero_effect.visible = true
-			
+		
+		
 		var tween = create_tween()
 		tween.tween_property(glow.material, "shader_parameter/b_offset", 0.1, 0)
 		tween.set_parallel().tween_property(glow.material, "shader_parameter/smooth_fade", 0.525, 0)

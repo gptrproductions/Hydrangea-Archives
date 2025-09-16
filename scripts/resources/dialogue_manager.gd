@@ -7,15 +7,25 @@ class_name Dialogue_Properties ## A master class for all sorts of dialogue-- ins
 @export var text: String = "..." ## The message. If the text box is empty or invalid, it defaults to an ellipsis.
 @export var duration : int = 0 ## How long the dialogue will stay on screen if auto dialogue is on (The duration timer will start counting down after the dialogue's entrance animation has finished animating,). If this is zero or invalid, then it's set to 
 
+static var is_playing : bool = false
+static var stopped : bool = false
+static var char_idx = 0
+
 static func animate_text(text_message: String, node: Label) -> void:
 	if not (node is Label):
 		System.oops("Dialogue", "You sent an incompatible node to animate. Aborting", System.oops_type.BAD)
 		return
-		
-	node.visible_characters = node.get_total_character_count()
-	await System.tree().process_frame
 	
-	node.text = text_message
+	if is_playing == true:
+		pass
+	
+	is_playing = true
+	char_idx = 0
+	node.visible_characters = 0
+	node.text = ""
+	await System.tree().process_frame
+	await System.tree().process_frame
+
 	# Pre-split the text and delays
 	var chunks = text_message.split("§")
 	var segments: Array[String] = []
@@ -40,15 +50,14 @@ static func animate_text(text_message: String, node: Label) -> void:
 
 	# Set the whole text upfront
 	node.text = "".join(segments)
-	node.visible_characters = 0
 
-	# Animate revealing characters
-	var char_idx = 0
 	var default_delay = 0.02
 
 	for i in segments.size():
+		if stopped:
+			stopped = false
+			return
 		var segment = segments[i]
-
 		# Apply extra delay **before** typing this segment!
 		if i > 0:
 			var extra_delay = delays[i - 1]
@@ -56,6 +65,15 @@ static func animate_text(text_message: String, node: Label) -> void:
 				await System.tree().create_timer(extra_delay).timeout
 
 		for j in segment.length():
+			if stopped:
+				stopped = false
+				return
 			char_idx += 1
 			node.visible_characters = char_idx
 			await System.tree().create_timer(default_delay).timeout
+	is_playing = false
+	return
+	
+static func stop():
+	stopped = true
+	return

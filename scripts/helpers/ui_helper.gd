@@ -24,6 +24,13 @@ const ART_ORANGE_LIGHT : Color = Color("FFD3B4")
 const PHILOSOPHY_TEAL_LIGHT : Color = Color("A1FFEC")
 const WILDCARD_GOLD_LIGHT : Color = Color("FFECBD")
 
+# Allow UI elements outside the level to know which active characters are currently in play.
+static var current_active_characters : Array = []
+static var current_active_enemies : Array = []
+static var current_active_level : String
+static var current_active_question_count : int = 0
+static var current_active_question_correct : int = 0
+
 # Alias mapping: alternate names to enum keys
 const keyword_to_enum_key := {
 	"RESISTANCE": "RES",
@@ -149,7 +156,6 @@ static func stylize(text: String, font_size: int = 16) -> String:
 
 	return result.strip_edges()
 
-
 # Helper to get all enum key names
 static func get_icon_names():
 	var icon_names := []
@@ -157,10 +163,10 @@ static func get_icon_names():
 		icon_names.append(UI.icon.keys()[i])
 	return icon_names
 
-static func is_letter_or_digit(char: String) -> bool:
-	if char.length() != 1:
+static func is_letter_or_digit(character: String) -> bool:
+	if character.length() != 1:
 		return false
-	var c := char.unicode_at(0)
+	var c := character.unicode_at(0)
 	return (c >= 'a'.unicode_at(0) and c <= 'z'.unicode_at(0)) or \
 		   (c >= 'A'.unicode_at(0) and c <= 'Z'.unicode_at(0)) or \
 		   (c >= '0'.unicode_at(0) and c <= '9'.unicode_at(0))

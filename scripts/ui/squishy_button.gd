@@ -10,6 +10,7 @@ var glowable : bool
 
 @export var glow : Control
 @export var selector : Selector
+@export var assigned : Character.name = Character.name.NONE ## If this button is a button used by a character, you can use it to map.
 
 func _ready():
 	mouse_entered.connect(entered)

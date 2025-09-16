@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/alligator/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 280,
-	"current_health" : 280,
+	"max_health" : 10,
+	"current_health" : 10,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	

@@ -32,6 +32,7 @@ var kinetic_stack = -1
 var nightmare_stack = -1
 
 var first_start := false
+var current_mindset := Hud.mindset.NONE
 
 func _ready():
 	gameplay = Character.get_gameplay()
@@ -60,7 +61,8 @@ func switch(active_character : int, current_role : Hud.role):
 	first_switch = false # Becomes false for the rest of the level.
 			
 func change(target_value, _target_character : Hud.target, mindset : Hud.mindset):
-
+	
+	current_mindset = mindset
 	# Don't allow flinch value to change. This is if certain conditions require flinch to change value in the middle of the flinch.
 	if is_flinch : return
 	
@@ -84,7 +86,6 @@ func change(target_value, _target_character : Hud.target, mindset : Hud.mindset)
 			flinch_material.set_shader_parameter("gradient_texture", FLINCH_ALETHIC)
 		Hud.mindset.PHRENIC:
 			flinch_material.set_shader_parameter("gradient_texture", FLINCH_PHRENIC)
-	
 	
 func _on_enemy_value_changed(current_value: float) -> void:
 	if health.dead == true: return
@@ -126,7 +127,20 @@ func full(_dummy = null, _dummy2 = null):
 	if effect.is_playing():
 		effect.stop()
 		effect.play("RESET")
-	effect.play("flinch_player") # THATS JUST THE NAME, IT'S ACTUALLY THE FLINCH FOR ALL ROLES
+	
+	var flinch_text : String = ""
+	match current_mindset:
+		Hud.mindset.ONEIRIC:
+			flinch_text = "flinch_oneiric"
+		Hud.mindset.PHRENIC:
+			flinch_text = "flinch_phrenic"
+		Hud.mindset.ALETHIC:
+			flinch_text = "flinch_alethic"
+		Hud.mindset.KINETIC:
+			flinch_text = "flinch_kinetic"
+		
+	effect.play(flinch_text) # THATS JUST THE NAME, IT'S ACTUALLY THE FLINCH FOR ALL ROLES
+	
 	Effect.shake(parent, false, 7, 3, 3)
 	flinch_effect(flinch_type) # Trigger the flinch effect.
 	glow.modulate = Color.WHITE
@@ -192,13 +206,15 @@ func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 		return
 	
 	flinch_description.modulate = Color.TRANSPARENT
-	var tween = create_tween()
-	tween.tween_property(flinch_description, "modulate", Color.WHITE, 0.1)
-	
+
 	var flinch_string: String
 	var duration_string: String
 	flinch_string = "" if role == Hud.role.PLAYER else "Enemy "
 	duration_string = " [color=ffffff]for this question." if gameplay.stage == 0 else " [color=ffffff]for the next question."
+	
+	# Reference to the description animation
+	var animation: AnimationPlayer = $"../../../../../description/animation"
+	animation.play("start")
 	
 	match(type):
 		Hud.mindset.KINETIC:
@@ -220,7 +236,3 @@ func flinch_effect(type: Hud.mindset = Hud.mindset.NONE):
 			if role == Hud.role.PLAYER: flinch_description.text = "[center]" + "You lost 3 chances" + duration_string
 			else: flinch_description.text = "[center]" + "You gained 3 extra chances" + duration_string
 			gameplay.answer_chances.flinch(role)
-	
-	await get_tree().create_timer(1.5).timeout
-	tween = create_tween()
-	tween.tween_property(flinch_description, "modulate", Color.TRANSPARENT, 0.5)

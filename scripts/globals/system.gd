@@ -15,6 +15,7 @@ enum oops_type{
 
 # Universal disabler. 
 var disabler : CanvasLayer
+var direct_hud_test : bool = true # Direct hud test makes direct hud opening possible without needing to go to boot.
 
 func _ready():
 	disabler = load("res://scenes/ui_disabler/ui_disabler.tscn").instantiate()

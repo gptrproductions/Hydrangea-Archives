@@ -23,6 +23,7 @@ static func get_character(character_name : int):
 		name.SHRIMPION: return load("res://characters/shrimpion/shrimpion.tscn")
 		name.MUSHROOM_CLOD: return load("res://characters/mushroom_clod/mushroom_clod.tscn")
 		name.ALLIGATOR: return load("res://characters/alligator/alligator.tscn")
+		name.BEETLEROOT: return load("res://characters/beetleroot/beetleroot.tscn")
 
 # NOTE: Source is ALWAYS self.
 static func get_data(target : Hud.target, role : Hud.role, _skill : Hud.skills, source: Node = null):
@@ -198,9 +199,12 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 		if stats["death_type"] == death_type.INSTANT:
 			if animation.current_animation == "death": return
 			animation.play("death")
-			await System.tree().create_timer(0.2).timeout
+			await Signals.MOVE_FINISHED
+			await System.tree().create_timer(1).timeout
+			Signals.DEATHCHECK_FINISHED.emit(true)
 			return
 		else: 
+			get_gameplay().animation.cinematic(true)
 			if animation.is_playing(): animation.stop()
 			var camera : Level_Camera = get_gameplay().get_viewport().get_camera_2d()
 			animation.play("damaged")
@@ -212,6 +216,7 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 			var asset = get_gameplay().player_asset if role == Hud.role.PLAYER else get_gameplay().enemy_asset
 			var tween = get_gameplay().create_tween()
 			tween.tween_property(asset, "modulate", Color.TRANSPARENT, 0.15)
+			await Signals.MOVE_FINISHED
 			animation.play("death")
 			await animation.animation_finished
 			await System.tree().create_timer(0.3).timeout
@@ -222,6 +227,7 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 			get_gameplay().animation.cinematic(false)
 			tween = get_gameplay().create_tween()
 			tween.tween_property(asset, "modulate", Color.WHITE, 0.15)
+			Signals.DEATHCHECK_FINISHED.emit(true)
 		
 	elif stats["flinched"] == true:
 		if animation.is_playing(): animation.stop()
@@ -233,6 +239,9 @@ static func get_attack(target : Hud.target, role : Hud.role, heavy : bool = fals
 		animation.play("damaged")
 		await animation.animation_finished
 		animation.play("idle")
+		
+	await Signals.MOVE_FINISHED
+	Signals.DEATHCHECK_FINISHED.emit(false) # Blud didn't die
 		
 # Converts the Hud.target enum to a number.
 static func targetify(type: Hud.target, role: Hud.role):

@@ -29,6 +29,10 @@ signal ON_EFFECT_CHANGED(effect : Dictionary)
 signal ON_EFFECT_REMOVED(effect : Dictionary)
 signal STAGE_CHANGED(value : int) # Are we in the answering phase?
 
+# For the end of move signals.
+signal MOVE_FINISHED(skill : Hud.skills)
+signal DEATHCHECK_FINISHED(died : bool)
+
 # Object versions of signals. This is for instructing functions that need it to connect to the signals.
 enum event {
 	ON_QUESTION_START,

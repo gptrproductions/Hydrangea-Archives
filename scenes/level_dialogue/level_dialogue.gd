@@ -50,10 +50,11 @@ func play_dialog(cinematic_outro: bool = true): ## Triggered after an attack is 
 	var current_role : Hud.role = Hud.role.NONE
 	var previous_role : Hud.role = Hud.role.NONE
 	for n in pending_dialogues.size():
-		continue_button.disabled = true
+		continue_button.disabled = false
 		animations.cinematic(true)
 		animations.healthbar(true)
 		for o in pending_dialogues[n].size():
+			text.text = ""
 			if current_role == pending_dialogues[n][o].role:
 				avatar.texture = Character.get_mood(pending_dialogues[n][o].character, pending_dialogues[n][o].mood)
 				match current_role:
@@ -76,7 +77,10 @@ func play_dialog(cinematic_outro: bool = true): ## Triggered after an attack is 
 					Hud.role.ENEMY: animation.play("start_enemy")
 					Hud.role.NONE: animation.play("start_none")
 			character_name.text = Character.get_nametext(pending_dialogues[n][o].character)
-			await Dialogue_Properties.animate_text(pending_dialogues[n][o].text, text)
+			if Dialogue_Properties.is_playing:
+				Dialogue_Properties.stop()
+			await get_tree().process_frame
+			Dialogue_Properties.animate_text(pending_dialogues[n][o].text, text)
 			continue_button.disabled = false
 			await continue_dialog
 			
@@ -84,6 +88,7 @@ func play_dialog(cinematic_outro: bool = true): ## Triggered after an attack is 
 			match current_role:
 				Hud.role.PLAYER: animation.play_backwards("start_player")
 				Hud.role.ENEMY: animation.play_backwards("start_enemy")
+				Hud.role.NONE: animation.play_backwards("start_none")
 			pass
 	pending_dialogues.clear()
 	camera.pan(Hud.role.NONE, 0)

@@ -1,12 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://cye36yal0v2uk"]
+[gd_scene load_steps=32 format=3 uid="uid://cye36yal0v2uk"]
 
 [ext_resource type="Script" uid="uid://bwrnxgwhwotpd" path="res://characters/alligator/data.gd" id="1_82rt1"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="2_ddiq6"]
 [ext_resource type="Shader" uid="uid://dnpqcc0s8o4lv" path="res://scripts/shaders/glint.gdshader" id="3_82rt1"]
 [ext_resource type="Texture2D" uid="uid://drc3mudnscg1i" path="res://characters/alligator/assets/normal.webp" id="4_x08j6"]
+[ext_resource type="Texture2D" uid="uid://cwvltc4n0ygec" path="res://characters/alligator/assets/skill3_shield.webp" id="5_0aj2t"]
 [ext_resource type="Texture2D" uid="uid://v0ow7i0u22ck" path="res://characters/alligator/assets/damaged.webp" id="5_uaq2u"]
 [ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="5_x08j6"]
 [ext_resource type="Script" uid="uid://cqvliki1ooe8a" path="res://characters/alligator/animation.gd" id="6_82rt1"]
+[ext_resource type="Texture2D" uid="uid://dbgjnykqln8ef" path="res://characters/alligator/assets/normal_2.webp" id="7_75eph"]
+[ext_resource type="Texture2D" uid="uid://bn0pyo5fudp16" path="res://characters/alligator/assets/skill1.webp" id="8_87swi"]
+[ext_resource type="Texture2D" uid="uid://cujqjvypaak53" path="res://characters/alligator/assets/skill2.webp" id="9_87swi"]
+[ext_resource type="Texture2D" uid="uid://c2c6gc4bcww4i" path="res://characters/alligator/assets/dead.webp" id="10_o3gut"]
+[ext_resource type="Texture2D" uid="uid://b0d5m4v0x7jsq" path="res://characters/alligator/assets/skill3.webp" id="12_egwmq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4l5oo"]
 shader = ExtResource("2_ddiq6")
@@ -28,6 +34,13 @@ shader_parameter/Position_Min = 2.205
 shader_parameter/Position_Max = 1.0
 shader_parameter/Alpha = 1.0
 shader_parameter/Mask = ExtResource("4_x08j6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0aj2t"]
+shader = ExtResource("2_ddiq6")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_87swi"]
 blend_mode = 1
@@ -177,6 +190,54 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(87, -199)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("defense:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("defense:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("defense:material:shader_parameter/hit_effect")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.3, 1.3)]
+}
 
 [sub_resource type="Animation" id="Animation_q4mp4"]
 resource_name = "idle_transition"
@@ -193,6 +254,119 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("5_uaq2u"), ExtResource("4_x08j6")]
+}
+
+[sub_resource type="Animation" id="Animation_ed2ya"]
+resource_name = "death"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/Character:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.7),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [3.14096, 3.14096, 9.42478]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parts:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parts:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.3, 1.3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("parts/Character:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 0, 0, 1),
+"update": 1,
+"values": [ExtResource("10_o3gut"), ExtResource("10_o3gut"), ExtResource("10_o3gut"), ExtResource("10_o3gut")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("parts/Character:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.033252, 0.1, 0.15623, 0.230703, 0.7, 0.733333, 0.766667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.0003, -1.94331), Vector2(2.3203, -1.94331), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678), Vector2(2.0003, -1.94331), Vector2(2.0003, -1.94331), Vector2(2.32, -1.468), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("parts/Character:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.7),
+"transitions": PackedFloat32Array(0.5, 2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1500), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x08j6"]
@@ -289,9 +463,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -160)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parts/Character:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_x08j6"), ExtResource("7_75eph"), ExtResource("4_x08j6")]
+}
 
 [sub_resource type="Animation" id="Animation_w0hsr"]
 resource_name = "skill_1"
+length = 1.2
 step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -300,10 +487,10 @@ tracks/0/path = NodePath("parts/Character:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.925),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0, 0.9, 1.03901, 1.1, 1.2),
+"transitions": PackedFloat32Array(-2, 0, -2, 0.5, -2),
 "update": 0,
-"values": [Vector2(2, -2), Vector2(2, -2)]
+"values": [Vector2(2, -2), Vector2(2, -2), Vector2(2, -1.655), Vector2(2, -2.2), Vector2(2, -2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -352,6 +539,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(4.02353, 0.588235, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("parts/Character:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.03901),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_87swi"), ExtResource("4_x08j6")]
 }
 
 [sub_resource type="Animation" id="Animation_75eph"]
@@ -505,7 +704,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.25, 0.5, 0.85, 1, 1.7, 1.95, 2.2, 2.35, 2.45),
 "transitions": PackedFloat32Array(-2, 1, 1, 0.5, 0.5, 2, 1, 0.5, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1072, 0), Vector2(1072, 0), Vector2(0, 0), Vector2(-108, -328), Vector2(0, -2000), Vector2(0, 200), Vector2(0, -50), Vector2(1, 0)]
+"values": [Vector2(0, 0), Vector2(-1072, 0), Vector2(-1072, 0), Vector2(0, 0), Vector2(-108, -328), Vector2(0, -2000), Vector2(0, 200), Vector2(0, -50), Vector2(1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -531,19 +730,111 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(2, -2), Vector2(2, -2), Vector2(4, -1.75), Vector2(2, -2), Vector2(2, -2), Vector2(2, -2), Vector2(1.7, -2), Vector2(2, -2), Vector2(2, -2)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parts/Character:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.95, 1.88749),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_x08j6"), ExtResource("9_87swi"), ExtResource("4_x08j6")]
+}
+
+[sub_resource type="Animation" id="Animation_ycl7r"]
+resource_name = "skill_3"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parts/Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_x08j6"), ExtResource("12_egwmq"), ExtResource("4_x08j6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("defense:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 1, 1.40485, 1.80485, 2.2, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("defense:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.416568, 2.25, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("defense:material:shader_parameter/hit_effect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 2.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("parts/Character:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 2.65, 2.75, 2.8),
+"transitions": PackedFloat32Array(-2, 1, 1, -2, 1, 1),
+"update": 0,
+"values": [Vector2(2, -1.8), Vector2(2, -2.1), Vector2(2, -2), Vector2(2, -1.8), Vector2(2, -2.1), Vector2(2, -2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("glow:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.24007, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0.416667, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p2y5"]
 _data = {
 &"RESET": SubResource("Animation_qk8yp"),
 &"damaged": SubResource("Animation_q4mp4"),
+&"death": SubResource("Animation_ed2ya"),
 &"flinch": SubResource("Animation_x08j6"),
 &"idle": SubResource("Animation_qbg0e"),
 &"skill_1": SubResource("Animation_w0hsr"),
 &"skill_1_fail": SubResource("Animation_75eph"),
-&"skill_2": SubResource("Animation_82rt1")
+&"skill_2": SubResource("Animation_82rt1"),
+&"skill_3": SubResource("Animation_ycl7r")
 }
 
-[node name="alligator" type="Node2D"]
+[node name="alligator" type="CanvasGroup"]
+scale = Vector2(-1.3, 1.3)
 script = ExtResource("1_82rt1")
 
 [node name="parts" type="Node2D" parent="."]
@@ -553,9 +844,15 @@ scale = Vector2(0.25, 0.25)
 [node name="Character" type="Sprite2D" parent="parts"]
 clip_children = 2
 material = SubResource("ShaderMaterial_75eph")
-rotation = 3.14159
+rotation = 3.14096
 scale = Vector2(2, -2)
 texture = ExtResource("4_x08j6")
+offset = Vector2(0, -80)
+
+[node name="defense" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_0aj2t")
+texture = ExtResource("5_0aj2t")
 
 [node name="glow" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -568,16 +865,29 @@ texture = SubResource("GradientTexture2D_ed2ya")
 
 [node name="label" type="RichTextLabel" parent="."]
 visible = false
-offset_left = 78.0
-offset_top = -240.0
-offset_right = 118.0
-offset_bottom = -216.0
+offset_left = 87.0
+offset_top = -199.0
+offset_right = 133.0
+offset_bottom = -167.0
 rotation = 0.073204
 scale = Vector2(4, 5)
 theme = SubResource("Theme_uaq2u")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[img=22]res://assets/icons/stats/res_neutral.webp[/img]?"
+text = "[img=30]res://assets/icons/stats/res_neutral.webp[/img]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label2" type="RichTextLabel" parent="label"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 49.0
+offset_bottom = 32.0
+rotation = 0.073204
+theme = SubResource("Theme_uaq2u")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[img=32]res://assets/icons/stats/wrong.webp[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

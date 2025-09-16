@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=4 uid="uid://cojqa07ypmw73"]
+[gd_scene load_steps=266 format=4 uid="uid://cojqa07ypmw73"]
 
 [ext_resource type="Script" uid="uid://dpjqlxb7fjn7o" path="res://scenes/level_main/hud.gd" id="1_7pw0p"]
 [ext_resource type="PackedScene" uid="uid://dge14ij4cmm2x" path="res://backgrounds/the_centerpiece/the_centerpiece.tscn" id="2_rt0kr"]
@@ -6,15 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://digplw4jdofex" path="res://scenes/level_question/question.tscn" id="4_1sy1q"]
 [ext_resource type="Script" uid="uid://50cinnkq6bow" path="res://scenes/level_damage/damage_numbers.gd" id="5_1y41g"]
 [ext_resource type="Texture2D" uid="uid://isirpihxh4im" path="res://assets/icons/stats/flinch_neutral.webp" id="5_2ld57"]
+[ext_resource type="Texture2D" uid="uid://beysxrfa3yki2" path="res://assets/icons/stats/oneiric_big.png" id="5_shro8"]
 [ext_resource type="Script" uid="uid://dcw5kyyuo2238" path="res://scenes/level_main/level_camera.gd" id="6_2ld57"]
+[ext_resource type="Texture2D" uid="uid://bwvoy6k1xviw" path="res://assets/icons/stats/phrenic_big.png" id="6_j8m44"]
+[ext_resource type="Texture2D" uid="uid://c7cj52xjhvo2h" path="res://assets/icons/stats/sudo.webp" id="6_whap1"]
+[ext_resource type="Texture2D" uid="uid://clcw7apflbwti" path="res://resources/tres/flinch_phrenic.tres" id="7_vvl3e"]
 [ext_resource type="Script" uid="uid://d3yyqdv4hel7f" path="res://scenes/level_main/intelligence.gd" id="7_w4dai"]
+[ext_resource type="Texture2D" uid="uid://bstlcvhnfr573" path="res://assets/icons/stats/alethic_big.png" id="8_k1jwk"]
 [ext_resource type="Script" uid="uid://cauc2arnu4acx" path="res://scenes/level_main/ultimate.gd" id="8_s53ub"]
 [ext_resource type="Texture2D" uid="uid://btwcqh6hlx1b" path="res://assets/vector/intelligence_point_fill.webp" id="8_uyi6t"]
+[ext_resource type="Texture2D" uid="uid://5bwkq3xaqqda" path="res://resources/tres/flinch_alethic.tres" id="9_865gm"]
+[ext_resource type="Texture2D" uid="uid://cmef081phgpl3" path="res://assets/icons/stats/kinetic_big.png" id="10_whap1"]
 [ext_resource type="Texture2D" uid="uid://ddguems8hx5t3" path="res://assets/vector/intelligence_point_red.webp" id="11_rt0kr"]
 [ext_resource type="Script" uid="uid://bx1kkpwty0oqg" path="res://scenes/level_main/chances.gd" id="12_5xmtx"]
+[ext_resource type="Texture2D" uid="uid://chvsqnryed5ic" path="res://resources/tres/flinch_oneiric.tres" id="12_7lnw3"]
 [ext_resource type="Shader" uid="uid://4wkgy0to1xxs" path="res://scripts/shaders/particle_glow.gdshader" id="13_c5xlv"]
 [ext_resource type="Theme" uid="uid://nm0o14o4tpd6" path="res://themes/fonts/label_monospaced.tres" id="13_kveae"]
 [ext_resource type="Texture2D" uid="uid://bivlg4jmdye7s" path="res://assets/vector/icon_infinite.webp" id="14_5jqip"]
+[ext_resource type="Texture2D" uid="uid://d1f8l37uo4tyq" path="res://assets/icons/others/sudo.webp" id="14_7lnw3"]
 [ext_resource type="Texture2D" uid="uid://bymj204te7wtc" path="res://assets/vector/icon_dice.webp" id="15_l12la"]
 [ext_resource type="Script" uid="uid://bnq8sggowewrw" path="res://scenes/level_main/timer.gd" id="17_4uee3"]
 [ext_resource type="Texture2D" uid="uid://b4yrt5jsi1wno" path="res://assets/vector/intelligence_point.webp" id="19_ngjsi"]
@@ -48,7 +57,6 @@
 [ext_resource type="Texture2D" uid="uid://bg7iaw7pyfkm2" path="res://assets/vector/nonatlas/sudo_button_hover.webp" id="48_kveae"]
 [ext_resource type="Texture2D" uid="uid://j5kyrc1bwal2" path="res://assets/vector/ribbon_kinetic.webp" id="48_shrs3"]
 [ext_resource type="Texture2D" uid="uid://cbuaskdb007jh" path="res://assets/vector/nonatlas/sudo_button_pressed.webp" id="49_47ml2"]
-[ext_resource type="Texture2D" uid="uid://droir1iqf4uus" path="res://assets/vector/nonatlas/sudo_disabled.webp" id="50_hqoej"]
 [ext_resource type="Texture2D" uid="uid://beiqxby5726uw" path="res://assets/vector/nonatlas/flinch_mask.webp" id="51_hjth1"]
 [ext_resource type="Texture2D" uid="uid://c07bwx4l6id5f" path="res://assets/vector/nonatlas/moves_button.webp" id="51_xner8"]
 [ext_resource type="Texture2D" uid="uid://cfmp2c60kh057" path="res://assets/vector/nonatlas/moves_button_pressed.webp" id="52_eipgq"]
@@ -57,17 +65,19 @@
 [ext_resource type="Texture2D" uid="uid://dqmk2p1d0u74i" path="res://assets/vector/nonatlas/moves_button_hover.webp" id="53_st4n1"]
 [ext_resource type="Theme" uid="uid://dr0mmq242h3ay" path="res://themes/fonts/label_damage.tres" id="54_e24ns"]
 [ext_resource type="PackedScene" uid="uid://yg2jf3iccbml" path="res://scenes/settings_main/settings_main.tscn" id="54_fglnd"]
+[ext_resource type="Script" uid="uid://fmdghuuvmnmt" path="res://scenes/level_main/sudo.gd" id="54_lit2u"]
 [ext_resource type="Texture2D" uid="uid://b18djbmu8p6se" path="res://assets/vector/nonatlas/moves_button_disabled.webp" id="54_oolel"]
 [ext_resource type="Texture2D" uid="uid://c7i02ml1ruftj" path="res://assets/vector/stat_list.webp" id="55_1y41g"]
 [ext_resource type="Shader" uid="uid://cy3jx135eumam" path="res://scripts/shaders/flash_shake.gdshader" id="55_shrs3"]
 [ext_resource type="FontFile" uid="uid://bfxprothin4jl" path="res://assets/atlas/fonts/SpaceMonoB.fnt" id="56_kveae"]
 [ext_resource type="Texture2D" uid="uid://kbxatbnc54j5" path="res://assets/vector/profile_dead.webp" id="56_l12la"]
+[ext_resource type="Texture2D" uid="uid://bp8vsqgnh3vmn" path="res://assets/vector/nonatlas/sudo_button_disabled.webp" id="58_7lnw3"]
+[ext_resource type="Texture2D" uid="uid://x8p4w24spr41" path="res://assets/vector/sudo_point_fill.webp" id="58_jflsi"]
 [ext_resource type="Texture2D" uid="uid://dycqpiaf7o2oc" path="res://resources/tres/flinch_kinetic.tres" id="58_shro8"]
 [ext_resource type="Script" uid="uid://dltj3hcu7dana" path="res://scenes/level_main/health.gd" id="58_uuxt8"]
 [ext_resource type="FontFile" uid="uid://crtdw5xpj5ox6" path="res://assets/atlas/fonts/SpaceMono.fnt" id="59_ewnsm"]
 [ext_resource type="Texture2D" uid="uid://dur36dcet503p" path="res://characters/shrimpion/assets/avatar.webp" id="60_eipgq"]
 [ext_resource type="Texture2D" uid="uid://ciwtnvh1vfnk4" path="res://characters/alligator/assets/avatar.webp" id="60_xner8"]
-[ext_resource type="Script" uid="uid://bdrn2lhar3lmw" path="res://scenes/level_main/selector.gd" id="62_2ld57"]
 [ext_resource type="Texture2D" uid="uid://dn4twc3seku1u" path="res://assets/icons/stats/flinch_player.webp" id="62_vjv51"]
 [ext_resource type="Script" uid="uid://cf51crs283rwq" path="res://scenes/level_main/stats_canvas.gd" id="63_ewnsm"]
 [ext_resource type="Texture2D" uid="uid://tcku51j06ng1" path="res://assets/icons/stats/dead_player.webp" id="63_fglnd"]
@@ -82,8 +92,10 @@
 [ext_resource type="Script" uid="uid://b1y6j8r5l7jp4" path="res://scenes/level_dialogue/level_dialogue.gd" id="73_x7umk"]
 [ext_resource type="Texture2D" uid="uid://bwul8titp6mwr" path="res://assets/vector/dialogue_box.webp" id="74_shrs3"]
 [ext_resource type="Texture2D" uid="uid://bwgnqkp888e80" path="res://characters/none/assets/dialog_panel/normal.webp" id="75_shrs3"]
-[ext_resource type="Texture2D" uid="uid://b1eonhapese7i" path="res://assets/ui/selector_right.webp" id="76_shrs3"]
 [ext_resource type="Script" uid="uid://cevibmlx8nwnt" path="res://scenes/level_main/move_button.gd" id="78_x7umk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mwync"]
+blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x828i"]
 
@@ -1025,25 +1037,6 @@ cache/4/25/0/glyphs/243/texture_idx = 0
 base_font = SubResource("FontFile_2ld57")
 spacing_glyph = -32
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_si7jt"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wlqnt"]
-blend_mode = 1
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x7umk"]
-
-[sub_resource type="Theme" id="Theme_pon7p"]
-Label/styles/normal = SubResource("StyleBoxEmpty_x7umk")
-
-[sub_resource type="Gradient" id="Gradient_shrs3"]
-offsets = PackedFloat32Array(0, 0.175325, 0.50974, 0.795455, 1)
-colors = PackedColorArray(0.864316, 0.35971, 0.0469657, 1, 1, 0.24, 0.252666, 1, 0.0462979, 0.598503, 0.827569, 1, 1, 0.239216, 0.25098, 1, 0.862745, 0.360784, 0.0470588, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlqnt"]
-gradient = SubResource("Gradient_shrs3")
-width = 8
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u4x6e"]
 blend_mode = 1
 
@@ -1117,6 +1110,41 @@ alpha_curve = SubResource("CurveTexture_8rkm8")
 anim_speed_min = 5.0
 anim_speed_max = 5.0
 
+[sub_resource type="Curve" id="Curve_a6epg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.266094, 0.842697), -1.77648, -1.77648, 0, 0, Vector2(0.540773, 0.011236), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xw7rj"]
+curve = SubResource("Curve_a6epg")
+
+[sub_resource type="Gradient" id="Gradient_btomc"]
+offsets = PackedFloat32Array(0, 0.199352, 0.50974, 0.799028, 1)
+colors = PackedColorArray(0.331582, 0.000871455, 0.503543, 1, 0.767244, 4.81307e-07, 0.369829, 1, 0.927228, 0.000881755, 0.955667, 1, 0.134667, 0.436993, 1, 1, 0.398067, 0.00109055, 0.576859, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lfpea"]
+gradient = SubResource("Gradient_btomc")
+width = 8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5iik5"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 16, 0)
+emission_shape_scale = Vector3(550, 23.025, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 8.68, 1)
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 98.56
+initial_velocity_max = 98.56
+gravity = Vector3(-6, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+scale_min = 0.33
+scale_max = 0.75
+color_ramp = SubResource("GradientTexture1D_lfpea")
+alpha_curve = SubResource("CurveTexture_xw7rj")
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+
 [sub_resource type="Animation" id="Animation_u4x6e"]
 length = 0.001
 tracks/0/type = "value"
@@ -1166,6 +1194,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.61744, 0, 0.0572356, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mindset_icon:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_shro8")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("background/particle:process_material:color_ramp")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture1D_hjth1")]
 }
 
 [sub_resource type="Animation" id="Animation_l12la"]
@@ -1294,21 +1346,20 @@ tracks/9/keys = {
 "values": [null]
 }
 
-[sub_resource type="Animation" id="Animation_shrs3"]
-resource_name = "flinch_player"
-length = 3.0
+[sub_resource type="Animation" id="Animation_jflsi"]
+resource_name = "flinch_alethic"
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("background/label2:scale")
+tracks/0/path = NodePath("mindset_icon:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.04, 0.8),
 "transitions": PackedFloat32Array(-0.5, 0.5, 0.5),
 "update": 0,
-"values": [Vector2(0.7, 0.7), Vector2(0.9, 0.9), Vector2(0.8, 0.8)]
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1329,15 +1380,15 @@ tracks/2/path = NodePath("background/glow_center:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.01, 0.2, 0.41, 0.8),
+"times": PackedFloat32Array(0.02, 0.14, 0.41, 0.8),
 "transitions": PackedFloat32Array(-2, -2, -2, 1),
 "update": 0,
-"values": [Color(1.6, 0.6, 0.4, 1), Color(0.18, 0.822333, 1, 1), Color(1, 0.52, 0.52, 1), Color(0, 0, 0, 0)]
+"values": [Color(0.473916, 0.131683, 0, 1), Color(1, 0.599961, 0.385339, 1), Color(1, 0.461767, 0.289432, 1), Color(0, 0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("background/label2:modulate")
+tracks/3/path = NodePath("mindset_icon:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1361,14 +1412,290 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("background/label2:theme_override_colors/font_shadow_color")
+tracks/5/path = NodePath("mindset_icon:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_k1jwk")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("background/particle:process_material:color_ramp")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_865gm")]
+}
+
+[sub_resource type="Animation" id="Animation_a6epg"]
+resource_name = "flinch_kinetic"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mindset_icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.8),
+"transitions": PackedFloat32Array(-0.5, 0.5, 0.5),
 "update": 0,
-"values": [Color(0.338623, 0.154588, 0, 1)]
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/particle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/glow_center:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.02, 0.14, 0.41, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Color(0.343797, 0.250133, 0, 1), Color(0.887397, 0.684577, 0, 1), Color(0.870825, 0.57625, 3.85046e-07, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mindset_icon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("background:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.19079, 0.0573901, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mindset_icon:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_whap1")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("background/particle:process_material:color_ramp")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("58_shro8")]
+}
+
+[sub_resource type="Animation" id="Animation_shrs3"]
+resource_name = "flinch_oneiric"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mindset_icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.8),
+"transitions": PackedFloat32Array(-0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/particle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/glow_center:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.02, 0.2, 0.41, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Color(0.904643, 0.616992, 1, 1), Color(0.163053, 0.172081, 1, 1), Color(0.428123, 0.00252359, 0.858659, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mindset_icon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("background:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.19079, 0.0573901, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mindset_icon:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_shro8")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("background/particle:process_material:color_ramp")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_7lnw3")]
+}
+
+[sub_resource type="Animation" id="Animation_lit2u"]
+resource_name = "flinch_phrenic"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mindset_icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.8),
+"transitions": PackedFloat32Array(-0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/particle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/glow_center:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.02, 0.16, 0.51, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Color(0, 0.32953, 0.00815802, 1), Color(0, 0.680268, 0.542859, 1), Color(1.99743e-06, 0.443167, 0.317929, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mindset_icon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("background:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.19079, 0.0573901, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mindset_icon:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j8m44")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("background/particle:process_material:color_ramp")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_vvl3e")]
 }
 
 [sub_resource type="Animation" id="Animation_uuxt8"]
@@ -1821,6 +2148,94 @@ tracks/8/keys = {
 "values": [":D"]
 }
 
+[sub_resource type="Animation" id="Animation_doppe"]
+resource_name = "sudo"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mindset_icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.8),
+"transitions": PackedFloat32Array(-0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/sudo_part:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/glow_center:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.02, 0.2, 0.41, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Color(1, 0.610843, 0.743532, 1), Color(0.630644, 0.000118017, 0.560853, 1), Color(0.309502, 0.000800992, 0.479286, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mindset_icon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("background:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.19079, 0.0573901, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mindset_icon:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_7lnw3")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../characters/camera:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.00666669, 0.04, 0.806667),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_orote"]
 resource_name = "switch_enemy_2"
 length = 1.1
@@ -2085,11 +2500,15 @@ tracks/9/keys = {
 _data = {
 &"RESET": SubResource("Animation_u4x6e"),
 &"dead": SubResource("Animation_l12la"),
-&"flinch_player": SubResource("Animation_shrs3"),
+&"flinch_alethic": SubResource("Animation_jflsi"),
+&"flinch_kinetic": SubResource("Animation_a6epg"),
+&"flinch_oneiric": SubResource("Animation_shrs3"),
+&"flinch_phrenic": SubResource("Animation_lit2u"),
 &"full_turn_enemy": SubResource("Animation_uuxt8"),
 &"full_turn_player": SubResource("Animation_5map4"),
 &"question_failed": SubResource("Animation_mrr4j"),
 &"question_passed": SubResource("Animation_gjci4"),
+&"sudo": SubResource("Animation_doppe"),
 &"switch_enemy": SubResource("Animation_orote"),
 &"switch_player": SubResource("Animation_rt0kr")
 }
@@ -2473,7 +2892,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666666, 0.25, 0.45),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.999846, 0.946962, 0.915525, 1), Color(1, 0.255563, 0.306795, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0.999846, 0.946962, 0.915525, 1), Color(0.72838, 0.663623, 1, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3884,24 +4303,68 @@ shader_parameter/wave_speed = 2.854
 base_font = ExtResource("70_ag3w6")
 spacing_glyph = -1
 
-[sub_resource type="FontVariation" id="FontVariation_yj5it"]
+[sub_resource type="FontVariation" id="FontVariation_k2gu4"]
 base_font = ExtResource("70_ag3w6")
-variation_embolden = -0.25
-variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+variation_embolden = 1.5
 
 [sub_resource type="FontVariation" id="FontVariation_2gqx0"]
 base_font = ExtResource("70_ag3w6")
 variation_embolden = 1.5
 variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
 
-[sub_resource type="FontVariation" id="FontVariation_k2gu4"]
+[sub_resource type="FontVariation" id="FontVariation_yj5it"]
 base_font = ExtResource("70_ag3w6")
-variation_embolden = 1.5
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4d3ys"]
 resource_name = "growin"
 script = ExtResource("71_shro8")
 metadata/rt = 2291163808699
+
+[sub_resource type="Animation" id="Animation_7lnw3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_whap1"]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lnw3"]
+_data = {
+&"RESET": SubResource("Animation_7lnw3"),
+&"start": SubResource("Animation_whap1")
+}
+
+[sub_resource type="Gradient" id="Gradient_whap1"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7lnw3"]
+gradient = SubResource("Gradient_whap1")
+width = 1
 
 [sub_resource type="FontVariation" id="FontVariation_ag3w6"]
 base_font = ExtResource("56_kveae")
@@ -3913,15 +4376,6 @@ default_font_size = 57
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1k40i"]
-shader = ExtResource("13_c5xlv")
-shader_parameter/rect_size = Vector2(0.165, 0.135)
-shader_parameter/bness = 0.56
-shader_parameter/fall_off_scale = 4.0
-shader_parameter/b_offset = 0.3
-shader_parameter/alpha_threshold = -0.3
-shader_parameter/smooth_fade = 0.825
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8rkm8"]
 shader = ExtResource("44_wlqnt")
@@ -4615,15 +5069,6 @@ metadata/_edit_horizontal_guides_ = [388.0]
 [node name="background" parent="." instance=ExtResource("2_rt0kr")]
 z_index = -10
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 640.0
-offset_top = 360.0
-offset_right = -640.0
-offset_bottom = -360.0
 scale = Vector2(1.5, 1.5)
 mouse_filter = 2
 
@@ -4637,6 +5082,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="mindset_icon" type="TextureRect" parent="effects"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_mwync")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -244.0
+offset_right = 230.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(220, 245)
+texture = ExtResource("5_shro8")
 
 [node name="background" type="ColorRect" parent="effects"]
 z_index = -5
@@ -4662,11 +5126,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -641.0
 offset_top = -357.0
-offset_right = 639.0
-offset_bottom = 359.0
+offset_right = 1122.0
+offset_bottom = 673.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("30_x828i")
+expand_mode = 2
 
 [node name="label" type="Label" parent="effects/background"]
 modulate = Color(1, 1, 1, 0)
@@ -4683,10 +5148,10 @@ offset_right = 668.0
 offset_bottom = 375.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.7, 0.7)
 pivot_offset = Vector2(640, 360)
 size_flags_horizontal = 4
-theme_override_colors/font_shadow_color = Color(0.338623, 0.154588, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.174671, 0.000107572, 0.562231, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -210
 theme_override_constants/shadow_offset_y = 15
@@ -4696,84 +5161,6 @@ theme_override_font_sizes/font_size = 300
 text = "GREAT!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="label2" type="Label" parent="effects/background"]
-modulate = Color(1, 1, 1, 0)
-material = SubResource("CanvasItemMaterial_si7jt")
-clip_contents = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -663.0
-offset_top = -238.0
-offset_right = 671.0
-offset_bottom = 248.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-pivot_offset = Vector2(640, 360)
-size_flags_horizontal = 4
-theme_override_colors/font_shadow_color = Color(0.338623, 0.154588, 0, 1)
-theme_override_constants/line_spacing = -210
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/shadow_outline_size = -30
-theme_override_fonts/font = SubResource("FontVariation_uuxt8")
-theme_override_font_sizes/font_size = 300
-text = "FLINCH"
-horizontal_alignment = 1
-
-[node name="label" type="Label" parent="effects/background/label2"]
-self_modulate = Color(0, 0, 0, 1)
-clip_children = 2
-material = SubResource("CanvasItemMaterial_si7jt")
-clip_contents = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -475.571
-offset_top = -225.857
-offset_right = 478.429
-offset_bottom = 219.143
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(640, 360)
-size_flags_horizontal = 4
-theme_override_constants/line_spacing = -210
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/shadow_outline_size = -30
-theme_override_fonts/font = SubResource("FontVariation_uuxt8")
-theme_override_font_sizes/font_size = 300
-text = "FLINCH"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="label2" type="TextureRect" parent="effects/background/label2/label"]
-modulate = Color(0.665302, 0.665302, 0.665302, 1)
-show_behind_parent = true
-material = SubResource("CanvasItemMaterial_wlqnt")
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -490.5
-offset_top = -147.0
-offset_right = 491.5
-offset_bottom = 136.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(640, 360)
-size_flags_horizontal = 4
-theme = SubResource("Theme_pon7p")
-texture = SubResource("GradientTexture1D_wlqnt")
 
 [node name="particle_" type="GPUParticles2D" parent="effects/background"]
 material = SubResource("CanvasItemMaterial_u4x6e")
@@ -4798,6 +5185,19 @@ preprocess = 2.0
 speed_scale = 2.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_x7umk")
+
+[node name="sudo_part" type="GPUParticles2D" parent="effects/background"]
+material = SubResource("CanvasItemMaterial_u4x6e")
+position = Vector2(638, 374.375)
+scale = Vector2(0.875, 0.875)
+emitting = false
+amount = 100
+texture = ExtResource("6_whap1")
+lifetime = 2.36
+preprocess = 2.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5iik5")
 
 [node name="text_effect" type="AnimationPlayer" parent="effects"]
 libraries = {
@@ -6052,7 +6452,7 @@ scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 0
 texture = ExtResource("44_pon7p")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/stats" node_paths=PackedStringArray("selector")]
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/stats"]
 material = SubResource("ShaderMaterial_l12la")
 layout_mode = 0
 offset_left = 107.0
@@ -6074,7 +6474,6 @@ texture_disabled = ExtResource("46_cjs6t")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
-selector = NodePath("../../../selector")
 
 [node name="switch" type="TextureRect" parent="gameplay/player_canvas" node_paths=PackedStringArray("hud", "intelligence")]
 z_index = 5
@@ -6094,7 +6493,7 @@ script = ExtResource("38_u4x6e")
 hud = NodePath("../../..")
 intelligence = NodePath("../intelligence")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/switch" node_paths=PackedStringArray("selector")]
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/switch"]
 material = SubResource("ShaderMaterial_x828i")
 layout_mode = 0
 offset_left = 113.333
@@ -6114,7 +6513,6 @@ texture_hover = ExtResource("40_5map4")
 texture_disabled = ExtResource("41_gjci4")
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
-selector = NodePath("../../../selector")
 
 [node name="moves" type="TextureRect" parent="gameplay/player_canvas"]
 z_index = 5
@@ -6131,7 +6529,7 @@ scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 0
 texture = ExtResource("44_pon7p")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/moves" node_paths=PackedStringArray("selector")]
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/moves"]
 material = SubResource("ShaderMaterial_2ld57")
 layout_mode = 0
 offset_left = 113.333
@@ -6152,9 +6550,8 @@ texture_hover = ExtResource("53_st4n1")
 texture_disabled = ExtResource("54_oolel")
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
-selector = NodePath("../../../selector")
 
-[node name="sudo" type="TextureRect" parent="gameplay/player_canvas"]
+[node name="sudo" type="TextureRect" parent="gameplay/player_canvas" node_paths=PackedStringArray("sudo_button", "sudo_point")]
 z_index = 5
 layout_mode = 1
 anchors_preset = 4
@@ -6168,8 +6565,11 @@ grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 0
 texture = ExtResource("44_pon7p")
+script = ExtResource("54_lit2u")
+sudo_button = NodePath("button")
+sudo_point = NodePath("sudo_point")
 
-[node name="button" type="TextureButton" parent="gameplay/player_canvas/sudo" node_paths=PackedStringArray("selector")]
+[node name="button" type="TextureButton" parent="gameplay/player_canvas/sudo"]
 material = SubResource("ShaderMaterial_pon7p")
 layout_mode = 0
 offset_left = 113.0
@@ -6186,10 +6586,46 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("47_1y41g")
 texture_pressed = ExtResource("49_47ml2")
 texture_hover = ExtResource("48_kveae")
-texture_disabled = ExtResource("50_hqoej")
+texture_disabled = ExtResource("58_7lnw3")
 stretch_mode = 0
 script = ExtResource("45_ewnsm")
-selector = NodePath("../../../selector")
+
+[node name="sudo_point" type="TextureRect" parent="gameplay/player_canvas/sudo"]
+layout_mode = 0
+offset_left = -233.333
+offset_top = 140.0
+offset_right = -103.333
+offset_bottom = 267.0
+scale = Vector2(1.67, 1.67)
+texture = ExtResource("19_ngjsi")
+
+[node name="point" type="TextureRect" parent="gameplay/player_canvas/sudo/sudo_point"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 124.0
+scale = Vector2(1.655, 1.655)
+pivot_offset = Vector2(65, 66)
+texture = ExtResource("58_jflsi")
+
+[node name="glow" type="TextureRect" parent="gameplay/player_canvas/sudo/sudo_point"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_left = -12.3276
+offset_top = -15.2468
+offset_right = 180.672
+offset_bottom = 185.753
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(72.9888, 76.0733)
+texture = ExtResource("30_x828i")
+
+[node name="animation" type="AnimationPlayer" parent="gameplay/player_canvas/sudo/sudo_point"]
+libraries = {
+&"": SubResource("AnimationLibrary_xoxod")
+}
+speed_scale = 0.75
 
 [node name="question_canvas" parent="gameplay" instance=ExtResource("4_1sy1q")]
 visible = false
@@ -6271,7 +6707,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/health"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6317,7 +6753,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/iq"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6363,7 +6799,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/eq"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6409,7 +6845,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/refill"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6455,7 +6891,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/flinch"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6501,7 +6937,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/snap"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6547,7 +6983,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/resistance"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6594,7 +7030,7 @@ layout_mode = 2
 texture = ExtResource("55_1y41g")
 
 [node name="label" type="RichTextLabel" parent="gameplay/CanvasLayer/stats_canvas/stats/determination"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
 offset_right = 548.0
@@ -6650,10 +7086,10 @@ health = NodePath("character_panel/panel/health")
 
 [node name="character_panel" type="Control" parent="gameplay/CanvasLayer/player_bar"]
 material = SubResource("ShaderMaterial_5xmtx")
-layout_mode = 3
 anchors_preset = 0
 
 [node name="ribbon" type="TextureRect" parent="gameplay/CanvasLayer/player_bar/character_panel"]
+visible = false
 use_parent_material = true
 layout_mode = 0
 offset_left = -422.5
@@ -6868,10 +7304,10 @@ health = NodePath("character_panel/panel/health")
 
 [node name="character_panel" type="Control" parent="gameplay/CanvasLayer/enemy_bar"]
 material = SubResource("ShaderMaterial_cjs6t")
-layout_mode = 3
 anchors_preset = 0
 
 [node name="ribbon" type="TextureRect" parent="gameplay/CanvasLayer/enemy_bar/character_panel"]
+visible = false
 use_parent_material = true
 layout_mode = 0
 offset_left = -422.5
@@ -7095,13 +7531,13 @@ offset_bottom = -68.0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vlyrp")
-theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
-theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
 theme_override_fonts/bold_font = SubResource("FontVariation_k2gu4")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
+theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
+theme_override_font_sizes/normal_font_size = 28
 theme_override_font_sizes/bold_italics_font_size = 14
 theme_override_font_sizes/italics_font_size = 14
 theme_override_font_sizes/mono_font_size = 14
-theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center][color=ffffff]Resistance is cut for this current question."
 fit_content = true
@@ -7110,8 +7546,24 @@ metadata/mouse_position = Vector2(409.205, 61.6025)
 metadata/frame = 61866
 metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
 
-[node name="move_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("move_panel", "hud", "skill1", "skill2", "skill3", "skill4", "selected_effect", "move_name", "move_description", "moves_button")]
+[node name="animation" type="AnimationPlayer" parent="gameplay/CanvasLayer/description"]
+libraries = {
+&"": SubResource("AnimationLibrary_7lnw3")
+}
+
+[node name="transition" type="TextureRect" parent="gameplay/CanvasLayer"]
 visible = false
+modulate = Color(0, 0, 0, 0)
+top_level = true
+z_index = 99
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_7lnw3")
+
+[node name="move_canvas" type="Control" parent="gameplay" node_paths=PackedStringArray("move_panel", "hud", "skill1", "skill2", "skill3", "skill4", "move_name", "move_description", "moves_button")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -7129,13 +7581,12 @@ skill1 = NodePath("skill1")
 skill2 = NodePath("skill2")
 skill3 = NodePath("skill3")
 skill4 = NodePath("skill4")
-selected_effect = NodePath("selected")
 move_name = NodePath("center/container/move_name")
 move_description = NodePath("center/container/move_description")
 moves_button = NodePath("../player_canvas/moves/button")
 
 [node name="padding" type="NinePatchRect" parent="gameplay/move_canvas"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 625.0
 offset_top = -185.0
 offset_right = 1516.0
@@ -7182,13 +7633,13 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vlyrp")
-theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
-theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
 theme_override_fonts/bold_font = SubResource("FontVariation_k2gu4")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_2gqx0")
+theme_override_fonts/italics_font = SubResource("FontVariation_yj5it")
+theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_italics_font_size = 14
 theme_override_font_sizes/italics_font_size = 14
 theme_override_font_sizes/mono_font_size = 14
-theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[color=AAAAAA]I kinda fricking hate it here."
 fit_content = true
@@ -7197,19 +7648,10 @@ metadata/mouse_position = Vector2(409.205, 61.6025)
 metadata/frame = 61866
 metadata/rand = Array[int]([3818346783, 2302588740, 2710101012, 1594850131, 3651534778, 98124939, 3618632495])
 
-[node name="selected" type="ColorRect" parent="gameplay/move_canvas"]
-material = SubResource("ShaderMaterial_1k40i")
-layout_mode = 2
-offset_left = 890.0
-offset_top = -156.0
-offset_right = 890.0
-offset_bottom = -156.0
-pivot_offset = Vector2(65, 95)
-
-[node name="skill1" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
+[node name="skill1" type="TextureButton" parent="gameplay/move_canvas"]
 material = SubResource("ShaderMaterial_8rkm8")
 custom_minimum_size = Vector2(100, 145)
-layout_mode = 2
+layout_mode = 0
 offset_left = 204.0
 offset_top = -218.0
 offset_right = 304.0
@@ -7223,7 +7665,6 @@ texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
-selected_effect = NodePath("../selected")
 
 [node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill1"]
 use_parent_material = true
@@ -7237,10 +7678,10 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img][s]7"
 
-[node name="skill2" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
+[node name="skill2" type="TextureButton" parent="gameplay/move_canvas"]
 material = SubResource("ShaderMaterial_fglnd")
 custom_minimum_size = Vector2(100, 145)
-layout_mode = 2
+layout_mode = 0
 offset_left = 307.0
 offset_top = -218.0
 offset_right = 407.0
@@ -7254,7 +7695,6 @@ texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
-selected_effect = NodePath("../selected")
 value = 1
 
 [node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill2"]
@@ -7269,10 +7709,10 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]7"
 
-[node name="skill3" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
+[node name="skill3" type="TextureButton" parent="gameplay/move_canvas"]
 material = SubResource("ShaderMaterial_shrs3")
 custom_minimum_size = Vector2(100, 145)
-layout_mode = 2
+layout_mode = 0
 offset_left = 411.0
 offset_top = -218.0
 offset_right = 511.0
@@ -7286,7 +7726,6 @@ texture_normal = ExtResource("72_ag3w6")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
-selected_effect = NodePath("../selected")
 value = 2
 
 [node name="cost" type="RichTextLabel" parent="gameplay/move_canvas/skill3"]
@@ -7301,10 +7740,10 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]7"
 
-[node name="skill4" type="TextureButton" parent="gameplay/move_canvas" node_paths=PackedStringArray("selected_effect")]
+[node name="skill4" type="TextureButton" parent="gameplay/move_canvas"]
 material = SubResource("ShaderMaterial_hjth1")
 custom_minimum_size = Vector2(100, 145)
-layout_mode = 2
+layout_mode = 0
 offset_left = 514.0
 offset_top = -218.0
 offset_right = 614.0
@@ -7318,7 +7757,6 @@ texture_normal = ExtResource("72_pon7p")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("78_x7umk")
-selected_effect = NodePath("../selected")
 value = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="gameplay/move_canvas/skill4"]
@@ -7457,27 +7895,6 @@ scale = Vector2(2, 2)
 libraries = {
 &"": SubResource("AnimationLibrary_1k40i")
 }
-
-[node name="selector" type="TextureRect" parent="gameplay" node_paths=PackedStringArray("pause_menu")]
-visible = false
-z_index = 30
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -982.0
-offset_top = -359.0
-offset_right = -949.0
-offset_bottom = -323.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(17, 18)
-texture = ExtResource("76_shrs3")
-expand_mode = 1
-script = ExtResource("62_2ld57")
-pause_menu = NodePath("../../menu")
 
 [node name="ultimate_canvas" type="TextureRect" parent="."]
 visible = false

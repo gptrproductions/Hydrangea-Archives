@@ -31,10 +31,11 @@ func _process(_delta):
 		scene = scene.instantiate()
 		get_tree().root.add_child(scene)
 		await get_tree().process_frame
-		scene._call([Character.name.MUSHROOM_CLOD, Character.name.SHRIMPION], load("res://resources/official_levels/level_0.tres"))
+		scene._call([Character.name.MUSHROOM_CLOD, Character.name.SHRIMPION], "res://resources/official_levels/level_0.tres")
 		self.queue_free()
 
 func start():
+	System.direct_hud_test = false
 	animation.speed_scale = 3
 	animation.play("start_open")
 	System.disabled(false)

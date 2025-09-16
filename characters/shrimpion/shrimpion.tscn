@@ -280,10 +280,10 @@ tracks/0/path = NodePath("parts/Character:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.7),
-"transitions": PackedFloat32Array(1, 0.5, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.7, 2),
+"transitions": PackedFloat32Array(1, 0.5, 1, 1),
 "update": 0,
-"values": [3.14096, 3.14096, 12.5664]
+"values": [3.14096, 3.14096, 12.5664, 12.5664]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -343,7 +343,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1, 1)]
+"values": [Vector2(1, -1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -352,8 +352,8 @@ tracks/6/path = NodePath("parts/Character:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.666667, 1),
-"transitions": PackedFloat32Array(1, 0, 0, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.666667, 2),
+"transitions": PackedFloat32Array(1, 0, 0, 0),
 "update": 1,
 "values": [ExtResource("8_5nosg"), ExtResource("8_5nosg"), ExtResource("5_efqqm"), ExtResource("5_efqqm")]
 }
@@ -376,10 +376,10 @@ tracks/8/path = NodePath("parts/Character:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.033252, 0.1, 0.15623, 0.230703, 0.700081, 0.733333, 0.800081, 0.856311),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.033252, 0.1, 0.15623, 0.230703, 0.700081, 0.733333, 0.800081, 0.856311, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2.0003, -1.94331), Vector2(2.3203, -1.94331), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678), Vector2(2.0003, -1.94331), Vector2(2.0003, -1.94331), Vector2(2.3203, -1.94331), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678)]
+"values": [Vector2(2.0003, -1.94331), Vector2(2.3203, -1.94331), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678), Vector2(2.0003, -1.94331), Vector2(2.0003, -1.94331), Vector2(2.3203, -1.94331), Vector2(2.3203, -1.94331), Vector2(1.99614, -2.07678), Vector2(1.99614, -2.07678)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1632,13 +1632,13 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6roxu"]
 blend_mode = 1
 
-[node name="shrimpion" type="Node2D"]
-scale = Vector2(-1, 1)
+[node name="shrimpion" type="CanvasGroup"]
+scale = Vector2(1, -1)
 script = ExtResource("1_ieoiy")
 
 [node name="parts" type="Node2D" parent="."]
 use_parent_material = true
-scale = Vector2(-0.325, 0.325)
+scale = Vector2(0.325, -0.325)
 
 [node name="trail" type="Node2D" parent="parts"]
 visible = false

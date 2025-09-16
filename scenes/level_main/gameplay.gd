@@ -81,9 +81,13 @@ var previous_enemy : int = -1
 var player_last_stand : bool = false
 var enemy_last_stand : bool = false
 
+var ending : bool = false
+
 # 0 refers to all moves used when a question is finished.
 # 1 refers to all moves used after a question is finished.
 var stage: int = 0
+
+var current_question_type : Hud.question_type
 
 func _init():
 	add_to_group("battle")
@@ -115,6 +119,10 @@ func start():
 	
 # This is to switch active characters.
 func player_switch(number: int, refresh: bool = false, animated: bool = true):
+	
+	if dad.game_ready:
+		if dad.loaded_characters.size() == 1: return
+
 	if player_last_stand: return
 
 	var tries := 0
@@ -219,6 +227,7 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 			answer_node = question_canvas.get_node("questions").get_child(2)
 		dad.question_type.GUESS:
 			answer_node = question_canvas.get_node("questions").get_child(3)
+	current_question_type = type
 	
 	match subject:
 		Hud.subject_type.LANGUAGE:
@@ -250,18 +259,19 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	answer_chances.start(chances_value)
 	
 	stage = 0
-	Signals.STAGE_CHANGED
+	Signals.STAGE_CHANGED.emit(stage)
 	System.disabled(true)
 	
 	# Waits for the mechanics to be stopped-- as that means the question has finished executing.
 	var result = await dad.QUESTION_END
 	stage = 1
-	Signals.STAGE_CHANGED
+	Signals.STAGE_CHANGED.emit(stage)
 	Signals.ON_QUESTION_END.emit()
 	
 	question_finished = true
 	
 	if result == Hud.result.PASSED: 
+		UI.current_active_question_correct += 1
 		dialog_canvas.question_passed.emit(question_number)
 		text_effect.play("question_passed")
 	else: 
@@ -273,17 +283,18 @@ func change_questions(question_number: int = 0, subject = dad.subject_type.LANGU
 	await dialog_canvas.play_dialog(false)
 	
 	while true:
+		if ending: break # Has the player / enemy died
 		var decision: int = await  Combat.decision()
 		if decision not in [0, 1, 2, 3, 4]: break
 		if enemy_intel == 0: break
 		if decision == 0: 
 			change_stat(Hud.stat_type.INTELLIGENCE, -1, Hud.role.ENEMY)
-			await enemy_switch(1)
+			enemy_switch(1)
 			await get_tree().create_timer(0.5).timeout
 			continue
 		await use_skill(decision, Hud.role.ENEMY, true)
 		await get_tree().create_timer(0.3).timeout
-
+	animation.cinematic(false)
 	question_splash.text = "FOR YOUR INFORMATION..."
 	if result == Hud.result.PASSED: 
 		question_label.text = trivia_correct
@@ -363,6 +374,7 @@ func change_stat(type, value, role : Hud.role = Hud.role.NONE, target_character 
 func use_skill(type : int, role : Hud.role = Hud.role.PLAYER, question_ended = false):
 	question_timer.pause()
 	moves_canvas.end(moves_canvas.exit_type.VIA_MOVE)
+	if ending == true: return # Stop performing moves if any team is dead.
 	
 	if role == Hud.role.PLAYER:
 		if type != 4: 
@@ -389,19 +401,19 @@ func use_skill(type : int, role : Hud.role = Hud.role.PLAYER, question_ended = f
 		match type:
 			1:
 				if dad.loaded_characters[active_character].has_method("skill1"):
-					await dad.loaded_characters[active_character].skill1()
+					dad.loaded_characters[active_character].skill1()
 			2:
 				if dad.loaded_characters[active_character].has_method("skill2"):
-					await dad.loaded_characters[active_character].skill2()
+					dad.loaded_characters[active_character].skill2()
 			3:
 				if dad.loaded_characters[active_character].has_method("skill3"):
-					await dad.loaded_characters[active_character].skill3()
+					dad.loaded_characters[active_character].skill3()
 			4:
 				if dad.loaded_characters[active_character].has_method("skill4"):
 					change_stat(Hud.stat_type.INK, -100000, role)
 					dialog_canvas.player_ultimate.emit(player_ultimate_count)
 					await dialog_canvas.play_dialog()
-					await dad.loaded_characters[active_character].skill4()
+					dad.loaded_characters[active_character].skill4()
 					player_ultimate_count += 1
 			_:
 				System.nerd("Gameplay -> Use Skill", "Skill Panic")
@@ -415,27 +427,30 @@ func use_skill(type : int, role : Hud.role = Hud.role.PLAYER, question_ended = f
 		match type:
 			1:
 				if dad.loaded_enemies[active_enemy].has_method("skill1"):
-					await dad.loaded_enemies[active_enemy].skill1()
+					dad.loaded_enemies[active_enemy].skill1()
 			2:
 				if dad.loaded_enemies[active_enemy].has_method("skill2"):
-					await dad.loaded_enemies[active_enemy].skill2()
+					dad.loaded_enemies[active_enemy].skill2()
 			3:
 				if dad.loaded_enemies[active_enemy].has_method("skill3"):
-					await dad.loaded_enemies[active_enemy].skill3()
+					dad.loaded_enemies[active_enemy].skill3()
 			4:
 				if dad.loaded_enemies[active_enemy].has_method("skill4"):
 					change_stat(Hud.stat_type.INK, -100000, role)
 					dialog_canvas.enemy_ultimate.emit(enemy_ultimate_count)
 					await dialog_canvas.play_dialog()
-					await dad.loaded_enemies[active_enemy].skill4()
+					dad.loaded_enemies[active_enemy].skill4()
 					enemy_ultimate_count += 1
 			_:
 				System.nerd("Gameplay -> Use Skill", "Skill Panic")
-
+	
+	await Signals.DEATHCHECK_FINISHED # Check death.
 	await check_death()
-	await dialog_canvas.play_dialog(false)
+	if ending == true: return
 	await get_tree().create_timer(1).timeout
-	animation.cinematic(false)
+	if !question_ended:
+		animation.cinematic(false)
+	animation.healthbar(false)
 	# If the move was called after the question was passed or failed, keep the input disabled and wait for the question to reenable it.
 	question_canvas.get_node("questions").modulate = Color.TRANSPARENT
 	question_canvas.visible = true
@@ -454,19 +469,37 @@ func check_death():
 			if enemy_stats[n].get("dead", false): dead += 1
 		dialog_canvas.enemy_killed.emit(dead)
 		if enemy_stats[active_enemy]["death_type"] == Character.death_type.CUTSCENE: await get_tree().create_timer(2.5).timeout
-		enemy_switch(1, false, false)
-			
-	if player_stats[active_character]["dead"] == true:
+		await dialog_canvas.play_dialog(true)
+		if !enemy_last_stand: 
+			var tween = create_tween()
+			tween.tween_property(enemy_asset.get_child(active_enemy), "modulate", Color.TRANSPARENT, 0.15)
+			await tween.finished
+			enemy_switch(1, false, false)
+			enemy_asset.get_child(active_enemy).modulate = Color.TRANSPARENT
+			tween = create_tween()
+			tween.tween_property(enemy_asset.get_child(active_enemy), "modulate", Color.WHITE, 0.15)
+			await tween.finished
+	elif player_stats[active_character]["dead"] == true:
 		var dead = 0
 		for n in player_stats.size():
 			if player_stats[n].get("dead", false): dead += 1
 		dialog_canvas.player_killed.emit(dead)
 		if player_stats[active_character]["death_type"] == Character.death_type.CUTSCENE: await get_tree().create_timer(2.5).timeout
-		player_switch(1, false, false)
-		
+		await dialog_canvas.play_dialog(true)
+		if !player_last_stand:
+			var tween = create_tween()
+			tween.tween_property(player_asset.get_child(active_character), "modulate", Color.TRANSPARENT, 0.15)
+			await tween.finished
+			player_switch(1, false, false)
+			player_asset.get_child(active_character).modulate = Color.TRANSPARENT
+			tween = create_tween()
+			tween.tween_property(player_asset.get_child(active_character), "modulate", Color.WHITE, 0.15)
+			await tween.finished
+	
 	if dead_count(Hud.role.PLAYER) == player_stats.size() - 1: player_last_stand = true
 	if dead_count(Hud.role.ENEMY) == enemy_stats.size() - 1: enemy_last_stand = true
-		
+	if dead_count(Hud.role.PLAYER) == player_stats.size(): end(Hud.result.FAILED) 
+
 func dead_count(role: Hud.role):
 	var death_count : int = 0
 	if role == Hud.role.PLAYER:
@@ -498,3 +531,19 @@ func disable_functions(type: Hud.functions, override : bool = false): # Disables
 		Hud.functions.SWITCH: switch_button.disabled = false
 		Hud.functions.STATS: stats_button.disabled = false
 		Hud.functions.SUDO: sudo_button.disabled = false
+
+func end(result : Hud.result):
+	ending = true
+	animation.cinematic(true)
+	animation.healthbar(false)
+	await get_tree().create_timer(0.5).timeout
+	Effect.shake($"../characters/camera", false, 20, 20, 40, 3)
+	$"../characters/camera".focus(Vector2(20,20), 1.5, Tween.EASE_IN, Tween.TRANS_QUINT)
+	$CanvasLayer/transition.visible = true
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/transition, "modulate", Color.BLACK, 1.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+	if result == Hud.result.FAILED:
+		await get_tree().create_timer(2.4).timeout
+		get_tree().change_scene_to_file("res://scenes/level_defeat/defeat.tscn")
+	else:
+		pass # Instantiate the victory screen and pass args,

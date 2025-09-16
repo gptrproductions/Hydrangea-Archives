@@ -60,6 +60,9 @@ func skill1():
 	await self.animation_finished
 	Effects.start(Effects.SPORDERR, role)
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_4)
+	Signals.DEATHCHECK_FINISHED.emit(false) # Emit it on moves that dont kill.
+	return
 	
 func skill2():
 	print(Character.get_target(self.get_parent()))
@@ -84,6 +87,7 @@ func skill2():
 	camera.focus(Vector2(1, 1), 0.6, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_2)
 	return
 
 func skill3():
@@ -113,6 +117,7 @@ func skill3():
 	for n in 10:
 		Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_HEALTH, values.get("damage", -1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.PHRENIC, values.get("is_snap", false), false, Character.get_target(self.get_parent()), role)
 		Signals.emit_signal("ON_ATTACKED", Hud.stat_type.CURRENT_FLINCH, values.get("flinch", 1), Character.get_opponent(role), Hud.target.ACTIVE, Hud.mindset.PHRENIC, false, false, Character.get_target(self.get_parent()), role)
+		Character.get_attack(Hud.target.ACTIVE, role) # Manually trigger damage animation for control
 		await get_tree().create_timer(0.1).timeout
 	
 	camera.pan()
@@ -121,6 +126,8 @@ func skill3():
 	await get_tree().process_frame
 	Effects.start(Effects.AAAAAA, opp)
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_3)
+	return
 
 func skill4():
 	ultimate_cutscene.modulate = Color.WHITE
@@ -136,7 +143,10 @@ func skill4():
 	await tween.finished
 	var gameplay : Gameplay = Character.get_gameplay()
 	if is_instance_valid(gameplay):
-		gameplay.change_stat(Hud.stat_type.INTELLIGENCE, 5, role, 0, Hud.mindset.PHRENIC)
+		gameplay.change_stat(Hud.stat_type.INTELLIGENCE, 5, role, Hud.target.CHARACTER_1, Hud.mindset.PHRENIC)
 	ultimate_canvas.visible = false
-	Engine.max_fps = 0
+	Engine.max_fps = 60
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_4)
+	Signals.DEATHCHECK_FINISHED.emit(false) # Emit it on moves that dont kill.
+	return
 	

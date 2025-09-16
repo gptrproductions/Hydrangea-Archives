@@ -51,10 +51,10 @@ func start(caller : Hud.role):
 	gameplay.stats_canvas.end()
 	gameplay.disable_functions(Hud.functions.MOVES)
 	
-	var str : String = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]"
-	skill1.get_child(0).text = str + str(data["skill1_cost"])
-	skill2.get_child(0).text = str + str(data["skill2_cost"])
-	skill3.get_child(0).text = str + str(data["skill3_cost"])
+	var string : String = "[center][img=22]res://assets/icons/stats/intelligence.webp[/img]"
+	skill1.get_child(0).text = string + str(data["skill1_cost"])
+	skill2.get_child(0).text = string + str(data["skill2_cost"])
+	skill3.get_child(0).text = string + str(data["skill3_cost"])
 	skill1.pressed.emit()
 	
 	self.visible = true
@@ -164,6 +164,3 @@ func _refresh(role : Hud.role):
 func repos():
 	$padding.global_position.y = $center/container.global_position.y - 16
 	$padding.size.y = (($center/container.size.y * ($center.scale.y / $padding.scale.y))) + 52
-
-func _on_button_pressed(extra_arg_0: bool, extra_arg_1: int) -> void:
-	pass # Replace with function body.

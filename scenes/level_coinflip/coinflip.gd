@@ -35,12 +35,12 @@ func _ready():
 	await get_tree().process_frame
 	hud.input.swipe.connect(swiped)
 
-func start(subject : Hud.subject_type, answer : Array = [["Choice 1", false], ["Choice 2", true], ["Choice 3", true], ["Choice 4", true],["Choice 5", true]]):
+func start(subject : Hud.subject_type, answers : Array = [["Choice 1", false], ["Choice 2", true], ["Choice 3", true], ["Choice 4", true],["Choice 5", true]]):
 	$button/coin/subject/top.texture = resources[subject][0]
 	$button/coin/subject/icon.texture = resources[subject][1]
 	
 	## NOTE: IF ANSWERS HAS MULTIPLE ELEMENTS, ONLY THE [0][1] WILL BE RECOGNIZED AS THE CORRECT ANSWER.
-	correct_answer = answer[0][1]
+	correct_answer = answers[0][1]
 	animation.play("start")
 	await animation.animation_finished
 	await get_tree().create_timer(0.1).timeout
@@ -50,8 +50,11 @@ func start(subject : Hud.subject_type, answer : Array = [["Choice 1", false], ["
 func answer():
 	if !start_answer : return
 	if current_answer == correct_answer:
+		
 		hud.emit_signal("QUESTION_END", Hud.result.PASSED)
 		animation.play("correct")
+		gameplay.change_stat(hud.stat_type.INTELLIGENCE, 1, Hud.role.PLAYER, Hud.target.ACTIVE)
+		gameplay.change_stat(hud.stat_type.INK, 10, Hud.role.PLAYER, Hud.target.ACTIVE)
 		await animation.animation_finished
 		await get_tree().create_timer(0.5).timeout
 		animation.play_backwards("correct")
@@ -59,13 +62,15 @@ func answer():
 		gameplay.change_stat(hud.stat_type.CHANCES, -1)
 		hud.emit_signal("QUESTION_END", Hud.result.FAILED)
 		animation.play("wrong")
+		gameplay.change_stat(hud.stat_type.INTELLIGENCE, 1, Hud.role.ENEMY, Hud.target.ACTIVE)
+		gameplay.change_stat(hud.stat_type.INK, 10, Hud.role.ENEMY, Hud.target.ACTIVE)
 		await animation.animation_finished
 		await get_tree().create_timer(0.5).timeout
 		animation.play_backwards("wrong")
 	button.disabled = true
 	start_answer = false
 
-func end(caller, result : Hud.result):
+func end(_caller, _result : Hud.result):
 	button.disabled = true
 	start_answer = false
 	if gameplay.answer_node is not Coinflip: return

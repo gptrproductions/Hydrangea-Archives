@@ -33,7 +33,6 @@ func _ready():
 		var gameplay = Character.get_gameplay()
 		if is_instance_valid(gameplay):
 			gameplay.get_parent().QUESTION_END.connect(exit) # If gameplay exists, Hud exists. Connect when the timer is finished to force exit.
-			gameplay.get_node("selector") # Gets the selector so it can manually let it go.
 			viewport.texture = gameplay.get_node("ui_canvas").get_node("progress").get_texture()
 		level_panel.visible = true
 

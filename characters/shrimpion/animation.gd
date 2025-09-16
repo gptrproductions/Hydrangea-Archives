@@ -71,6 +71,7 @@ func skill1():
 	camera.pan(Hud.role.NONE, 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_1)
 	return
 
 func skill2():
@@ -102,6 +103,7 @@ func skill2():
 	camera.pan(Hud.role.NONE, 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_2)
 	return
 
 func skill3():
@@ -134,6 +136,7 @@ func skill3():
 	camera.pan(Hud.role.NONE, 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_3)
 	return
 
 func skill4():
@@ -171,4 +174,6 @@ func skill4():
 	character_control.z_index = original_index
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_4)
+	return
 	

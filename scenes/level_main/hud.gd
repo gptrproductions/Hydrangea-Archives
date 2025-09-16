@@ -159,6 +159,8 @@ var input : Inputs
 @export var debug_fps : Label
 @export var damage : Damage
 
+var game_ready : bool = false # Tells if all is loaded.
+
 func _process(_delta):
 	debug_fps.text = "FPS: " + str(Engine.get_frames_per_second())
 
@@ -172,20 +174,33 @@ func _ready():
 	Signals.ON_ATTACKED.connect(damage.start)
 	characters = self.get_node("characters").get_node("players")
 	enemies = self.get_node("characters").get_node("enemies")
-	_call([Character.name.MUSHROOM_CLOD, Character.name.ALLIGATOR, Character.name.SHRIMPION,], load("res://resources/official_levels/level_0.tres"))
+	if System.direct_hud_test:
+		_call([Character.name.BEETLEROOT, Character.name.ALLIGATOR, Character.name.SHRIMPION,], "res://resources/official_levels/level_0.tres")
 
-func _call(character : Array, data : Questionnaire): # Called to start a level.
-	var enemy = [data.properties.enemy1, data.properties.enemy2, data.properties.enemy3]
+func _call(character : Array, data_dir : String): # Called to start a level.
 	
+	var data = load(data_dir)
+	var enemy = [data.properties.enemy1, data.properties.enemy2, data.properties.enemy3]
+
 	# Only enable when dialogues are enabled.
 	if data.properties.enable_dialogues: $gameplay/dialogue_canvas.start(data.dialog_data)
 
 	# Trim the Hud.role.NONE
-	for n in character.size():
-		if character[n] == Character.name.NONE: character.remove_at(n)
-	for n in enemy.size():
-		if enemy[n] == Character.name.NONE: enemy.remove_at(n)
-		
+	for i in range(character.size() - 1, -1, -1):
+		if character[i] == Character.name.NONE:
+			character.remove_at(i)
+
+	for i in range(enemy.size() - 1, -1, -1):
+		if enemy[i] == Character.name.NONE:
+			enemy.remove_at(i)
+
+	# Allow UI elements outside the level to know which active characters are currently in play.
+	UI.current_active_characters = character
+	UI.current_active_enemies = enemy
+	UI.current_active_level = data_dir
+	UI.current_active_question_count = 0
+	UI.current_active_question_correct = 0
+
 	# Load character 1 and their stats.
 	for n in character.size():
 		
@@ -215,10 +230,10 @@ func _call(character : Array, data : Questionnaire): # Called to start a level.
 	$gameplay/ui_canvas/timer.visible = true
 	var question_number : int = 0
 	var question_size : int = data.question_data.size()
+	game_ready = true
 	while 1 == 1:
-		
 		if question_number == question_size: question_number = 0
-		
+		UI.current_active_question_count += 1
 		$gameplay.change_questions (question_number,
 		data.question_data[question_number].subject, 
 		data.question_data[question_number].question_title, 

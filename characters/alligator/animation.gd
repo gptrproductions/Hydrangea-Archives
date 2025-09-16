@@ -77,6 +77,8 @@ func skill1():
 	await get_tree().create_timer(0.5).timeout
 	camera.pan()
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_1)
+	Signals.DEATHCHECK_FINISHED.emit(false) # Emit it on moves that dont kill.
 	return
 	
 func skill2():
@@ -109,12 +111,22 @@ func skill2():
 	camera.pan(Hud.role.NONE, 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
 	await get_tree().create_timer(1).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_2)
 	return
 
 func skill3():
+	await idle(true)
+	self.play("skill_3")
+	camera.pan(role)
+	await camera.focus(Vector2(1.5, 1.5), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
+	await animation_finished
+	camera.focus(Vector2(1, 1), 0.5, Tween.EASE_IN_OUT, Tween.TRANS_BACK)
+	camera.pan(role)
+	await get_tree().create_timer(0.2).timeout
 	var values : Dictionary = self.get_parent().math(Hud.target.ACTIVE, role, Hud.skills.SKILL_3)
-	print(values.get("damage", 1))
 	Effects.start(Effects.DAMASCUS, role, abs(values.get("damage", 1)))
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	idle()
+	Signals.MOVE_FINISHED.emit(Hud.skills.SKILL_3)
+	Signals.DEATHCHECK_FINISHED.emit(false) # Emit it on moves that dont kill.
 	return

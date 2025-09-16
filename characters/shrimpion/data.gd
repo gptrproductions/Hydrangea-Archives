@@ -30,8 +30,8 @@ var stats : Dictionary = {
 	"profile" : preload("res://characters/shrimpion/assets/avatar.webp"),
 	
 	# Max_health is the main health stat. Current health is the amount of health
-	"max_health" : 250,
-	"current_health" : 250,
+	"max_health" : 25,
+	"current_health" : 25,
 	"max_flinch" : 100,
 	"current_flinch" : 0,
 	

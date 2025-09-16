@@ -3,11 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqyf7uol3evqj"
-valid=false
+path.s3tc="res://.godot/imported/angry.webp-bcc2aef47c4fc8f50a044a38f3e62452.s3tc.ctex"
+path.etc2="res://.godot/imported/angry.webp-bcc2aef47c4fc8f50a044a38f3e62452.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://characters/alligator/assets/dialog_panel/angry.webp"
+dest_files=["res://.godot/imported/angry.webp-bcc2aef47c4fc8f50a044a38f3e62452.s3tc.ctex", "res://.godot/imported/angry.webp-bcc2aef47c4fc8f50a044a38f3e62452.etc2.ctex"]
 
 [params]
 

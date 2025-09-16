@@ -7,6 +7,7 @@ var load_status = ResourceLoader.THREAD_LOAD_IN_PROGRESS
 @onready var animation: AnimationPlayer = $animation
 
 func _ready():
+	System.direct_hud_test = false
 	animation.play("start")
 	await animation.animation_finished
 	await get_tree().create_timer(2).timeout
